@@ -1,0 +1,22 @@
+Fuses
+
+Setup {
+	TD=SALIDA;
+	PD=SALIDA;
+
+}
+
+
+Retardo
+
+Ciclo {
+	PD0 Toggle PD0;
+	TimeMS(50000);
+
+}
+
+
+Main {
+	TimeMS(1);
+}
+

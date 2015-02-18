@@ -1,0 +1,33 @@
+Fuses
+
+Void orylele(){
+	PD Toggle PA;	
+}
+
+Void metodo2(){
+	PC Toggle PC;
+	TimeMS(7000);
+	PD3 Toggle PD3;
+}
+
+Setup {
+	TD=SALIDA;
+	PD=SALIDA;
+	PA=SALIDA;
+}
+
+Retardo();
+
+Ciclo {
+	PD0 Toggle PD0;
+	TimeMS(50000);
+	PD1 Toggle PD1;
+	TimeMS(30000);
+	metodo2();
+}
+
+Main {
+	orylele();
+	metodo2();
+	TimeMS(40000);
+}

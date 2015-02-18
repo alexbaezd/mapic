@@ -1,0 +1,431 @@
+import java_cup.runtime.*;
+import java.io.*;				
+import java.util.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+
+/***ACTION CODE***/
+
+action code{:
+
+TablaSimbolos tabla = new TablaSimbolos();
+String codigo="";
+String miCodigo="";
+String errores="";
+String retardos="";
+String auxiliar="";
+String losMetodos="";
+:};
+
+/***************************************************************************/
+parser code {:
+
+	static int estado;
+	StringBuffer m = new StringBuffer("");
+    static StringBuffer []vec=new StringBuffer[10];
+    static int i=0;
+//******************************************* 
+   public void Documenta(int tipo)
+   { m.append("Error de Sintaxis No."+tipo);
+     ManejoDeErrores objeto=new ManejoDeErrores();
+     String tip=objeto.Errores(tipo);
+	  m.append("\nMensaje --> "+tip+"\n");
+      vec[i++]=m;
+     
+   }
+//*******************************************
+   public void syntax_error(Symbol cur_token)
+   { 
+   	estado=((Symbol)stack.peek()).parse_state;
+   	  ManejoDeErrores obj = new ManejoDeErrores();
+      String m=obj.analizaToken(cur_token);
+      System.err.println("\n\nSimbolo actual analizado: "+m+"-->"+cur_token);
+      //System.err.println("\n\nSimbolo actual analizado: "+cur_token);
+
+   }
+//******************************************
+   public void report_error(String message, Object info) 
+   { if (info instanceof java_cup.runtime.Symbol)
+     { java_cup.runtime.Symbol s = ((java_cup.runtime.Symbol) info);
+       if (s.left >= 0)
+       { m.append("Linea "+ (s.left +1));   
+         if (s.right >= 0)                    
+          m.append(", Columna "+(s.right)+"\n");
+       }
+     }
+   }
+/**************METODO MAIN ********/
+public static void main(String[] arg)		
+ 	{
+	  /* Crea un objeto parser */
+	  parser parserObj = new parser();
+	  /* Asigna el Scanner */
+	  Yylex miAnalizadorLexico = new Yylex(new InputStreamReader(System.in));
+	  parserObj.setScanner(miAnalizadorLexico);
+	  try{
+		parserObj.parse();
+	  }
+catch(Exception x){ 
+	  parserObj.Documenta(estado);
+  	  for(int j=0;j<i;j++)
+		System.out.println(vec[j]);
+
+	}
+
+}
+
+:};
+	// Símbolo (terminal y no terminal) 
+
+/* Símbolos (tokens devueltos por el escáner). */
+/* Terminales */
+terminal CHALE, MAIN, FMAIN, SETUP, FUSES, ENTRADA, SALIDA, RETARDO, CICLO, FCICLO;
+terminal PA, PB, PC, PD, PE, TA, TB, TC, TD, TE;
+terminal TA0, TA1, TA2, TA3, TA4, TA5, TA6, TA7;
+terminal TB0, TB1, TB2, TB3, TB4, TB5, TB6, TB7;
+terminal TC0, TC1, TC2, TC3, TC4, TC5, TC6, TC7;
+terminal TD0, TD1, TD2, TD3, TD4, TD5, TD6, TD7;
+terminal TE0, TE1, TE2, TE3;
+terminal PA0, PA1, PA2, PA3, PA4, PA5, PA6, PA7;
+terminal PB0, PB1, PB2, PB3, PB4, PB5, PB6, PB7;
+terminal PC0, PC1, PC2, PC3, PC4, PC5, PC6, PC7;
+terminal PD0, PD1, PD2, PD3, PD4, PD5, PD6, PD7;
+terminal PE0, PE1, PE2, PE3;
+terminal VOID;
+terminal LPAREN, RPAREN, MAYOR, MENOR, MAS, MENOS, LLLAVE, RLLAVE, PCOMA,IGUAL , IGUAL2,TOGGLE;
+terminal Integer NUMERO;
+terminal String ID;
+
+/* No terminales */
+non terminal programa;
+non terminal metodos;
+non terminal main;
+non terminal setup;
+non terminal ciclo;
+non terminal metodo;
+non terminal String  instrucciones;
+non terminal confpuertos;
+non terminal String puertos;
+non terminal String puertost;
+non terminal String io;
+non terminal  String  instruccion;
+
+
+
+
+	// Declaraciones de preferencia
+/* Preferencias*/
+precedence left MAS, MENOS , MAYOR , MENOR,TOGGLE, IGUAL , IGUAL2;
+precedence left ID;
+
+
+
+					
+// La gramática en BNF
+
+ programa::= FUSES:fuses metodos main
+ 				{:
+ 					miCodigo=fuses+miCodigo;
+              		 // System.out.println("Clase Generada\n\n"+miCodigo+"\n\n");
+               
+
+                File miClase;
+	        	try{
+	        		
+	            	miClase = new File("mapic.c");
+	            	if(miClase.exists())
+	            		miClase.delete();
+
+	            	if(miClase.createNewFile()){
+	                	//System.out.println("Se ha creado el archivo");
+	            	}
+	            	FileWriter escribir=new FileWriter(miClase,true);
+	            	escribir.write(miCodigo);
+	            	escribir.close();
+	        	}catch(IOException e){
+	        		System.out.println("ERROR NO SE PUEDE ");
+	            	
+	        	}
+             
+:};
+ 
+ metodos::= setup ciclo
+	        |setup RETARDO:retardo ciclo   {: miCodigo=retardo+miCodigo;  :}
+	        |  metodo setup ciclo
+	        |  metodo setup RETARDO:retardo ciclo
+			{: miCodigo=retardo+losMetodos+miCodigo;  :}
+			;
+			
+/*
+ Si queremos que aparesca Retardo ( );
+ se debe utilizar esta regla y sustituirla en metodos y jugar con la variable RESULT u otra que
+ se declare.
+elretardo::= RETARDO LPAREN RPAREN PCOMA;
+*/			
+setup::=SETUP:setup   LLLAVE confpuertos RLLAVE
+		{:
+
+	            //System.out.println("codigo intermedio==>"+setup+"   "+fsetup);
+	            miCodigo=setup+"{\n\tOSCCON=0x60;\n\tANSEL=0;\n"+miCodigo+"\n}";
+		
+		:}
+	|SETUP:setup  LLLAVE  confpuertos  instrucciones RLLAVE
+		{:
+
+	            //System.out.println("codigo intermedio==>"+setup+"   "+fsetup);
+	            miCodigo=setup+"{\n\tOSCCON=0x60;\n\tANSEL=0;\n"+miCodigo+auxiliar+"\n}";
+		
+		:};
+
+confpuertos::=puertos:p IGUAL io:i PCOMA
+		{:
+		  miCodigo=miCodigo+p+i;
+		:}
+                 
+	         |confpuertos puertos:p IGUAL io:i PCOMA
+	         {:
+	         	 miCodigo=miCodigo+p+i;
+
+	         :} ;
+
+puertos::= PA:pa {: RESULT=pa+"="; :}
+	    |PB:pb {: RESULT=pb+"="; :}
+	    |PC:pc {: RESULT=pc+"=";:}
+	    |PD:pd {: RESULT=pd+"="; :}
+	    |PE:pe {:RESULT=pe+"=";:}
+	    |TA:ta  {: RESULT=ta+"="; :}
+	    |TB:tb  {:RESULT=tb+"="; :}
+	    |TC:tc  {: RESULT=tc+"="; :}
+	    |TD:td  {: RESULT=td+"="; :}
+	    |TE:te  {: RESULT=te+"=";  :}
+	    |TA0:ta0 {:	RESULT=ta0+"="; :}
+	    |TA1:ta1 {:	RESULT=ta1+"="; :}
+		|TA2:ta2 {:	RESULT=ta2+"="; :}
+		|TA3:ta3 {:	RESULT=ta3+"="; :}
+		|TA4:ta4 {:	RESULT=ta4+"="; :}
+		|TA5:ta5 {:	RESULT=ta5+"="; :}
+		|TA6:ta6 {:	RESULT=ta6+"="; :}
+		|TA7:ta7 {:	RESULT=ta7+"="; :}
+		
+		|TB0:tb0 {:	RESULT=tb0+"="; :}
+		|TB1:tb1 {:	RESULT=tb1+"="; :}
+		|TB2:tb2 {:	RESULT=tb2+"="; :}
+		|TB3:tb3 {:	RESULT=tb3+"="; :}
+		|TB4:tb4 {:	RESULT=tb4+"="; :}
+		|TB5:tb5 {:	RESULT=tb5+"="; :}
+		|TB6:tb6 {:	RESULT=tb6+"="; :}
+		|TB7:tb7 {:	RESULT=tb7+"="; :}
+		
+		|TC0:tc0 {:	RESULT=tc0+"="; :}
+		|TC1:tc1 {:	RESULT=tc1+"="; :}
+		|TC2:tc2 {:	RESULT=tc2+"="; :}
+		|TC3:tc3 {:	RESULT=tc3+"="; :}
+		|TC4:tc4 {:	RESULT=tc4+"="; :}
+		|TC5:tc5 {:	RESULT=tc5+"="; :}
+		|TC6:tc6 {:	RESULT=tc6+"="; :}
+		|TC7:tc7 {:	RESULT=tc7+"="; :}
+		
+		|TD0:td0 {:	RESULT=td0+"="; :}
+		|TD1:td1 {:	RESULT=td1+"="; :}
+		|TD2:td2 {:	RESULT=td2+"="; :}
+		|TD3:td3 {:	RESULT=td3+"="; :}
+		|TD4:td4 {:	RESULT=td4+"="; :}
+		|TD5:td5 {:	RESULT=td5+"="; :}
+		|TD6:td6 {:	RESULT=td6+"="; :}
+		|TD7:td7 {:	RESULT=td7+"="; :}
+		
+		|TE0:te0 {:	RESULT=te0+"="; :}
+		|TE1:te1 {:	RESULT=te1+"="; :}
+		|TE2:te2 {:	RESULT=te2+"="; :}
+		|TE3:te3 {:	RESULT=te3+"="; :}
+		
+	    |PA0:pa0 {:	RESULT=pa0+"="; :}
+	    |PA1:pa1 {:	RESULT=pa1+"="; :}
+	    |PA2:pa2 {:	RESULT=pa2+"="; :}
+	    |PA3:pa3 {:	RESULT=pa3+"="; :}
+	    |PA4:pa4 {:  	RESULT=pa4+"="; :}
+	    |PA5:pa5 {:	RESULT=pa5+"="; :}
+	    |PA6:pa6 {:	RESULT=pa6+"=";  :}
+	    |PA7:pa7 {: 	RESULT=pa7+"=";  :}
+	    |PB0:pb0 {:	RESULT=pb0+"=";  :}
+	    |PB1:pb1 {:	RESULT=pb1+"=";   :}
+	    |PB2:pb2 {:	RESULT=pb2+"=";   :}
+	    |PB3:pb3 {:	RESULT=pb3+"=";   :}
+	    |PB4:pb4 {:	RESULT=pb4+"=";  :}
+	    |PB5:pb5 {:	  RESULT=pb5+"=";  :}
+	    |PB6:pb6 {:	  RESULT=pb6+"=";  :}
+	    |PB7:pb7 {:	  RESULT=pb7+"=";  :}
+	    |PC0:pc0 {:	RESULT=pc0+"=";    :}
+	    |PC1:pc1 {:  RESULT=pc1+"=";  :}
+	    |PC2:pc2 {:	RESULT=pc2+"=";    :}
+	    |PC3:pc3 {:  RESULT=pc3+"=";  :}
+        |PC4:pc4 {:  RESULT=pc4+"=";  :}
+        |PC5:pc5 {: RESULT=pc5+"=";   :}
+	    |PC6:pc6 {:	 RESULT=pc6+"=";   :}
+	    |PC7:pc7 {:     RESULT=pc7+"=";  :}
+	    |PD0:pd0 {:	 RESULT=pd0+"=";  :}
+	    |PD1:pd1 {:	RESULT=pd1+"=";   :}
+	    |PD2:pd2 {:   RESULT=pd2+"=";  :}
+	    |PD3:pd3 {:	 RESULT=pd3+"=";  :}
+	    |PD4:pd4 {:	RESULT=pd4+"=";   :}
+	    |PD5:pd5 {:   RESULT=pd5+"=";  :}
+	    |PD6:pd6 {:	RESULT=pd6+"=";   :}
+	    |PD7:pd7 {:  RESULT=pd7+"=";   :}
+	    |PE0:pe0 {:	RESULT=pe0+"=";   :}
+	    |PE1:pe1 {:	RESULT=pe1+"=";     :}
+	    |PE2:pe2 {:	RESULT=pe2+"=";     :}
+		|PE3:pe3 {:	RESULT=pe3+"=";     :}
+	    ;			
+					
+					
+puertost::= PA:pa {: RESULT=pa+""; :}
+	    |PB:pb {: RESULT=pb+""; :}
+	    |PC:pc {: RESULT=pc+"";:}
+	    |PD:pd {: RESULT=pd+""; :}
+	    |PE:pe {:RESULT=pe+"";:}
+	    |PA0:pa0 {:	RESULT=pa0+""; :}
+	    |PA1:pa1 {:	RESULT=pa1+""; :}
+	    |PA2:pa2 {:	RESULT=pa2+""; :}
+	    |PA3:pa3 {:	RESULT=pa3+""; :}
+	    |PA4:pa4 {:  	RESULT=pa4+""; :}
+	    |PA5:pa5 {:	RESULT=pa5+""; :}
+	    |PA6:pa6 {:	RESULT=pa6+"";  :}
+	    |PA7:pa7 {: 	RESULT=pa7+"";  :}
+	    |PB0:pb0 {:	RESULT=pb0+"";  :}
+	    |PB1:pb1 {:	RESULT=pb1+"";   :}
+	    |PB2:pb2 {:	RESULT=pb2+"";   :}
+	    |PB3:pb3 {:	RESULT=pb3+"";   :}
+	    |PB4:pb4 {:	RESULT=pb4+"";  :}
+	    |PB5:pb5 {:	  RESULT=pb5+"";  :}
+	    |PB6:pb6 {:	  RESULT=pb6+"";  :}
+	    |PB7:pb7 {:	  RESULT=pb7+"";  :}
+	    |PC0:pc0 {:	RESULT=pc0+"";    :}
+	    |PC1:pc1 {: 	  RESULT=pc1+"";  :}
+	    |PC2:pc2 {:	RESULT=pc2+"";    :}
+	    |PC3:pc3 {: 	  RESULT=pc3+"";  :}
+        |PC4:pc4 {:	  RESULT=pc4+"";  :}
+        |PC5:pc5 {:	 RESULT=pc5+"";   :}
+	    |PC6:pc6 {:	 RESULT=pc6+"";   :}
+	    |PC7:pc7 {:     RESULT=pc7+"";  :}
+	    |PD0:pd0 {:	 RESULT=pd0+"";  :}
+	    |PD1:pd1 {:	RESULT=pd1+"";   :}
+	    |PD2:pd2 {:   RESULT=pd2+"";  :}
+	    |PD3:pd3 {:	 RESULT=pd3+"";  :}
+	    |PD4:pd4 {:	RESULT=pd4+"";   :}
+	    |PD5:pd5 {:   RESULT=pd5+"";  :}
+	    |PD6:pd6 {:	RESULT=pd6+"";   :}
+	    |PD7:pd7 {:  RESULT=pd7+"";   :}
+	    |PE0:pe0 {:	RESULT=pe0+"";   :}
+	    |PE1:pe1 {:	RESULT=pe1+"";     :}
+	    |PE2:pe2 {:	RESULT=pe2+"";     :}
+	    ;			
+					
+					
+
+	
+
+io::=ENTRADA  {: RESULT="1;\n";  :}
+       |SALIDA:salida  {: RESULT="0;\n"; :}
+       ;
+
+ciclo::= CICLO:ciclo   LLLAVE  instrucciones   RLLAVE
+		{:
+			miCodigo=miCodigo+ciclo+"{\n\t \twhile(1){\n\n"+ auxiliar +"\t\t}\n\n\t}";
+			auxiliar="";
+			
+
+                :};
+
+main::= MAIN:main  LLLAVE instrucciones  RLLAVE
+
+		{:
+		          miCodigo=miCodigo+main+"{\n\t\tsetup();\n\t\tloop();\n"+auxiliar+"\n\t\t return; \n\t }";
+		          auxiliar="";
+			
+		
+		:};
+
+metodo::=VOID:v ID:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
+             {:
+			  Simbolo s;
+				   if ((s = tabla.buscar(i)) == null)
+						s = tabla.insertar(i,auxiliar);
+					   else{ s.setValor(auxiliar);
+							
+						}
+						
+						codigo=v+i+"()\n\t{"+auxiliar+"\n\t}";
+						 losMetodos=losMetodos+codigo;
+		       				   auxiliar="";
+						//System.out.println("codigo intermedio==> int "+codigo);
+					
+			 
+			 :}
+			 |metodo VOID:v ID:m LPAREN RPAREN LLLAVE instrucciones  RLLAVE
+			 {:
+			  Simbolo s;
+					if ((s = tabla.buscar(m)) == null)
+								s = tabla.insertar(m,auxiliar);
+					   else
+							{ s.setValor(auxiliar);
+							
+							}
+						
+						codigo=v+m+"()\n\t{"+auxiliar+"\n\t}\n\n";
+						 losMetodos=losMetodos+codigo;
+		       				   auxiliar="";
+						//System.out.println("codigo intermedio==> int "+codigo);
+		 :};
+
+
+instrucciones::=instruccion:in
+				{:
+					//System.out.println("valor de in:"+in);
+		 	
+				  auxiliar=auxiliar+in;
+				 // System.out.println("cadena en la instruccion:"+auxiliar);
+
+			           :}
+				|instrucciones instruccion:in
+				{:
+					//System.out.println("valor de in:"+in);
+		 	
+				  auxiliar=auxiliar+in;
+				 // System.out.println("cadena en la instruccion:"+auxiliar);
+
+			           :};
+				
+instruccion::= puertos:p TOGGLE:t puertost:u PCOMA
+		 {:
+		 	//   miCodigo=p+t+u+";\n"+miCodigo;
+		 	RESULT=p+t+u+";\n";
+		 	//System.out.println("cadena de toggles:"+RESULT);
+		 :}
+       		 | puertos IGUAL NUMERO PCOMA
+		 | ID:i LPAREN RPAREN PCOMA
+				{:  
+					   Simbolo s;
+					   if ((s = tabla.buscar(i)) == null){
+					   	System.out.println(i+ " es una METODO no definido");
+					   }
+							
+					   else{
+						// System.out.println(i+" instrucciones del metodo => "+s.getValor());
+						//System.out.println("codigo intermedio==> "+i+"();");
+						RESULT="\t"+i+"();\n";
+						}	
+					:}
+
+		| CHALE:c LPAREN NUMERO:n RPAREN PCOMA
+			{:
+   				//retardos= retardos+c+"("+n+");\n";
+   				RESULT=c+"("+n+");\n";
+
+			:}
+		|puertos:p IGUAL puertost:u MAS NUMERO:n PCOMA
+		{:
+			RESULT=p+u+"+"+n+";\n";
+		:}
+			;

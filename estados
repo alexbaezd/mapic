@@ -1,0 +1,3599 @@
+
+C:\maPIC 1.0>java java_cup/Main -dump_states mapic.cup
+Opening files...
+Parsing specification from standard input...
+Checking specification...
+Warning: Terminal "MAYOR" was declared but never used
+Warning: Terminal "FCICLO" was declared but never used
+Warning: Terminal "FMAIN" was declared but never used
+Warning: Terminal "IGUAL2" was declared but never used
+Warning: Terminal "MENOS" was declared but never used
+Warning: Terminal "MENOR" was declared but never used
+Building parse tables...
+  Computing non-terminal nullability...
+  Computing first sets...
+  Building state machine...
+  Filling in tables...
+  Checking for non-reduced productions...
+Writing parser...
+===== Viable Prefix Recognizer =====
+START lalr_state [0]: {
+  [$START ::= (*) programa EOF , {EOF }]
+  [programa ::= (*) FUSES metodos main , {EOF }]
+}
+transition on FUSES to state [2]
+transition on programa to state [1]
+
+-------------------
+lalr_state [1]: {
+  [$START ::= programa (*) EOF , {EOF }]
+}
+transition on EOF to state [196]
+
+-------------------
+lalr_state [2]: {
+  [metodos ::= (*) metodo setup RETARDO ciclo , {MAIN }]
+  [metodos ::= (*) setup ciclo , {MAIN }]
+  [metodo ::= (*) metodo VOID ID LPAREN RPAREN LLLAVE instrucciones RLLAVE , {SETUP VOID }]
+  [setup ::= (*) SETUP LLLAVE confpuertos instrucciones RLLAVE , {RETARDO CICLO }]
+  [metodos ::= (*) metodo setup ciclo , {MAIN }]
+  [metodo ::= (*) VOID ID LPAREN RPAREN LLLAVE instrucciones RLLAVE , {SETUP VOID }]
+  [setup ::= (*) SETUP LLLAVE confpuertos RLLAVE , {RETARDO CICLO }]
+  [programa ::= FUSES (*) metodos main , {EOF }]
+  [metodos ::= (*) setup RETARDO ciclo , {MAIN }]
+}
+transition on VOID to state [7]
+transition on metodo to state [6]
+transition on metodos to state [5]
+transition on setup to state [4]
+transition on SETUP to state [3]
+
+-------------------
+lalr_state [3]: {
+  [setup ::= SETUP (*) LLLAVE confpuertos instrucciones RLLAVE , {RETARDO CICLO }]
+  [setup ::= SETUP (*) LLLAVE confpuertos RLLAVE , {RETARDO CICLO }]
+}
+transition on LLLAVE to state [181]
+
+-------------------
+lalr_state [4]: {
+  [metodos ::= setup (*) ciclo , {MAIN }]
+  [ciclo ::= (*) CICLO LLLAVE instrucciones RLLAVE , {MAIN }]
+  [metodos ::= setup (*) RETARDO ciclo , {MAIN }]
+}
+transition on ciclo to state [179]
+transition on CICLO to state [168]
+transition on RETARDO to state [178]
+
+-------------------
+lalr_state [5]: {
+  [programa ::= FUSES metodos (*) main , {EOF }]
+  [main ::= (*) MAIN LLLAVE instrucciones RLLAVE , {EOF }]
+}
+transition on MAIN to state [174]
+transition on main to state [173]
+
+-------------------
+lalr_state [6]: {
+  [metodo ::= metodo (*) VOID ID LPAREN RPAREN LLLAVE instrucciones RLLAVE , {SETUP VOID }]
+  [metodos ::= metodo (*) setup RETARDO ciclo , {MAIN }]
+  [setup ::= (*) SETUP LLLAVE confpuertos instrucciones RLLAVE , {RETARDO CICLO }]
+  [metodos ::= metodo (*) setup ciclo , {MAIN }]
+  [setup ::= (*) SETUP LLLAVE confpuertos RLLAVE , {RETARDO CICLO }]
+}
+transition on VOID to state [159]
+transition on setup to state [158]
+transition on SETUP to state [3]
+
+-------------------
+lalr_state [7]: {
+  [metodo ::= VOID (*) ID LPAREN RPAREN LLLAVE instrucciones RLLAVE , {SETUP VOID }]
+}
+transition on ID to state [8]
+
+-------------------
+lalr_state [8]: {
+  [metodo ::= VOID ID (*) LPAREN RPAREN LLLAVE instrucciones RLLAVE , {SETUP VOID }]
+}
+transition on LPAREN to state [9]
+
+-------------------
+lalr_state [9]: {
+  [metodo ::= VOID ID LPAREN (*) RPAREN LLLAVE instrucciones RLLAVE , {SETUP VOID }]
+}
+transition on RPAREN to state [10]
+
+-------------------
+lalr_state [10]: {
+  [metodo ::= VOID ID LPAREN RPAREN (*) LLLAVE instrucciones RLLAVE , {SETUP VOID }]
+}
+transition on LLLAVE to state [11]
+
+-------------------
+lalr_state [11]: {
+  [instrucciones ::= (*) instrucciones instruccion , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA
+7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA
+1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD
+7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PD7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA7 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos TOGGLE puertost PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6
+TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0
+PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6
+PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB0 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos IGUAL NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7
+ TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1
+ PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7
+ PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB1 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) ID LPAREN RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0
+ TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2
+ PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0
+ PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB2 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) CHALE LPAREN NUMERO RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 T
+A6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 P
+A0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 P
+D6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB3 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos IGUAL puertost MAS NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA
+4 TA5 TA6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE
+2 TE3 PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD
+4 PD5 PD6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PB2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PE , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC3 , {IGUAL TOGGLE }]
+  [metodo ::= VOID ID LPAREN RPAREN LLLAVE (*) instrucciones RLLAVE , {SETUP VOID }]
+  [puertos ::= (*) TD5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA5 , {IGUAL TOGGLE }]
+  [instrucciones ::= (*) instruccion , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0 TB1 TB2
+TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2 PA3 PA4
+PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0 PE1 PE2
+PE3 RLLAVE ID }]
+  [puertos ::= (*) PD6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA6 , {IGUAL TOGGLE }]
+}
+transition on instrucciones to state [98]
+transition on puertos to state [97]
+transition on TE0 to state [96]
+transition on TE1 to state [95]
+transition on TE2 to state [94]
+transition on TE3 to state [93]
+transition on ID to state [92]
+transition on PA0 to state [91]
+transition on PA1 to state [90]
+transition on PA to state [89]
+transition on PA2 to state [88]
+transition on PB to state [87]
+transition on PA3 to state [86]
+transition on PC to state [85]
+transition on PA4 to state [84]
+transition on PD to state [83]
+transition on PA5 to state [82]
+transition on PE to state [81]
+transition on PA6 to state [80]
+transition on PA7 to state [79]
+transition on instruccion to state [78]
+transition on TA0 to state [77]
+transition on TA1 to state [76]
+transition on TA2 to state [75]
+transition on TA3 to state [74]
+transition on TA4 to state [73]
+transition on TA5 to state [72]
+transition on TA6 to state [71]
+transition on TA7 to state [70]
+transition on PB0 to state [69]
+transition on CHALE to state [68]
+transition on PB1 to state [67]
+transition on PB2 to state [66]
+transition on PB3 to state [65]
+transition on PB4 to state [64]
+transition on PB5 to state [63]
+transition on PB6 to state [62]
+transition on PB7 to state [61]
+transition on TB0 to state [60]
+transition on TB1 to state [59]
+transition on TB2 to state [58]
+transition on TB3 to state [57]
+transition on TB4 to state [56]
+transition on TB5 to state [55]
+transition on TB6 to state [54]
+transition on TB7 to state [53]
+transition on PC0 to state [52]
+transition on PC1 to state [51]
+transition on PC2 to state [50]
+transition on PC3 to state [49]
+transition on PC4 to state [48]
+transition on PC5 to state [47]
+transition on PC6 to state [46]
+transition on PC7 to state [45]
+transition on TC0 to state [44]
+transition on TC1 to state [43]
+transition on TC2 to state [42]
+transition on TC3 to state [41]
+transition on TC4 to state [40]
+transition on TC5 to state [39]
+transition on TC6 to state [38]
+transition on PD0 to state [37]
+transition on TC7 to state [36]
+transition on PD1 to state [35]
+transition on PD2 to state [34]
+transition on PD3 to state [33]
+transition on PD4 to state [32]
+transition on PD5 to state [31]
+transition on PD6 to state [30]
+transition on PD7 to state [29]
+transition on TD0 to state [28]
+transition on TD1 to state [27]
+transition on TD2 to state [26]
+transition on TD3 to state [25]
+transition on TD4 to state [24]
+transition on TD5 to state [23]
+transition on TD6 to state [22]
+transition on PE0 to state [21]
+transition on TD7 to state [20]
+transition on PE1 to state [19]
+transition on PE2 to state [18]
+transition on TA to state [17]
+transition on PE3 to state [16]
+transition on TB to state [15]
+transition on TC to state [14]
+transition on TD to state [13]
+transition on TE to state [12]
+
+-------------------
+lalr_state [12]: {
+  [puertos ::= TE (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [13]: {
+  [puertos ::= TD (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [14]: {
+  [puertos ::= TC (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [15]: {
+  [puertos ::= TB (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [16]: {
+  [puertos ::= PE3 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [17]: {
+  [puertos ::= TA (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [18]: {
+  [puertos ::= PE2 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [19]: {
+  [puertos ::= PE1 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [20]: {
+  [puertos ::= TD7 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [21]: {
+  [puertos ::= PE0 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [22]: {
+  [puertos ::= TD6 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [23]: {
+  [puertos ::= TD5 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [24]: {
+  [puertos ::= TD4 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [25]: {
+  [puertos ::= TD3 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [26]: {
+  [puertos ::= TD2 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [27]: {
+  [puertos ::= TD1 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [28]: {
+  [puertos ::= TD0 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [29]: {
+  [puertos ::= PD7 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [30]: {
+  [puertos ::= PD6 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [31]: {
+  [puertos ::= PD5 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [32]: {
+  [puertos ::= PD4 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [33]: {
+  [puertos ::= PD3 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [34]: {
+  [puertos ::= PD2 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [35]: {
+  [puertos ::= PD1 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [36]: {
+  [puertos ::= TC7 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [37]: {
+  [puertos ::= PD0 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [38]: {
+  [puertos ::= TC6 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [39]: {
+  [puertos ::= TC5 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [40]: {
+  [puertos ::= TC4 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [41]: {
+  [puertos ::= TC3 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [42]: {
+  [puertos ::= TC2 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [43]: {
+  [puertos ::= TC1 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [44]: {
+  [puertos ::= TC0 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [45]: {
+  [puertos ::= PC7 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [46]: {
+  [puertos ::= PC6 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [47]: {
+  [puertos ::= PC5 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [48]: {
+  [puertos ::= PC4 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [49]: {
+  [puertos ::= PC3 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [50]: {
+  [puertos ::= PC2 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [51]: {
+  [puertos ::= PC1 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [52]: {
+  [puertos ::= PC0 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [53]: {
+  [puertos ::= TB7 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [54]: {
+  [puertos ::= TB6 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [55]: {
+  [puertos ::= TB5 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [56]: {
+  [puertos ::= TB4 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [57]: {
+  [puertos ::= TB3 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [58]: {
+  [puertos ::= TB2 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [59]: {
+  [puertos ::= TB1 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [60]: {
+  [puertos ::= TB0 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [61]: {
+  [puertos ::= PB7 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [62]: {
+  [puertos ::= PB6 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [63]: {
+  [puertos ::= PB5 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [64]: {
+  [puertos ::= PB4 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [65]: {
+  [puertos ::= PB3 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [66]: {
+  [puertos ::= PB2 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [67]: {
+  [puertos ::= PB1 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [68]: {
+  [instruccion ::= CHALE (*) LPAREN NUMERO RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 T
+A6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 P
+A0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 P
+D6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+}
+transition on LPAREN to state [154]
+
+-------------------
+lalr_state [69]: {
+  [puertos ::= PB0 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [70]: {
+  [puertos ::= TA7 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [71]: {
+  [puertos ::= TA6 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [72]: {
+  [puertos ::= TA5 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [73]: {
+  [puertos ::= TA4 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [74]: {
+  [puertos ::= TA3 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [75]: {
+  [puertos ::= TA2 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [76]: {
+  [puertos ::= TA1 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [77]: {
+  [puertos ::= TA0 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [78]: {
+  [instrucciones ::= instruccion (*) , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0 TB1 TB2
+TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2 PA3 PA4
+PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0 PE1 PE2
+PE3 RLLAVE ID }]
+}
+
+-------------------
+lalr_state [79]: {
+  [puertos ::= PA7 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [80]: {
+  [puertos ::= PA6 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [81]: {
+  [puertos ::= PE (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [82]: {
+  [puertos ::= PA5 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [83]: {
+  [puertos ::= PD (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [84]: {
+  [puertos ::= PA4 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [85]: {
+  [puertos ::= PC (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [86]: {
+  [puertos ::= PA3 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [87]: {
+  [puertos ::= PB (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [88]: {
+  [puertos ::= PA2 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [89]: {
+  [puertos ::= PA (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [90]: {
+  [puertos ::= PA1 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [91]: {
+  [puertos ::= PA0 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [92]: {
+  [instruccion ::= ID (*) LPAREN RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0
+ TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2
+ PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0
+ PE1 PE2 PE3 RLLAVE ID }]
+}
+transition on LPAREN to state [151]
+
+-------------------
+lalr_state [93]: {
+  [puertos ::= TE3 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [94]: {
+  [puertos ::= TE2 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [95]: {
+  [puertos ::= TE1 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [96]: {
+  [puertos ::= TE0 (*) , {IGUAL TOGGLE }]
+}
+
+-------------------
+lalr_state [97]: {
+  [instruccion ::= puertos (*) IGUAL puertost MAS NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA
+4 TA5 TA6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE
+2 TE3 PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD
+4 PD5 PD6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [instruccion ::= puertos (*) IGUAL NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7
+ TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1
+ PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7
+ PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [instruccion ::= puertos (*) TOGGLE puertost PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6
+TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0
+PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6
+PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+}
+transition on TOGGLE to state [102]
+transition on IGUAL to state [101]
+
+-------------------
+lalr_state [98]: {
+  [instrucciones ::= instrucciones (*) instruccion , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA
+7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA
+1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD
+7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PD7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA7 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos TOGGLE puertost PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6
+TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0
+PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6
+PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB0 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos IGUAL NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7
+ TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1
+ PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7
+ PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB1 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) ID LPAREN RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0
+ TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2
+ PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0
+ PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB2 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) CHALE LPAREN NUMERO RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 T
+A6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 P
+A0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 P
+D6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB3 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos IGUAL puertost MAS NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA
+4 TA5 TA6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE
+2 TE3 PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD
+4 PD5 PD6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PB2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PE , {IGUAL TOGGLE }]
+  [metodo ::= VOID ID LPAREN RPAREN LLLAVE instrucciones (*) RLLAVE , {SETUP VOID }]
+  [puertos ::= (*) PC3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA6 , {IGUAL TOGGLE }]
+}
+transition on puertos to state [97]
+transition on TE0 to state [96]
+transition on TE1 to state [95]
+transition on TE2 to state [94]
+transition on TE3 to state [93]
+transition on ID to state [92]
+transition on PA0 to state [91]
+transition on PA1 to state [90]
+transition on PA to state [89]
+transition on PA2 to state [88]
+transition on PB to state [87]
+transition on PA3 to state [86]
+transition on PC to state [85]
+transition on PA4 to state [84]
+transition on PD to state [83]
+transition on PA5 to state [82]
+transition on PE to state [81]
+transition on PA6 to state [80]
+transition on PA7 to state [79]
+transition on instruccion to state [100]
+transition on TA0 to state [77]
+transition on TA1 to state [76]
+transition on TA2 to state [75]
+transition on TA3 to state [74]
+transition on TA4 to state [73]
+transition on TA5 to state [72]
+transition on TA6 to state [71]
+transition on TA7 to state [70]
+transition on PB0 to state [69]
+transition on CHALE to state [68]
+transition on PB1 to state [67]
+transition on PB2 to state [66]
+transition on PB3 to state [65]
+transition on PB4 to state [64]
+transition on PB5 to state [63]
+transition on PB6 to state [62]
+transition on PB7 to state [61]
+transition on TB0 to state [60]
+transition on TB1 to state [59]
+transition on TB2 to state [58]
+transition on TB3 to state [57]
+transition on TB4 to state [56]
+transition on TB5 to state [55]
+transition on TB6 to state [54]
+transition on TB7 to state [53]
+transition on PC0 to state [52]
+transition on PC1 to state [51]
+transition on PC2 to state [50]
+transition on PC3 to state [49]
+transition on PC4 to state [48]
+transition on PC5 to state [47]
+transition on PC6 to state [46]
+transition on PC7 to state [45]
+transition on TC0 to state [44]
+transition on TC1 to state [43]
+transition on TC2 to state [42]
+transition on TC3 to state [41]
+transition on TC4 to state [40]
+transition on TC5 to state [39]
+transition on TC6 to state [38]
+transition on PD0 to state [37]
+transition on TC7 to state [36]
+transition on PD1 to state [35]
+transition on PD2 to state [34]
+transition on PD3 to state [33]
+transition on PD4 to state [32]
+transition on PD5 to state [31]
+transition on PD6 to state [30]
+transition on PD7 to state [29]
+transition on TD0 to state [28]
+transition on RLLAVE to state [99]
+transition on TD1 to state [27]
+transition on TD2 to state [26]
+transition on TD3 to state [25]
+transition on TD4 to state [24]
+transition on TD5 to state [23]
+transition on TD6 to state [22]
+transition on PE0 to state [21]
+transition on TD7 to state [20]
+transition on PE1 to state [19]
+transition on PE2 to state [18]
+transition on TA to state [17]
+transition on PE3 to state [16]
+transition on TB to state [15]
+transition on TC to state [14]
+transition on TD to state [13]
+transition on TE to state [12]
+
+-------------------
+lalr_state [99]: {
+  [metodo ::= VOID ID LPAREN RPAREN LLLAVE instrucciones RLLAVE (*) , {SETUP VOID }]
+}
+
+-------------------
+lalr_state [100]: {
+  [instrucciones ::= instrucciones instruccion (*) , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA
+7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA
+1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD
+7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+}
+
+-------------------
+lalr_state [101]: {
+  [puertost ::= (*) PD6 , {MAS }]
+  [puertost ::= (*) PC5 , {MAS }]
+  [puertost ::= (*) PB4 , {MAS }]
+  [puertost ::= (*) PA3 , {MAS }]
+  [instruccion ::= puertos IGUAL (*) NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7
+ TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1
+ PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7
+ PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertost ::= (*) PD2 , {MAS }]
+  [puertost ::= (*) PC1 , {MAS }]
+  [puertost ::= (*) PB0 , {MAS }]
+  [puertost ::= (*) PE , {MAS }]
+  [puertost ::= (*) PD7 , {MAS }]
+  [puertost ::= (*) PC6 , {MAS }]
+  [puertost ::= (*) PB5 , {MAS }]
+  [puertost ::= (*) PA4 , {MAS }]
+  [puertost ::= (*) PA , {MAS }]
+  [puertost ::= (*) PD3 , {MAS }]
+  [puertost ::= (*) PC2 , {MAS }]
+  [puertost ::= (*) PB1 , {MAS }]
+  [puertost ::= (*) PA0 , {MAS }]
+  [puertost ::= (*) PE0 , {MAS }]
+  [puertost ::= (*) PC7 , {MAS }]
+  [puertost ::= (*) PB6 , {MAS }]
+  [puertost ::= (*) PA5 , {MAS }]
+  [puertost ::= (*) PB , {MAS }]
+  [puertost ::= (*) PD4 , {MAS }]
+  [puertost ::= (*) PC3 , {MAS }]
+  [puertost ::= (*) PB2 , {MAS }]
+  [puertost ::= (*) PA1 , {MAS }]
+  [puertost ::= (*) PE1 , {MAS }]
+  [puertost ::= (*) PD0 , {MAS }]
+  [puertost ::= (*) PB7 , {MAS }]
+  [puertost ::= (*) PA6 , {MAS }]
+  [puertost ::= (*) PC , {MAS }]
+  [instruccion ::= puertos IGUAL (*) puertost MAS NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA
+4 TA5 TA6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE
+2 TE3 PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD
+4 PD5 PD6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertost ::= (*) PD5 , {MAS }]
+  [puertost ::= (*) PC4 , {MAS }]
+  [puertost ::= (*) PB3 , {MAS }]
+  [puertost ::= (*) PA2 , {MAS }]
+  [puertost ::= (*) PE2 , {MAS }]
+  [puertost ::= (*) PD1 , {MAS }]
+  [puertost ::= (*) PC0 , {MAS }]
+  [puertost ::= (*) PA7 , {MAS }]
+  [puertost ::= (*) PD , {MAS }]
+}
+transition on PD4 to state [143]
+transition on puertost to state [146]
+transition on PA2 to state [142]
+transition on PD5 to state [140]
+transition on PA3 to state [139]
+transition on PD6 to state [138]
+transition on PA4 to state [137]
+transition on PD7 to state [136]
+transition on PA5 to state [135]
+transition on PA6 to state [134]
+transition on PA7 to state [133]
+transition on PE0 to state [132]
+transition on PE1 to state [131]
+transition on PB0 to state [130]
+transition on PE2 to state [129]
+transition on PB1 to state [128]
+transition on PB2 to state [127]
+transition on PB3 to state [126]
+transition on PB4 to state [125]
+transition on PB5 to state [124]
+transition on PB6 to state [123]
+transition on PB7 to state [122]
+transition on PC0 to state [121]
+transition on PC1 to state [120]
+transition on PC2 to state [119]
+transition on PC3 to state [118]
+transition on PC4 to state [117]
+transition on PC5 to state [116]
+transition on PC6 to state [115]
+transition on PC7 to state [114]
+transition on PA to state [113]
+transition on PB to state [112]
+transition on PC to state [111]
+transition on PD to state [110]
+transition on PE to state [109]
+transition on PD0 to state [108]
+transition on NUMERO to state [145]
+transition on PD1 to state [107]
+transition on PD2 to state [106]
+transition on PA0 to state [105]
+transition on PD3 to state [104]
+transition on PA1 to state [103]
+
+-------------------
+lalr_state [102]: {
+  [puertost ::= (*) PD6 , {PCOMA }]
+  [puertost ::= (*) PC5 , {PCOMA }]
+  [puertost ::= (*) PB4 , {PCOMA }]
+  [puertost ::= (*) PA3 , {PCOMA }]
+  [puertost ::= (*) PD2 , {PCOMA }]
+  [puertost ::= (*) PC1 , {PCOMA }]
+  [puertost ::= (*) PB0 , {PCOMA }]
+  [puertost ::= (*) PE , {PCOMA }]
+  [puertost ::= (*) PD7 , {PCOMA }]
+  [puertost ::= (*) PC6 , {PCOMA }]
+  [puertost ::= (*) PB5 , {PCOMA }]
+  [puertost ::= (*) PA4 , {PCOMA }]
+  [puertost ::= (*) PA , {PCOMA }]
+  [puertost ::= (*) PD3 , {PCOMA }]
+  [puertost ::= (*) PC2 , {PCOMA }]
+  [puertost ::= (*) PB1 , {PCOMA }]
+  [puertost ::= (*) PA0 , {PCOMA }]
+  [puertost ::= (*) PE0 , {PCOMA }]
+  [puertost ::= (*) PC7 , {PCOMA }]
+  [puertost ::= (*) PB6 , {PCOMA }]
+  [puertost ::= (*) PA5 , {PCOMA }]
+  [puertost ::= (*) PB , {PCOMA }]
+  [puertost ::= (*) PD4 , {PCOMA }]
+  [puertost ::= (*) PC3 , {PCOMA }]
+  [puertost ::= (*) PB2 , {PCOMA }]
+  [puertost ::= (*) PA1 , {PCOMA }]
+  [puertost ::= (*) PE1 , {PCOMA }]
+  [puertost ::= (*) PD0 , {PCOMA }]
+  [puertost ::= (*) PB7 , {PCOMA }]
+  [puertost ::= (*) PA6 , {PCOMA }]
+  [puertost ::= (*) PC , {PCOMA }]
+  [puertost ::= (*) PD5 , {PCOMA }]
+  [puertost ::= (*) PC4 , {PCOMA }]
+  [puertost ::= (*) PB3 , {PCOMA }]
+  [puertost ::= (*) PA2 , {PCOMA }]
+  [instruccion ::= puertos TOGGLE (*) puertost PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6
+TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0
+PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6
+PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertost ::= (*) PE2 , {PCOMA }]
+  [puertost ::= (*) PD1 , {PCOMA }]
+  [puertost ::= (*) PC0 , {PCOMA }]
+  [puertost ::= (*) PA7 , {PCOMA }]
+  [puertost ::= (*) PD , {PCOMA }]
+}
+transition on PD4 to state [143]
+transition on PA2 to state [142]
+transition on puertost to state [141]
+transition on PD5 to state [140]
+transition on PA3 to state [139]
+transition on PD6 to state [138]
+transition on PA4 to state [137]
+transition on PD7 to state [136]
+transition on PA5 to state [135]
+transition on PA6 to state [134]
+transition on PA7 to state [133]
+transition on PE0 to state [132]
+transition on PE1 to state [131]
+transition on PB0 to state [130]
+transition on PE2 to state [129]
+transition on PB1 to state [128]
+transition on PB2 to state [127]
+transition on PB3 to state [126]
+transition on PB4 to state [125]
+transition on PB5 to state [124]
+transition on PB6 to state [123]
+transition on PB7 to state [122]
+transition on PC0 to state [121]
+transition on PC1 to state [120]
+transition on PC2 to state [119]
+transition on PC3 to state [118]
+transition on PC4 to state [117]
+transition on PC5 to state [116]
+transition on PC6 to state [115]
+transition on PC7 to state [114]
+transition on PA to state [113]
+transition on PB to state [112]
+transition on PC to state [111]
+transition on PD to state [110]
+transition on PE to state [109]
+transition on PD0 to state [108]
+transition on PD1 to state [107]
+transition on PD2 to state [106]
+transition on PA0 to state [105]
+transition on PD3 to state [104]
+transition on PA1 to state [103]
+
+-------------------
+lalr_state [103]: {
+  [puertost ::= PA1 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [104]: {
+  [puertost ::= PD3 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [105]: {
+  [puertost ::= PA0 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [106]: {
+  [puertost ::= PD2 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [107]: {
+  [puertost ::= PD1 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [108]: {
+  [puertost ::= PD0 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [109]: {
+  [puertost ::= PE (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [110]: {
+  [puertost ::= PD (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [111]: {
+  [puertost ::= PC (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [112]: {
+  [puertost ::= PB (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [113]: {
+  [puertost ::= PA (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [114]: {
+  [puertost ::= PC7 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [115]: {
+  [puertost ::= PC6 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [116]: {
+  [puertost ::= PC5 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [117]: {
+  [puertost ::= PC4 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [118]: {
+  [puertost ::= PC3 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [119]: {
+  [puertost ::= PC2 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [120]: {
+  [puertost ::= PC1 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [121]: {
+  [puertost ::= PC0 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [122]: {
+  [puertost ::= PB7 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [123]: {
+  [puertost ::= PB6 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [124]: {
+  [puertost ::= PB5 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [125]: {
+  [puertost ::= PB4 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [126]: {
+  [puertost ::= PB3 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [127]: {
+  [puertost ::= PB2 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [128]: {
+  [puertost ::= PB1 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [129]: {
+  [puertost ::= PE2 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [130]: {
+  [puertost ::= PB0 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [131]: {
+  [puertost ::= PE1 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [132]: {
+  [puertost ::= PE0 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [133]: {
+  [puertost ::= PA7 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [134]: {
+  [puertost ::= PA6 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [135]: {
+  [puertost ::= PA5 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [136]: {
+  [puertost ::= PD7 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [137]: {
+  [puertost ::= PA4 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [138]: {
+  [puertost ::= PD6 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [139]: {
+  [puertost ::= PA3 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [140]: {
+  [puertost ::= PD5 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [141]: {
+  [instruccion ::= puertos TOGGLE puertost (*) PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6
+TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0
+PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6
+PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+}
+transition on PCOMA to state [144]
+
+-------------------
+lalr_state [142]: {
+  [puertost ::= PA2 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [143]: {
+  [puertost ::= PD4 (*) , {MAS PCOMA }]
+}
+
+-------------------
+lalr_state [144]: {
+  [instruccion ::= puertos TOGGLE puertost PCOMA (*) , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6
+TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0
+PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6
+PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+}
+
+-------------------
+lalr_state [145]: {
+  [instruccion ::= puertos IGUAL NUMERO (*) PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7
+ TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1
+ PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7
+ PE0 PE1 PE2 PE3 RLLAVE ID }]
+}
+transition on PCOMA to state [150]
+
+-------------------
+lalr_state [146]: {
+  [instruccion ::= puertos IGUAL puertost (*) MAS NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA
+4 TA5 TA6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE
+2 TE3 PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD
+4 PD5 PD6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+}
+transition on MAS to state [147]
+
+-------------------
+lalr_state [147]: {
+  [instruccion ::= puertos IGUAL puertost MAS (*) NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA
+4 TA5 TA6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE
+2 TE3 PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD
+4 PD5 PD6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+}
+transition on NUMERO to state [148]
+
+-------------------
+lalr_state [148]: {
+  [instruccion ::= puertos IGUAL puertost MAS NUMERO (*) PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA
+4 TA5 TA6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE
+2 TE3 PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD
+4 PD5 PD6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+}
+transition on PCOMA to state [149]
+
+-------------------
+lalr_state [149]: {
+  [instruccion ::= puertos IGUAL puertost MAS NUMERO PCOMA (*) , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA
+4 TA5 TA6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE
+2 TE3 PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD
+4 PD5 PD6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+}
+
+-------------------
+lalr_state [150]: {
+  [instruccion ::= puertos IGUAL NUMERO PCOMA (*) , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7
+ TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1
+ PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7
+ PE0 PE1 PE2 PE3 RLLAVE ID }]
+}
+
+-------------------
+lalr_state [151]: {
+  [instruccion ::= ID LPAREN (*) RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0
+ TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2
+ PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0
+ PE1 PE2 PE3 RLLAVE ID }]
+}
+transition on RPAREN to state [152]
+
+-------------------
+lalr_state [152]: {
+  [instruccion ::= ID LPAREN RPAREN (*) PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0
+ TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2
+ PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0
+ PE1 PE2 PE3 RLLAVE ID }]
+}
+transition on PCOMA to state [153]
+
+-------------------
+lalr_state [153]: {
+  [instruccion ::= ID LPAREN RPAREN PCOMA (*) , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0
+ TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2
+ PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0
+ PE1 PE2 PE3 RLLAVE ID }]
+}
+
+-------------------
+lalr_state [154]: {
+  [instruccion ::= CHALE LPAREN (*) NUMERO RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 T
+A6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 P
+A0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 P
+D6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+}
+transition on NUMERO to state [155]
+
+-------------------
+lalr_state [155]: {
+  [instruccion ::= CHALE LPAREN NUMERO (*) RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 T
+A6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 P
+A0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 P
+D6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+}
+transition on RPAREN to state [156]
+
+-------------------
+lalr_state [156]: {
+  [instruccion ::= CHALE LPAREN NUMERO RPAREN (*) PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 T
+A6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 P
+A0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 P
+D6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+}
+transition on PCOMA to state [157]
+
+-------------------
+lalr_state [157]: {
+  [instruccion ::= CHALE LPAREN NUMERO RPAREN PCOMA (*) , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 T
+A6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 P
+A0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 P
+D6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+}
+
+-------------------
+lalr_state [158]: {
+  [ciclo ::= (*) CICLO LLLAVE instrucciones RLLAVE , {MAIN }]
+  [metodos ::= metodo setup (*) ciclo , {MAIN }]
+  [metodos ::= metodo setup (*) RETARDO ciclo , {MAIN }]
+}
+transition on CICLO to state [168]
+transition on ciclo to state [167]
+transition on RETARDO to state [166]
+
+-------------------
+lalr_state [159]: {
+  [metodo ::= metodo VOID (*) ID LPAREN RPAREN LLLAVE instrucciones RLLAVE , {SETUP VOID }]
+}
+transition on ID to state [160]
+
+-------------------
+lalr_state [160]: {
+  [metodo ::= metodo VOID ID (*) LPAREN RPAREN LLLAVE instrucciones RLLAVE , {SETUP VOID }]
+}
+transition on LPAREN to state [161]
+
+-------------------
+lalr_state [161]: {
+  [metodo ::= metodo VOID ID LPAREN (*) RPAREN LLLAVE instrucciones RLLAVE , {SETUP VOID }]
+}
+transition on RPAREN to state [162]
+
+-------------------
+lalr_state [162]: {
+  [metodo ::= metodo VOID ID LPAREN RPAREN (*) LLLAVE instrucciones RLLAVE , {SETUP VOID }]
+}
+transition on LLLAVE to state [163]
+
+-------------------
+lalr_state [163]: {
+  [instrucciones ::= (*) instrucciones instruccion , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA
+7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA
+1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD
+7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PD7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA7 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos TOGGLE puertost PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6
+TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0
+PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6
+PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB0 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos IGUAL NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7
+ TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1
+ PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7
+ PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB1 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) ID LPAREN RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0
+ TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2
+ PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0
+ PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB2 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) CHALE LPAREN NUMERO RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 T
+A6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 P
+A0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 P
+D6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB3 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos IGUAL puertost MAS NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA
+4 TA5 TA6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE
+2 TE3 PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD
+4 PD5 PD6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PB2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PE , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA , {IGUAL TOGGLE }]
+  [metodo ::= metodo VOID ID LPAREN RPAREN LLLAVE (*) instrucciones RLLAVE , {SETUP VOID }]
+  [puertos ::= (*) PC4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA5 , {IGUAL TOGGLE }]
+  [instrucciones ::= (*) instruccion , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0 TB1 TB2
+TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2 PA3 PA4
+PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0 PE1 PE2
+PE3 RLLAVE ID }]
+  [puertos ::= (*) PD6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA6 , {IGUAL TOGGLE }]
+}
+transition on instrucciones to state [164]
+transition on puertos to state [97]
+transition on TE0 to state [96]
+transition on TE1 to state [95]
+transition on TE2 to state [94]
+transition on TE3 to state [93]
+transition on ID to state [92]
+transition on PA0 to state [91]
+transition on PA1 to state [90]
+transition on PA to state [89]
+transition on PA2 to state [88]
+transition on PB to state [87]
+transition on PA3 to state [86]
+transition on PC to state [85]
+transition on PA4 to state [84]
+transition on PD to state [83]
+transition on PA5 to state [82]
+transition on PE to state [81]
+transition on PA6 to state [80]
+transition on PA7 to state [79]
+transition on instruccion to state [78]
+transition on TA0 to state [77]
+transition on TA1 to state [76]
+transition on TA2 to state [75]
+transition on TA3 to state [74]
+transition on TA4 to state [73]
+transition on TA5 to state [72]
+transition on TA6 to state [71]
+transition on TA7 to state [70]
+transition on PB0 to state [69]
+transition on CHALE to state [68]
+transition on PB1 to state [67]
+transition on PB2 to state [66]
+transition on PB3 to state [65]
+transition on PB4 to state [64]
+transition on PB5 to state [63]
+transition on PB6 to state [62]
+transition on PB7 to state [61]
+transition on TB0 to state [60]
+transition on TB1 to state [59]
+transition on TB2 to state [58]
+transition on TB3 to state [57]
+transition on TB4 to state [56]
+transition on TB5 to state [55]
+transition on TB6 to state [54]
+transition on TB7 to state [53]
+transition on PC0 to state [52]
+transition on PC1 to state [51]
+transition on PC2 to state [50]
+transition on PC3 to state [49]
+transition on PC4 to state [48]
+transition on PC5 to state [47]
+transition on PC6 to state [46]
+transition on PC7 to state [45]
+transition on TC0 to state [44]
+transition on TC1 to state [43]
+transition on TC2 to state [42]
+transition on TC3 to state [41]
+transition on TC4 to state [40]
+transition on TC5 to state [39]
+transition on TC6 to state [38]
+transition on PD0 to state [37]
+transition on TC7 to state [36]
+transition on PD1 to state [35]
+transition on PD2 to state [34]
+transition on PD3 to state [33]
+transition on PD4 to state [32]
+transition on PD5 to state [31]
+transition on PD6 to state [30]
+transition on PD7 to state [29]
+transition on TD0 to state [28]
+transition on TD1 to state [27]
+transition on TD2 to state [26]
+transition on TD3 to state [25]
+transition on TD4 to state [24]
+transition on TD5 to state [23]
+transition on TD6 to state [22]
+transition on PE0 to state [21]
+transition on TD7 to state [20]
+transition on PE1 to state [19]
+transition on PE2 to state [18]
+transition on TA to state [17]
+transition on PE3 to state [16]
+transition on TB to state [15]
+transition on TC to state [14]
+transition on TD to state [13]
+transition on TE to state [12]
+
+-------------------
+lalr_state [164]: {
+  [instrucciones ::= instrucciones (*) instruccion , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA
+7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA
+1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD
+7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PD7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA7 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos TOGGLE puertost PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6
+TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0
+PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6
+PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB0 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos IGUAL NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7
+ TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1
+ PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7
+ PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB1 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) ID LPAREN RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0
+ TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2
+ PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0
+ PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB2 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) CHALE LPAREN NUMERO RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 T
+A6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 P
+A0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 P
+D6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB3 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos IGUAL puertost MAS NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA
+4 TA5 TA6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE
+2 TE3 PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD
+4 PD5 PD6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PB2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PE , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA , {IGUAL TOGGLE }]
+  [metodo ::= metodo VOID ID LPAREN RPAREN LLLAVE instrucciones (*) RLLAVE , {SETUP VOID }]
+  [puertos ::= (*) PC4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA6 , {IGUAL TOGGLE }]
+}
+transition on puertos to state [97]
+transition on TE0 to state [96]
+transition on TE1 to state [95]
+transition on TE2 to state [94]
+transition on TE3 to state [93]
+transition on ID to state [92]
+transition on PA0 to state [91]
+transition on PA1 to state [90]
+transition on PA to state [89]
+transition on PA2 to state [88]
+transition on PB to state [87]
+transition on PA3 to state [86]
+transition on PC to state [85]
+transition on PA4 to state [84]
+transition on PD to state [83]
+transition on PA5 to state [82]
+transition on PE to state [81]
+transition on PA6 to state [80]
+transition on PA7 to state [79]
+transition on instruccion to state [100]
+transition on TA0 to state [77]
+transition on TA1 to state [76]
+transition on TA2 to state [75]
+transition on TA3 to state [74]
+transition on TA4 to state [73]
+transition on TA5 to state [72]
+transition on TA6 to state [71]
+transition on TA7 to state [70]
+transition on PB0 to state [69]
+transition on CHALE to state [68]
+transition on PB1 to state [67]
+transition on PB2 to state [66]
+transition on PB3 to state [65]
+transition on PB4 to state [64]
+transition on PB5 to state [63]
+transition on PB6 to state [62]
+transition on PB7 to state [61]
+transition on TB0 to state [60]
+transition on TB1 to state [59]
+transition on TB2 to state [58]
+transition on TB3 to state [57]
+transition on TB4 to state [56]
+transition on TB5 to state [55]
+transition on TB6 to state [54]
+transition on TB7 to state [53]
+transition on PC0 to state [52]
+transition on PC1 to state [51]
+transition on PC2 to state [50]
+transition on PC3 to state [49]
+transition on PC4 to state [48]
+transition on PC5 to state [47]
+transition on PC6 to state [46]
+transition on PC7 to state [45]
+transition on TC0 to state [44]
+transition on TC1 to state [43]
+transition on TC2 to state [42]
+transition on TC3 to state [41]
+transition on TC4 to state [40]
+transition on TC5 to state [39]
+transition on TC6 to state [38]
+transition on PD0 to state [37]
+transition on TC7 to state [36]
+transition on PD1 to state [35]
+transition on PD2 to state [34]
+transition on PD3 to state [33]
+transition on PD4 to state [32]
+transition on PD5 to state [31]
+transition on PD6 to state [30]
+transition on PD7 to state [29]
+transition on TD0 to state [28]
+transition on RLLAVE to state [165]
+transition on TD1 to state [27]
+transition on TD2 to state [26]
+transition on TD3 to state [25]
+transition on TD4 to state [24]
+transition on TD5 to state [23]
+transition on TD6 to state [22]
+transition on PE0 to state [21]
+transition on TD7 to state [20]
+transition on PE1 to state [19]
+transition on PE2 to state [18]
+transition on TA to state [17]
+transition on PE3 to state [16]
+transition on TB to state [15]
+transition on TC to state [14]
+transition on TD to state [13]
+transition on TE to state [12]
+
+-------------------
+lalr_state [165]: {
+  [metodo ::= metodo VOID ID LPAREN RPAREN LLLAVE instrucciones RLLAVE (*) , {SETUP VOID }]
+}
+
+-------------------
+lalr_state [166]: {
+  [ciclo ::= (*) CICLO LLLAVE instrucciones RLLAVE , {MAIN }]
+  [metodos ::= metodo setup RETARDO (*) ciclo , {MAIN }]
+}
+transition on CICLO to state [168]
+transition on ciclo to state [172]
+
+-------------------
+lalr_state [167]: {
+  [metodos ::= metodo setup ciclo (*) , {MAIN }]
+}
+
+-------------------
+lalr_state [168]: {
+  [ciclo ::= CICLO (*) LLLAVE instrucciones RLLAVE , {MAIN }]
+}
+transition on LLLAVE to state [169]
+
+-------------------
+lalr_state [169]: {
+  [instrucciones ::= (*) instrucciones instruccion , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA
+7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA
+1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD
+7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PD7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA7 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos TOGGLE puertost PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6
+TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0
+PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6
+PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB0 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos IGUAL NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7
+ TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1
+ PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7
+ PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB1 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) ID LPAREN RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0
+ TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2
+ PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0
+ PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA1 , {IGUAL TOGGLE }]
+  [ciclo ::= CICLO LLLAVE (*) instrucciones RLLAVE , {MAIN }]
+  [puertos ::= (*) PD2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB2 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) CHALE LPAREN NUMERO RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 T
+A6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 P
+A0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 P
+D6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB3 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos IGUAL puertost MAS NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA
+4 TA5 TA6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE
+2 TE3 PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD
+4 PD5 PD6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PB2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PE , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA5 , {IGUAL TOGGLE }]
+  [instrucciones ::= (*) instruccion , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0 TB1 TB2
+TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2 PA3 PA4
+PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0 PE1 PE2
+PE3 RLLAVE ID }]
+  [puertos ::= (*) PD6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA6 , {IGUAL TOGGLE }]
+}
+transition on instrucciones to state [170]
+transition on puertos to state [97]
+transition on TE0 to state [96]
+transition on TE1 to state [95]
+transition on TE2 to state [94]
+transition on TE3 to state [93]
+transition on ID to state [92]
+transition on PA0 to state [91]
+transition on PA1 to state [90]
+transition on PA to state [89]
+transition on PA2 to state [88]
+transition on PB to state [87]
+transition on PA3 to state [86]
+transition on PC to state [85]
+transition on PA4 to state [84]
+transition on PD to state [83]
+transition on PA5 to state [82]
+transition on PE to state [81]
+transition on PA6 to state [80]
+transition on PA7 to state [79]
+transition on instruccion to state [78]
+transition on TA0 to state [77]
+transition on TA1 to state [76]
+transition on TA2 to state [75]
+transition on TA3 to state [74]
+transition on TA4 to state [73]
+transition on TA5 to state [72]
+transition on TA6 to state [71]
+transition on TA7 to state [70]
+transition on PB0 to state [69]
+transition on CHALE to state [68]
+transition on PB1 to state [67]
+transition on PB2 to state [66]
+transition on PB3 to state [65]
+transition on PB4 to state [64]
+transition on PB5 to state [63]
+transition on PB6 to state [62]
+transition on PB7 to state [61]
+transition on TB0 to state [60]
+transition on TB1 to state [59]
+transition on TB2 to state [58]
+transition on TB3 to state [57]
+transition on TB4 to state [56]
+transition on TB5 to state [55]
+transition on TB6 to state [54]
+transition on TB7 to state [53]
+transition on PC0 to state [52]
+transition on PC1 to state [51]
+transition on PC2 to state [50]
+transition on PC3 to state [49]
+transition on PC4 to state [48]
+transition on PC5 to state [47]
+transition on PC6 to state [46]
+transition on PC7 to state [45]
+transition on TC0 to state [44]
+transition on TC1 to state [43]
+transition on TC2 to state [42]
+transition on TC3 to state [41]
+transition on TC4 to state [40]
+transition on TC5 to state [39]
+transition on TC6 to state [38]
+transition on PD0 to state [37]
+transition on TC7 to state [36]
+transition on PD1 to state [35]
+transition on PD2 to state [34]
+transition on PD3 to state [33]
+transition on PD4 to state [32]
+transition on PD5 to state [31]
+transition on PD6 to state [30]
+transition on PD7 to state [29]
+transition on TD0 to state [28]
+transition on TD1 to state [27]
+transition on TD2 to state [26]
+transition on TD3 to state [25]
+transition on TD4 to state [24]
+transition on TD5 to state [23]
+transition on TD6 to state [22]
+transition on PE0 to state [21]
+transition on TD7 to state [20]
+transition on PE1 to state [19]
+transition on PE2 to state [18]
+transition on TA to state [17]
+transition on PE3 to state [16]
+transition on TB to state [15]
+transition on TC to state [14]
+transition on TD to state [13]
+transition on TE to state [12]
+
+-------------------
+lalr_state [170]: {
+  [instrucciones ::= instrucciones (*) instruccion , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA
+7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA
+1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD
+7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PD7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA7 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos TOGGLE puertost PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6
+TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0
+PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6
+PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB0 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos IGUAL NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7
+ TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1
+ PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7
+ PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB1 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) ID LPAREN RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0
+ TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2
+ PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0
+ PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA1 , {IGUAL TOGGLE }]
+  [ciclo ::= CICLO LLLAVE instrucciones (*) RLLAVE , {MAIN }]
+  [puertos ::= (*) PD2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB2 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) CHALE LPAREN NUMERO RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 T
+A6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 P
+A0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 P
+D6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB3 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos IGUAL puertost MAS NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA
+4 TA5 TA6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE
+2 TE3 PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD
+4 PD5 PD6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PB2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PE , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA6 , {IGUAL TOGGLE }]
+}
+transition on puertos to state [97]
+transition on TE0 to state [96]
+transition on TE1 to state [95]
+transition on TE2 to state [94]
+transition on TE3 to state [93]
+transition on ID to state [92]
+transition on PA0 to state [91]
+transition on PA1 to state [90]
+transition on PA to state [89]
+transition on PA2 to state [88]
+transition on PB to state [87]
+transition on PA3 to state [86]
+transition on PC to state [85]
+transition on PA4 to state [84]
+transition on PD to state [83]
+transition on PA5 to state [82]
+transition on PE to state [81]
+transition on PA6 to state [80]
+transition on PA7 to state [79]
+transition on instruccion to state [100]
+transition on TA0 to state [77]
+transition on TA1 to state [76]
+transition on TA2 to state [75]
+transition on TA3 to state [74]
+transition on TA4 to state [73]
+transition on TA5 to state [72]
+transition on TA6 to state [71]
+transition on TA7 to state [70]
+transition on PB0 to state [69]
+transition on CHALE to state [68]
+transition on PB1 to state [67]
+transition on PB2 to state [66]
+transition on PB3 to state [65]
+transition on PB4 to state [64]
+transition on PB5 to state [63]
+transition on PB6 to state [62]
+transition on PB7 to state [61]
+transition on TB0 to state [60]
+transition on TB1 to state [59]
+transition on TB2 to state [58]
+transition on TB3 to state [57]
+transition on TB4 to state [56]
+transition on TB5 to state [55]
+transition on TB6 to state [54]
+transition on TB7 to state [53]
+transition on PC0 to state [52]
+transition on PC1 to state [51]
+transition on PC2 to state [50]
+transition on PC3 to state [49]
+transition on PC4 to state [48]
+transition on PC5 to state [47]
+transition on PC6 to state [46]
+transition on PC7 to state [45]
+transition on TC0 to state [44]
+transition on TC1 to state [43]
+transition on TC2 to state [42]
+transition on TC3 to state [41]
+transition on TC4 to state [40]
+transition on TC5 to state [39]
+transition on TC6 to state [38]
+transition on PD0 to state [37]
+transition on TC7 to state [36]
+transition on PD1 to state [35]
+transition on PD2 to state [34]
+transition on PD3 to state [33]
+transition on PD4 to state [32]
+transition on PD5 to state [31]
+transition on PD6 to state [30]
+transition on PD7 to state [29]
+transition on TD0 to state [28]
+transition on RLLAVE to state [171]
+transition on TD1 to state [27]
+transition on TD2 to state [26]
+transition on TD3 to state [25]
+transition on TD4 to state [24]
+transition on TD5 to state [23]
+transition on TD6 to state [22]
+transition on PE0 to state [21]
+transition on TD7 to state [20]
+transition on PE1 to state [19]
+transition on PE2 to state [18]
+transition on TA to state [17]
+transition on PE3 to state [16]
+transition on TB to state [15]
+transition on TC to state [14]
+transition on TD to state [13]
+transition on TE to state [12]
+
+-------------------
+lalr_state [171]: {
+  [ciclo ::= CICLO LLLAVE instrucciones RLLAVE (*) , {MAIN }]
+}
+
+-------------------
+lalr_state [172]: {
+  [metodos ::= metodo setup RETARDO ciclo (*) , {MAIN }]
+}
+
+-------------------
+lalr_state [173]: {
+  [programa ::= FUSES metodos main (*) , {EOF }]
+}
+
+-------------------
+lalr_state [174]: {
+  [main ::= MAIN (*) LLLAVE instrucciones RLLAVE , {EOF }]
+}
+transition on LLLAVE to state [175]
+
+-------------------
+lalr_state [175]: {
+  [instrucciones ::= (*) instrucciones instruccion , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA
+7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA
+1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD
+7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PD7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA7 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos TOGGLE puertost PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6
+TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0
+PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6
+PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB0 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos IGUAL NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7
+ TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1
+ PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7
+ PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB1 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) ID LPAREN RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0
+ TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2
+ PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0
+ PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB2 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) CHALE LPAREN NUMERO RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 T
+A6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 P
+A0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 P
+D6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA2 , {IGUAL TOGGLE }]
+  [main ::= MAIN LLLAVE (*) instrucciones RLLAVE , {EOF }]
+  [puertos ::= (*) PD3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB3 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos IGUAL puertost MAS NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA
+4 TA5 TA6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE
+2 TE3 PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD
+4 PD5 PD6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PB2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PE , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA5 , {IGUAL TOGGLE }]
+  [instrucciones ::= (*) instruccion , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0 TB1 TB2
+TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2 PA3 PA4
+PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0 PE1 PE2
+PE3 RLLAVE ID }]
+  [puertos ::= (*) PD6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA6 , {IGUAL TOGGLE }]
+}
+transition on instrucciones to state [176]
+transition on puertos to state [97]
+transition on TE0 to state [96]
+transition on TE1 to state [95]
+transition on TE2 to state [94]
+transition on TE3 to state [93]
+transition on ID to state [92]
+transition on PA0 to state [91]
+transition on PA1 to state [90]
+transition on PA to state [89]
+transition on PA2 to state [88]
+transition on PB to state [87]
+transition on PA3 to state [86]
+transition on PC to state [85]
+transition on PA4 to state [84]
+transition on PD to state [83]
+transition on PA5 to state [82]
+transition on PE to state [81]
+transition on PA6 to state [80]
+transition on PA7 to state [79]
+transition on instruccion to state [78]
+transition on TA0 to state [77]
+transition on TA1 to state [76]
+transition on TA2 to state [75]
+transition on TA3 to state [74]
+transition on TA4 to state [73]
+transition on TA5 to state [72]
+transition on TA6 to state [71]
+transition on TA7 to state [70]
+transition on PB0 to state [69]
+transition on CHALE to state [68]
+transition on PB1 to state [67]
+transition on PB2 to state [66]
+transition on PB3 to state [65]
+transition on PB4 to state [64]
+transition on PB5 to state [63]
+transition on PB6 to state [62]
+transition on PB7 to state [61]
+transition on TB0 to state [60]
+transition on TB1 to state [59]
+transition on TB2 to state [58]
+transition on TB3 to state [57]
+transition on TB4 to state [56]
+transition on TB5 to state [55]
+transition on TB6 to state [54]
+transition on TB7 to state [53]
+transition on PC0 to state [52]
+transition on PC1 to state [51]
+transition on PC2 to state [50]
+transition on PC3 to state [49]
+transition on PC4 to state [48]
+transition on PC5 to state [47]
+transition on PC6 to state [46]
+transition on PC7 to state [45]
+transition on TC0 to state [44]
+transition on TC1 to state [43]
+transition on TC2 to state [42]
+transition on TC3 to state [41]
+transition on TC4 to state [40]
+transition on TC5 to state [39]
+transition on TC6 to state [38]
+transition on PD0 to state [37]
+transition on TC7 to state [36]
+transition on PD1 to state [35]
+transition on PD2 to state [34]
+transition on PD3 to state [33]
+transition on PD4 to state [32]
+transition on PD5 to state [31]
+transition on PD6 to state [30]
+transition on PD7 to state [29]
+transition on TD0 to state [28]
+transition on TD1 to state [27]
+transition on TD2 to state [26]
+transition on TD3 to state [25]
+transition on TD4 to state [24]
+transition on TD5 to state [23]
+transition on TD6 to state [22]
+transition on PE0 to state [21]
+transition on TD7 to state [20]
+transition on PE1 to state [19]
+transition on PE2 to state [18]
+transition on TA to state [17]
+transition on PE3 to state [16]
+transition on TB to state [15]
+transition on TC to state [14]
+transition on TD to state [13]
+transition on TE to state [12]
+
+-------------------
+lalr_state [176]: {
+  [instrucciones ::= instrucciones (*) instruccion , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA
+7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA
+1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD
+7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PD7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA7 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos TOGGLE puertost PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6
+TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0
+PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6
+PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB0 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos IGUAL NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7
+ TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1
+ PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7
+ PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB1 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) ID LPAREN RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0
+ TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2
+ PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0
+ PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB2 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) CHALE LPAREN NUMERO RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 T
+A6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 P
+A0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 P
+D6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA2 , {IGUAL TOGGLE }]
+  [main ::= MAIN LLLAVE instrucciones (*) RLLAVE , {EOF }]
+  [puertos ::= (*) PD3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB3 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos IGUAL puertost MAS NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA
+4 TA5 TA6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE
+2 TE3 PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD
+4 PD5 PD6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PB2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PE , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA6 , {IGUAL TOGGLE }]
+}
+transition on puertos to state [97]
+transition on TE0 to state [96]
+transition on TE1 to state [95]
+transition on TE2 to state [94]
+transition on TE3 to state [93]
+transition on ID to state [92]
+transition on PA0 to state [91]
+transition on PA1 to state [90]
+transition on PA to state [89]
+transition on PA2 to state [88]
+transition on PB to state [87]
+transition on PA3 to state [86]
+transition on PC to state [85]
+transition on PA4 to state [84]
+transition on PD to state [83]
+transition on PA5 to state [82]
+transition on PE to state [81]
+transition on PA6 to state [80]
+transition on PA7 to state [79]
+transition on instruccion to state [100]
+transition on TA0 to state [77]
+transition on TA1 to state [76]
+transition on TA2 to state [75]
+transition on TA3 to state [74]
+transition on TA4 to state [73]
+transition on TA5 to state [72]
+transition on TA6 to state [71]
+transition on TA7 to state [70]
+transition on PB0 to state [69]
+transition on CHALE to state [68]
+transition on PB1 to state [67]
+transition on PB2 to state [66]
+transition on PB3 to state [65]
+transition on PB4 to state [64]
+transition on PB5 to state [63]
+transition on PB6 to state [62]
+transition on PB7 to state [61]
+transition on TB0 to state [60]
+transition on TB1 to state [59]
+transition on TB2 to state [58]
+transition on TB3 to state [57]
+transition on TB4 to state [56]
+transition on TB5 to state [55]
+transition on TB6 to state [54]
+transition on TB7 to state [53]
+transition on PC0 to state [52]
+transition on PC1 to state [51]
+transition on PC2 to state [50]
+transition on PC3 to state [49]
+transition on PC4 to state [48]
+transition on PC5 to state [47]
+transition on PC6 to state [46]
+transition on PC7 to state [45]
+transition on TC0 to state [44]
+transition on TC1 to state [43]
+transition on TC2 to state [42]
+transition on TC3 to state [41]
+transition on TC4 to state [40]
+transition on TC5 to state [39]
+transition on TC6 to state [38]
+transition on PD0 to state [37]
+transition on TC7 to state [36]
+transition on PD1 to state [35]
+transition on PD2 to state [34]
+transition on PD3 to state [33]
+transition on PD4 to state [32]
+transition on PD5 to state [31]
+transition on PD6 to state [30]
+transition on PD7 to state [29]
+transition on TD0 to state [28]
+transition on RLLAVE to state [177]
+transition on TD1 to state [27]
+transition on TD2 to state [26]
+transition on TD3 to state [25]
+transition on TD4 to state [24]
+transition on TD5 to state [23]
+transition on TD6 to state [22]
+transition on PE0 to state [21]
+transition on TD7 to state [20]
+transition on PE1 to state [19]
+transition on PE2 to state [18]
+transition on TA to state [17]
+transition on PE3 to state [16]
+transition on TB to state [15]
+transition on TC to state [14]
+transition on TD to state [13]
+transition on TE to state [12]
+
+-------------------
+lalr_state [177]: {
+  [main ::= MAIN LLLAVE instrucciones RLLAVE (*) , {EOF }]
+}
+
+-------------------
+lalr_state [178]: {
+  [ciclo ::= (*) CICLO LLLAVE instrucciones RLLAVE , {MAIN }]
+  [metodos ::= setup RETARDO (*) ciclo , {MAIN }]
+}
+transition on CICLO to state [168]
+transition on ciclo to state [180]
+
+-------------------
+lalr_state [179]: {
+  [metodos ::= setup ciclo (*) , {MAIN }]
+}
+
+-------------------
+lalr_state [180]: {
+  [metodos ::= setup RETARDO ciclo (*) , {MAIN }]
+}
+
+-------------------
+lalr_state [181]: {
+  [puertos ::= (*) PD7 , {IGUAL }]
+  [puertos ::= (*) PA5 , {IGUAL }]
+  [puertos ::= (*) TB7 , {IGUAL }]
+  [confpuertos ::= (*) confpuertos puertos IGUAL io PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5
+ TA6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3
+ PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5
+ PD6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PB6 , {IGUAL }]
+  [puertos ::= (*) TD0 , {IGUAL }]
+  [puertos ::= (*) TD , {IGUAL }]
+  [puertos ::= (*) PC7 , {IGUAL }]
+  [puertos ::= (*) TE1 , {IGUAL }]
+  [puertos ::= (*) TA7 , {IGUAL }]
+  [puertos ::= (*) PE0 , {IGUAL }]
+  [puertos ::= (*) PA6 , {IGUAL }]
+  [puertos ::= (*) TC0 , {IGUAL }]
+  [puertos ::= (*) PA , {IGUAL }]
+  [puertos ::= (*) PB7 , {IGUAL }]
+  [puertos ::= (*) TD1 , {IGUAL }]
+  [puertos ::= (*) TE , {IGUAL }]
+  [puertos ::= (*) PD0 , {IGUAL }]
+  [puertos ::= (*) TE2 , {IGUAL }]
+  [puertos ::= (*) TB0 , {IGUAL }]
+  [puertos ::= (*) PE1 , {IGUAL }]
+  [puertos ::= (*) PA7 , {IGUAL }]
+  [puertos ::= (*) TC1 , {IGUAL }]
+  [puertos ::= (*) PB , {IGUAL }]
+  [puertos ::= (*) PC0 , {IGUAL }]
+  [puertos ::= (*) TD2 , {IGUAL }]
+  [puertos ::= (*) TA0 , {IGUAL }]
+  [puertos ::= (*) PD1 , {IGUAL }]
+  [puertos ::= (*) TE3 , {IGUAL }]
+  [puertos ::= (*) TB1 , {IGUAL }]
+  [puertos ::= (*) PE2 , {IGUAL }]
+  [puertos ::= (*) PB0 , {IGUAL }]
+  [puertos ::= (*) TC2 , {IGUAL }]
+  [puertos ::= (*) PC , {IGUAL }]
+  [puertos ::= (*) PC1 , {IGUAL }]
+  [puertos ::= (*) TD3 , {IGUAL }]
+  [puertos ::= (*) TA1 , {IGUAL }]
+  [puertos ::= (*) PD2 , {IGUAL }]
+  [puertos ::= (*) PA0 , {IGUAL }]
+  [puertos ::= (*) TB2 , {IGUAL }]
+  [puertos ::= (*) PE3 , {IGUAL }]
+  [puertos ::= (*) PB1 , {IGUAL }]
+  [puertos ::= (*) TC3 , {IGUAL }]
+  [puertos ::= (*) PD , {IGUAL }]
+  [puertos ::= (*) PC2 , {IGUAL }]
+  [puertos ::= (*) TD4 , {IGUAL }]
+  [puertos ::= (*) TA2 , {IGUAL }]
+  [puertos ::= (*) PD3 , {IGUAL }]
+  [puertos ::= (*) PA1 , {IGUAL }]
+  [puertos ::= (*) TB3 , {IGUAL }]
+  [puertos ::= (*) PB2 , {IGUAL }]
+  [puertos ::= (*) TC4 , {IGUAL }]
+  [puertos ::= (*) PE , {IGUAL }]
+  [puertos ::= (*) PC3 , {IGUAL }]
+  [puertos ::= (*) TD5 , {IGUAL }]
+  [puertos ::= (*) TA3 , {IGUAL }]
+  [puertos ::= (*) PD4 , {IGUAL }]
+  [puertos ::= (*) PA2 , {IGUAL }]
+  [setup ::= SETUP LLLAVE (*) confpuertos RLLAVE , {RETARDO CICLO }]
+  [puertos ::= (*) TB4 , {IGUAL }]
+  [puertos ::= (*) PB3 , {IGUAL }]
+  [puertos ::= (*) TC5 , {IGUAL }]
+  [puertos ::= (*) TA , {IGUAL }]
+  [puertos ::= (*) PC4 , {IGUAL }]
+  [puertos ::= (*) TD6 , {IGUAL }]
+  [puertos ::= (*) TA4 , {IGUAL }]
+  [puertos ::= (*) PD5 , {IGUAL }]
+  [puertos ::= (*) PA3 , {IGUAL }]
+  [setup ::= SETUP LLLAVE (*) confpuertos instrucciones RLLAVE , {RETARDO CICLO }]
+  [puertos ::= (*) TB5 , {IGUAL }]
+  [puertos ::= (*) PB4 , {IGUAL }]
+  [puertos ::= (*) TC6 , {IGUAL }]
+  [puertos ::= (*) TB , {IGUAL }]
+  [puertos ::= (*) PC5 , {IGUAL }]
+  [puertos ::= (*) TD7 , {IGUAL }]
+  [puertos ::= (*) TA5 , {IGUAL }]
+  [puertos ::= (*) PD6 , {IGUAL }]
+  [puertos ::= (*) PA4 , {IGUAL }]
+  [puertos ::= (*) TB6 , {IGUAL }]
+  [confpuertos ::= (*) puertos IGUAL io PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0
+ TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2
+ PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0
+ PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PB5 , {IGUAL }]
+  [puertos ::= (*) TC7 , {IGUAL }]
+  [puertos ::= (*) TC , {IGUAL }]
+  [puertos ::= (*) PC6 , {IGUAL }]
+  [puertos ::= (*) TE0 , {IGUAL }]
+  [puertos ::= (*) TA6 , {IGUAL }]
+}
+transition on puertos to state [183]
+transition on TE0 to state [96]
+transition on TE1 to state [95]
+transition on TE2 to state [94]
+transition on TE3 to state [93]
+transition on confpuertos to state [182]
+transition on PA0 to state [91]
+transition on PA1 to state [90]
+transition on PA to state [89]
+transition on PA2 to state [88]
+transition on PB to state [87]
+transition on PA3 to state [86]
+transition on PC to state [85]
+transition on PA4 to state [84]
+transition on PD to state [83]
+transition on PA5 to state [82]
+transition on PE to state [81]
+transition on PA6 to state [80]
+transition on PA7 to state [79]
+transition on TA0 to state [77]
+transition on TA1 to state [76]
+transition on TA2 to state [75]
+transition on TA3 to state [74]
+transition on TA4 to state [73]
+transition on TA5 to state [72]
+transition on TA6 to state [71]
+transition on TA7 to state [70]
+transition on PB0 to state [69]
+transition on PB1 to state [67]
+transition on PB2 to state [66]
+transition on PB3 to state [65]
+transition on PB4 to state [64]
+transition on PB5 to state [63]
+transition on PB6 to state [62]
+transition on PB7 to state [61]
+transition on TB0 to state [60]
+transition on TB1 to state [59]
+transition on TB2 to state [58]
+transition on TB3 to state [57]
+transition on TB4 to state [56]
+transition on TB5 to state [55]
+transition on TB6 to state [54]
+transition on TB7 to state [53]
+transition on PC0 to state [52]
+transition on PC1 to state [51]
+transition on PC2 to state [50]
+transition on PC3 to state [49]
+transition on PC4 to state [48]
+transition on PC5 to state [47]
+transition on PC6 to state [46]
+transition on PC7 to state [45]
+transition on TC0 to state [44]
+transition on TC1 to state [43]
+transition on TC2 to state [42]
+transition on TC3 to state [41]
+transition on TC4 to state [40]
+transition on TC5 to state [39]
+transition on TC6 to state [38]
+transition on PD0 to state [37]
+transition on TC7 to state [36]
+transition on PD1 to state [35]
+transition on PD2 to state [34]
+transition on PD3 to state [33]
+transition on PD4 to state [32]
+transition on PD5 to state [31]
+transition on PD6 to state [30]
+transition on PD7 to state [29]
+transition on TD0 to state [28]
+transition on TD1 to state [27]
+transition on TD2 to state [26]
+transition on TD3 to state [25]
+transition on TD4 to state [24]
+transition on TD5 to state [23]
+transition on TD6 to state [22]
+transition on PE0 to state [21]
+transition on TD7 to state [20]
+transition on PE1 to state [19]
+transition on PE2 to state [18]
+transition on TA to state [17]
+transition on PE3 to state [16]
+transition on TB to state [15]
+transition on TC to state [14]
+transition on TD to state [13]
+transition on TE to state [12]
+
+-------------------
+lalr_state [182]: {
+  [instrucciones ::= (*) instrucciones instruccion , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA
+7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA
+1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD
+7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PD7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA5 , {IGUAL TOGGLE }]
+  [confpuertos ::= confpuertos (*) puertos IGUAL io PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5
+ TA6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3
+ PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5
+ PD6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) TB7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA7 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos TOGGLE puertost PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6
+TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0
+PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6
+PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB0 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos IGUAL NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7
+ TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1
+ PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7
+ PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB1 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) ID LPAREN RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0
+ TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2
+ PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0
+ PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB2 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) CHALE LPAREN NUMERO RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 T
+A6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 P
+A0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 P
+D6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB3 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos IGUAL puertost MAS NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA
+4 TA5 TA6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE
+2 TE3 PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD
+4 PD5 PD6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PB2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PE , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD4 , {IGUAL TOGGLE }]
+  [setup ::= SETUP LLLAVE confpuertos (*) RLLAVE , {RETARDO CICLO }]
+  [puertos ::= (*) PA2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD5 , {IGUAL TOGGLE }]
+  [setup ::= SETUP LLLAVE confpuertos (*) instrucciones RLLAVE , {RETARDO CICLO }]
+  [puertos ::= (*) PA3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA5 , {IGUAL TOGGLE }]
+  [instrucciones ::= (*) instruccion , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0 TB1 TB2
+TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2 PA3 PA4
+PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0 PE1 PE2
+PE3 RLLAVE ID }]
+  [puertos ::= (*) PD6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA6 , {IGUAL TOGGLE }]
+}
+transition on instrucciones to state [191]
+transition on puertos to state [190]
+transition on TE0 to state [96]
+transition on TE1 to state [95]
+transition on TE2 to state [94]
+transition on TE3 to state [93]
+transition on ID to state [92]
+transition on PA0 to state [91]
+transition on PA1 to state [90]
+transition on PA to state [89]
+transition on PA2 to state [88]
+transition on PB to state [87]
+transition on PA3 to state [86]
+transition on PC to state [85]
+transition on PA4 to state [84]
+transition on PD to state [83]
+transition on PA5 to state [82]
+transition on PE to state [81]
+transition on PA6 to state [80]
+transition on PA7 to state [79]
+transition on instruccion to state [78]
+transition on TA0 to state [77]
+transition on TA1 to state [76]
+transition on TA2 to state [75]
+transition on TA3 to state [74]
+transition on TA4 to state [73]
+transition on TA5 to state [72]
+transition on TA6 to state [71]
+transition on TA7 to state [70]
+transition on PB0 to state [69]
+transition on CHALE to state [68]
+transition on PB1 to state [67]
+transition on PB2 to state [66]
+transition on PB3 to state [65]
+transition on PB4 to state [64]
+transition on PB5 to state [63]
+transition on PB6 to state [62]
+transition on PB7 to state [61]
+transition on TB0 to state [60]
+transition on TB1 to state [59]
+transition on TB2 to state [58]
+transition on TB3 to state [57]
+transition on TB4 to state [56]
+transition on TB5 to state [55]
+transition on TB6 to state [54]
+transition on TB7 to state [53]
+transition on PC0 to state [52]
+transition on PC1 to state [51]
+transition on PC2 to state [50]
+transition on PC3 to state [49]
+transition on PC4 to state [48]
+transition on PC5 to state [47]
+transition on PC6 to state [46]
+transition on PC7 to state [45]
+transition on TC0 to state [44]
+transition on TC1 to state [43]
+transition on TC2 to state [42]
+transition on TC3 to state [41]
+transition on TC4 to state [40]
+transition on TC5 to state [39]
+transition on TC6 to state [38]
+transition on PD0 to state [37]
+transition on TC7 to state [36]
+transition on PD1 to state [35]
+transition on PD2 to state [34]
+transition on PD3 to state [33]
+transition on PD4 to state [32]
+transition on PD5 to state [31]
+transition on PD6 to state [30]
+transition on PD7 to state [29]
+transition on TD0 to state [28]
+transition on RLLAVE to state [189]
+transition on TD1 to state [27]
+transition on TD2 to state [26]
+transition on TD3 to state [25]
+transition on TD4 to state [24]
+transition on TD5 to state [23]
+transition on TD6 to state [22]
+transition on PE0 to state [21]
+transition on TD7 to state [20]
+transition on PE1 to state [19]
+transition on PE2 to state [18]
+transition on TA to state [17]
+transition on PE3 to state [16]
+transition on TB to state [15]
+transition on TC to state [14]
+transition on TD to state [13]
+transition on TE to state [12]
+
+-------------------
+lalr_state [183]: {
+  [confpuertos ::= puertos (*) IGUAL io PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0
+ TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2
+ PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0
+ PE1 PE2 PE3 RLLAVE ID }]
+}
+transition on IGUAL to state [184]
+
+-------------------
+lalr_state [184]: {
+  [io ::= (*) SALIDA , {PCOMA }]
+  [confpuertos ::= puertos IGUAL (*) io PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0
+ TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2
+ PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0
+ PE1 PE2 PE3 RLLAVE ID }]
+  [io ::= (*) ENTRADA , {PCOMA }]
+}
+transition on io to state [187]
+transition on ENTRADA to state [186]
+transition on SALIDA to state [185]
+
+-------------------
+lalr_state [185]: {
+  [io ::= SALIDA (*) , {PCOMA }]
+}
+
+-------------------
+lalr_state [186]: {
+  [io ::= ENTRADA (*) , {PCOMA }]
+}
+
+-------------------
+lalr_state [187]: {
+  [confpuertos ::= puertos IGUAL io (*) PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0
+ TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2
+ PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0
+ PE1 PE2 PE3 RLLAVE ID }]
+}
+transition on PCOMA to state [188]
+
+-------------------
+lalr_state [188]: {
+  [confpuertos ::= puertos IGUAL io PCOMA (*) , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0
+ TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2
+ PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0
+ PE1 PE2 PE3 RLLAVE ID }]
+}
+
+-------------------
+lalr_state [189]: {
+  [setup ::= SETUP LLLAVE confpuertos RLLAVE (*) , {RETARDO CICLO }]
+}
+
+-------------------
+lalr_state [190]: {
+  [instruccion ::= puertos (*) IGUAL puertost MAS NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA
+4 TA5 TA6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE
+2 TE3 PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD
+4 PD5 PD6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [confpuertos ::= confpuertos puertos (*) IGUAL io PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5
+ TA6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3
+ PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5
+ PD6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [instruccion ::= puertos (*) IGUAL NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7
+ TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1
+ PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7
+ PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [instruccion ::= puertos (*) TOGGLE puertost PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6
+TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0
+PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6
+PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+}
+transition on TOGGLE to state [102]
+transition on IGUAL to state [193]
+
+-------------------
+lalr_state [191]: {
+  [instrucciones ::= instrucciones (*) instruccion , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA
+7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA
+1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD
+7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PD7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA7 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos TOGGLE puertost PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6
+TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0
+PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6
+PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB0 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos IGUAL NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7
+ TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1
+ PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7
+ PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB1 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) ID LPAREN RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7 TB0
+ TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1 PA2
+ PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7 PE0
+ PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB2 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) CHALE LPAREN NUMERO RPAREN PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 T
+A6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 P
+A0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 P
+D6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PE3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA1 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB3 , {IGUAL TOGGLE }]
+  [instruccion ::= (*) puertos IGUAL puertost MAS NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA
+4 TA5 TA6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE
+2 TE3 PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD
+4 PD5 PD6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertos ::= (*) PB2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PE , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA2 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA4 , {IGUAL TOGGLE }]
+  [setup ::= SETUP LLLAVE confpuertos instrucciones (*) RLLAVE , {RETARDO CICLO }]
+  [puertos ::= (*) PD5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA3 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TD7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PD6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PA4 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TB6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) PB5 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC7 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TC , {IGUAL TOGGLE }]
+  [puertos ::= (*) PC6 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TE0 , {IGUAL TOGGLE }]
+  [puertos ::= (*) TA6 , {IGUAL TOGGLE }]
+}
+transition on puertos to state [97]
+transition on TE0 to state [96]
+transition on TE1 to state [95]
+transition on TE2 to state [94]
+transition on TE3 to state [93]
+transition on ID to state [92]
+transition on PA0 to state [91]
+transition on PA1 to state [90]
+transition on PA to state [89]
+transition on PA2 to state [88]
+transition on PB to state [87]
+transition on PA3 to state [86]
+transition on PC to state [85]
+transition on PA4 to state [84]
+transition on PD to state [83]
+transition on PA5 to state [82]
+transition on PE to state [81]
+transition on PA6 to state [80]
+transition on PA7 to state [79]
+transition on instruccion to state [100]
+transition on TA0 to state [77]
+transition on TA1 to state [76]
+transition on TA2 to state [75]
+transition on TA3 to state [74]
+transition on TA4 to state [73]
+transition on TA5 to state [72]
+transition on TA6 to state [71]
+transition on TA7 to state [70]
+transition on PB0 to state [69]
+transition on CHALE to state [68]
+transition on PB1 to state [67]
+transition on PB2 to state [66]
+transition on PB3 to state [65]
+transition on PB4 to state [64]
+transition on PB5 to state [63]
+transition on PB6 to state [62]
+transition on PB7 to state [61]
+transition on TB0 to state [60]
+transition on TB1 to state [59]
+transition on TB2 to state [58]
+transition on TB3 to state [57]
+transition on TB4 to state [56]
+transition on TB5 to state [55]
+transition on TB6 to state [54]
+transition on TB7 to state [53]
+transition on PC0 to state [52]
+transition on PC1 to state [51]
+transition on PC2 to state [50]
+transition on PC3 to state [49]
+transition on PC4 to state [48]
+transition on PC5 to state [47]
+transition on PC6 to state [46]
+transition on PC7 to state [45]
+transition on TC0 to state [44]
+transition on TC1 to state [43]
+transition on TC2 to state [42]
+transition on TC3 to state [41]
+transition on TC4 to state [40]
+transition on TC5 to state [39]
+transition on TC6 to state [38]
+transition on PD0 to state [37]
+transition on TC7 to state [36]
+transition on PD1 to state [35]
+transition on PD2 to state [34]
+transition on PD3 to state [33]
+transition on PD4 to state [32]
+transition on PD5 to state [31]
+transition on PD6 to state [30]
+transition on PD7 to state [29]
+transition on TD0 to state [28]
+transition on RLLAVE to state [192]
+transition on TD1 to state [27]
+transition on TD2 to state [26]
+transition on TD3 to state [25]
+transition on TD4 to state [24]
+transition on TD5 to state [23]
+transition on TD6 to state [22]
+transition on PE0 to state [21]
+transition on TD7 to state [20]
+transition on PE1 to state [19]
+transition on PE2 to state [18]
+transition on TA to state [17]
+transition on PE3 to state [16]
+transition on TB to state [15]
+transition on TC to state [14]
+transition on TD to state [13]
+transition on TE to state [12]
+
+-------------------
+lalr_state [192]: {
+  [setup ::= SETUP LLLAVE confpuertos instrucciones RLLAVE (*) , {RETARDO CICLO }]
+}
+
+-------------------
+lalr_state [193]: {
+  [puertost ::= (*) PD6 , {MAS }]
+  [puertost ::= (*) PC5 , {MAS }]
+  [puertost ::= (*) PB4 , {MAS }]
+  [puertost ::= (*) PA3 , {MAS }]
+  [instruccion ::= puertos IGUAL (*) NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5 TA6 TA7
+ TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3 PA0 PA1
+ PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5 PD6 PD7
+ PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [io ::= (*) ENTRADA , {PCOMA }]
+  [puertost ::= (*) PD2 , {MAS }]
+  [puertost ::= (*) PC1 , {MAS }]
+  [puertost ::= (*) PB0 , {MAS }]
+  [puertost ::= (*) PE , {MAS }]
+  [puertost ::= (*) PD7 , {MAS }]
+  [puertost ::= (*) PC6 , {MAS }]
+  [puertost ::= (*) PB5 , {MAS }]
+  [puertost ::= (*) PA4 , {MAS }]
+  [puertost ::= (*) PA , {MAS }]
+  [io ::= (*) SALIDA , {PCOMA }]
+  [puertost ::= (*) PD3 , {MAS }]
+  [puertost ::= (*) PC2 , {MAS }]
+  [puertost ::= (*) PB1 , {MAS }]
+  [puertost ::= (*) PA0 , {MAS }]
+  [puertost ::= (*) PE0 , {MAS }]
+  [puertost ::= (*) PC7 , {MAS }]
+  [puertost ::= (*) PB6 , {MAS }]
+  [puertost ::= (*) PA5 , {MAS }]
+  [puertost ::= (*) PB , {MAS }]
+  [puertost ::= (*) PD4 , {MAS }]
+  [puertost ::= (*) PC3 , {MAS }]
+  [puertost ::= (*) PB2 , {MAS }]
+  [puertost ::= (*) PA1 , {MAS }]
+  [puertost ::= (*) PE1 , {MAS }]
+  [puertost ::= (*) PD0 , {MAS }]
+  [puertost ::= (*) PB7 , {MAS }]
+  [puertost ::= (*) PA6 , {MAS }]
+  [puertost ::= (*) PC , {MAS }]
+  [instruccion ::= puertos IGUAL (*) puertost MAS NUMERO PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA
+4 TA5 TA6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE
+2 TE3 PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD
+4 PD5 PD6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertost ::= (*) PD5 , {MAS }]
+  [puertost ::= (*) PC4 , {MAS }]
+  [puertost ::= (*) PB3 , {MAS }]
+  [puertost ::= (*) PA2 , {MAS }]
+  [puertost ::= (*) PE2 , {MAS }]
+  [confpuertos ::= confpuertos puertos IGUAL (*) io PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5
+ TA6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3
+ PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5
+ PD6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+  [puertost ::= (*) PD1 , {MAS }]
+  [puertost ::= (*) PC0 , {MAS }]
+  [puertost ::= (*) PA7 , {MAS }]
+  [puertost ::= (*) PD , {MAS }]
+}
+transition on PD4 to state [143]
+transition on puertost to state [146]
+transition on PA2 to state [142]
+transition on PA3 to state [139]
+transition on PD5 to state [140]
+transition on PD6 to state [138]
+transition on PA4 to state [137]
+transition on PD7 to state [136]
+transition on PA5 to state [135]
+transition on PA6 to state [134]
+transition on PA7 to state [133]
+transition on SALIDA to state [185]
+transition on PE0 to state [132]
+transition on PE1 to state [131]
+transition on PB0 to state [130]
+transition on ENTRADA to state [186]
+transition on PE2 to state [129]
+transition on PB1 to state [128]
+transition on PB2 to state [127]
+transition on PB3 to state [126]
+transition on PB4 to state [125]
+transition on PB5 to state [124]
+transition on PB6 to state [123]
+transition on PB7 to state [122]
+transition on io to state [194]
+transition on PC0 to state [121]
+transition on PC1 to state [120]
+transition on PC2 to state [119]
+transition on PC3 to state [118]
+transition on PC4 to state [117]
+transition on PC5 to state [116]
+transition on PC6 to state [115]
+transition on PC7 to state [114]
+transition on PA to state [113]
+transition on PB to state [112]
+transition on PC to state [111]
+transition on PD to state [110]
+transition on PE to state [109]
+transition on PD0 to state [108]
+transition on NUMERO to state [145]
+transition on PD1 to state [107]
+transition on PD2 to state [106]
+transition on PA0 to state [105]
+transition on PD3 to state [104]
+transition on PA1 to state [103]
+
+-------------------
+lalr_state [194]: {
+  [confpuertos ::= confpuertos puertos IGUAL io (*) PCOMA , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5
+ TA6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3
+ PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5
+ PD6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+}
+transition on PCOMA to state [195]
+
+-------------------
+lalr_state [195]: {
+  [confpuertos ::= confpuertos puertos IGUAL io PCOMA (*) , {CHALE PA PB PC PD PE TA TB TC TD TE TA0 TA1 TA2 TA3 TA4 TA5
+ TA6 TA7 TB0 TB1 TB2 TB3 TB4 TB5 TB6 TB7 TC0 TC1 TC2 TC3 TC4 TC5 TC6 TC7 TD0 TD1 TD2 TD3 TD4 TD5 TD6 TD7 TE0 TE1 TE2 TE3
+ PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PC0 PC1 PC2 PC3 PC4 PC5 PC6 PC7 PD0 PD1 PD2 PD3 PD4 PD5
+ PD6 PD7 PE0 PE1 PE2 PE3 RLLAVE ID }]
+}
+
+-------------------
+lalr_state [196]: {
+  [$START ::= programa EOF (*) , {EOF }]
+}
+
+-------------------
+Closing files...
+------- CUP v0.10k Parser Generation Summary -------
+  0 errors and 6 warnings
+  109 terminals, 13 non-terminals, and 145 productions declared,
+  producing 197 unique parse states.
+  6 terminals declared but not used.
+  0 non-terminals declared but not used.
+  0 productions never reduced.
+  0 conflicts detected (0 expected).
+  Code written to "parser.java", and "sym.java".
+---------------------------------------------------- (v0.10k)
+
+C:\maPIC 1.0>

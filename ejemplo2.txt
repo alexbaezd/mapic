@@ -1,0 +1,42 @@
+Fuses
+
+Setup {
+	TD=SALIDA;
+	PD=SALIDA;
+}
+
+
+Retardo
+
+Ciclo {
+	PD0 Toggle PD0;
+	TimeMS(50000);
+	PD0 Toggle PD0;
+	PD1 Toggle PD1;
+	TimeMS(50000);
+	PD1 Toggle PD1;
+	PD2 Toggle PD2;
+	TimeMS(50000);
+	PD2 Toggle PD2;
+	PD3 Toggle PD3;
+	TimeMS(50000);
+	PD3 Toggle PD3;
+	PD4 Toggle PD4;
+	TimeMS(50000);
+	PD4 Toggle PD4;
+	PD5 Toggle PD5;
+	TimeMS(50000);
+	PD5 Toggle PD5;
+	PD6 Toggle PD6;
+	TimeMS(50000);
+	PD6 Toggle PD6;
+	PD7 Toggle PD7;
+	TimeMS(50000);
+	PD7 Toggle PD7;
+}
+
+
+Main {
+	TimeMS(1);
+}
+
