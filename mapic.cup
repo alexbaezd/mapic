@@ -9,7 +9,6 @@ import java.io.IOException;
 /***ACTION CODE***/
 
 action code{:
-
 TablaSimbolos tabla = new TablaSimbolos();
 String codigo="";
 String miCodigo="";
@@ -17,6 +16,29 @@ String errores="";
 String retardos="";
 String auxiliar="";
 String losMetodos="";
+
+	private static int actualTmp=0;
+	private static String nuevaTmp() {
+		return "tmp"+(++actualTmp);
+	}
+
+	private static int actualEtq=0;
+	private static String nuevaEtq() {
+		return "etqY"+(++actualEtq);
+	}
+
+	private String generarTerceto(String terceto) {
+		String tmp = nuevaTmp();
+		System.out.println(tmp + terceto);
+		return tmp;
+	}
+
+	private BloqueCondicion generarCondicion( String Rvalor1, String condicion, String Rvalor2){
+		BloqueCondicion etqs = new BloqueCondicion();
+		etqs.etqVerdad = nuevaEtq();
+		etqs.etqFalso = nuevaEtq();
+	}
+
 :};
 
 /***************************************************************************/
@@ -94,9 +116,11 @@ terminal PC0, PC1, PC2, PC3, PC4, PC5, PC6, PC7;
 terminal PD0, PD1, PD2, PD3, PD4, PD5, PD6, PD7;
 terminal PE0, PE1, PE2, PE3;
 terminal VOID;
+terminal NO;
 terminal LPAREN, RPAREN, MAYOR, MENOR, MAS, MENOS, LLLAVE, RLLAVE, PCOMA,IGUAL , IGUAL2,TOGGLE;
 terminal Integer NUMERO;
 terminal String ID;
+terminal String SI;
 
 /* No terminales */
 non terminal programa;
@@ -111,6 +135,7 @@ non terminal String puertos;
 non terminal String puertost;
 non terminal String io;
 non terminal  String  instruccion;
+non terminal decision;
 
 
 
@@ -120,8 +145,6 @@ non terminal  String  instruccion;
 precedence left MAS, MENOS , MAYOR , MENOR,TOGGLE, IGUAL , IGUAL2;
 precedence left ID;
 
-
-
 					
 // La gramática en BNF
 
@@ -129,8 +152,6 @@ precedence left ID;
  				{:
  					miCodigo=fuses+miCodigo;
               		 // System.out.println("Clase Generada\n\n"+miCodigo+"\n\n");
-               
-
                 File miClase;
 	        	try{
 	        		
@@ -403,8 +424,8 @@ instruccion::= puertos:p TOGGLE:t puertost:u PCOMA
 		 	RESULT=p+t+u+";\n";
 		 	//System.out.println("cadena de toggles:"+RESULT);
 		 :}
-       		 | puertos IGUAL NUMERO PCOMA
-		 | ID:i LPAREN RPAREN PCOMA
+       		| puertos IGUAL NUMERO PCOMA
+		 	| ID:i LPAREN RPAREN PCOMA
 				{:  
 					   Simbolo s;
 					   if ((s = tabla.buscar(i)) == null){
@@ -416,16 +437,22 @@ instruccion::= puertos:p TOGGLE:t puertost:u PCOMA
 						//System.out.println("codigo intermedio==> "+i+"();");
 						RESULT="\t"+i+"();\n";
 						}	
-					:}
+				:}
 
-		| CHALE:c LPAREN NUMERO:n RPAREN PCOMA
-			{:
-   				//retardos= retardos+c+"("+n+");\n";
-   				RESULT=c+"("+n+");\n";
+	//Ir a pagina 296 compiladores.
+			
+			|
 
-			:}
-		|puertos:p IGUAL puertost:u MAS NUMERO:n PCOMA
-		{:
-			RESULT=p+u+"+"+n+";\n";
-		:}
+
+
+			| CHALE:c LPAREN NUMERO:n RPAREN PCOMA
+				{:
+	   				//retardos= retardos+c+"("+n+");\n";
+	   				RESULT=c+"("+n+");\n";
+
+				:}
+			|puertos:p IGUAL puertost:u MAS NUMERO:n PCOMA
+				{:
+					RESULT=p+u+"+"+n+";\n";
+				:}
 			;

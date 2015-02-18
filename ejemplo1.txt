@@ -1,4 +1,4 @@
-Fuses
+MAPIC.Fuses
 
 Setup {
 	TD=SALIDA;
@@ -7,7 +7,7 @@ Setup {
 }
 
 
-Retardo
+Retardo();
 
 Ciclo {
 	PD0 Toggle PD0;

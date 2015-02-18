@@ -1,3 +1,5 @@
+import java_cup.runtime.*;
+
 %%
 %unicode
 %cup
@@ -22,9 +24,9 @@
 
 
 
-"TimeMS" 		{ return symbol(sym.CHALE,new String("\t\tretardo"));}
+"TimeMS" 			{ return symbol(sym.CHALE,new String("\t\tretardo"));}
 
-"Main" 		          { return symbol(sym.MAIN,new String("\n\n\tvoid main(void)"));}
+"Main" 		        { return symbol(sym.MAIN,new String("\n\n\tvoid main(void)"));}
 
 
 
@@ -157,6 +159,8 @@
 "Void" 		{ return symbol(sym.VOID,new String("\n\tvoid  "));}
 "Toggle" 		{ return symbol(sym.TOGGLE,new String("!"));}
 
+"Si"		{ return symbol(sym.SI,nuevaEtq()); }
+"No"		{ return symbol(sym.NO); }
 
 
 "(" 		{ return symbol(sym.LPAREN); }
