@@ -20,19 +20,3 @@ Main {
 	TimeMS(1);
 }
 
-BBB
-BBB
-BBB
-BBB
-BBB
-BBB
-BBB
-BBB
-BBB
-BBB
-BBB
-BBB
-BBB
-BBBBBB
-BBB
-BBB
