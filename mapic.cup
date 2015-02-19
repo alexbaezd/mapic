@@ -347,7 +347,7 @@ puertost::= PA:pa {: RESULT=pa+""; :}
 
 	
 
-io::=ENTRADA  {: RESULT="1;\n";  :}
+io::=	ENTRADA  {: RESULT="1;\n";  :}
        |SALIDA:salida  {: RESULT="0;\n"; :}
        ;
 
@@ -355,18 +355,15 @@ ciclo::= CICLO:ciclo   LLLAVE  instrucciones   RLLAVE
 		{:
 			miCodigo=miCodigo+ciclo+"{\n\t \twhile(1){\n\n"+ auxiliar +"\t\t}\n\n\t}";
 			auxiliar="";
-			
-
-                :};
+     	:}
+     	;
 
 main::= MAIN:main  LLLAVE instrucciones  RLLAVE
-
 		{:
 		          miCodigo=miCodigo+main+"{\n\t\tsetup();\n\t\tloop();\n"+auxiliar+"\n\t\t return; \n\t }";
 		          auxiliar="";
-			
-		
-		:};
+		:}
+		;
 
 metodo::=VOID:v ID:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
              {:
@@ -381,24 +378,24 @@ metodo::=VOID:v ID:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
 						 losMetodos=losMetodos+codigo;
 		       				   auxiliar="";
 						//System.out.println("codigo intermedio==> int "+codigo);
-					
 			 
 			 :}
 			 |metodo VOID:v ID:m LPAREN RPAREN LLLAVE instrucciones  RLLAVE
-			 {:
-			  Simbolo s;
-					if ((s = tabla.buscar(m)) == null)
-								s = tabla.insertar(m,auxiliar);
-					   else
-							{ s.setValor(auxiliar);
+				 {:
+				  Simbolo s;
+						if ((s = tabla.buscar(m)) == null)
+									s = tabla.insertar(m,auxiliar);
+						   else
+								{ s.setValor(auxiliar);
+								
+								}
 							
-							}
-						
-						codigo=v+m+"()\n\t{"+auxiliar+"\n\t}\n\n";
-						 losMetodos=losMetodos+codigo;
-		       				   auxiliar="";
-						//System.out.println("codigo intermedio==> int "+codigo);
-		 :};
+							codigo=v+m+"()\n\t{"+auxiliar+"\n\t}\n\n";
+							 losMetodos=losMetodos+codigo;
+			       				   auxiliar="";
+							//System.out.println("codigo intermedio==> int "+codigo);
+			 	:}
+			 	;
 
 
 instrucciones::=instruccion:in
@@ -440,10 +437,20 @@ instruccion::= puertos:p TOGGLE:t puertost:u PCOMA
 				:}
 
 	//Ir a pagina 296 compiladores.
+	//falta agregar condicion.
 			
-			|
+			|SI LPAREN condicion RPAREN LLLAVE instrucciones PCOMA RLLAVE NO LLLAVE condicion PCOMA RLLAVE
+				{:
 
+				:}
+			|SI LPAREN condicion RPAREN LLLAVE RLLAVE NO LLLAVE RLLAVE
+				{:
 
+				:}
+			|SI LPAREN RPAREN LLLAVE RLLAVE NO LLLAVE RLLAVE
+				{:
+					
+				:}
 
 			| CHALE:c LPAREN NUMERO:n RPAREN PCOMA
 				{:

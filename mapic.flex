@@ -174,6 +174,9 @@ import java_cup.runtime.*;
 "<" 		{ return symbol(sym.MENOR); }
 "=" 		{ return symbol(sym.IGUAL); }
 "==" 		{ return symbol(sym.IGUAL2); }
+"<="
+">="
+
 
 {VARIABLE}       { return symbol(sym.ID, new String(yytext())); }
 [:digit:]+  { return symbol(sym.NUMERO, new Integer(yytext())); }
