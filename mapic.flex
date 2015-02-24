@@ -1,13 +1,16 @@
 import java_cup.runtime.*;
 
 %%
-%unicode
-%cup
-%line
-%column
-
 %{	
-     private Symbol symbol(int type){
+
+	int lineaActual=1;
+	private static int actualEtq=0;
+
+	private static String nuevaEtq(){
+		return "etqL"+(++actualEtq);
+	}
+
+   	  private Symbol symbol(int type){
 	  return new Symbol(type, yyline, yycolumn);
 	}
 	private Symbol symbol(int type, Object value){
@@ -15,8 +18,15 @@ import java_cup.runtime.*;
 	}
 %}
 
+%unicode
+%cup
+%line
+%column
+
+
 
 	VARIABLE=[A-Za-z_][A-Za-z_0-9]*
+
 
 %%
 
@@ -25,15 +35,8 @@ import java_cup.runtime.*;
 
 
 "TimeMS" 			{ return symbol(sym.CHALE,new String("\t\tretardo"));}
-
 "Main" 		        { return symbol(sym.MAIN,new String("\n\n\tvoid main(void)"));}
-
-
-
-
 "Setup" 		{ return symbol(sym.SETUP,new String("\tvoid setup()"));}
-
-
 "Fuses" 		{ return symbol(sym.FUSES,new String("#include <xc.h>\n"
 								                + "// CONFIG1\n" 
 								                +"#pragma config FOSC = INTRC_NOCLKOUT// Oscillator Selection bits (INTOSC oscillator: CLKOUT function on RA6/OSC2/CLKOUT pin, I/O function on RA7/OSC1/CLKIN)\n" 
@@ -58,13 +61,13 @@ import java_cup.runtime.*;
 "PC" 		{ return symbol(sym.PC,new String("\tPORTC"));}
 "PD" 		{ return symbol(sym.PD,new String("\tPORTD"));}
 "PE" 		{ return symbol(sym.PE,new String("\tPORTE"));}
-
 "TA" 		{ return symbol(sym.TA,new String("\tTRISA"));}
+//
 "TB" 		{ return symbol(sym.TB,new String("\tTRISB"));}
 "TC" 		{ return symbol(sym.TC,new String("\tTRISC"));}
 "TD" 		{ return symbol(sym.TD,new String("\tTRISD"));}
 "TE" 		{ return symbol(sym.TE,new String("\tTRISE"));}
-
+//
 "TA0" 		{ return symbol(sym.TA,new String("\tTRISAbits.TRISA0"));}
 "TA1" 		{ return symbol(sym.TA,new String("\tTRISAbits.TRISA1"));}
 "TA2" 		{ return symbol(sym.TA,new String("\tTRISAbits.TRISA2"));}
@@ -73,7 +76,7 @@ import java_cup.runtime.*;
 "TA5" 		{ return symbol(sym.TA,new String("\tTRISAbits.TRISA5"));}
 "TA6" 		{ return symbol(sym.TA,new String("\tTRISAbits.TRISA6"));}
 "TA7" 		{ return symbol(sym.TA,new String("\tTRISAbits.TRISA7"));}
-
+//
 "TB0" 		{ return symbol(sym.TA,new String("\tTRISBbits.TRISB0"));}
 "TB1" 		{ return symbol(sym.TA,new String("\tTRISBbits.TRISB1"));}
 "TB2" 		{ return symbol(sym.TA,new String("\tTRISBbits.TRISB2"));}
@@ -82,7 +85,7 @@ import java_cup.runtime.*;
 "TB5" 		{ return symbol(sym.TA,new String("\tTRISBbits.TRISB5"));}
 "TB6" 		{ return symbol(sym.TA,new String("\tTRISBbits.TRISB6"));}
 "TB7" 		{ return symbol(sym.TA,new String("\tTRISBbits.TRISB7"));}
-
+//
 "TC0" 		{ return symbol(sym.TC,new String("\tTRISCbits.TRISC0"));}
 "TC1" 		{ return symbol(sym.TC,new String("\tTRISCbits.TRISC1"));}
 "TC2" 		{ return symbol(sym.TC,new String("\tTRISCbits.TRISC2"));}
@@ -158,11 +161,8 @@ import java_cup.runtime.*;
 
 "Void" 		{ return symbol(sym.VOID,new String("\n\tvoid  "));}
 "Toggle" 		{ return symbol(sym.TOGGLE,new String("!"));}
-
-"Si"		{ return symbol(sym.SI,nuevaEtq()); }
-"No"		{ return symbol(sym.NO); }
-
-
+//"Si"		{ return symbol(sym.SI,nuevaEtq()); }
+//"No"		{ return symbol(sym.NO); }
 "(" 		{ return symbol(sym.LPAREN); }
 ")" 		{ return symbol(sym.RPAREN); }
 "{" 		{ return symbol(sym.LLLAVE); }
@@ -172,13 +172,11 @@ import java_cup.runtime.*;
 "-" 		{ return symbol(sym.MENOS); }
 ">" 		{ return symbol(sym.MAYOR); }
 "<" 		{ return symbol(sym.MENOR); }
+">="		{ return symbol(sym.MIG); }
+"<="		{ return symbol(sym.MENORIGUAL); }
 "=" 		{ return symbol(sym.IGUAL); }
 "==" 		{ return symbol(sym.IGUAL2); }
-"<="
-">="
-
-
 {VARIABLE}       { return symbol(sym.ID, new String(yytext())); }
 [:digit:]+  { return symbol(sym.NUMERO, new Integer(yytext())); }
 [ \t\r\n]+  {;}
-. 		{ System.out.println("Error léxico."+yytext()); }
+. 		{  System.out.println("Error léxico en línea "+lineaActual+":-"+yytext()+"-"); }

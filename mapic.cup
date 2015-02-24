@@ -4,6 +4,9 @@ import java.util.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import BloqueCondicion;
+import DatosCase;
+
 
 
 /***ACTION CODE***/
@@ -37,6 +40,10 @@ String losMetodos="";
 		BloqueCondicion etqs = new BloqueCondicion();
 		etqs.etqVerdad = nuevaEtq();
 		etqs.etqFalso = nuevaEtq();
+		/*
+		* System......
+		*/
+		return etqs;
 	}
 
 :};
