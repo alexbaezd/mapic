@@ -8,7 +8,6 @@ import BloqueCondicion;
 import DatosCase;
 
 
-
 /***ACTION CODE***/
 
 action code{:
@@ -124,7 +123,8 @@ terminal PD0, PD1, PD2, PD3, PD4, PD5, PD6, PD7;
 terminal PE0, PE1, PE2, PE3;
 terminal VOID;
 terminal NO;
-terminal LPAREN, RPAREN, MAYOR, MENOR, MAS, MENOS, LLLAVE, RLLAVE, PCOMA,IGUAL , IGUAL2,TOGGLE;
+terminal LPAREN, RPAREN,MAS, MENOS, LLLAVE, RLLAVE, PCOMA,IGUAL , IGUAL2,TOGGLE;
+terminal MAYOR, MENOR , MAYORIGUAL , MENORIGUAL;
 terminal Integer NUMERO;
 terminal String ID;
 terminal String SI;
@@ -143,6 +143,7 @@ non terminal String puertost;
 non terminal String io;
 non terminal  String  instruccion;
 non terminal decision;
+non terminal condicion;
 
 
 

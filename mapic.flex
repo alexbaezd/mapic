@@ -161,8 +161,8 @@ import java_cup.runtime.*;
 
 "Void" 		{ return symbol(sym.VOID,new String("\n\tvoid  "));}
 "Toggle" 		{ return symbol(sym.TOGGLE,new String("!"));}
-//"Si"		{ return symbol(sym.SI,nuevaEtq()); }
-//"No"		{ return symbol(sym.NO); }
+"Si"		{ return symbol(sym.SI,nuevaEtq()); }
+"No"		{ return symbol(sym.NO); }
 "(" 		{ return symbol(sym.LPAREN); }
 ")" 		{ return symbol(sym.RPAREN); }
 "{" 		{ return symbol(sym.LLLAVE); }
@@ -172,7 +172,7 @@ import java_cup.runtime.*;
 "-" 		{ return symbol(sym.MENOS); }
 ">" 		{ return symbol(sym.MAYOR); }
 "<" 		{ return symbol(sym.MENOR); }
-">="		{ return symbol(sym.MIG); }
+">="		{ return symbol(sym.MAYORIGUAL); }
 "<="		{ return symbol(sym.MENORIGUAL); }
 "=" 		{ return symbol(sym.IGUAL); }
 "==" 		{ return symbol(sym.IGUAL2); }
