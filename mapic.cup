@@ -195,28 +195,22 @@ elretardo::= RETARDO LPAREN RPAREN PCOMA;
 */			
 setup::=SETUP:setup   LLLAVE confpuertos RLLAVE
 		{:
-
-	            //System.out.println("codigo intermedio==>"+setup+"   "+fsetup);
-	            miCodigo=setup+"{\n\tOSCCON=0x60;\n\tANSEL=0;\n"+miCodigo+"\n}";
-		
+	        //System.out.println("codigo intermedio==>"+setup+"   "+fsetup);
+	        miCodigo=setup+"{\n\tOSCCON=0x60;\n\tANSEL=0;\n"+miCodigo+"\n}";
 		:}
 	|SETUP:setup  LLLAVE  confpuertos  instrucciones RLLAVE
 		{:
-
-	            //System.out.println("codigo intermedio==>"+setup+"   "+fsetup);
-	            miCodigo=setup+"{\n\tOSCCON=0x60;\n\tANSEL=0;\n"+miCodigo+auxiliar+"\n}";
-		
+	        //System.out.println("codigo intermedio==>"+setup+"   "+fsetup);
+	        miCodigo=setup+"{\n\tOSCCON=0x60;\n\tANSEL=0;\n"+miCodigo+auxiliar+"\n}";
 		:};
 
 confpuertos::=puertos:p IGUAL io:i PCOMA
-		{:
-		  miCodigo=miCodigo+p+i;
-		:}
-                 
+			{:
+			  miCodigo=miCodigo+p+i;
+			:}   
 	         |confpuertos puertos:p IGUAL io:i PCOMA
 	         {:
 	         	 miCodigo=miCodigo+p+i;
-
 	         :} ;
 
 puertos::= PA:pa {: RESULT=pa+"="; :}
