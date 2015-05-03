@@ -205,7 +205,7 @@ public class ManejoDeErrores{
 				
 		       */		
 				
-            default: men ="Error";
+            default: men ="ERROR DESCONOCIDO";
         }
         return men;
     }
@@ -347,6 +347,8 @@ public class ManejoDeErrores{
                 case 107:msn = "  TOGGLE ";break;
                 case 108:msn = " NUMERO  ";break;
                 case 109:msn = "  ID ";break;
+
+                default: msn= "ERROR TOKEN DESCONOCIDO"; break;
               
 
               		

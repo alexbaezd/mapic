@@ -1,11 +1,16 @@
-import java_cup.runtime.*;
-
 %%
+%unicode
+%cup
+%line
+%column
 %{	
 
 	int lineaActual=1;
 	private static int actualEtq=0;
-
+	
+	public int linea(){ return yyline+1; }
+	public int columna(){ return yycolumn+1; }
+	
 	private static String nuevaEtq(){
 		return "etqL"+(++actualEtq);
 	}
@@ -18,10 +23,6 @@ import java_cup.runtime.*;
 	}
 %}
 
-%unicode
-%cup
-%line
-%column
 
 
 
@@ -30,10 +31,9 @@ import java_cup.runtime.*;
 
 %%
 
+
+
 /* Reglas léxicas*/
-
-
-
 "TimeMS" 			{ return symbol(sym.CHALE,new String("\t\tretardo"));}
 "Main" 		        { return symbol(sym.MAIN,new String("\n\n\tvoid main(void)"));}
 "Setup" 		{ return symbol(sym.SETUP,new String("\tvoid setup()"));}
@@ -157,16 +157,27 @@ import java_cup.runtime.*;
 
 "Ciclo" 		{ return symbol(sym.CICLO,new String("\n\n\tvoid loop()"));}
 
-
-
 "Void" 		{ return symbol(sym.VOID,new String("\n\tvoid  "));}
-"Toggle" 		{ return symbol(sym.TOGGLE,new String("!"));}
+"Toggle" 	{ return symbol(sym.TOGGLE,new String("!"));}
 "Si"		{ return symbol(sym.SI,nuevaEtq()); }
+"Then"		{ return symbol(sym.THEN);}
+"Fin"		{ return symbol(sym.FIN);}
 "No"		{ return symbol(sym.NO); }
+"switch" 	{ return symbol(sym.SWITCH); }
+"Of"		{ return symbol(sym.OF); }
+"Caso"		{ return symbol(sym.CASO,nuevaEtq()); }
+"default"   { return symbol(sym.OTHERWISE); }
+"while"     { return symbol(sym.WHILE ,nuevaEtq());}
+"Do"		{return  symbol(sym.DO);}
+"^"         { return symbol(sym.CIRCUN); }
+"["         { return symbol(sym.LCORCH); }
+"]"         { return symbol(sym.RCORCH); }
+":"         { return symbol(sym.DOSPUNTOS); }
 "(" 		{ return symbol(sym.LPAREN); }
 ")" 		{ return symbol(sym.RPAREN); }
 "{" 		{ return symbol(sym.LLLAVE); }
 "}" 		{ return symbol(sym.RLLAVE); }
+","         { return symbol(sym.COMA); }
 ";" 		{ return symbol(sym.PCOMA); }
 "+" 		{ return symbol(sym.MAS); }
 "-" 		{ return symbol(sym.MENOS); }
@@ -174,9 +185,23 @@ import java_cup.runtime.*;
 "<" 		{ return symbol(sym.MENOR); }
 ">="		{ return symbol(sym.MAYORIGUAL); }
 "<="		{ return symbol(sym.MENORIGUAL); }
+"Var" | "Cons" { return symbol(sym.TIPOVC); }
+"AND"		{ return symbol(sym.AND);}
+"OR"		{ return symbol(sym.OR); }
 "=" 		{ return symbol(sym.IGUAL); }
 "==" 		{ return symbol(sym.IGUAL2); }
-{VARIABLE}       { return symbol(sym.ID, new String(yytext())); }
+"TRUE" | "FALSE" { return symbol(sym.CTELOGICA); }
+"INTEGER"        { return symbol(sym.INTEGER); }
+"Real" 			 { return symbol(sym.REAL); }
+"Char"		     { return symbol(sym.CHAR); }
+"Boolean"		 { return symbol(sym.BOOLEAN); }
+"Pointer"		 { return symbol(sym.POINTER); }
+"To" 			 { return symbol(sym.TO); }
+"Array"			 { return symbol(sym.ARRAY); }
+{VARIABLE}  { return symbol(sym.NMETODO, new String(yytext())); }
 [:digit:]+  { return symbol(sym.NUMERO, new Integer(yytext())); }
+[:digit:]+\.[:digit:]+ { return symbol(sym.NUMREAL); }
+\'.\'  { return symbol(sym.CARACTER);}
+[:jletter:][:jletterdigit:]* { return symbol(sym.ID, yytext()); }
 [ \t\r\n]+  {;}
 . 		{  System.out.println("Error léxico en línea "+lineaActual+":-"+yytext()+"-"); }

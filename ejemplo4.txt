@@ -1,0 +1,45 @@
+Fuses
+
+Void getListPorts(){
+
+    PA1 Toggle PA1;
+    TimeMS(10000);
+    PA2 Toggle PA2;
+    TimeMS(2000);
+}
+Void metodo1(){
+  
+  PA Toggle PA;
+  TimeMS(5000);
+
+  Si(10 >= 7) Then
+    TimeMS(2220);
+  No
+    TimeMS(2000);
+  Fin Si
+}
+
+
+Setup {
+  PA1=ENTRADA;
+  PA2=SALIDA;
+}
+  
+Retardo();
+
+Ciclo {
+  metodo1();
+  Si (10 > 7) Then
+    TimeMS(2220);
+  Fin Si 
+
+}
+
+Main {
+  getListPorts();
+
+  switch (7)  Of
+    default TimeMS(2333);
+  Fin switch
+
+}

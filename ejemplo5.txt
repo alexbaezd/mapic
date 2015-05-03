@@ -1,0 +1,102 @@
+Fuses
+
+Void MiMetodo(){
+  
+  Si(10 == 7) Then
+    TimeMS(1);
+  No 
+  Si(2<20) Then
+    TimeMS(2);
+  Fin Si 
+   Fin Si
+}
+
+Void MuchosSINO(){
+  
+  Si(10 == 7) Then
+     PD3 Toggle PD3;
+    No 
+      Si(2<20) Then
+     PD1 Toggle PD1;
+     No 
+        Si(10>=20) Then
+        PD2 Toggle PD2;
+        No 
+         Si(10>=20) Then
+          PD7 Toggle PD7;
+         Fin Si
+       Fin Si 
+      Fin Si 
+   Fin Si
+}
+
+
+
+Void MetodoPuertos(){
+  TimeMS(23232323);
+
+  switch (1)  Of
+    default TimeMS(2333);
+  Fin switch
+}
+
+Void MuchosCASE(){
+  
+  switch (2323) Of
+     Caso 1: TimeMS(232323);
+     Caso 2: MuchosSINO();
+     Caso 3: MetodoPuertos();
+     Caso 4: PB0 Toggle PB1 ;
+     default Si (10 > 7) Then
+          TimeMS(2220);
+        Fin Si
+    Fin switch
+
+}
+
+Setup {
+  TD=SALIDA;
+  PD=SALIDA;
+
+  Si (10 > 7) Then
+    TimeMS(2220);
+  Fin Si  
+}
+
+Retardo();
+
+Ciclo {
+  PD0 Toggle PD0;
+  TimeMS(50000);
+  
+  Si(10 >= 7) Then
+    TimeMS(2220);
+  No
+    PD1 Toggle PD1;
+    
+  Fin Si 
+
+}
+
+
+Main {
+
+  Si (10 <= 7) Then
+    PD1 Toggle PD1;
+  Fin Si 
+
+  
+  MiMetodo();
+  MuchosSINO();
+
+  switch (5)  Of
+    default TimeMS(2333);
+  Fin switch
+  
+  while (10 >= 89) Do
+    TimeMS(1);
+  Fin while
+
+
+    }
+

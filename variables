@@ -1,0 +1,6 @@
+Var MyVar:Integer = 10;
+Var x:Real = 10.23;
+Var bandera:Boolean = TRUE;
+Var MyVar:Char = 's';
+
+Var array[]:Integer = 

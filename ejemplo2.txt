@@ -1,12 +1,12 @@
 Fuses
-
 Setup {
-	TD=SALIDA;
+	TD=ENTRADA;
 	PD=SALIDA;
 }
 
 
-Retardo
+
+Retardo();
 
 Ciclo {
 	PD0 Toggle PD0;

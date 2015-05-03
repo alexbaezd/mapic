@@ -1,0 +1,29 @@
+Fuses
+
+Void getListPorts(){
+
+    PA1 Toggle PA1;
+    TimeMS(10000);
+    PA2 Toggle PA2;
+    TimeMS(2000);
+}
+Void metodo1(){
+  PA Toggle PA;
+  TimeMS(5000);
+}
+Setup {
+  PA1=ENTRADA;
+  PA2=SALIDA;
+}
+  
+Retardo();
+
+Ciclo {
+  
+  metodo1();
+
+}
+
+Main {
+  getListPorts();
+}

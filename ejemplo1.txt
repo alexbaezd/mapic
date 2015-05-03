@@ -1,22 +1,15 @@
-MAPIC.Fuses
+Fuses
 
 Setup {
-	TD=SALIDA;
-	PD=SALIDA;
+	PA=ENTRADA;
 
 }
-
-
-Retardo();
 
 Ciclo {
-	PD0 Toggle PD0;
-	TimeMS(50000);
+	PA Toggle PA;
 
 }
-
 
 Main {
-	TimeMS(1);
+	PA Toggle PA;
 }
-

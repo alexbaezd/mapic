@@ -4,52 +4,10 @@ import java.util.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import BloqueCondicion;
-import DatosCase;
-
-
-/***ACTION CODE***/
-
-action code{:
-TablaSimbolos tabla = new TablaSimbolos();
-String codigo="";
-String miCodigo="";
-String errores="";
-String retardos="";
-String auxiliar="";
-String losMetodos="";
-
-	private static int actualTmp=0;
-	private static String nuevaTmp() {
-		return "tmp"+(++actualTmp);
-	}
-
-	private static int actualEtq=0;
-	private static String nuevaEtq() {
-		return "etqY"+(++actualEtq);
-	}
-
-	private String generarTerceto(String terceto) {
-		String tmp = nuevaTmp();
-		System.out.println(tmp + terceto);
-		return tmp;
-	}
-
-	private BloqueCondicion generarCondicion( String Rvalor1, String condicion, String Rvalor2){
-		BloqueCondicion etqs = new BloqueCondicion();
-		etqs.etqVerdad = nuevaEtq();
-		etqs.etqFalso = nuevaEtq();
-		/*
-		* System......
-		*/
-		return etqs;
-	}
-
-:};
-
 /***************************************************************************/
 parser code {:
 
+	static TablaSimboloComplejo tablaCom = new TablaSimboloComplejo();
 	static int estado;
 	StringBuffer m = new StringBuffer("");
     static StringBuffer []vec=new StringBuffer[10];
@@ -94,6 +52,7 @@ public static void main(String[] arg)
 	  parserObj.setScanner(miAnalizadorLexico);
 	  try{
 		parserObj.parse();
+		tablaCom.imprimir();
 	  }
 catch(Exception x){ 
 	  parserObj.Documenta(estado);
@@ -105,11 +64,62 @@ catch(Exception x){
 }
 
 :};
+//*******************************************************************************
+/***ACTION CODE***/
+
+action code{:
+
+methodsTable tablaMetodos = new methodsTable();
+String codigo="";
+String miCodigo="";
+String errores="";
+String retardos="";
+String auxiliar="";
+String losMetodos="";
+
+	private static int actualTmp=0;
+
+	private static String nuevaTmp() {
+		return "tmp"+(++actualTmp);
+	}
+
+	private static int actualEtq=0;
+
+	private static String nuevaEtq() {
+		return "etqY"+(++actualEtq);
+	}
+
+	private String generarTerceto(String terceto) {
+		String tmp = nuevaTmp();
+		System.out.println(tmp + terceto);
+		return tmp;
+	}
+
+	private BloqueCondicion generarCondicion( String Rvalor1, String condicion, String Rvalor2){
+		BloqueCondicion etqs = new BloqueCondicion();
+		etqs.etqVerdad = nuevaEtq();
+		etqs.etqFalso = nuevaEtq();
+		/*
+		*System.out.println("\t if" + Rvalor1 + condicion + Rvalor2 + "");
+		*/
+	System.out.println("\tif "+ Rvalor1 + condicion + Rvalor2 +" goto "+ etqs.etqVerdad);
+    System.out.println("\tgoto "+ etqs.etqFalso);
+		return etqs;
+	}
+
+:};
+//**************************************************************************
+
 	// Símbolo (terminal y no terminal) 
 
 /* Símbolos (tokens devueltos por el escáner). */
+/* Terminales Datos Complejos */
+terminal INTEGER,REAL,CHAR,BOOLEAN,POINTER,TO;
+terminal ARRAY;
+terminal CARACTER,NUMREAL,CTELOGICA;
+terminal RCORCH,LCORCH,CIRCUN,COMA;
 /* Terminales */
-terminal CHALE, MAIN, FMAIN, SETUP, FUSES, ENTRADA, SALIDA, RETARDO, CICLO, FCICLO;
+terminal CHALE, MAIN, SETUP, FUSES, ENTRADA, SALIDA, RETARDO, CICLO;
 terminal PA, PB, PC, PD, PE, TA, TB, TC, TD, TE;
 terminal TA0, TA1, TA2, TA3, TA4, TA5, TA6, TA7;
 terminal TB0, TB1, TB2, TB3, TB4, TB5, TB6, TB7;
@@ -122,13 +132,16 @@ terminal PC0, PC1, PC2, PC3, PC4, PC5, PC6, PC7;
 terminal PD0, PD1, PD2, PD3, PD4, PD5, PD6, PD7;
 terminal PE0, PE1, PE2, PE3;
 terminal VOID;
-terminal NO;
-terminal LPAREN, RPAREN,MAS, MENOS, LLLAVE, RLLAVE, PCOMA,IGUAL , IGUAL2,TOGGLE;
-terminal MAYOR, MENOR , MAYORIGUAL , MENORIGUAL;
+terminal THEN,NO,FIN,DO;
+terminal SWITCH,OF,OTHERWISE;
+terminal LPAREN, RPAREN,MAS, MENOS, LLLAVE, RLLAVE,DOSPUNTOS ,PCOMA,IGUAL , IGUAL2,TOGGLE;
+terminal MAYOR, MENOR , MAYORIGUAL , MENORIGUAL,AND,OR,TIPOVC;
 terminal Integer NUMERO;
 terminal String ID;
+terminal String NMETODO;
 terminal String SI;
-
+terminal String CASO;
+terminal String WHILE;
 /* No terminales */
 non terminal programa;
 non terminal metodos;
@@ -136,26 +149,24 @@ non terminal main;
 non terminal setup;
 non terminal ciclo;
 non terminal metodo;
+non terminal sentCASE;
 non terminal String  instrucciones;
 non terminal confpuertos;
 non terminal String puertos;
 non terminal String puertost;
 non terminal String io;
-non terminal  String  instruccion;
-non terminal decision;
-non terminal condicion;
-
-
-
-
-	// Declaraciones de preferencia
+non terminal String  instruccion;
+non terminal opcional;
+non terminal String expression;
+non terminal BloqueCondicion condicion;
+non terminal DatosCase inicioCASE;
+non terminal Stack tipo,exprtipos,decl;
+// Declaraciones de preferencia
 /* Preferencias*/
 precedence left MAS, MENOS , MAYOR , MENOR,TOGGLE, IGUAL , IGUAL2;
-precedence left ID;
-
-					
+precedence left ID,NMETODO;
 // La gramática en BNF
-
+//**************************************************************************
  programa::= FUSES:fuses metodos main
  				{:
  					miCodigo=fuses+miCodigo;
@@ -179,24 +190,17 @@ precedence left ID;
 	        	}
              
 :};
- 
+
  metodos::= setup ciclo
-	        |setup RETARDO:retardo ciclo   {: miCodigo=retardo+miCodigo;  :}
+	        |setup RETARDO:retardo LPAREN RPAREN PCOMA ciclo   {: miCodigo=retardo+miCodigo;  :}
 	        |  metodo setup ciclo
-	        |  metodo setup RETARDO:retardo ciclo
+	        |  metodo setup RETARDO:retardo LPAREN RPAREN PCOMA ciclo
 			{: miCodigo=retardo+losMetodos+miCodigo;  :}
 			;
 			
-/*
- Si queremos que aparesca Retardo ( );
- se debe utilizar esta regla y sustituirla en metodos y jugar con la variable RESULT u otra que
- se declare.
-elretardo::= RETARDO LPAREN RPAREN PCOMA;
-*/			
 setup::=SETUP:setup   LLLAVE confpuertos RLLAVE
 		{:
-
-	            //System.out.println("codigo intermedio==>"+setup+"   "+fsetup);
+				 //System.out.println("codigo intermedio==>"+setup+"   "+fsetup);
 	            miCodigo=setup+"{\n\tOSCCON=0x60;\n\tANSEL=0;\n"+miCodigo+"\n}";
 		
 		:}
@@ -219,7 +223,199 @@ confpuertos::=puertos:p IGUAL io:i PCOMA
 
 	         :} ;
 
-puertos::= PA:pa {: RESULT=pa+"="; :}
+io::=ENTRADA  {: RESULT="1;\n";  :}
+       |SALIDA:salida  {: RESULT="0;\n"; :}
+       ;
+
+ciclo::= CICLO:ciclo   LLLAVE  instrucciones   RLLAVE
+		{:
+			miCodigo=miCodigo+ciclo+"{\n\t \twhile(1){\n\n"+ auxiliar +"\t\t}\n\n\t}";
+			auxiliar="";
+			
+
+                :};
+
+main::= MAIN:main  LLLAVE instrucciones  RLLAVE
+
+		{:
+		          miCodigo=miCodigo+main+"{\n\t\tsetup();\n\t\tloop();\n"+auxiliar+"\n\t\t return; \n\t }";
+		          auxiliar="";
+			
+		
+		:};
+
+metodo::=VOID:v NMETODO:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
+             {:
+			  Metodos s;
+				   if ((s = tablaMetodos.search(i)) == null)
+						s = tablaMetodos.insert(i,auxiliar);
+					   else{ s.setvalue(auxiliar);
+							
+						}
+						
+						codigo=v+i+"()\n\t{"+auxiliar+"\n\t}";
+						 losMetodos=losMetodos+codigo;
+		       				   auxiliar="";
+						//System.out.println("codigo intermedio==> int "+codigo);
+			 :}
+			 |metodo VOID:v NMETODO:m LPAREN RPAREN LLLAVE instrucciones  RLLAVE
+			 {:
+			  Metodos s;
+					if ((s = tablaMetodos.search(m)) == null)
+						s = tablaMetodos.insert(m,auxiliar);
+					   else
+							{ s.setvalue(auxiliar);
+							
+							}
+						
+						codigo=v+m+"()\n\t{"+auxiliar+"\n\t}\n\n";
+						 losMetodos=losMetodos+codigo;
+		       				   auxiliar="";
+						//System.out.println("codigo intermedio==> int "+codigo);
+		 :};
+
+instrucciones::=instruccion:in
+				{:
+					//System.out.println("valor de in:"+in);
+		 	
+				  auxiliar=auxiliar+in;
+				 // System.out.println("cadena en la instruccion:"+auxiliar);
+
+			           :}
+				|instrucciones instruccion:in
+				{:
+					//System.out.println("valor de in:"+in);
+		 	
+				  auxiliar=auxiliar+in;
+				 // System.out.println("cadena en la instruccion:"+auxiliar);
+
+			           :};
+
+instruccion::= puertos:p TOGGLE:t puertost:u PCOMA
+		 {:
+		 	//   miCodigo=p+t+u+";\n"+miCodigo;
+		 	RESULT=p+t+u+";\n";
+		 	//System.out.println("cadena de toggles:"+RESULT);
+		 :}
+       		| puertos IGUAL NUMERO PCOMA
+		 	| NMETODO:i LPAREN RPAREN PCOMA
+				{:  
+					   Metodos s;
+					   if ((s = tablaMetodos.search(i)) == null){
+					   	System.out.println(i+ " es una METODO no definido");
+					   }
+							
+					   else{
+						// System.out.println(i+" instrucciones del metodo => "+s.getValor());
+						//System.out.println("codigo intermedio==> "+i+"();");
+						RESULT="\t"+i+"();\n";
+						}	
+				:}
+
+			| CHALE:c LPAREN NUMERO:n RPAREN PCOMA
+				{:
+	   				//retardos= retardos+c+"("+n+");\n";
+	   				RESULT=c+"("+n+");\n";
+
+				:}
+			|puertos:p IGUAL puertost:u MAS NUMERO:n PCOMA
+				{:
+					RESULT=p+u+"+"+n+";\n";
+				:}
+
+			| SI:etqFinIf  LPAREN condicion:c  RPAREN{:
+				System.out.println("label"+c.etqVerdad);
+
+
+			:}
+			THEN instruccion  {:
+				System.out.println("\tgoto "+ etqFinIf);
+				System.out.println("label "+ c.etqFalso);
+			:}
+			opcional
+			FIN SI {:
+				System.out.println("label "+ etqFinIf);
+			:}
+			| sentCASE
+			|WHILE:etqInicioWhile {:
+				System.out.println("label "+ etqInicioWhile);
+			:}
+			LPAREN  condicion:c  RPAREN{:
+				System.out.println("label "+ c.etqVerdad);
+			:}
+			DO instruccion
+			FIN WHILE {:
+				System.out.println("\tgoto "+ etqInicioWhile);
+				System.out.println("label "+ c.etqFalso);
+			:}
+			
+			;
+sentCASE ::= inicioCASE:ic OTHERWISE instruccion  FIN SWITCH {:
+				System.out.println("label "+ ic.etqFinal);
+		
+			:}
+			| inicioCASE:ic 
+			  FIN SWITCH {:
+				System.out.println("label "+ ic.etqFinal);
+			:}
+			;
+
+inicioCASE ::= SWITCH LPAREN expression:e  RPAREN  OF {:
+			/*
+				switch(e){
+					case "PORTA":
+					case "PORTB":
+					.
+					case ID:
+					case NUMERO:
+					RESULT = Genera el codigo equivalente
+					. break;
+					default: Error  no se puede 
+				}
+				Vector de String
+				String[] puertos={"PORTA","PORTB",...};
+	 		*/
+			RESULT = new DatosCase(); 
+			//RESULT.tmpExpr = e.nombreVariable; 
+			RESULT.tmpExpr = e; 
+
+			RESULT.etqFinal = nuevaEtq();
+			:}
+			|inicioCASE:ic
+	 			CASO:etqFinCaso expression:e DOSPUNTOS {:
+				System.out.println("\tif "+ ic.tmpExpr +" != "+e+" goto "+ etqFinCaso);
+			:}
+
+			instruccion  {:
+					System.out.println("\tgoto "+ ic.etqFinal);
+					System.out.println("label "+ etqFinCaso); 
+					RESULT=ic;
+				:}
+			;
+
+opcional ::= NO instruccion 
+			| /* Epsilon  */
+			;
+
+
+expression::= ID:id  {:RESULT=id;:}
+		| NUMERO:num {: RESULT= Integer.toString(num); 
+								//generarTerceto("="+num);:}
+		;
+
+
+condicion ::= expression:e1 MAYOR expression:e2 {: RESULT = generarCondicion(e1 , ">", e2);:}
+			| expression:e1 MENOR expression:e2 {: RESULT = generarCondicion(e1 , "<", e2);:}
+			| expression:e1 MAYORIGUAL expression:e2 {:RESULT = generarCondicion(e1 , ">=", e2);:}
+			| expression:e1 MENORIGUAL expression:e2 {: RESULT = generarCondicion(e1 , "<=", e2);:}
+			| expression:e1 IGUAL2 expression:e2 {: RESULT = generarCondicion(e1 , "==", e2);:}
+			
+			;
+
+
+
+
+	 puertos::= PA:pa {: RESULT=pa+"="; :}
 	    |PB:pb {: RESULT=pb+"="; :}
 	    |PC:pc {: RESULT=pc+"=";:}
 	    |PD:pd {: RESULT=pd+"="; :}
@@ -318,156 +514,36 @@ puertost::= PA:pa {: RESULT=pa+""; :}
 	    |PA1:pa1 {:	RESULT=pa1+""; :}
 	    |PA2:pa2 {:	RESULT=pa2+""; :}
 	    |PA3:pa3 {:	RESULT=pa3+""; :}
-	    |PA4:pa4 {:  	RESULT=pa4+""; :}
+	    |PA4:pa4 {: RESULT=pa4+""; :}
 	    |PA5:pa5 {:	RESULT=pa5+""; :}
 	    |PA6:pa6 {:	RESULT=pa6+"";  :}
-	    |PA7:pa7 {: 	RESULT=pa7+"";  :}
+	    |PA7:pa7 {: RESULT=pa7+"";  :}
 	    |PB0:pb0 {:	RESULT=pb0+"";  :}
 	    |PB1:pb1 {:	RESULT=pb1+"";   :}
 	    |PB2:pb2 {:	RESULT=pb2+"";   :}
 	    |PB3:pb3 {:	RESULT=pb3+"";   :}
 	    |PB4:pb4 {:	RESULT=pb4+"";  :}
-	    |PB5:pb5 {:	  RESULT=pb5+"";  :}
-	    |PB6:pb6 {:	  RESULT=pb6+"";  :}
-	    |PB7:pb7 {:	  RESULT=pb7+"";  :}
+	    |PB5:pb5 {:	RESULT=pb5+"";  :}
+	    |PB6:pb6 {:	RESULT=pb6+"";  :}
+	    |PB7:pb7 {:	RESULT=pb7+"";  :}
 	    |PC0:pc0 {:	RESULT=pc0+"";    :}
-	    |PC1:pc1 {: 	  RESULT=pc1+"";  :}
+	    |PC1:pc1 {: RESULT=pc1+"";  :}
 	    |PC2:pc2 {:	RESULT=pc2+"";    :}
-	    |PC3:pc3 {: 	  RESULT=pc3+"";  :}
-        |PC4:pc4 {:	  RESULT=pc4+"";  :}
-        |PC5:pc5 {:	 RESULT=pc5+"";   :}
-	    |PC6:pc6 {:	 RESULT=pc6+"";   :}
-	    |PC7:pc7 {:     RESULT=pc7+"";  :}
-	    |PD0:pd0 {:	 RESULT=pd0+"";  :}
+	    |PC3:pc3 {: RESULT=pc3+"";  :}
+        |PC4:pc4 {:	RESULT=pc4+"";  :}
+        |PC5:pc5 {:	RESULT=pc5+"";   :}
+	    |PC6:pc6 {:	RESULT=pc6+"";   :}
+	    |PC7:pc7 {: RESULT=pc7+"";  :}
+	    |PD0:pd0 {:	RESULT=pd0+"";  :}
 	    |PD1:pd1 {:	RESULT=pd1+"";   :}
-	    |PD2:pd2 {:   RESULT=pd2+"";  :}
-	    |PD3:pd3 {:	 RESULT=pd3+"";  :}
+	    |PD2:pd2 {: RESULT=pd2+"";  :}
+	    |PD3:pd3 {:	RESULT=pd3+"";  :}
 	    |PD4:pd4 {:	RESULT=pd4+"";   :}
-	    |PD5:pd5 {:   RESULT=pd5+"";  :}
+	    |PD5:pd5 {: RESULT=pd5+"";  :}
 	    |PD6:pd6 {:	RESULT=pd6+"";   :}
-	    |PD7:pd7 {:  RESULT=pd7+"";   :}
+	    |PD7:pd7 {: RESULT=pd7+"";   :}
 	    |PE0:pe0 {:	RESULT=pe0+"";   :}
 	    |PE1:pe1 {:	RESULT=pe1+"";     :}
 	    |PE2:pe2 {:	RESULT=pe2+"";     :}
 	    ;			
-					
-					
-
-	
-
-io::=	ENTRADA  {: RESULT="1;\n";  :}
-       |SALIDA:salida  {: RESULT="0;\n"; :}
-       ;
-
-ciclo::= CICLO:ciclo   LLLAVE  instrucciones   RLLAVE
-		{:
-			miCodigo=miCodigo+ciclo+"{\n\t \twhile(1){\n\n"+ auxiliar +"\t\t}\n\n\t}";
-			auxiliar="";
-     	:}
-     	;
-
-main::= MAIN:main  LLLAVE instrucciones  RLLAVE
-		{:
-		          miCodigo=miCodigo+main+"{\n\t\tsetup();\n\t\tloop();\n"+auxiliar+"\n\t\t return; \n\t }";
-		          auxiliar="";
-		:}
-		;
-
-metodo::=VOID:v ID:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
-             {:
-			  Simbolo s;
-				   if ((s = tabla.buscar(i)) == null)
-						s = tabla.insertar(i,auxiliar);
-					   else{ s.setValor(auxiliar);
-							
-						}
-						
-						codigo=v+i+"()\n\t{"+auxiliar+"\n\t}";
-						 losMetodos=losMetodos+codigo;
-		       				   auxiliar="";
-						//System.out.println("codigo intermedio==> int "+codigo);
-			 
-			 :}
-			 |metodo VOID:v ID:m LPAREN RPAREN LLLAVE instrucciones  RLLAVE
-				 {:
-				  Simbolo s;
-						if ((s = tabla.buscar(m)) == null)
-									s = tabla.insertar(m,auxiliar);
-						   else
-								{ s.setValor(auxiliar);
-								
-								}
-							
-							codigo=v+m+"()\n\t{"+auxiliar+"\n\t}\n\n";
-							 losMetodos=losMetodos+codigo;
-			       				   auxiliar="";
-							//System.out.println("codigo intermedio==> int "+codigo);
-			 	:}
-			 	;
-
-
-instrucciones::=instruccion:in
-				{:
-					//System.out.println("valor de in:"+in);
-		 	
-				  auxiliar=auxiliar+in;
-				 // System.out.println("cadena en la instruccion:"+auxiliar);
-
-			           :}
-				|instrucciones instruccion:in
-				{:
-					//System.out.println("valor de in:"+in);
-		 	
-				  auxiliar=auxiliar+in;
-				 // System.out.println("cadena en la instruccion:"+auxiliar);
-
-			           :};
-				
-instruccion::= puertos:p TOGGLE:t puertost:u PCOMA
-		 {:
-		 	//   miCodigo=p+t+u+";\n"+miCodigo;
-		 	RESULT=p+t+u+";\n";
-		 	//System.out.println("cadena de toggles:"+RESULT);
-		 :}
-       		| puertos IGUAL NUMERO PCOMA
-		 	| ID:i LPAREN RPAREN PCOMA
-				{:  
-					   Simbolo s;
-					   if ((s = tabla.buscar(i)) == null){
-					   	System.out.println(i+ " es una METODO no definido");
-					   }
-							
-					   else{
-						// System.out.println(i+" instrucciones del metodo => "+s.getValor());
-						//System.out.println("codigo intermedio==> "+i+"();");
-						RESULT="\t"+i+"();\n";
-						}	
-				:}
-
-	//Ir a pagina 296 compiladores.
-	//falta agregar condicion.
 			
-			|SI LPAREN condicion RPAREN LLLAVE instrucciones PCOMA RLLAVE NO LLLAVE condicion PCOMA RLLAVE
-				{:
-
-				:}
-			|SI LPAREN condicion RPAREN LLLAVE RLLAVE NO LLLAVE RLLAVE
-				{:
-
-				:}
-			|SI LPAREN RPAREN LLLAVE RLLAVE NO LLLAVE RLLAVE
-				{:
-					
-				:}
-
-			| CHALE:c LPAREN NUMERO:n RPAREN PCOMA
-				{:
-	   				//retardos= retardos+c+"("+n+");\n";
-	   				RESULT=c+"("+n+");\n";
-
-				:}
-			|puertos:p IGUAL puertost:u MAS NUMERO:n PCOMA
-				{:
-					RESULT=p+u+"+"+n+";\n";
-				:}
-			;
