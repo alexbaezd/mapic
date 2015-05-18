@@ -1,72 +1,239 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Mapic</title>
 
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Mapic : Lenguaje de programación mapic">
+  <!-- CSS  -->
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Mapic</title>
-  </head>
-
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/alexBaezD/mapic">View on GitHub</a>
-
-          <h1 id="project_title">Mapic</h1>
-          <h2 id="project_tagline">Lenguaje de programación mapic</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/alexBaezD/mapic/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/alexBaezD/mapic/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a id="mapic--un-nuevo-concepto-en-la-programación-de-un-pic" class="anchor" href="#mapic--un-nuevo-concepto-en-la-programaci%C3%B3n-de-un-pic" aria-hidden="true"><span class="octicon octicon-link"></span></a>Mapic , un nuevo concepto en la programación de un PIC</h3>
-
-<p>Permite desarrollar de una manera facil, codigo para programar PIC16F887, traduce el codigo a C y utiliza el compilador XC8 de Microchip</p>
-
-<h3>
-<a id="requisitos-para-el-correcto-funcionamiento" class="anchor" href="#requisitos-para-el-correcto-funcionamiento" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requisitos Para el Correcto Funcionamiento</h3>
-
-<p>Tener Instalado Proteus 8,Simulador de Circuitos
-Tener Instalado XC8 , el compilador de C que proporciona la empresa Microchip</p>
-
-<h3>
-<a id="el-pic16f887" class="anchor" href="#el-pic16f887" aria-hidden="true"><span class="octicon octicon-link"></span></a>El PIC16F887</h3>
-
-<p><a href="http://ww1.microchip.com/downloads/en/DeviceDoc/41291E.pdf">Documentación </a></p>
-
-<h3>
-<a id="equipo" class="anchor" href="#equipo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Equipo:</h3>
-
-<ul>
-<li>* Alejandro Báez Domínguez</li>
-<li>* Moises Martinez Ramirez</li>
-<li>* Carlos Vazquez Gomez</li>
+</head>
+<body>
+<div class="navbar-fixed">
+ <ul id="dropdown1" class="dropdown-content">
+  <li><a href="start.html">Inicia</a></li>
+  <li><a href="ejemplos.html">Ejemplos</a></li>
+  <li class="divider"></li>
+  <li><a href="referencia.html">Referencias</a></li>
+  <li><a href="faq.html">FAQ</a></li>
 </ul>
-      </section>
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a href="index.html" class="brand-logo">
+      <img src="img/logo1.png"></a>
+      
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li>
+        <a href="index.html"> <i class="mdi-action-home"></i></a></li>
+       
+        <li><a href="jasmo.html">Jasmo - Studio</a></li>
+         <li><a href="sintaxis.html">Sintaxis</a></li>
+          <li><a class="dropdown-button" href="ejemplos.html" data-activates="dropdown1">Aprende<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+      </ul>
     </div>
+  </nav>
+</div>
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center ">Mapic & Jasmo Studio</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">Un moderno lenguaje y el mejor compañero para su edición.</h5>
+        </div>
+        <div class="row center">
+          <a href="#" id="download-button" class="btn-large waves-effect waves-light blue lighten-1">
+       A Programar!!</a>
+        </div>
+        <br><br>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Mapic maintained by <a href="https://github.com/alexBaezD">alexBaezD</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
+      </div>
     </div>
+    <div class="parallax"><img src="img/background.png" alt="Unsplashed background img 2"></div>
+  </div>
 
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center blue-text"><i class="mdi-image-flash-on"></i></h2>
+            <h5 class="center">¿Qué es Mapic</h5>
+
+            <p class="light">Es un nuevo lenguaje de programación.
+            </p>
+            
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center blue-text"><i class="mdi-action-list"></i></h2>
+            <h5 class="center">¿Por qué usar Mapic?</h5>
+
+            <p class="light">
+                Es más facil de implementar,comprenderlo , para cosas simples.
+            </p>
+            
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center blue-text"><i class="mdi-av-web"></i></h2>
+            <h5 class="center">¿Para que me sirve Mapic?</h5>
+            <p class="light">
+                Es más facil de implementar,comprenderlo , para cosas simples.
+            </p>
+            </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h5 class="header col s12 light">Un moderno lenguaje que se inspira de ChaleSens</h5>
+        </div>
+        
+        
+      </div>
+    </div>
+    <div class="parallax"><img src="img/2.png" alt="Unsplashed background img 2"></div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+
+      <div class="row">
+        <div class="col s12 center">
+          <h3 ><i class="mdi-content-send blue-text"></i></h3>
+          <h4>Objetivos</h4>
+          <p class="left-align light">Facilitar 
+          la programación a los alumnos de la materia de Sistemas Programables del Instituto Tecnologico de Orizaba</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h5 class="header col s12 light">Un moderno lenguaje que se inspira de ChaleSens</h5>
+    <div class="col s12 m6">
+       <table class="responsive-table ">
+        <thead>
+          <tr>
+              <th data-field="id">Requerimientos de Software</th>
+              
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Proteus 8,Simulador de Circuitos</td>
+            
+          </tr>
+          <tr>
+            <td>XC8 ,el compilador de Microchip</td>
+            
+          </tr>
+          <tr>
+            <td>Java 8</td>
+            
+          </tr>
+        </tbody>
+      </table></div>
+     <div class="col s12 m6">
+       <table class="responsive-table ">
+        <thead>
+          <tr>
+              <th data-field="id">Dispositivo</th>
+              
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Un PIC16F887</td>
+            
+          </tr>
+          <tr>
+            <td>Un Protoboard</td>
+            
+          </tr>
+          <tr>
+            <td>Un Programador</td>
+            
+          </tr>
+        </tbody>
+      </table></div>
     
+     
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="img/verde1.jpg" alt="Unsplashed background img 3"></div>
+  </div>
+
+  <footer class="page-footer blue-grey">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+         <img src="img/logo2.png" alt="BCube">
+          <h5 class="white-text">BCube Inc</h5>
+          <p class="grey-text text-lighten-4">
+              ©Derechos Reservados
+              S.A. de C.V.<br>
+              Alejandro , Carlos, Moises.
+          </p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Contenido</h5>
+          <ul>
+            <li><a class="white-text" href="index.html">Home</a></li>
+            <li><a class="white-text" href="jasmo.html">Jasmo-Studio</a></li>
+            <li><a class="white-text" href="sintaxis.html">Sintaxis</a></li>
+            
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Aprende</h5>
+          <ul>
+            <li><a class="white-text" href="start.html">Inicio</a></li>
+            <li><a class="white-text" href="ejemplos.html">Ejemplos</a></li>
+            <li><a class="white-text" href="referencia.html">Referencias</a></li>
+            <li><a class="white-text" href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+     
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="js/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
 
   </body>
 </html>

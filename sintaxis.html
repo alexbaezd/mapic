@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Mapic</title>
+
+  <!-- CSS  -->
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  
+</head>
+<body>
+<div class="navbar-fixed">
+ <ul id="dropdown1" class="dropdown-content">
+  <li><a href="start.html">Inicia</a></li>
+  <li><a href="ejemplos.html">Ejemplos</a></li>
+  <li class="divider"></li>
+  <li><a href="referencia.html">Referencias</a></li>
+  <li><a href="faq.html">FAQ</a></li>
+</ul>
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a href="index.html" class="brand-logo">
+      <img src="img/logo1.png"></a>
+      
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li>
+        <a href="index.html"> <i class="mdi-action-home"></i></a></li>
+       
+        <li><a href="jasmo.html">Jasmo - Studio</a></li>
+         <li><a href="sintaxis.html">Sintaxis</a></li>
+          <li><a class="dropdown-button" href="ejemplos.html" data-activates="dropdown1">Aprende<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+ <div id="index-banner" class="parallax-container">
+  <div class="section no-pad-bot ">
+    <div class="container">
+      <br><br>
+      <h1 class="header center white-text">Documentación de Mapic</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">Ayuda de Palabras Reservadas en el Lenguaje Mapic</h5>
+      </div>
+      
+      <br><br>
+        <div class="row">
+     
+      <div class="col s8 offset-s2 grid-example"><span class="flow-text">
+      <div class="card-panel white">
+          <span class="light-blue-text"><h5>Esto es una referencia de las palabras reservadas,
+          asi como su uso y significado.</h5>
+          </span>
+        </div>
+     </span></div>
+    </div>
+          
+    </div>
+    
+  </div>
+<div class="parallax"><img src="img/background.png" alt="Unsplashed background img 2"></div>
+ </div>
+  <div class="section no-pad-bot" >
+      <div class="container">
+          <div class="row">
+               <div class="col s8 offset-s2 grid-example">
+                     <table class="responsive-table  striped">
+        <thead>
+          <tr>
+              <th data-field="id">Keyword</th>
+              <th data-field="name">Detalles</th>
+              
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td class="blue-text">TimeMS</td>
+            <td>Esta palabra reservada se utiliza para invocar un retardo</td>
+           
+          </tr>
+          <tr>
+            <td class="blue-text">Fuses</td>
+            <td>Palabra reservada para establecer la configuracion Básica del PIC16F887</td>
+           
+          </tr>
+          <tr>
+            <td class="blue-text">Setup</td>
+            <td>Configuración de los puertos</td>
+          </tr>
+           <tr>
+            <td class="blue-text">Main</td>
+            <td>Las instrucciones dentro de estas dos , sera incluidas en el Metodo Main , por defecto se invoca a Setup y Ciclo.</td>
+          </tr>
+           <tr>
+            <td class="blue-text">Ciclo</td>
+            <td>Lo que este dentro de esta palabra,estara en un ciclo infinito.</td>
+          </tr>
+           <tr>
+            <td class="blue-text">Retardo</td>
+            <td>Invoca a un metodo predefinido</td>
+          </tr>
+           <tr>
+            <td class="blue-text">Toggle</td>
+            <td>Cambio de estado de un Puerto</td>
+          </tr>
+           <tr>
+            <td class="blue-text">Void</td>
+            <td>Palabra para formar un metodo</td>
+          </tr>
+        </tbody>
+      </table>
+                </div>
+          </div>
+      </div>
+  </div>
+
+            
+  
+<div class="section no-pad-bot " >
+    <div class="container">
+
+      <!--   Icon Section   -->
+      <div class="row">
+       <h5 class="center">Lista de referencia a los puertos del PIC16F887</h5>
+       <div class="center"><img id="image-test" class="responsive-img" src="img/puertos.png"  style="opacity:0;"></div>
+        <div class="col s12 m4">
+          <div class="icon-block">
+          <h2 class="center light-blue-text"><i class="mdi-device-storage"></i></h2>
+          <h5>Puerto Principales</h5>
+          <div class="collection ">
+            <a href="#!" class="collection-item light-blue-text">PA</a>
+            <a href="#!" class="collection-item light-blue-text">PB</a>
+            <a href="#!" class="collection-item light-blue-text">PC</a>
+            <a href="#!" class="collection-item light-blue-text">PD</a>
+            <a href="#!" class="collection-item light-blue-text">PE</a>
+          </div>
+        </div>
+    </div>
+
+        <div class="col s12 m4">
+         <div class="icon-block">
+          <h2 class="center light-blue-text"><i class="mdi-device-storage"></i></h2>
+          <h5>Puerto Principales</h5>
+          <div class="collection ">
+            <a href="#!" class="collection-item light-blue-text">TA</a>
+            <a href="#!" class="collection-item light-blue-text">TB</a>
+            <a href="#!" class="collection-item light-blue-text">TC</a>
+            <a href="#!" class="collection-item light-blue-text">TD</a>
+            <a href="#!" class="collection-item light-blue-text">TE</a>
+          </div>
+        </div>
+        </div>
+
+        <div class="col s12 m4">
+         <div class="icon-block">
+          <h2 class="center light-blue-text"><i class="mdi-device-storage"></i></h2>
+          <h5>Puerto Principales</h5>
+          <div class="collection ">
+            <a href="#!" class="collection-item light-blue-text">TA0</a>
+            <a href="#!" class="collection-item light-blue-text">TA2</a>
+            <a href="#!" class="collection-item light-blue-text">TA3</a>
+            <a href="#!" class="collection-item light-blue-text">TA4</a>
+            <a href="#!" class="collection-item light-blue-text">TA5</a>
+          </div>
+        </div>
+        </div>
+      </div>
+
+    </div>
+    <br><br>
+
+   
+  </div>
+  
+  <div class="container">
+      <div class="row">
+      <h4 class="center">Resto de Puertos</h4>
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a class="active light-blue-text" href="#test1">Puertos 1</a></li>
+        <li class="tab col s3"><a class="light-blue-text" href="#test2">Puertos 2</a></li>
+        <li class="tab col s3"><a class="light-blue-text" href="#test3">Puertos 3</a></li>
+        <li class="tab col s3"><a class="light-blue-text" href="#test4">Puertos 4</a></li>
+      </ul>
+    </div>
+    <div id="test1" class="col s12">
+        <table>
+        <thead>
+          <tr>
+              <th data-field="id">Nombre</th>
+              
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>TA0</td>
+           
+          </tr>
+          <tr>
+            <td>TA0</td>
+           
+          </tr>
+          <tr>
+            <td>TA0</td>
+           
+           
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="test2" class="col s12">Lista de puertos </div>
+    <div id="test3" class="col s12">Lista de Puertos</div>
+    <div id="test4" class="col s12">
+        <div class="collection ">
+            <a href="#!" class="collection-item light-blue-text">TA0</a>
+            <a href="#!" class="collection-item light-blue-text">TA2</a>
+            <a href="#!" class="collection-item light-blue-text">TA3</a>
+            <a href="#!" class="collection-item light-blue-text">TA4</a>
+            <a href="#!" class="collection-item light-blue-text">TA5</a>
+          </div>
+    </div>
+  </div>
+  </div>
+  <br><br>
+  
+
+  <footer class="page-footer blue-grey">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+         <img src="img/logo2.png" alt="BCube">
+          <h5 class="white-text">BCube Inc</h5>
+          <p class="grey-text text-lighten-4">
+              ©Derechos Reservados
+              S.A. de C.V.<br>
+              Alejandro , Carlos, Moises.
+          </p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Contenido</h5>
+          <ul>
+            <li><a class="white-text" href="index.html">Home</a></li>
+            <li><a class="white-text" href="jasmo.html">Jasmo-Studio</a></li>
+            <li><a class="white-text" href="sintaxis.html">Sintaxis</a></li>
+            
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Aprende</h5>
+          <ul>
+            <li><a class="white-text" href="start.html">Inicio</a></li>
+            <li><a class="white-text" href="ejemplos.html">Ejemplos</a></li>
+            <li><a class="white-text" href="referencia.html">Referencias</a></li>
+            <li><a class="white-text" href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+     
+      </div>
+    </div>
+  </footer>
+
+  <!--  Scripts-->
+  <script src="js/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
+</html>
