@@ -1,0 +1,20 @@
+Fuses
+
+Setup {
+	PA=ENTRADA;
+}
+
+
+
+Ciclo {
+	PA=ENTRADA;
+}
+
+
+Main {
+	
+	Si (10 == 7) Then
+		PD1 Toggle PD1;
+	Fin Si 
+	
+}

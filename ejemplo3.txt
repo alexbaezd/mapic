@@ -2,10 +2,15 @@ Fuses
 
 Void getListPorts(){
 
-    PA1 Toggle PA1;
-    TimeMS(10000);
-    PA2 Toggle PA2;
-    TimeMS(2000);
+    
+    Si (10 <= 7) Then
+		PD1 Toggle PD1;
+		
+	No
+		Si (5==5)Then
+			PD3 Toggle PD3;
+		Fin Si
+	Fin Si 
 }
 Void metodo1(){
   PA Toggle PA;

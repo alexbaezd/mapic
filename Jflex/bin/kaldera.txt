@@ -1,0 +1,33 @@
+import java_cup.runtime.*;
+
+%%
+%unicode
+%cup
+%line
+%column
+
+%{
+  StringBuffer string = new StringBuffer();
+
+  private Symbol symbol(int type) {
+    return new Symbol(type, yyline, yycolumn);
+  }
+  private Symbol symbol(int type, Object value) {
+    return new Symbol(type, yyline, yycolumn, value);
+  }
+%}
+
+comentario= "\*""\*"~ "\*""\*"
+
+%%
+[0-9]+               		{ return symbol(sym.NUMERO); } 
+"heat"             	 	{ return symbol(sym.TOKHEAT); }
+"on"|"off"       		{ return symbol(sym.STATE); }
+"target"	       		{ return symbol(sym.TOKTARGET); }
+"temperature"             	{ return symbol(sym.TOKTEMPERATURE); }
+[a-zA-Z]([a-zA-Z]|[0-9]+)*	{ return symbol(sym.TOKTIDKAL); }
+\n                      			/* ignore end of line */;
+[ \t]+                 	 		/* ignore whitespace */;
+{comentario}		{ return symbol(sym.TOKCOMENTARIO); }
+.                            		 { System.out.println("Illegal character <"+ yytext()+">"); }
+

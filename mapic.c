@@ -26,46 +26,50 @@
 	void retardo(unsigned int i){for(;i>0;i--);}
 
 
-	void  MiMetodo()
-	{null
+	void  getListPorts()
+	{
+		PORTDbits.RD1=!	PORTDbits.RD1;
+
+		PORTDbits.RD2=!	PORTDbits.RD2;
+
+		PORTDbits.RD3=!	PORTDbits.RD3;
+
+		if(5==5)
+		{	null		}
+	
+		if(10<=7)
+		{	null		}
+		else{
+		null		}
+	
 	}
-	void  MuchosSINO()
-	{null
-	}
+	void  metodo1()
+	{
+		PORTA=!	PORTA;
+		retardo(5000);
 
-
-	void  MetodoPuertos()
-	{		retardo(23232323);
-null
-	}
-
-
-	void  MuchosCASE()
-	{null
 	}
 
 	void setup(){
 	OSCCON=0x60;
 	ANSEL=0;
-	TRISD=0;
-	PORTD=0;
-null
+	PORTAbits.RA1=1;
+	PORTAbits.RA2=0;
+
 }
 
 	void loop(){
 	 	while(1){
 
-null	PORTDbits.RD0=!	PORTDbits.RD0;
-		retardo(50000);
-null		}
+	metodo1();
+		}
 
 	}
 
 	void main(void){
 		setup();
 		loop();
-null	MiMetodo();
-	MuchosSINO();
-nullnull
+	getListPorts();
+
 		 return; 
 	 }

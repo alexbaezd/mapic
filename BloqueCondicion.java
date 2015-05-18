@@ -1,3 +1,3 @@
 public class BloqueCondicion{
-	String etqVerdad, etqFalso;
+	String etqVerdad, etqFalso, condicion;
 }
