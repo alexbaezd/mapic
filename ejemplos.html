@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
@@ -86,21 +86,23 @@
                         PD=SALIDA;
                     }
                     
-                    Retardo();
-                    
+                     Retardo ();
+
                     Ciclo {
                         PD0 TOGGLE PD0;
-                        TimeMS(50000);
+                        TimeMS (50000);
                     }
 
                     Main {
-                        TimeMS(1);
+                        TimeMS (1);
                     }
- </code></pre> 
-            <p>En la siguiente imagen se muestra en Proteus , que se esta ejecutando el ejemplo anterior.
-           </p>
-            <h3>El Resultado Final , seria el siguinte, al traducirlo a lenguaje C</h3>
-                             <pre><code data-language="c">
+ </code></pre>
+           
+         
+            <h5>El Resultado Final , seria el siguinte, al traducirlo a lenguaje C</h5>
+             
+             
+                                        <pre><code data-language="c">
 #include &lt;xc.h&gt; 
 // CONFIG1
 #pragma config FOSC = INTRC_NOCLKOUT
@@ -146,50 +148,11 @@
 
 		 return; 
 	 }</code></pre> 
-            </div>
-<div class="col s12 m8 offset-m2 l6 offset-l3">
-         <h4>¿Que debe de ir y en que parte?</h4>
-        <h5>Setup</h5>
-        <p>En el SETUP se colocan la lista de puertos a utilizar, y como configurar esos puertos</p>
-        <h4>Ejemplo</h4>
-        		<pre><code data-language="html">
-	Setup {
-           TA=ENTRADA;
-           TD=SALIDA;
-	   PA=ENTRADA;
-	}
-			 </code></pre> 
-        	<p>En este caso se estan configurando los Pueros TA(TRISA) como entrada, el TD(TRISD) como salida, y PA(PORTA) como entrada.</p>
-           <br>
-           
-           <h5>Ciclo</h5>
-    	<p>Aquí se pueden escribir instrucciones , dentro de un ciclo, cabe mencionar que aqui la palabra reservada CICLO , es un loop infinito.</p>
-         <h4>Ejemplo</h4>
-        <pre><code data-language="haskell">
-    Ciclo {
-        PA TOGGLE PA;
-        CHALE(40000);
-        PD TOGGLE PD;
-        miMetodo();
-    }
-			 </code></pre> 
-       
-        
-          <p>Dentro del ciclo </p>
-          
-          
-          <h5>Main</h5>
-          <pre><code data-language="haskell">
-    Main {
-        PA TOGGLE PA;
-        IZQUIERDA();
-        DERECHA();
-    }
-			 </code></pre> 
-          <p>El main , donde se ejecutara el codigo escrito, por defecto al escribir MAIN  se llama al los metodos de SETUP y CICLO</p>
+             
+             
             </div>
        </div>
-    </div>
+</div>
     
 <!-- footer ------------------------------------------>
   <footer class="page-footer blue-grey">
