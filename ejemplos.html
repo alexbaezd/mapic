@@ -82,19 +82,72 @@
                  Fuses
 
                     Setup {
-
+                        TA=SALIDA;
+                        PD=SALIDA;
                     }
-
+                    
+                    Retardo();
+                    
                     Ciclo {
-
+                        PD0 TOGGLE PD0;
+                        TimeMS(50000);
                     }
 
                     Main {
-
+                        TimeMS(1);
                     }
  </code></pre> 
+            <p>En la siguiente imagen se muestra en Proteus , que se esta ejecutando el ejemplo anterior.
+           </p>
+            <h3>El Resultado Final , seria el siguinte, al traducirlo a lenguaje C</h3>
+                             <pre><code data-language="c">
+#include &lt;xc.h&gt; 
+// CONFIG1
+#pragma config FOSC = INTRC_NOCLKOUT
+#pragma config WDTE = OFF       
+#pragma config PWRTE = OFF      
+#pragma config MCLRE = OFF    
+#pragma config CP = OFF         
+#pragma config CPD = OFF       
+#pragma config BOREN = OFF     
+#pragma config IESO = OFF       
+#pragma config FCMEN = OFF      
+#pragma config LVP = OFF        
+
+
+// CONFIG2
+
+#pragma config BOR4V = BOR40V   
+#pragma config WRT = OFF        
+
+	void retardo(unsigned int i){for(;i>0;i--);}
+
+	void setup(){
+	OSCCON=0x60;
+	ANSEL=0;
+	TRISD=0;
+	PORTD=0;
+
+	 }
+
+	void loop(){
+	 	while(1){
+
+	PORTDbits.RD0=!	PORTDbits.RD0;
+		retardo(50000);
+		}
+
+	}
+
+	void main(void){
+		setup();
+		loop();
+		retardo(1);
+
+		 return; 
+	 }</code></pre> 
             </div>
-            <div class="col s12 m8 offset-m2 l6 offset-l3">
+<div class="col s12 m8 offset-m2 l6 offset-l3">
          <h4>¿Que debe de ir y en que parte?</h4>
         <h5>Setup</h5>
         <p>En el SETUP se colocan la lista de puertos a utilizar, y como configurar esos puertos</p>
@@ -138,7 +191,7 @@
        </div>
     </div>
     
-
+<!-- footer ------------------------------------------>
   <footer class="page-footer blue-grey">
     <div class="container">
       <div class="row">
