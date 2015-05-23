@@ -6,8 +6,9 @@
   <title>Mapic</title>
 
   <!-- CSS  -->
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link rel="stylesheet" href="css/monaki.css">
  
 </head>
 <body><div class="navbar-fixed">
@@ -42,23 +43,131 @@
       <h1 class="header center blue-text">Referencías </h1>
       <div class="row center">
         <h5 class="header col s12 light">Referencia del lenguaje Mapic.
-<br>Crear metodos , variables , constantes, sentencias de control ..etc</h5>
+            <br>Crear metodos , variables , constantes, sentencias de control ..etc</h5>
       </div>
-      
-      <br><br>
-
     </div>
   </div>
   
   
   <div class="container">
     <div class="section">
-
-      <!--   Icon Section   -->
-      <div class="row">
-      
+        <div class="row center">
+            <h3 class="header col s12 light">Estructura de un metodo</h3>
+        </div>
+            <h5 class="header col s12 light">
+                1.- Debe contener la palabra reservada <strong>void</strong>
+                <br>
+                2.- Seguido de void debera llevar el <strong>nombre del método</strong>
+                <br>
+                3.- Después del nombre del método llevara los paréntesis  <strong>"(  )"</strong>
+                <br>
+                4.- Por ultimo llevara las llaves <strong>"{  }"</strong>
+                <br>
+                <strong>Como se muestra a continuacion.</strong>
+            </h5>
+         <div class="col s12 m8 offset-m2 l6 offset-l3">
+            <pre>
+                <code data-language="HTML">
+                    void miMetodo(){
+                        //"Instrucciones"
+                    }
+                </code>
+            </pre> 
+        </div>
         
-    
+        <div class="row center">
+            <h3 class="header col s12 light">Declaracion de variables.</h3>
+        </div>
+        <h5 class="header col s12 light">
+            1.- Declaramos el tipo de variable que utilizaremos como: <strong>Real, Char, Integer </strong>
+            <br>
+            2.- El nombre de nuestra <strong>variable</strong>
+            <br>
+            3.- Un signo de igual <strong>"="</strong>
+            <br>
+            4.- El <strong>valor</strong> que le asignaremos a nuestra variable.
+            <br>
+            5.- Por ultimo un punto y coma <strong>";"</strong>
+            <br>
+            <strong>Como se muestra a continuación.</strong>
+        </h5>
+        <div class="col s12 m8 offset-m2 l6 offset-l3">
+            <pre>
+                <code data-language="Java">
+                    Integer miVar1 = 23;
+                    Real miVarReal = 3.1416;
+                    Char = 'd';
+                </code>
+            </pre> 
+        </div>
+        
+        <div class="row center">
+            <h3 class="header col s12 light">Creación de sentencias de control</h3>
+        </div>
+        <h5 class="header col s12 light">
+            <strong>Primero la creación de una decisión simple, su estructura debe ser la siguiente.</strong>
+            <br>
+            1.- iniciando la decisión con la palabra reservada <strong>" Si "</strong>
+            <br>
+            2.- Seguido de un <strong>"(" </strong>paréntesis que abre  y un paréntesis que cierra <strong>")"</strong>
+            <br>
+            3.- Dentro de los paréntesis una <strong>condición o condiciones</strong> las cuales serán evaluadas
+            <br>
+            4.- Al termino de los  paréntesis agregamos la palabra reservada <strong>"Then"</strong>
+            <br>
+            5.- Despues de la palabra Then Agregamos nuestra <strong>intruccion o nuestras instrucciones</strong> 
+            <br>
+            6.- Al término de de nuestra instrucciones agregamos la palabra reservada <strong>" NO "</strong> si el bloque de decisión lo requiere. 
+            <br>
+            7.- Por ultimo agregamos la palabra resrvada <strong>FinSi</strong>
+            <br>
+            <strong>A continuación se muestra un ejemplo de la decisión.</strong>
+        </h5>
+        <div class="col s12 m8 offset-m2 l6 offset-l3">
+            <pre>
+                <code data-language="Java">
+                    Si (24 > 10) Then
+                            //Instruccion
+                        No
+                            //Instrucciones
+                    FinSi
+                </code>
+            </pre> 
+        </div>
+        <h5 class="header col s12 light">
+            <strong>Creación de un bloque de control Swich</strong>
+            <br>
+            1.- Inicia con la palabra reservada <strong>swich</strong>
+            <br>
+            2.- Agregamos un paréntesis que abre <strong>" ( "</strong> con su debida <strong>Condición</strong> a evaluar y después de la condición un paréntesis que cierra<strong> " ) "</strong>
+            <br>
+            3.- Después del paréntesis que cierra agregamos la palabra reservada <strong>of</strong> que marca el inicio de los casos a evaluar.
+            <br>
+            4.- Seguido de la palabra reservada of agregamos la palabra reservada <strong>Case</strong> seguido del número  de caso evaluado.
+            <br>
+            5.- al termino del número  de caso evaluado agregamos <strong>" : "</strong> que indican la instruccion que el caso ejecutara
+            <br>
+            6.- Al término de la instrucción que se ejecutara ponemos un <strong>" ; "</strong>
+            <br>
+            7.- Después de poner el número de instrucciones por el usuario la instrucción <strong>default</strong> será utilizada por el usuario si este lo requiere. Y esta instrucción  muestra el comportamiento similar a un Case.
+            <br>
+            8.- Escribimos la palabra reservada <strong>FinSwich</strong> la cual marca el fin del bloque switch
+            <br>
+        </h5>
+        <div class="col s12 m8 offset-m2 l6 offset-l3">
+            <pre>
+                <code data-language="HTML">
+                    switch (2323) Of
+                     Caso 1: TimeMS(232323);
+                     Caso 2: MuchosSINO();
+                     Caso 3: MetodoPuertos();
+                     Caso 4: PB0 Toggle PB1 ;
+                     default Si (10 > 7) Then
+                          TimeMS(2220);
+                        Fin Si
+                    Fin switch
+                </code>
+            </pre> 
         </div>
     </div>
 </div>
@@ -105,10 +214,11 @@
     </div>
   </footer>
 
-  <!--  Scripts-->
-  <script src="js/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
+  <!--  Scripts-->    
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/rainbow-custom.min.js"></script>
 
   </body>
 </html>
