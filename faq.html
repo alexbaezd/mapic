@@ -6,8 +6,9 @@
   <title>Mapic</title>
 
   <!-- CSS  -->
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link rel="stylesheet" href="css/monaki.css">
   
 </head>
 <body><div class="navbar-fixed">
@@ -39,9 +40,39 @@
       <br><br>
       <h1 class="header center blue-text"> Problemas Comunes y Algunas Soluciones</h1>
       <div class="row center">
-        <h5 class="header col s12 light">Ayuda</h5>
-        <h5 class="header col s12 light">¿Por qué no se ejecuta mi programa?</h5>
-        <h5 class="header col s12 light">¿Por qué no se compila mi programa?</h5>
+          <h1 class="header col s12 light">Ayuda</h1>
+        <h4 class="header col s12 light"><strong>¿Por qué no se ejecuta mi programa?</strong></h4>
+          <div class="row rigth">
+                <p class="left-align light" >
+                    1.- Probablemente no tienes instalado Java
+                    <br>
+                    Verificando que java este instalado.
+                    <br>
+                    Damos click en el botón de inicio -> Panel de control -> Vista iconos grandes.
+                    <br>
+                    Buscamos un logotipo semejante al siguiente.
+                    <br>
+                </p>
+              <div class="card-image">
+                <img class="responsive-img" src="img/Captura1.PNG">
+              </div>
+              <p class="left-align light">
+                Damos doble click sobre el icono de java, para verificar la versión de java que tenemos.
+                  <br>
+                  Oprimimos el botón de <strong>Acerca de...</strong>
+                  <br>
+                  Y verificamos nuestra versión de java como se muestra en la imagen.
+              </p>
+              <div class="card-image">
+                <img class="responsive-img" src="img/Captura2.PNG">
+              </div>
+              <p class="left-align light">
+                La version de java debe ser mayo o igual a la <strong>version 8.</strong>
+              </p>
+          </div>
+          
+        <h4 class="header col s12 light">¿Por qué no se compila mi programa?</h4>
+          
         <h5 class="header col s12 light">¿En dónde se guarda mi programa cuando lo termino de compilar?</h5>
         <h5 class="header col s12 light">¿En que sistemas operativos funciona Mapic?</h5>
         <h5 class="header col s12 light">Más información acerca del pic16f887</h5>
@@ -114,9 +145,9 @@
   </footer>
 
   <!--  Scripts-->
-  <script src="js/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
-
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/rainbow-custom.min.js"></script>
   </body>
 </html>
