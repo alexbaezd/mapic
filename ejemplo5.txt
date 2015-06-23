@@ -7,8 +7,8 @@ Void MiMetodo(){
   No 
   Si(2<20) Then
     TimeMS(2);
-  Fin Si 
-   Fin Si
+  Fin  
+   Fin 
 }
 
 Void MuchosSINO(){
@@ -24,10 +24,10 @@ Void MuchosSINO(){
         No 
          Si(10>=20) Then
           PD7 Toggle PD7;
-         Fin Si
-       Fin Si 
-      Fin Si 
-   Fin Si
+         Fin 
+       Fin  
+      Fin  
+   Fin 
 }
 
 
@@ -49,7 +49,7 @@ Void MuchosCASE(){
      Caso 4: PB0 Toggle PB1 ;
      default Si (10 > 7) Then
           TimeMS(2220);
-        Fin Si
+        Fin 
     Fin switch
 
 }
@@ -60,7 +60,7 @@ Setup {
 
   Si (10 > 7) Then
     TimeMS(2220);
-  Fin Si  
+  Fin  
 }
 
 Retardo();
@@ -74,7 +74,7 @@ Ciclo {
   No
     PD1 Toggle PD1;
     
-  Fin Si 
+  Fin  
 
 }
 
@@ -83,7 +83,7 @@ Main {
 
   Si (10 <= 7) Then
     PD1 Toggle PD1;
-  Fin Si 
+  Fin  
 
   
   MiMetodo();

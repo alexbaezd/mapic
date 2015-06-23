@@ -1,31 +1,21 @@
 Fuses
 
 Void getListPorts(){
-
-    
     Si (10 <= 7) Then
 		PD1 Toggle PD1;
-		
-	No
-		Si (5==5)Then
-			PD3 Toggle PD3;
-		Fin Si
-	Fin Si 
+		PD2 Toggle PD2;
+	Finsi
 }
-Void metodo1(){
-  PA Toggle PA;
-  TimeMS(5000);
-}
+
 Setup {
   PA1=ENTRADA;
   PA2=SALIDA;
 }
   
-Retardo();
 
 Ciclo {
   
-  metodo1();
+ PA Toggle PA;
 
 }
 

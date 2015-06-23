@@ -4,6 +4,7 @@ import java.util.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Stack;
 
 /***************************************************************************/
 parser code {:
@@ -77,6 +78,16 @@ String errores="";
 String retardos="";
 String auxiliar="";
 String losMetodos="";
+String aux="";
+String auxno="";
+String aux2="";
+String p2="";
+String p1="";
+String aux3="";
+frijol f2;
+
+
+	private static Stack<frijol>p = new Stack<frijol>();
 
 	private static int actualTmp=0;
 
@@ -103,12 +114,13 @@ String losMetodos="";
 		etqs.etqVerdad = nuevaEtq();
 		etqs.etqFalso = nuevaEtq();
 		etqs.condicion = Rvalor1+condicion+Rvalor2;
+		auxiliar="";
 		/*
 		*System.out.println("\t if" + Rvalor1 + condicion + Rvalor2 + "");
 		*/
-	System.out.println("\tif "+ Rvalor1 + condicion + Rvalor2 +" goto "+ etqs.etqVerdad);
+	System.out.println("\tif "+ Rvalor1 + condicion + Rvalor2 +" goto etq Vd "+ etqs.etqVerdad);
 	//RESULT=Rvalor1 + condicion + Rvalor2;
-    System.out.println("\tgoto "+ etqs.etqFalso);
+    System.out.println("\tgoto etq Falso: "+ etqs.etqFalso);
 		return etqs;
 	}
 
@@ -166,6 +178,8 @@ non terminal String expression;
 non terminal BloqueCondicion condicion;
 non terminal DatosCase inicioCASE;
 non terminal Stack tipo,exprtipos,decl;
+non terminal frijol f;
+non terminal Stack pila;
 // Declaraciones de preferencia
 /* Preferencias*/
 precedence left MAS, MENOS , MAYOR , MENOR,TOGGLE, IGUAL , IGUAL2;
@@ -199,8 +213,13 @@ precedence left ID,NMETODO;
  metodos::=  setup ciclo
 	        |setup RETARDO:retardo LPAREN RPAREN PCOMA ciclo   {: miCodigo=retardo+miCodigo;  :}
 	        |  metodo setup ciclo
+				{: 
+					miCodigo=losMetodos+miCodigo;  
+				:}
 	        |  metodo setup RETARDO:retardo LPAREN RPAREN PCOMA ciclo
-			{: miCodigo=retardo+losMetodos+miCodigo;  :}
+				{: 
+					miCodigo=retardo+losMetodos+miCodigo;  
+				:}
 			;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////			
 setup::=SETUP:setup   LLLAVE confpuertos RLLAVE
@@ -248,6 +267,11 @@ main::= MAIN:main  LLLAVE instrucciones  RLLAVE
 			miCodigo=miCodigo+main+"{\n\t\tsetup();\n\t\tloop();\n"+auxiliar+"\n\t\t return; \n\t }";
 		    auxiliar="";
 		:}
+
+		|	MAIN:main  LLLAVE  RLLAVE
+		{:
+			miCodigo=miCodigo+main+"{\n\t\tsetup();\n\t\tloop();\n\n\t\t return; \n\t }";
+		:}
 		;
 ///////////////////////////////////////////////////////////////////////////////////////////////
 metodo::=VOID:v NMETODO:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
@@ -277,20 +301,26 @@ metodo::=VOID:v NMETODO:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
 		    auxiliar="";
 			//System.out.println("codigo intermedio==> int "+codigo);
 		 :};
+
 //////////////////////////////////////////////////////////////////////////////////////////
 instrucciones::=instruccion:in
 			{:
-				//System.out.println("valor de in:"+in);
-				auxiliar=auxiliar+in;
-				//System.out.println("cadena en la instruccion:"+auxiliar);
+				System.out.println("valor de in en intruccion:"+in);
+				auxiliar=in + auxiliar;
+                //aux=in;
+				//RESULT=in;
+				System.out.println("cadena de una istruccion en aux: "+auxiliar);
 			:}
 			
-			|instrucciones instruccion:in
+			|instruccion:in instrucciones 
 			{:
-				//System.out.println("valor de in:"+in);
-				auxiliar=auxiliar+in;
-				//System.out.println("cadena en la instruccion:"+auxiliar);
+				System.out.println("valor de in en instrucciones:"+in);
+				auxiliar=in+auxiliar;
+				//RESULT=in;
+                //aux=in;
+				System.out.println("cadena de varias instrucciones en aux:"+auxiliar);
 			:};
+
 /////////////////////////////////////////////////////////////////////////////////////////////					  
 instruccion::= puertos:p TOGGLE:t puertost:u PCOMA
 			{:
@@ -299,8 +329,15 @@ instruccion::= puertos:p TOGGLE:t puertost:u PCOMA
 				//System.out.println("cadena de toggles:"+RESULT);
 			:}
 			
-       		| puertos IGUAL NUMERO PCOMA
-			
+       		| puertos:p IGUAL NUMERO:n PCOMA
+
+			{:
+				//   miCodigo=p+t+u+";\n"+miCodigo;
+				RESULT="\n\t"+p+n+";\n";
+				//System.out.println("cadena de toggles:"+RESULT);
+			:}
+
+
 		 	| NMETODO:i LPAREN RPAREN PCOMA
 			{:  
 				Metodos s;
@@ -326,32 +363,47 @@ instruccion::= puertos:p TOGGLE:t puertost:u PCOMA
 			:}
 //***********************
 			
-			| SI:etqFinIf  LPAREN condicion:c  RPAREN
-			{:
-				System.out.println("label 1: "+c.etqVerdad);
-				
-			:} 
-			THEN instrucciones:i  
-			
-			opcional:o
-			{:
-				System.out.println("opcional: "+o);
-				//RESULT="\n"+o;:}
-			FIN SI 
-			{:	RESULT="\n\t\tif("+c.condicion+")\n\t\t{\t"+i+"\t\t}"+o+"\n\t";
-				System.out.println("label 3: "+ etqFinIf);:}
+			| SI:etqFinIf  LPAREN condicion:c  RPAREN THEN instrucciones:i FIN
+			{:	
+				aux="\n\t\tif("+c.condicion+")\n\t\t{\t"+auxiliar+"\t\t}";
+				auxiliar="";
+				RESULT=aux;
+			:}
+///////**************************************
+
+			| SI:etqFinIf  LPAREN condicion:c  RPAREN THEN instrucciones
+				{:
+					frijol f=new frijol("",auxiliar);
+					p.push(f);
+					auxiliar="";
+				:}
+			NO instrucciones FIN
+				{:
+					f2=p.pop();
+					p1=f2.getInstruccion();
+					auxno=auxiliar;
+					RESULT="\n\t\tif("+c.condicion+")\n\t\t{\t"+p1+"\t\t}"+"\n\t\telse\n\t\t{\n\t"+auxno+"\t\t}";
+					auxiliar="";
+				:}
 				
 //******************				
 			| sentCASE
 			
 			|WHILE:etqInicioWhile 
+				
 				{:System.out.println("label "+ etqInicioWhile);:}
-				LPAREN  condicion:c  RPAREN
+			
+			LPAREN  condicion:c  RPAREN
+				
 				{:System.out.println("label "+ c.etqVerdad);:}
-				DO instruccion
-				FIN WHILE {:
+			
+			DO instrucciones FIN WHILE 
+			{:
 					System.out.println("\tgoto "+ etqInicioWhile);
-					System.out.println("label "+ c.etqFalso);:}
+					System.out.println("label "+ c.etqFalso);
+
+					
+			:}
 			;
 //////////////////////////////////////////////////////////////////////////////
 sentCASE ::= inicioCASE:ic OTHERWISE instruccion  FIN SWITCH 
@@ -397,14 +449,6 @@ inicioCASE ::= SWITCH LPAREN expression:e  RPAREN  OF
 					System.out.println("label "+ etqFinCaso); 
 					RESULT=ic;
 				:}
-			;
-
-opcional ::= NO instrucciones:i
-			{:System.out.println("NO: "+i);
-				RESULT="\n\t\telse{\n\t\t"+i+"\t\t}";
-			:}
-			| /* Epsilon  */
-				{:RESULT="";:}
 			;
 
 

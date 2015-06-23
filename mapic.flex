@@ -3,6 +3,7 @@
 %cup
 %line
 %column
+%ignorecase
 %{	
 
 	int lineaActual=1;

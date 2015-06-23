@@ -1,0 +1,30 @@
+Fuses
+
+Void chale()
+{
+	TimeMS(5000);
+}
+
+Setup {
+	PD=SALIDA;
+
+}
+
+Retardo();
+
+Ciclo {
+	PD1=1;TimeMS(20000);PD1=0;
+	PD2=1;TimeMS(20000);PD2=0;
+	PD3=1;TimeMS(20000);PD3=0;
+	PD4=1;TimeMS(20000);PD4=0;
+	PD5=1;TimeMS(20000);PD5=0;
+	PD6=1;TimeMS(20000);PD6=0;
+	PD7=1;TimeMS(20000);PD7=0;
+	PD7 Toggle PD7;
+	chale();
+}
+
+Main{
+	
+
+}
