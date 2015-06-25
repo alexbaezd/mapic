@@ -36,18 +36,28 @@ Void MetodoPuertos(){
   TimeMS(23232323);
 
   switch (1)  Of
-    default TimeMS(2333);
+    default: TimeMS(2333);
   Fin switch
 }
 
 Void MuchosCASE(){
   
-  switch (2323) Of
-     Caso 1: TimeMS(232323);
+  switch (2423) Of
+     Caso 1: Si (10 <= 7) Then
+              PD1 Toggle PD1;
+                while (3>2) do
+                  PC Toggle PC;
+                  Si(10 >= 7) Then
+                    TimeMS(2220);
+                  No
+                    PD1 Toggle PD1;
+                  Fin  
+                fin while
+              Fin  
      Caso 2: MuchosSINO();
      Caso 3: MetodoPuertos();
      Caso 4: PB0 Toggle PB1 ;
-     default Si (10 > 7) Then
+     default: Si (10 > 7) Then
           TimeMS(2220);
         Fin 
     Fin switch
@@ -83,6 +93,14 @@ Main {
 
   Si (10 <= 7) Then
     PD1 Toggle PD1;
+    while (3>2) do
+      PC Toggle PC;
+      Si(10 >= 7) Then
+        TimeMS(2220);
+      No
+        PD1 Toggle PD1;
+      Fin  
+    fin while
   Fin  
 
   
@@ -90,11 +108,34 @@ Main {
   MuchosSINO();
 
   switch (5)  Of
-    default TimeMS(2333);
+    default: TimeMS(2333);
   Fin switch
   
   while (10 >= 89) Do
     TimeMS(1);
+    PA Toggle PA;
+    
+    while(5<3) Do
+      while(3==3) Do
+        PB Toggle PB;
+        Si(10 == 7) Then
+          PD3 Toggle PD3;
+        No 
+          Si(2<20) Then
+            PD1 Toggle PD1;
+          No 
+            Si(10>=20) Then
+              PD2 Toggle PD2;
+            No 
+              Si(10>=20) Then
+                PD7 Toggle PD7;
+              Fin 
+            Fin  
+          Fin  
+        Fin 
+      Fin while
+    Fin while 
+
   Fin while
 
 

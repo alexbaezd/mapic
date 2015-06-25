@@ -35,18 +35,15 @@ Main {
 		Fin
 	Fin
 
-	Si (3<4)Then
-		
+	Si (3<4)Then		
 		PB Toggle PB;
 	No
 		Si (5>7)Then
 			pa Toggle PB;
 			PC Toggle PC;
 		No
-			
-				TimeMS(10);
-				PD Toggle PD;
-			
+			TimeMS(10);
+			PD Toggle PD;		
 		Fin	
 	Fin
 

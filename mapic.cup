@@ -81,6 +81,7 @@ String losMetodos="";
 String aux="";
 String auxno="";
 String aux2="";
+String auxsw="";
 String p2="";
 String p1="";
 String aux3="";
@@ -167,6 +168,7 @@ non terminal setup;
 non terminal ciclo;
 non terminal metodo;
 non terminal sentCASE;
+non terminal cases;
 non terminal String  instrucciones;
 non terminal confpuertos;
 non terminal String puertos;
@@ -361,15 +363,16 @@ instruccion::= puertos:p TOGGLE:t puertost:u PCOMA
 			{:
 				RESULT=p+u+"+"+n+";\n";
 			:}
-//***********************
+//********************************************************************************
 			
 			| SI:etqFinIf  LPAREN condicion:c  RPAREN THEN instrucciones:i FIN
 			{:	
-				aux="\n\t\tif("+c.condicion+")\n\t\t{\t"+auxiliar+"\t\t}";
+				aux="\n\t\tif("+c.condicion+")\n\t\t{\t"+auxiliar+"\t\t}\n";
 				auxiliar="";
 				RESULT=aux;
 			:}
-///////**************************************
+
+//********************************************************************************
 
 			| SI:etqFinIf  LPAREN condicion:c  RPAREN THEN instrucciones
 				{:
@@ -382,81 +385,56 @@ instruccion::= puertos:p TOGGLE:t puertost:u PCOMA
 					f2=p.pop();
 					p1=f2.getInstruccion();
 					auxno=auxiliar;
-					RESULT="\n\t\tif("+c.condicion+")\n\t\t{\t"+p1+"\t\t}"+"\n\t\telse\n\t\t{\n\t"+auxno+"\t\t}";
+					RESULT="\n\t\tif("+c.condicion+")\n\t\t{\t"+p1+"\t\t}"+"\n\t\telse\n\t\t{\n\t"+auxno+"\t\t}\n";
 					auxiliar="";
 				:}
-				
-//******************				
-			| sentCASE
+
+//********************************************************************************				
 			
-			|WHILE:etqInicioWhile 
-				
-				{:System.out.println("label "+ etqInicioWhile);:}
-			
-			LPAREN  condicion:c  RPAREN
-				
-				{:System.out.println("label "+ c.etqVerdad);:}
-			
-			DO instrucciones FIN WHILE 
+			| SWITCH LPAREN expression:e RPAREN OF cases:c FIN SWITCH 
 			{:
-					System.out.println("\tgoto "+ etqInicioWhile);
-					System.out.println("label "+ c.etqFalso);
+				RESULT="\n\t\tSwitch("+e+")\n{\n\t\t\t"+c+"\n}\n";
+				auxiliar="";
+			:}
+//*****************************************************************************	
 
-					
+			| WHILE:etqInicioWhile LPAREN  condicion:c  RPAREN DO instrucciones FIN WHILE 
+			{:
+				RESULT="\n\t\tWhile("+c.condicion+")Do\n\t\t{\n\t"+auxiliar+"\t\t}";
+				auxiliar="";	
 			:}
 			;
-//////////////////////////////////////////////////////////////////////////////
-sentCASE ::= inicioCASE:ic OTHERWISE instruccion  FIN SWITCH 
-		{:
-			System.out.println("label "+ ic.etqFinal);
-		:}
-		
-		|inicioCASE:ic FIN SWITCH 
-		{:
-			System.out.println("label "+ ic.etqFinal);
-		:}
-		;
-////////////////////////////////////////////////////////////////////////////////
-inicioCASE ::= SWITCH LPAREN expression:e  RPAREN  OF 
-{:
-			/*
-				switch(e){
-					case "PORTA":
-					case "PORTB":
-					.
-					case ID:
-					case NUMERO:
-					RESULT = Genera el codigo equivalente
-					. break;
-					default: Error  no se puede 
-				}
-				Vector de String
-				String[] puertos={"PORTA","PORTB",...};
-	 		*/
-			RESULT = new DatosCase(); 
-			//RESULT.tmpExpr = e.nombreVariable; 
-			RESULT.tmpExpr = e; 
 
-			RESULT.etqFinal = nuevaEtq();
+////////////////////////////////////////////////////////////////////////////
+
+	cases::= CASO expression:e2 DOSPUNTOS instrucciones
+			{:
+				RESULT="case "+e2+":"+auxiliar+"break;\n";
+				auxiliar="";
 			:}
-			|inicioCASE:ic
-	 			CASO:etqFinCaso expression:e DOSPUNTOS {:
-				System.out.println("\tif "+ ic.tmpExpr +" != "+e+" goto "+ etqFinCaso);
+			| OTHERWISE DOSPUNTOS instrucciones
+			{:
+				RESULT="default: "+auxiliar+"break;\n";
+				auxiliar="";
 			:}
+			|cases:c CASO expression:e2 DOSPUNTOS instrucciones
+			{:
+				RESULT=c+"case "+e2+":"+auxiliar+"break;\n";
+				auxiliar="";
+			:}
+			|cases:c OTHERWISE DOSPUNTOS instrucciones
+			{:
+				RESULT=c+"default: "+auxiliar+"break;\n";
+				auxiliar="";
+			:}
+	;
 
-			instruccion  {:
-					System.out.println("\tgoto "+ ic.etqFinal);
-					System.out.println("label "+ etqFinCaso); 
-					RESULT=ic;
-				:}
-			;
-
-
+//////////////////////////////////////////////////////////////////
 expression::= ID:id  {:RESULT=id;:}
 		| NUMERO:num {: RESULT= Integer.toString(num); 
 								//generarTerceto("="+num);:}
 		;
-
+///////////////////////////////////////////////////////////////////
 
 condicion ::= expression:e1 MAYOR expression:e2 {: RESULT = generarCondicion(e1 , ">", e2);System.out.println("expresion: "+e1+","+e2);:}
 			| expression:e1 MENOR expression:e2 {: RESULT = generarCondicion(e1 , "<", e2);System.out.println("expresion: "+e1+","+e2);:}
