@@ -54,8 +54,8 @@ Void MuchosCASE(){
                   Fin  
                 fin while
               Fin  
-     Caso 2: MuchosSINO();
-     Caso 3: MetodoPuertos();
+     Caso 2: 
+     Caso 3: 
      Caso 4: PB0 Toggle PB1 ;
      default: Si (10 > 7) Then
           TimeMS(2220);

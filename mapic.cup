@@ -427,6 +427,12 @@ instruccion::= puertos:p TOGGLE:t puertost:u PCOMA
 				RESULT=c+"default: "+auxiliar+"break;\n";
 				auxiliar="";
 			:}
+
+			|cases:c CASO expression:e2 DOSPUNTOS
+			{:
+				RESULT=c+"case "+e2+":\n";
+				
+			:}
 	;
 
 //////////////////////////////////////////////////////////////////

@@ -111,10 +111,8 @@ break;
 		}
 		}		}
 break;
-case 2:	MuchosSINO();
-break;
-case 3:	MetodoPuertos();
-break;
+case 2:
+case 3:
 case 4:
 		PORTBbits.RB0=!	PORTBbits.RB1;
 break;
