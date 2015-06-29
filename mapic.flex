@@ -24,7 +24,9 @@
 	}
 %}
 
-
+	commentBegin="/*"
+	commentEnd="*/"
+	lineComment={commentBegin}~{commentEnd}
 
 
 	VARIABLE=[A-Za-z_][A-Za-z_0-9]*
@@ -183,12 +185,14 @@
 "+" 		{ return symbol(sym.MAS); }
 "-" 		{ return symbol(sym.MENOS); }
 ">" 		{ return symbol(sym.MAYOR); }
+">>" 		{ return symbol(sym.RECBITSDER); }
+"<<" 		{ return symbol(sym.RECBITSIZQ); }
 "<" 		{ return symbol(sym.MENOR); }
 ">="		{ return symbol(sym.MAYORIGUAL); }
 "<="		{ return symbol(sym.MENORIGUAL); }
 "Var" | "Cons" { return symbol(sym.TIPOVC); }
-"AND"		{ return symbol(sym.AND);}
-"OR"		{ return symbol(sym.OR); }
+"&&"		{ return symbol(sym.AND);}
+"||"		{ return symbol(sym.OR); }
 "=" 		{ return symbol(sym.IGUAL); }
 "==" 		{ return symbol(sym.IGUAL2); }
 "TRUE" | "FALSE" { return symbol(sym.CTELOGICA); }
@@ -204,5 +208,6 @@
 [:digit:]+\.[:digit:]+ { return symbol(sym.NUMREAL); }
 \'.\'  { return symbol(sym.CARACTER);}
 [:jletter:][:jletterdigit:]* { return symbol(sym.ID, yytext()); }
+{lineComment}  {;}
 [ \t\r\n]+  {;}
 . 		{  System.out.println("Error léxico en línea "+lineaActual+":-"+yytext()+"-"); }

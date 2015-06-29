@@ -21,12 +21,16 @@ Ciclo
 
 Main {	
 	
+	/*
+		Comentario
 	
 
+	
+	*/
 	si (4==4)Then
 		PB Toggle PB;
 	fin
-
+	
 	si (8<9)then
 		PC Toggle PC;
 		Si (5>6)Then

@@ -26,113 +26,14 @@
 	void retardo(unsigned int i){for(;i>0;i--);}
 
 
-	void  izqder()
+	void  MiMetodo()
 	{
-		while(1)
-		{
-	
-		PORTDbits.RD0=0;
-		retardo(20000);
+		PORTA=!	PORTA;
 
-		PORTDbits.RD0=0;
-
-		PORTDbits.RD0=1;
-		retardo(20000);
-
-		PORTDbits.RD1=0;
-
-		PORTDbits.RD0=2;
-		retardo(20000);
-
-		PORTDbits.RD2=0;
-
-		PORTDbits.RD0=3;
-		retardo(20000);
-
-		PORTDbits.RD3=0;
-
-		PORTDbits.RD0=4;
-		retardo(20000);
-
-		PORTDbits.RD4=0;
-
-		PORTDbits.RD0=5;
-		retardo(20000);
-
-		PORTDbits.RD5=0;
-
-		PORTDbits.RD0=6;
-		retardo(20000);
-
-		PORTDbits.RD6=0;
-
-		PORTDbits.RD0=7;
-		retardo(20000);
-
-		PORTDbits.RD7=0;
-		}
-	}
-	void  derizq()
-	{
-		while(1)
-		{
-	
-		PORTDbits.RD0=7;
-		retardo(20000);
-
-		PORTDbits.RD7=0;
-
-		PORTDbits.RD0=6;
-		retardo(20000);
-
-		PORTDbits.RD6=0;
-
-		PORTDbits.RD0=5;
-		retardo(20000);
-
-		PORTDbits.RD5=0;
-
-		PORTDbits.RD0=4;
-		retardo(20000);
-
-		PORTDbits.RD4=0;
-
-		PORTDbits.RD0=3;
-		retardo(20000);
-
-		PORTDbits.RD3=0;
-
-		PORTDbits.RD0=2;
-		retardo(20000);
-
-		PORTDbits.RD2=0;
-
-		PORTDbits.RD0=1;
-		retardo(20000);
-
-		PORTDbits.RD1=0;
-
-		PORTDbits.RD0=0;
-		retardo(20000);
-
-		PORTDbits.RD0=0;
-		}
-	}
-
-
-	void  ambos()
-	{	izqder();
-	derizq();
-
-	}
-
-	void setup(){
+	}	void setup(){
 	OSCCON=0x60;
 	ANSEL=0;
-	TRISA=1;
-	PORTA=0;
-	TRISD=0;
-	PORTD=0;
+	PORTA=1;
 
 }
 
@@ -140,28 +41,7 @@
 	 	while(1){
 
 
-		switch(	PORTAbits.RA0)
-{
-			case 1:
-		PORTDbits.RD0=!	PORTDbits.RD0;
-break;
-case 2:
-		PORTDbits.RD0=!	PORTDbits.RD0;
-break;
-
-}
-
-		if(	PORTA || 	PORTB)
-		{		izqder();
-		}
-
-		if(	PORTAbits.RA1)
-		{		derizq();
-		}
-
-		if(	PORTAbits.RA2)
-		{		ambos();
-		}
+		PORTA=!	PORTA;
 		}
 
 	}
@@ -169,6 +49,44 @@ break;
 	void main(void){
 		setup();
 		loop();
+
+		if(4==4)
+		{	
+		PORTB=!	PORTB;
+		}
+
+		if(8<9)
+		{	
+		PORTC=!	PORTC;
+
+		if(5>6)
+		{	
+		PORTA=!	PORTA;
+
+		PORTB=!	PORTB;
+		}
+		}
+
+		if(3<4)
+		{	
+		PORTB=!	PORTB;
+		}
+		else
+		{
+	
+		if(5>7)
+		{	
+		PORTA=!	PORTB;
+
+		PORTC=!	PORTC;
+		}
+		else
+		{
+			retardo(10);
+
+		PORTD=!	PORTD;
+		}
+		}
 
 		 return; 
 	 }
