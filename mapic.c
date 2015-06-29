@@ -26,115 +26,113 @@
 	void retardo(unsigned int i){for(;i>0;i--);}
 
 
-	void  MiMetodo()
+	void  izqder()
 	{
-		if(10==7)
-		{			retardo(1);
-		}
-		else
+		while(1)
 		{
 	
-		if(2<20)
-		{			retardo(2);
-		}
-		}
+		PORTDbits.RD0=0;
+		retardo(20000);
 
+		PORTDbits.RD0=0;
+
+		PORTDbits.RD0=1;
+		retardo(20000);
+
+		PORTDbits.RD1=0;
+
+		PORTDbits.RD0=2;
+		retardo(20000);
+
+		PORTDbits.RD2=0;
+
+		PORTDbits.RD0=3;
+		retardo(20000);
+
+		PORTDbits.RD3=0;
+
+		PORTDbits.RD0=4;
+		retardo(20000);
+
+		PORTDbits.RD4=0;
+
+		PORTDbits.RD0=5;
+		retardo(20000);
+
+		PORTDbits.RD5=0;
+
+		PORTDbits.RD0=6;
+		retardo(20000);
+
+		PORTDbits.RD6=0;
+
+		PORTDbits.RD0=7;
+		retardo(20000);
+
+		PORTDbits.RD7=0;
+		}
 	}
-	void  MuchosSINO()
+	void  derizq()
 	{
-		if(10==7)
-		{	
-		PORTDbits.RD3=!	PORTDbits.RD3;
-		}
-		else
+		while(1)
 		{
 	
-		if(2<20)
-		{	
-		PORTDbits.RD1=!	PORTDbits.RD1;
-		}
-		else
-		{
-	
-		if(10>=20)
-		{	
-		PORTDbits.RD2=!	PORTDbits.RD2;
-		}
-		else
-		{
-	
-		if(10>=20)
-		{	
-		PORTDbits.RD7=!	PORTDbits.RD7;
-		}
-		}
-		}
-		}
+		PORTDbits.RD0=7;
+		retardo(20000);
 
+		PORTDbits.RD7=0;
+
+		PORTDbits.RD0=6;
+		retardo(20000);
+
+		PORTDbits.RD6=0;
+
+		PORTDbits.RD0=5;
+		retardo(20000);
+
+		PORTDbits.RD5=0;
+
+		PORTDbits.RD0=4;
+		retardo(20000);
+
+		PORTDbits.RD4=0;
+
+		PORTDbits.RD0=3;
+		retardo(20000);
+
+		PORTDbits.RD3=0;
+
+		PORTDbits.RD0=2;
+		retardo(20000);
+
+		PORTDbits.RD2=0;
+
+		PORTDbits.RD0=1;
+		retardo(20000);
+
+		PORTDbits.RD1=0;
+
+		PORTDbits.RD0=0;
+		retardo(20000);
+
+		PORTDbits.RD0=0;
+		}
 	}
 
 
-	void  MetodoPuertos()
-	{		retardo(23232323);
-
-		Switch(1)
-{
-			default: 		retardo(2333);
-break;
-
-}
-
-	}
-
-
-	void  MuchosCASE()
-	{
-		Switch(2423)
-{
-			case 1:
-		if(10<=7)
-		{	
-		PORTDbits.RD1=!	PORTDbits.RD1;
-
-		While(3>2)Do
-		{
-	
-		PORTC=!	PORTC;
-
-		if(10>=7)
-		{			retardo(2220);
-		}
-		else
-		{
-	
-		PORTDbits.RD1=!	PORTDbits.RD1;
-		}
-		}		}
-break;
-case 2:
-case 3:
-case 4:
-		PORTBbits.RB0=!	PORTBbits.RB1;
-break;
-default: 
-		if(10>7)
-		{			retardo(2220);
-		}
-break;
-
-}
+	void  ambos()
+	{	izqder();
+	derizq();
 
 	}
 
 	void setup(){
 	OSCCON=0x60;
 	ANSEL=0;
+	TRISA=1;
+	PORTA=0;
 	TRISD=0;
 	PORTD=0;
-
-		if(10>7)
-		{			retardo(2220);
-		}
 
 }
 
@@ -142,16 +140,27 @@ break;
 	 	while(1){
 
 
+		switch(	PORTAbits.RA0)
+{
+			case 1:
 		PORTDbits.RD0=!	PORTDbits.RD0;
-		retardo(50000);
+break;
+case 2:
+		PORTDbits.RD0=!	PORTDbits.RD0;
+break;
 
-		if(10>=7)
-		{			retardo(2220);
+}
+
+		if(	PORTA || 	PORTB)
+		{		izqder();
 		}
-		else
-		{
-	
-		PORTDbits.RD1=!	PORTDbits.RD1;
+
+		if(	PORTAbits.RA1)
+		{		derizq();
+		}
+
+		if(	PORTAbits.RA2)
+		{		ambos();
 		}
 		}
 
@@ -161,76 +170,5 @@ break;
 		setup();
 		loop();
 
-		if(10<=7)
-		{	
-		PORTDbits.RD1=!	PORTDbits.RD1;
-
-		While(3>2)Do
-		{
-	
-		PORTC=!	PORTC;
-
-		if(10>=7)
-		{			retardo(2220);
-		}
-		else
-		{
-	
-		PORTDbits.RD1=!	PORTDbits.RD1;
-		}
-		}		}
-	MiMetodo();
-	MuchosSINO();
-
-		Switch(5)
-{
-			default: 		retardo(2333);
-break;
-
-}
-
-		While(10>=89)Do
-		{
-			retardo(1);
-
-		PORTA=!	PORTA;
-
-		While(5<3)Do
-		{
-	
-		While(3==3)Do
-		{
-	
-		PORTB=!	PORTB;
-
-		if(10==7)
-		{	
-		PORTDbits.RD3=!	PORTDbits.RD3;
-		}
-		else
-		{
-	
-		if(2<20)
-		{	
-		PORTDbits.RD1=!	PORTDbits.RD1;
-		}
-		else
-		{
-	
-		if(10>=20)
-		{	
-		PORTDbits.RD2=!	PORTDbits.RD2;
-		}
-		else
-		{
-	
-		if(10>=20)
-		{	
-		PORTDbits.RD7=!	PORTDbits.RD7;
-		}
-		}
-		}
-		}
-		}		}		}
 		 return; 
 	 }
