@@ -16,7 +16,7 @@ Void metodo1(){
     TimeMS(2220);
   No
     TimeMS(2000);
-  Fin Si
+  Fin 
 }
 
 
@@ -31,7 +31,7 @@ Ciclo {
   metodo1();
   Si (10 > 7) Then
     TimeMS(2220);
-  Fin Si 
+  Fin 
 
 }
 
@@ -39,7 +39,7 @@ Main {
   getListPorts();
 
   switch (7)  Of
-    default TimeMS(2333);
+    default: TimeMS(2333);
   Fin switch
 
 }

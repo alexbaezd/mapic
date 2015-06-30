@@ -88,8 +88,8 @@ String aux3="";
 frijol f2;
 
 
-	private static Stack<frijol>p = new Stack<frijol>();
-	private static Stack<frijol>pila2 = new Stack<frijol>();
+	private static Stack<String>p = new Stack<String>();
+	private static Stack<String>pila2 = new Stack<String>();
 
 	private static int actualTmp=0;
 
@@ -154,7 +154,7 @@ terminal VOID;
 terminal THEN,NO,FIN,DO;
 terminal SWITCH,OF,OTHERWISE;
 terminal LPAREN, RPAREN,MAS, MENOS, LLLAVE, RLLAVE,DOSPUNTOS ,PCOMA,IGUAL , IGUAL2,TOGGLE;
-terminal MAYOR, MENOR , MAYORIGUAL , MENORIGUAL,AND,OR,TIPOVC,RECBITSDER,RECBITSIZQ;
+terminal MAYOR, MENOR , MAYORIGUAL , MENORIGUAL,AND,OR,TIPOVC,RECBITSDER,RECBITSIZQ,RETURN;
 terminal Integer NUMERO;
 terminal String ID;
 terminal String NMETODO;
@@ -383,14 +383,15 @@ instruccion::= puertos:p TOGGLE:t puertost:u PCOMA
 
 			| SI:etqFinIf  LPAREN condicion:c  RPAREN THEN instrucciones
 				{:
-					frijol f=new frijol("",auxiliar);
-					p.push(f);
+					//frijol f=new frijol("",auxiliar);
+					p.push(auxiliar);
 					auxiliar="";
 				:}
 			NO instrucciones FIN
 				{:
-					f2=p.pop();
-					p1=f2.getInstruccion();
+					/*f2=p.pop();
+					p1=f2.getInstruccion();*/
+					p1=p.pop().toString();
 					auxno=auxiliar;
 					RESULT="\n\t\tif("+c.condicion+")\n\t\t{\t"+p1+"\t\t}"+"\n\t\telse\n\t\t{\n\t"+auxno+"\t\t}\n";
 					auxiliar="";
@@ -398,14 +399,15 @@ instruccion::= puertos:p TOGGLE:t puertost:u PCOMA
 
 				| SI:etqFinIf  LPAREN puertost:p  RPAREN THEN instrucciones
 				{:
-					frijol f=new frijol("",auxiliar);
-					pila2.push(f);
+					//frijol f=new frijol("",auxiliar);
+					pila2.push(auxiliar);
 					auxiliar="";
 				:}
 			NO instrucciones FIN
 				{:
-					f2=pila2.pop();
-					p1=f2.getInstruccion();
+					//f2=pila2.pop();
+					//p1=f2.getInstruccion();
+					p1=pila2.pop().toString();
 					auxno=auxiliar;
 					RESULT="\n\t\tif("+p+")\n\t\t{\t"+p1+"\t\t}"+"\n\t\telse\n\t\t{\n\t"+auxno+"\t\t}\n";
 					auxiliar="";
@@ -481,8 +483,8 @@ expression::= ID:id  {:RESULT=id;:}
 								//generarTerceto("="+num);:}
 		;
 ///////////////////////////////////////////////////////////////////
-
-condicion ::= expression:e1 MAYOR expression:e2 {: RESULT = generarCondicion(e1 , ">", e2);System.out.println("expresion: "+e1+","+e2);:}
+condicion  ::= 
+			 expression:e1 MAYOR expression:e2 {: RESULT = generarCondicion(e1 , ">", e2);System.out.println("expresion: "+e1+","+e2);:}
 			| expression:e1 MENOR expression:e2 {: RESULT = generarCondicion(e1 , "<", e2);System.out.println("expresion: "+e1+","+e2);:}
 			| expression:e1 MAYORIGUAL expression:e2 {:RESULT = generarCondicion(e1 , ">=", e2);System.out.println("expresion: "+e1+","+e2);:}
 			| expression:e1 MENORIGUAL expression:e2 {: RESULT = generarCondicion(e1 , "<=", e2);System.out.println("expresion: "+e1+","+e2);:}
@@ -490,9 +492,9 @@ condicion ::= expression:e1 MAYOR expression:e2 {: RESULT = generarCondicion(e1 
 			| expression:e1 OR expression:e2 {: RESULT = generarCondicion(e1 , "||", e2);System.out.println("expresion: "+e1+","+e2);:}
 			| expression:e1 AND expression:e2 {: RESULT = generarCondicion(e1 , "&&", e2);System.out.println("expresion: "+e1+","+e2);:}
 			| puertost:e1 AND puertost:e2 {: RESULT = generarCondicion(e1 , " && ", e2);System.out.println("expresion: "+e1+","+e2);:}
-			| puertost:e1 OR puertost:e2 {: RESULT = generarCondicion(e1 , " || ", e2);System.out.println("expresion: "+e1+","+e2);:}
-			
+			| puertost:e1 OR puertost:e2 {: RESULT = generarCondicion(e1 , "||", e2);System.out.println("expresion: "+e1+","+e2);:}
 			;
+
 
 
 

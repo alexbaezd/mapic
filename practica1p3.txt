@@ -55,7 +55,9 @@ ciclo
 	si(pa or pb) then
 		izqder();
 	fin
-
+	
+	
+	
 	si(pa1) then
 		derizq();
 	fin

@@ -172,6 +172,7 @@
 "default"   { return symbol(sym.OTHERWISE); }
 "while"     { return symbol(sym.WHILE ,nuevaEtq());}
 "Do"		{return  symbol(sym.DO);}
+"return"		{return  symbol(sym.RETURN);}
 "^"         { return symbol(sym.CIRCUN); }
 "["         { return symbol(sym.LCORCH); }
 "]"         { return symbol(sym.RCORCH); }
@@ -191,8 +192,8 @@
 ">="		{ return symbol(sym.MAYORIGUAL); }
 "<="		{ return symbol(sym.MENORIGUAL); }
 "Var" | "Cons" { return symbol(sym.TIPOVC); }
-"&&"		{ return symbol(sym.AND);}
-"||"		{ return symbol(sym.OR); }
+"AND"		{ return symbol(sym.AND);}
+"OR"		{ return symbol(sym.OR); }
 "=" 		{ return symbol(sym.IGUAL); }
 "==" 		{ return symbol(sym.IGUAL2); }
 "TRUE" | "FALSE" { return symbol(sym.CTELOGICA); }
