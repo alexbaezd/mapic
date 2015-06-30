@@ -11,6 +11,7 @@ void izqder()
 		PD0=5;TIMEMS(20000);PD5=0;
 		PD0=6;TIMEMS(20000);PD6=0;
 		PD0=7;TIMEMS(20000);PD7=0;
+		return;
 	fin while
 }
 
@@ -26,6 +27,7 @@ void derizq()
 		PD0=2;TIMEMS(20000);PD2=0;
 		PD0=1;TIMEMS(20000);PD1=0;
 		PD0=0;TIMEMS(20000);PD0=0;
+		return;
 	fin while
 }
 

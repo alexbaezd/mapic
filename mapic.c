@@ -70,6 +70,7 @@
 		retardo(20000);
 
 		PORTDbits.RD7=0;
+return;
 		}
 	}
 	void  derizq()
@@ -116,6 +117,7 @@
 		retardo(20000);
 
 		PORTDbits.RD0=0;
+return;
 		}
 	}
 

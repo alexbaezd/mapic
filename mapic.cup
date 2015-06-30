@@ -364,6 +364,11 @@ instruccion::= puertos:p TOGGLE:t puertost:u PCOMA
 			{:
 				RESULT=p+u+"+"+n+";\n";
 			:}
+
+			| RETURN PCOMA
+			{:
+				RESULT="return;\n";
+			:}
 //********************************************************************************
 			
 			| SI:etqFinIf  LPAREN condicion:c  RPAREN THEN instrucciones:i FIN
