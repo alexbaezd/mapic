@@ -27,6 +27,7 @@ void derizq()
 		PD0=2;TIMEMS(20000);PD2=0;
 		PD0=1;TIMEMS(20000);PD1=0;
 		PD0=0;TIMEMS(20000);PD0=0;
+
 		return;
 	fin while
 }
@@ -54,11 +55,8 @@ ciclo
 		caso 2: pd0 toggle pd0;
 	Fin switch
 
-	si(pa or pb) then
-		izqder();
-	fin
-	
-	
+
+
 	
 	si(pa1) then
 		derizq();
@@ -67,6 +65,42 @@ ciclo
 	si(pa2) then
 		ambos();
 	fin
+
+	si(pa or pb) then
+		izqder();
+	fin
+
+	
+	si(pa > pb < pc) then
+		izqder();
+	fin
+
+	si(pa > pb < pc == pa) then
+		izqder();
+	fin
+
+    
+	si(pa > pb AND pc <= pd) then
+		izqder();
+	fin
+	
+
+	si(pa > pb AND pc <= pd OR pa) then
+		izqder();
+	fin
+	
+	si(pa > pb < pc <= pd >= pa == pc OR pd AND pa) then
+		izqder();
+	fin
+
+
+	si(2 > 3 < 4) then
+		izqder();
+	fin
+
+	
+
+
 }
 
 main

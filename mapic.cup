@@ -86,7 +86,7 @@ String p2="";
 String p1="";
 String aux3="";
 frijol f2;
-
+String cadena_condiciones=" ";
 
 	private static Stack<String>p = new Stack<String>();
 	private static Stack<String>pila2 = new Stack<String>();
@@ -125,6 +125,25 @@ frijol f2;
     System.out.println("\tgoto etq Falso: "+ etqs.etqFalso);
 		return etqs;
 	}
+
+	private BloqueCondicion generarCondicion(String condicion, String Rvalor2){
+		BloqueCondicion etqs = new BloqueCondicion();
+		etqs.condicion = condicion+Rvalor2;
+		auxiliar="";
+		/*
+		*System.out.println("\t if" + Rvalor1 + condicion + Rvalor2 + "");
+		*/
+		return etqs;
+	}
+	private BloqueCondicion generarCondicion( String Rvalor1, String condicion, String Rvalor2,String extra){
+		BloqueCondicion etqs = new BloqueCondicion();
+		
+		etqs.condicion = Rvalor1+condicion+Rvalor2+extra;
+		auxiliar="";
+		return etqs;
+	}
+
+
 
 :};
 //**************************************************************************
@@ -177,8 +196,9 @@ non terminal String puertost;
 non terminal String io;
 non terminal String  instruccion;
 non terminal opcional;
-non terminal String expression;
+non terminal String expression,item_condicion;
 non terminal BloqueCondicion condicion;
+non terminal String signo,condicion_extra; 
 non terminal DatosCase inicioCASE;
 non terminal Stack tipo,exprtipos,decl;
 non terminal frijol f;
@@ -427,6 +447,7 @@ instruccion::= puertos:p TOGGLE:t puertost:u PCOMA
 				RESULT="\n\t\tswitch("+e+")\n{\n\t\t\t"+c+"\n}\n";
 				auxiliar="";
 			:}
+			
 			| SWITCH LPAREN puertost:p RPAREN OF cases:c FIN SWITCH 
 			{:
 				RESULT="\n\t\tswitch("+p+")\n{\n\t\t\t"+c+"\n}\n";
@@ -485,10 +506,24 @@ instruccion::= puertos:p TOGGLE:t puertost:u PCOMA
 //////////////////////////////////////////////////////////////////
 expression::= ID:id  {:RESULT=id;:}
 		| NUMERO:num {: RESULT= Integer.toString(num); 
-								//generarTerceto("="+num);:}
+								//generarTerceto("="+num);
+			:}
+		
+		;
+//Para el uso del SI NO
+item_condicion::= 
+		ID:id  {:
+			RESULT=id;
+		:}
+		| NUMERO:num {: 
+			RESULT= Integer.toString(num); 
+		:}
+		|puertost:p {:
+				RESULT=p;
+		:}
 		;
 ///////////////////////////////////////////////////////////////////
-condicion  ::= 
+/*condicion  ::= 
 			 expression:e1 MAYOR expression:e2 {: RESULT = generarCondicion(e1 , ">", e2);System.out.println("expresion: "+e1+","+e2);:}
 			| expression:e1 MENOR expression:e2 {: RESULT = generarCondicion(e1 , "<", e2);System.out.println("expresion: "+e1+","+e2);:}
 			| expression:e1 MAYORIGUAL expression:e2 {:RESULT = generarCondicion(e1 , ">=", e2);System.out.println("expresion: "+e1+","+e2);:}
@@ -499,12 +534,41 @@ condicion  ::=
 			| puertost:e1 AND puertost:e2 {: RESULT = generarCondicion(e1 , " && ", e2);System.out.println("expresion: "+e1+","+e2);:}
 			| puertost:e1 OR puertost:e2 {: RESULT = generarCondicion(e1 , "||", e2);System.out.println("expresion: "+e1+","+e2);:}
 			;
+*/	
 
 
+condicion ::= item_condicion:e1 signo:sig  item_condicion:e2 {:
+				RESULT = generarCondicion(e1 ,sig, e2);
+			:}
+			|item_condicion:e1 signo:sig item_condicion:e2 condicion_extra:c {:
+			 RESULT = generarCondicion(e1 ,sig, e2,c);
+			:}
+			;
+
+condicion_extra::= signo:sig item_condicion:e1 {:
+					cadena_condiciones=" "+sig+e1;
+					RESULT=cadena_condiciones;
+					System.out.println("resto de las condicion-->"+cadena_condiciones);
+				:}
+
+				| signo:sig item_condicion:e1 condicion_extra {:
+					cadena_condiciones =" "+sig+e1 +cadena_condiciones;
+					RESULT =cadena_condiciones;
+					System.out.println("resto de las condicion-->"+cadena_condiciones);
+				:}
+				;
 
 
+signo::= MAYOR {:       RESULT=" > ";  :}
+	    | MENOR {:      RESULT=" < ";  :} 
+	    | MENORIGUAL {: RESULT=" <= "; :} 
+	    | MAYORIGUAL {: RESULT=" >= "; :} 
+	    | IGUAL2 {:     RESULT=" == "; :} 
+	    | OR {:         RESULT=" || "; :} 
+	    | AND {:        RESULT=" && "; :}
+	    ;
 
-	 puertos::= PA:pa {: RESULT=pa+"="; :}
+puertos::= PA:pa {: RESULT=pa+"="; :}
 	    |PB:pb {: RESULT=pb+"="; :}
 	    |PC:pc {: RESULT=pc+"=";:}
 	    |PD:pd {: RESULT=pd+"="; :}
@@ -634,5 +698,6 @@ puertost::= PA:pa {: RESULT=pa+""; :}
 	    |PE0:pe0 {:	RESULT=pe0+"";   :}
 	    |PE1:pe1 {:	RESULT=pe1+"";     :}
 	    |PE2:pe2 {:	RESULT=pe2+"";     :}
+	    |PE3:pe3 {:	RESULT=pe3+"";     :}
 	    ;			
 			

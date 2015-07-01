@@ -153,16 +153,40 @@ break;
 
 }
 
-		if(	PORTA||	PORTB)
-		{		izqder();
-		}
-
 		if(	PORTAbits.RA1)
 		{		derizq();
 		}
 
 		if(	PORTAbits.RA2)
 		{		ambos();
+		}
+
+		if(	PORTA || 	PORTB)
+		{		izqder();
+		}
+
+		if(	PORTA > 	PORTB  < 	PORTC)
+		{		izqder();
+		}
+
+		if(	PORTA > 	PORTB  < 	PORTC  == 	PORTA)
+		{		izqder();
+		}
+
+		if(	PORTA > 	PORTB  && 	PORTC  <= 	PORTD)
+		{		izqder();
+		}
+
+		if(	PORTA > 	PORTB  && 	PORTC  <= 	PORTD  || 	PORTA)
+		{		izqder();
+		}
+
+		if(	PORTA > 	PORTB  < 	PORTC  <= 	PORTD  >= 	PORTA  == 	PORTC  || 	PORTD  && 	PORTA)
+		{		izqder();
+		}
+
+		if(2 > 3  < 4)
+		{		izqder();
 		}
 		}
 
