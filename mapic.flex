@@ -195,15 +195,13 @@
 "AND"		{ return symbol(sym.AND);}
 "OR"		{ return symbol(sym.OR); }
 "=" 		{ return symbol(sym.IGUAL); }
+"!=" 		{ return symbol(sym.DIFERENTE); }
 "==" 		{ return symbol(sym.IGUAL2); }
 "TRUE" | "FALSE" { return symbol(sym.CTELOGICA); }
 "INTEGER"        { return symbol(sym.INTEGER); }
 "Real" 			 { return symbol(sym.REAL); }
 "Char"		     { return symbol(sym.CHAR); }
 "Boolean"		 { return symbol(sym.BOOLEAN); }
-"Pointer"		 { return symbol(sym.POINTER); }
-"To" 			 { return symbol(sym.TO); }
-"Array"			 { return symbol(sym.ARRAY); }
 {VARIABLE}  { return symbol(sym.NMETODO, new String(yytext())); }
 [:digit:]+  { return symbol(sym.NUMERO, new Integer(yytext())); }
 [:digit:]+\.[:digit:]+ { return symbol(sym.NUMREAL); }

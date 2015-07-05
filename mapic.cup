@@ -173,7 +173,7 @@ terminal VOID;
 terminal THEN,NO,FIN,DO;
 terminal SWITCH,OF,OTHERWISE;
 terminal LPAREN, RPAREN,MAS, MENOS, LLLAVE, RLLAVE,DOSPUNTOS ,PCOMA,IGUAL , IGUAL2,TOGGLE;
-terminal MAYOR, MENOR , MAYORIGUAL , MENORIGUAL,AND,OR,TIPOVC,RECBITSDER,RECBITSIZQ,RETURN;
+terminal MAYOR, MENOR , MAYORIGUAL , MENORIGUAL,AND,OR,DIFERENTE,TIPOVC,RECBITSDER,RECBITSIZQ,RETURN;
 terminal Integer NUMERO;
 terminal String ID;
 terminal String NMETODO;
@@ -523,18 +523,6 @@ item_condicion::=
 		:}
 		;
 ///////////////////////////////////////////////////////////////////
-/*condicion  ::= 
-			 expression:e1 MAYOR expression:e2 {: RESULT = generarCondicion(e1 , ">", e2);System.out.println("expresion: "+e1+","+e2);:}
-			| expression:e1 MENOR expression:e2 {: RESULT = generarCondicion(e1 , "<", e2);System.out.println("expresion: "+e1+","+e2);:}
-			| expression:e1 MAYORIGUAL expression:e2 {:RESULT = generarCondicion(e1 , ">=", e2);System.out.println("expresion: "+e1+","+e2);:}
-			| expression:e1 MENORIGUAL expression:e2 {: RESULT = generarCondicion(e1 , "<=", e2);System.out.println("expresion: "+e1+","+e2);:}
-			| expression:e1 IGUAL2 expression:e2 {: RESULT = generarCondicion(e1 , "==", e2);System.out.println("expresion: "+e1+","+e2);:}
-			| expression:e1 OR expression:e2 {: RESULT = generarCondicion(e1 , "||", e2);System.out.println("expresion: "+e1+","+e2);:}
-			| expression:e1 AND expression:e2 {: RESULT = generarCondicion(e1 , "&&", e2);System.out.println("expresion: "+e1+","+e2);:}
-			| puertost:e1 AND puertost:e2 {: RESULT = generarCondicion(e1 , " && ", e2);System.out.println("expresion: "+e1+","+e2);:}
-			| puertost:e1 OR puertost:e2 {: RESULT = generarCondicion(e1 , "||", e2);System.out.println("expresion: "+e1+","+e2);:}
-			;
-*/	
 
 
 condicion ::= item_condicion:e1 signo:sig  item_condicion:e2 {:
