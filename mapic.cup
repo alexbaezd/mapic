@@ -88,6 +88,7 @@ String aux3="";
 frijol f2;
 String cadena_condiciones=" ";
 String cadena_tipo="";
+String cadena_parametros="";
 
 	private static Stack<String>p = new Stack<String>();
 	private static Stack<String>pila2 = new Stack<String>();
@@ -197,7 +198,7 @@ non terminal String  instruccion;
 non terminal String expression,item_condicion;
 non terminal BloqueCondicion condicion;
 non terminal String signo,condicion_extra; 
-non terminal String tipo,exprtipos;
+non terminal String tipo,exprtipos,parametros;
 
 // Declaraciones de preferencia
 /* Preferencias*/
@@ -292,7 +293,8 @@ main::= MAIN:main  LLLAVE instrucciones  RLLAVE
 			miCodigo=miCodigo+main+"{\n\t\tsetup();\n\t\tloop();\n\n\t\t return; \n\t }";
 		:}
 		;
-///////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////DECLARACION DE METODOS////////////////////////////////////////////
+//*************************SIN PARAMETROS*********************************************
 metodo::=VOID:v ID:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
 		{:
 			Metodos s;
@@ -308,7 +310,7 @@ metodo::=VOID:v ID:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
 			//System.out.println("codigo intermedio==> int "+codigo);
 		:}
 		
-		|metodo VOID:v ID:m LPAREN RPAREN LLLAVE instrucciones  RLLAVE
+		|metodo VOID:v ID:m LPAREN  RPAREN LLLAVE instrucciones  RLLAVE
 		{:
 			Metodos s;
 			if ((s = tablaMetodos.search(m)) == null)
@@ -319,8 +321,46 @@ metodo::=VOID:v ID:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
 			losMetodos=losMetodos+codigo;
 		    auxiliar="";
 			//System.out.println("codigo intermedio==> int "+codigo);
-		 :};
+		 :}
+//*************************CON PARAMETROS*********************************************
+		 |VOID:v ID:i LPAREN parametros:p RPAREN LLLAVE instrucciones RLLAVE
+		{:
+			Metodos s;
+			if ((s = tablaMetodos.search(i)) == null)
+				s = tablaMetodos.insert(i,auxiliar);
+			else
+			{ 
+				s.setvalue(auxiliar);
+			}			
+			codigo=v+i+"("+cadena_parametros+")\n\t{\n"+auxiliar+"\n\t}\n\n";
+			losMetodos=losMetodos+codigo;
+		    auxiliar="";
+		    cadena_parametros="";
+			//System.out.println("codigo intermedio==> int "+codigo);
+		:}
+		
+		|metodo VOID:v ID:m LPAREN parametros:p RPAREN LLLAVE instrucciones  RLLAVE
+		{:
+			Metodos s;
+			if ((s = tablaMetodos.search(m)) == null)
+				s = tablaMetodos.insert(m,auxiliar);
+			else
+				{ s.setvalue(auxiliar);}
+			codigo=v+m+"("+cadena_parametros+")\n\t{\n"+auxiliar+"\n\t}\n\n";
+			losMetodos=losMetodos+codigo;
+		    auxiliar="";
+		    cadena_parametros="";
+			//System.out.println("codigo intermedio==> int "+codigo);
+		 :}
+		 ;
 
+parametros::= ID:id DOSPUNTOS tipo:t {:
+				cadena_parametros=" "+t+" "+id;
+			:}
+			|ID:id DOSPUNTOS tipo:t COMA parametros {:
+				cadena_parametros=" "+t+" "+id+" ,"+cadena_parametros;
+			:}
+			;
 //////////////////////////////////////////////////////////////////////////////////////////
 instrucciones::=instruccion:in
 			{:

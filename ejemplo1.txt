@@ -10,6 +10,34 @@ Void MiMetodo(){
 
 }
 
+void setValor(x:int){
+	PA Toggle PA;
+	PD0=0;TIMEMS(20000);PD0=0;
+	PD0=1;TIMEMS(20000);PD1=0;
+	PD0=2;TIMEMS(20000);PD2=0;
+	PD0=3;TIMEMS(20000);PD3=0;
+}
+
+void suma(x:int, y:int , j:float){
+	PA Toggle PA;
+	PD0=0;TIMEMS(20000);PD0=0;
+	PD0=1;TIMEMS(20000);PD1=0;
+	PD0=2;TIMEMS(20000);PD2=0;
+	PD0=3;TIMEMS(20000);PD3=0;
+}
+
+void a1(x:int, y:int , j:float  , letra:char, flag:Boolean){
+	PA Toggle PA;
+	PD0=0;TIMEMS(20000);PD0=0;
+	PD0=1;TIMEMS(20000);PD1=0;
+	PD0=2;TIMEMS(20000);PD2=0;
+	PD0=3;TIMEMS(20000);PD3=0;
+	PD0=0;TIMEMS(20000);PD0=0;
+	PD0=1;TIMEMS(20000);PD1=0;
+	PD0=2;TIMEMS(20000);PD2=0;
+	PD0=3;TIMEMS(20000);PD3=0;
+}
+
 Setup {
 	PA=ENTRADA;
 

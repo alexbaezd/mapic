@@ -38,6 +38,110 @@
 	cantidad=9;
 	}
 
+
+	void  setValor( int x)
+	{
+
+		PORTA=!	PORTA;
+
+		PORTDbits.RD0=0;
+		retardo(20000);
+
+		PORTDbits.RD0=0;
+
+		PORTDbits.RD0=1;
+		retardo(20000);
+
+		PORTDbits.RD1=0;
+
+		PORTDbits.RD0=2;
+		retardo(20000);
+
+		PORTDbits.RD2=0;
+
+		PORTDbits.RD0=3;
+		retardo(20000);
+
+		PORTDbits.RD3=0;
+
+	}
+
+
+	void  suma( int x , int y , float j)
+	{
+
+		PORTA=!	PORTA;
+
+		PORTDbits.RD0=0;
+		retardo(20000);
+
+		PORTDbits.RD0=0;
+
+		PORTDbits.RD0=1;
+		retardo(20000);
+
+		PORTDbits.RD1=0;
+
+		PORTDbits.RD0=2;
+		retardo(20000);
+
+		PORTDbits.RD2=0;
+
+		PORTDbits.RD0=3;
+		retardo(20000);
+
+		PORTDbits.RD3=0;
+
+	}
+
+
+	void  a1( int x , int y , float j , char letra , bool flag)
+	{
+
+		PORTA=!	PORTA;
+
+		PORTDbits.RD0=0;
+		retardo(20000);
+
+		PORTDbits.RD0=0;
+
+		PORTDbits.RD0=1;
+		retardo(20000);
+
+		PORTDbits.RD1=0;
+
+		PORTDbits.RD0=2;
+		retardo(20000);
+
+		PORTDbits.RD2=0;
+
+		PORTDbits.RD0=3;
+		retardo(20000);
+
+		PORTDbits.RD3=0;
+
+		PORTDbits.RD0=0;
+		retardo(20000);
+
+		PORTDbits.RD0=0;
+
+		PORTDbits.RD0=1;
+		retardo(20000);
+
+		PORTDbits.RD1=0;
+
+		PORTDbits.RD0=2;
+		retardo(20000);
+
+		PORTDbits.RD2=0;
+
+		PORTDbits.RD0=3;
+		retardo(20000);
+
+		PORTDbits.RD3=0;
+
+	}
+
 	void setup(){
 	OSCCON=0x60;
 	ANSEL=0;
@@ -57,7 +161,7 @@
 	void main(void){
 		setup();
 		loop();
-null
+
 	int yyy =10;
 	bool bandera =false;
 		if(bandera == 1)
