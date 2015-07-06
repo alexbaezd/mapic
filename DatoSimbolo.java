@@ -20,6 +20,9 @@ public class DatoSimbolo{
 				 case "float": { retorno += "float"; break; }
 				 case "bool": { retorno += "boolean"; break; }
 				 case "char": { retorno += "char"; break; }
+				 case "short": { retorno += "short"; break; }
+				 case "long": { retorno += "long"; break; }
+				 case "double": { retorno += "double"; break; }
 				
 				default:
 					 { retorno += "indefinido."; break; }

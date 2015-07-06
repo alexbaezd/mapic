@@ -28,7 +28,6 @@
 
 	void  MiMetodo()
 	{
-
 	int cantidad;
 	float altura =9.872222;
 	float altura2 =10.872222;
@@ -37,8 +36,7 @@
 
 	cantidad=9;
 	}
-
-
+	
 	void  setValor( int x)
 	{
 
@@ -65,8 +63,6 @@
 		PORTDbits.RD3=0;
 
 	}
-
-
 	void  suma( int x , int y , float j)
 	{
 
