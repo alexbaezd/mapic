@@ -1,0 +1,39 @@
+ /*
+VAR contador:Int = 89;
+
+VAR altura:INT = 10;
+
+const dimension:Float = 12.23;
+const letra:Char = '2';
+const bandera:Bool = true;
+
+var cantidad:int;
+VAR hola:INT;
+hola =1;
+cantidad = hola;
+const k:float=2.33;
+const l:float;
+hola = 10;
+cantidad = hola;
+k=1.2;
+*/
+VAR lado:INT = bbbb ;
+l = 0.98998;
+/*
+
+as = true;
+cc = '2';
+
+void metodo(mns : Int){
+   
+ PA = msn;
+
+}
+
+  void bbb( v: float , b: bool){
+  
+  }
+
+
+
+*/

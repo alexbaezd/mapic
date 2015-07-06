@@ -786,242 +786,246 @@ class Yylex implements java_cup.runtime.Scanner {
           { return symbol(sym.TA,new String("\tTRISAbits.TRISA5"));
           }
         case 156: break;
+        case 40: 
+          { return symbol(sym.NUMREAL,new Integer(yytext()));
+          }
+        case 157: break;
         case 88: 
           { return symbol(sym.PA5,new String("\tPORTAbits.RA5"));
           }
-        case 157: break;
+        case 158: break;
         case 28: 
           { return symbol(sym.PB,new String("\tPORTB"));
           }
-        case 158: break;
+        case 159: break;
         case 25: 
           { return symbol(sym.NO);
           }
-        case 159: break;
+        case 160: break;
         case 128: 
           { return symbol(sym.WHILE ,nuevaEtq());
           }
-        case 160: break;
+        case 161: break;
         case 102: 
           { return symbol(sym.PC3,new String("\tPORTCbits.RC3"));
           }
-        case 161: break;
+        case 162: break;
         case 41: 
           { return symbol(sym.TE,new String("\tTRISEbits.TRISE0"));
           }
-        case 162: break;
+        case 163: break;
         case 30: 
           { return symbol(sym.PD,new String("\tPORTD"));
           }
-        case 163: break;
+        case 164: break;
         case 13: 
           { return symbol(sym.MAS);
           }
-        case 164: break;
+        case 165: break;
         case 63: 
           { return symbol(sym.TC,new String("\tTRISCbits.TRISC2"));
           }
-        case 165: break;
+        case 166: break;
         case 123: 
           { return symbol(sym.VOID,new String("\n\tvoid  "));
           }
-        case 166: break;
+        case 167: break;
         case 80: 
           { return symbol(sym.PE1,new String("\tPORTEbits.RE1"));
           }
-        case 167: break;
+        case 168: break;
         case 3: 
           { return symbol(sym.NUMERO, new Integer(yytext()));
           }
-        case 168: break;
+        case 169: break;
         case 70: 
           { return symbol(sym.TD,new String("\tTRISDbits.TRISD1"));
           }
-        case 169: break;
+        case 170: break;
         case 68: 
           { return symbol(sym.TC,new String("\tTRISCbits.TRISC7"));
           }
-        case 170: break;
+        case 171: break;
         case 117: 
           { return new Symbol(sym.CARACTER , new String(yytext()));
           }
-        case 171: break;
+        case 172: break;
         case 109: 
           { return symbol(sym.PD2,new String("\tPORTDbits.RD2"));
           }
-        case 172: break;
+        case 173: break;
         case 93: 
           { return symbol(sym.PB2,new String("\tPORTBbits.RB2"));
           }
-        case 173: break;
+        case 174: break;
         case 78: 
           { return symbol(sym.AND);
           }
-        case 174: break;
+        case 175: break;
         case 11: 
           { return symbol(sym.COMA);
           }
-        case 175: break;
+        case 176: break;
         case 57: 
           { return symbol(sym.TA,new String("\tTRISBbits.TRISB4"));
           }
-        case 176: break;
+        case 177: break;
         case 10: 
           { return symbol(sym.RLLAVE);
           }
-        case 177: break;
+        case 178: break;
         case 86: 
           { return symbol(sym.PA3,new String("\tPORTAbits.RA3"));
           }
-        case 178: break;
+        case 179: break;
         case 75: 
           { return symbol(sym.TD,new String("\tTRISDbits.TRISD6"));
           }
-        case 179: break;
+        case 180: break;
         case 49: 
           { return symbol(sym.TA,new String("\tTRISAbits.TRISA4"));
           }
-        case 180: break;
+        case 181: break;
         case 127: 
           { return symbol(sym.CICLO,new String("\n\n\tvoid loop()"));
           }
-        case 181: break;
+        case 182: break;
         case 100: 
           { return symbol(sym.PC1,new String("\tPORTCbits.RC1"));
           }
-        case 182: break;
+        case 183: break;
         case 21: 
           { return symbol(sym.TB,new String("\tTRISB"));
           }
-        case 183: break;
+        case 184: break;
         case 114: 
           { return symbol(sym.PD7,new String("\tPORTDbits.RD7"));
           }
-        case 184: break;
+        case 185: break;
         case 98: 
           { return symbol(sym.PB7,new String("\tPORTBbits.RB7"));
           }
-        case 185: break;
+        case 186: break;
         case 23: 
           { return symbol(sym.TD,new String("\tTRISD"));
           }
-        case 186: break;
+        case 187: break;
         case 24: 
           { return symbol(sym.SI,nuevaEtq());
           }
-        case 187: break;
+        case 188: break;
         case 130: 
           { return symbol(sym.TOGGLE,new String("!"));
           }
-        case 188: break;
+        case 189: break;
         case 14: 
           { return symbol(sym.MENOS);
           }
-        case 189: break;
+        case 190: break;
         case 62: 
           { return symbol(sym.TC,new String("\tTRISCbits.TRISC1"));
           }
-        case 190: break;
+        case 191: break;
         case 16: 
           { return symbol(sym.MENOR);
           }
-        case 191: break;
+        case 192: break;
         case 107: 
           { return symbol(sym.PD0,new String("\tPORTDbits.RD0"));
           }
-        case 192: break;
+        case 193: break;
         case 91: 
           { return symbol(sym.PB0,new String("\tPORTBbits.RB0"));
           }
-        case 193: break;
+        case 194: break;
         case 105: 
           { return symbol(sym.PC6,new String("\tPORTCbits.RC6"));
           }
-        case 194: break;
+        case 195: break;
         case 69: 
           { return symbol(sym.TD,new String("\tTRISDbits.TRISD0"));
           }
-        case 195: break;
+        case 196: break;
         case 67: 
           { return symbol(sym.TC,new String("\tTRISCbits.TRISC6"));
           }
-        case 196: break;
+        case 197: break;
         case 1: 
           { System.out.println("Error léxico en línea "+lineaActual+":-"+yytext()+"-");
           }
-        case 197: break;
+        case 198: break;
         case 84: 
           { return symbol(sym.PA1,new String("\tPORTAbits.RA1"));
           }
-        case 198: break;
+        case 199: break;
         case 56: 
           { return symbol(sym.TA,new String("\tTRISBbits.TRISB3"));
           }
-        case 199: break;
+        case 200: break;
         case 32: 
           { return symbol(sym.OF);
           }
-        case 200: break;
+        case 201: break;
         case 135: 
           { return symbol(sym.BOOLEAN);
           }
-        case 201: break;
+        case 202: break;
         case 36: 
           { return symbol(sym.RECBITSIZQ);
           }
-        case 202: break;
+        case 203: break;
         case 74: 
           { return symbol(sym.TD,new String("\tTRISDbits.TRISD5"));
           }
-        case 203: break;
+        case 204: break;
         case 5: 
           { return symbol(sym.RCORCH);
           }
-        case 204: break;
+        case 205: break;
         case 9: 
           { return symbol(sym.LLLAVE);
           }
-        case 205: break;
+        case 206: break;
         case 48: 
           { return symbol(sym.TA,new String("\tTRISAbits.TRISA3"));
           }
-        case 206: break;
+        case 207: break;
         case 112: 
           { return symbol(sym.PD5,new String("\tPORTDbits.RD5"));
           }
-        case 207: break;
+        case 208: break;
         case 96: 
           { return symbol(sym.PB5,new String("\tPORTBbits.RB5"));
           }
-        case 208: break;
+        case 209: break;
         case 89: 
           { return symbol(sym.PA6,new String("\tPORTAbits.RA6"));
           }
-        case 209: break;
+        case 210: break;
         case 6: 
           { return symbol(sym.DOSPUNTOS);
           }
-        case 210: break;
+        case 211: break;
         case 61: 
           { return symbol(sym.TC,new String("\tTRISCbits.TRISC0"));
           }
-        case 211: break;
+        case 212: break;
         case 137: 
           { return symbol(sym.RETARDO,new String("\n\n\tvoid retardo(unsigned int i){for(;i>0;i--);}\n\n"));
           }
-        case 212: break;
+        case 213: break;
         case 103: 
           { return symbol(sym.PC4,new String("\tPORTCbits.RC4"));
           }
-        case 213: break;
+        case 214: break;
         case 44: 
           { return symbol(sym.TE,new String("\tTRISEbits.TRISE3"));
           }
-        case 214: break;
+        case 215: break;
         case 66: 
           { return symbol(sym.TC,new String("\tTRISCbits.TRISC5"));
           }
-        case 215: break;
+        case 216: break;
         case 125: 
           { return symbol(sym.FUSES,new String("#include <xc.h>\n"
 								                + "// CONFIG1\n" 
@@ -1042,117 +1046,113 @@ class Yylex implements java_cup.runtime.Scanner {
 								                +"\n"
 								                +"#pragma config WRT = OFF        // Flash Program Memory Self Write Enable bits (Write protection off)\n\n\n\n"));
           }
-        case 216: break;
+        case 217: break;
         case 119: 
           { return symbol(sym.THEN);
           }
-        case 217: break;
+        case 218: break;
         case 81: 
           { return symbol(sym.PE2,new String("\tPORTEbits.RE2"));
           }
-        case 218: break;
+        case 219: break;
         case 27: 
           { return symbol(sym.PA,new String("\tPORTA"));
           }
-        case 219: break;
+        case 220: break;
         case 55: 
           { return symbol(sym.TA,new String("\tTRISBbits.TRISB2"));
           }
-        case 220: break;
+        case 221: break;
         case 37: 
           { return symbol(sym.MENORIGUAL);
           }
-        case 221: break;
+        case 222: break;
         case 29: 
           { return symbol(sym.PC,new String("\tPORTC"));
           }
-        case 222: break;
+        case 223: break;
         case 110: 
           { return symbol(sym.PD3,new String("\tPORTDbits.RD3"));
           }
-        case 223: break;
+        case 224: break;
         case 133: 
           { return  symbol(sym.RETURN);
           }
-        case 224: break;
+        case 225: break;
         case 94: 
           { return symbol(sym.PB3,new String("\tPORTBbits.RB3"));
           }
-        case 225: break;
+        case 226: break;
         case 73: 
           { return symbol(sym.TD,new String("\tTRISDbits.TRISD4"));
           }
-        case 226: break;
+        case 227: break;
         case 134: 
           { return symbol(sym.ENTRADA);
           }
-        case 227: break;
+        case 228: break;
         case 18: 
           { ;
           }
-        case 228: break;
+        case 229: break;
         case 38: 
           { return symbol(sym.IGUAL2);
           }
-        case 229: break;
+        case 230: break;
         case 118: 
           { return symbol(sym.CTELOGICA,new String(yytext()));
           }
-        case 230: break;
+        case 231: break;
         case 26: 
           { return symbol(sym.PE,new String("\tPORTE"));
           }
-        case 231: break;
+        case 232: break;
         case 47: 
           { return symbol(sym.TA,new String("\tTRISAbits.TRISA2"));
           }
-        case 232: break;
+        case 233: break;
         case 4: 
           { return symbol(sym.LCORCH);
           }
-        case 233: break;
+        case 234: break;
         case 15: 
           { return symbol(sym.MAYOR);
           }
-        case 234: break;
+        case 235: break;
         case 87: 
           { return symbol(sym.PA4,new String("\tPORTAbits.RA4"));
           }
-        case 235: break;
+        case 236: break;
         case 60: 
           { return symbol(sym.TA,new String("\tTRISBbits.TRISB7"));
           }
-        case 236: break;
+        case 237: break;
         case 122: 
           { return symbol(sym.CHAR);
           }
-        case 237: break;
+        case 238: break;
         case 116: 
           { return symbol(sym.TIPOVC);
           }
-        case 238: break;
+        case 239: break;
         case 124: 
           { return symbol(sym.SETUP,new String("\tvoid setup()"));
           }
-        case 239: break;
+        case 240: break;
         case 120: 
           { return symbol(sym.MAIN,new String("\n\n\tvoid main(void)"));
           }
-        case 240: break;
+        case 241: break;
         case 52: 
           { return symbol(sym.TA,new String("\tTRISAbits.TRISA7"));
           }
-        case 241: break;
+        case 242: break;
         case 101: 
           { return symbol(sym.PC2,new String("\tPORTCbits.RC2"));
           }
-        case 242: break;
+        case 243: break;
         case 12: 
           { return symbol(sym.PCOMA);
-          }
-        case 243: break;
-        case 40: 
-          { return symbol(sym.NUMREAL,new Float(yytext()));
           }
         case 244: break;
         case 79: 

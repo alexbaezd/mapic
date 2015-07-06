@@ -24,12 +24,17 @@
 	}
 %}
 
+	
+
 	commentBegin="/*"
 	commentEnd="*/"
 	lineComment={commentBegin}~{commentEnd}
 
 
 	VARIABLE=[A-Za-z_][A-Za-z_0-9]*
+	
+	
+	
 
 
 %%
@@ -173,7 +178,6 @@
 "while"     { return symbol(sym.WHILE ,nuevaEtq());}
 "Do"		{return  symbol(sym.DO);}
 "return"		{return  symbol(sym.RETURN);}
-"^"         { return symbol(sym.CIRCUN); }
 "["         { return symbol(sym.LCORCH); }
 "]"         { return symbol(sym.RCORCH); }
 ":"         { return symbol(sym.DOSPUNTOS); }
@@ -197,16 +201,15 @@
 "=" 		{ return symbol(sym.IGUAL); }
 "!=" 		{ return symbol(sym.DIFERENTE); }
 "==" 		{ return symbol(sym.IGUAL2); }
-"TRUE" | "FALSE" { return symbol(sym.CTELOGICA); }
-"INTEGER"        { return symbol(sym.INTEGER); }
-"Real" 			 { return symbol(sym.REAL); }
+"TRUE" | "FALSE" { return symbol(sym.CTELOGICA,new String(yytext())); }
+"Int"        { return symbol(sym.INTEGER); }
+"Float" 			 { return symbol(sym.REAL); }
 "Char"		     { return symbol(sym.CHAR); }
 "Boolean"		 { return symbol(sym.BOOLEAN); }
-{VARIABLE}  { return symbol(sym.NMETODO, new String(yytext())); }
+{VARIABLE}  { return symbol(sym.ID, new String(yytext())); }
 [:digit:]+  { return symbol(sym.NUMERO, new Integer(yytext())); }
-[:digit:]+\.[:digit:]+ { return symbol(sym.NUMREAL); }
-\'.\'  { return symbol(sym.CARACTER);}
-[:jletter:][:jletterdigit:]* { return symbol(sym.ID, yytext()); }
+[:digit:]+\.[:digit:]+ { return symbol(sym.NUMREAL,new Float(yytext())); }
+\'.\' 		{ return new Symbol(sym.CARACTER , new String(yytext())); }
 {lineComment}  {;}
 [ \t\r\n]+  {;}
 . 		{  System.out.println("Error léxico en línea "+lineaActual+":-"+yytext()+"-"); }

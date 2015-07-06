@@ -1,8 +1,13 @@
 Fuses
 
 Void MiMetodo(){
-  
+ var cantidad:int;
+ var altura:float = 9.872222212312312;
+ var altura2:float = 10.872222212312312;
+ VAR xxx:INT = 10;
   PA Toggle PA;
+  cantidad=9;
+
 }
 
 Setup {
@@ -15,40 +20,47 @@ Setup {
 Retardo();
 
 Ciclo
-{
+{	
 	PA Toggle PA;
 }
 
 Main {	
 	
+	VAR yyy:INT = 10;
+	var bandera:Boolean = false;
 	/*
 		Comentario
 	
 
 	
 	*/
-	si (4==4)Then
+	si (bandera == 1)Then
 		PB Toggle PB;
 	fin
 	
 	si (8<9)then
+		var x:float = 10.33;
 		PC Toggle PC;
 		Si (5>6)Then
 			pa toggle PA;
 			PB Toggle PB;
+			var ca:char = 'a';
 		Fin
 	Fin
 
 	Si (3<4)Then		
 		PB Toggle PB;
+		yyy=0;
 	No
 		Si (5>7)Then
 			pa Toggle PB;
 			PC Toggle PC;
 		No
 			TimeMS(10);
-			PD Toggle PD;		
+			PD Toggle PD;
+			asadsasd=0;		
 		Fin	
 	Fin
+
 
 }

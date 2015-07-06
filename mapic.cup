@@ -8,8 +8,8 @@ import java.util.Stack;
 
 /***************************************************************************/
 parser code {:
-
-	static TablaSimboloComplejo tablaCom = new TablaSimboloComplejo();
+	static TablaDatos tabla = new TablaDatos();
+	
 	static int estado;
 	StringBuffer m = new StringBuffer("");
     static StringBuffer []vec=new StringBuffer[10];
@@ -54,7 +54,7 @@ public static void main(String[] arg)
 	  parserObj.setScanner(miAnalizadorLexico);
 	  try{
 		parserObj.parse();
-		tablaCom.imprimir();
+		tabla.imprimir();
 	  }
 catch(Exception x){ 
 	  parserObj.Documenta(estado);
@@ -87,6 +87,7 @@ String p1="";
 String aux3="";
 frijol f2;
 String cadena_condiciones=" ";
+String cadena_tipo="";
 
 	private static Stack<String>p = new Stack<String>();
 	private static Stack<String>pila2 = new Stack<String>();
@@ -152,10 +153,9 @@ String cadena_condiciones=" ";
 
 /* Símbolos (tokens devueltos por el escáner). */
 /* Terminales Datos Complejos */
-terminal INTEGER,REAL,CHAR,BOOLEAN,POINTER,TO;
-terminal ARRAY;
+terminal INTEGER,REAL,CHAR,BOOLEAN;
 terminal CARACTER,NUMREAL,CTELOGICA;
-terminal RCORCH,LCORCH,CIRCUN,COMA;
+terminal RCORCH,LCORCH,COMA;
 /* Terminales */
 terminal CHALE, MAIN, SETUP, FUSES, ENTRADA, SALIDA, RETARDO, CICLO;
 terminal PA, PB, PC, PD, PE, TA, TB, TC, TD, TE;
@@ -187,7 +187,6 @@ non terminal main;
 non terminal setup;
 non terminal ciclo;
 non terminal metodo;
-non terminal sentCASE;
 non terminal cases;
 non terminal String  instrucciones;
 non terminal confpuertos;
@@ -195,14 +194,11 @@ non terminal String puertos;
 non terminal String puertost;
 non terminal String io;
 non terminal String  instruccion;
-non terminal opcional;
 non terminal String expression,item_condicion;
 non terminal BloqueCondicion condicion;
 non terminal String signo,condicion_extra; 
-non terminal DatosCase inicioCASE;
-non terminal Stack tipo,exprtipos,decl;
-non terminal frijol f;
-non terminal Stack pila;
+non terminal String tipo,exprtipos;
+
 // Declaraciones de preferencia
 /* Preferencias*/
 precedence left MAS, MENOS , MAYOR , MENOR,TOGGLE, IGUAL , IGUAL2;
@@ -297,7 +293,7 @@ main::= MAIN:main  LLLAVE instrucciones  RLLAVE
 		:}
 		;
 ///////////////////////////////////////////////////////////////////////////////////////////////
-metodo::=VOID:v NMETODO:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
+metodo::=VOID:v ID:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
 		{:
 			Metodos s;
 			if ((s = tablaMetodos.search(i)) == null)
@@ -306,20 +302,20 @@ metodo::=VOID:v NMETODO:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
 			{ 
 				s.setvalue(auxiliar);
 			}			
-			codigo=v+i+"()\n\t{"+auxiliar+"\n\t}";
+			codigo=v+i+"()\n\t{\n"+auxiliar+"\n\t}\n\n";
 			losMetodos=losMetodos+codigo;
 		    auxiliar="";
 			//System.out.println("codigo intermedio==> int "+codigo);
 		:}
 		
-		|metodo VOID:v NMETODO:m LPAREN RPAREN LLLAVE instrucciones  RLLAVE
+		|metodo VOID:v ID:m LPAREN RPAREN LLLAVE instrucciones  RLLAVE
 		{:
 			Metodos s;
 			if ((s = tablaMetodos.search(m)) == null)
 				s = tablaMetodos.insert(m,auxiliar);
 			else
 				{ s.setvalue(auxiliar);}
-			codigo=v+m+"()\n\t{"+auxiliar+"\n\t}\n\n";
+			codigo=v+m+"()\n\t{\n"+auxiliar+"\n\t}\n\n";
 			losMetodos=losMetodos+codigo;
 		    auxiliar="";
 			//System.out.println("codigo intermedio==> int "+codigo);
@@ -344,14 +340,55 @@ instrucciones::=instruccion:in
 				System.out.println("cadena de varias instrucciones en aux:"+auxiliar);
 			:};
 
-/////////////////////////////////////////////////////////////////////////////////////////////					  
-instruccion::= puertos:p TOGGLE:t puertost:u PCOMA
+///////////////////////////INSTRUCCIONES DISPONIBLES EN MAPIC//////////////////////////////////////////////////////////////////					  
+instruccion::= 
+			TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
+			 
+			 DatoSimbolo ds=parser.tabla.buscar(id);
+			 if(ds!= null)
+			 	System.err.println(id + " redeclarada.");
+			 else{
+			 	System.out.println("Mensaje "+id + "-->"+t);
+			 	RESULT="\n\t"+t+" "+id+";";
+				parser.tabla.insertar(id, t,"");
+
+			 }
+			:}
+			|TIPOVC ID:id DOSPUNTOS tipo:t IGUAL exprtipos:e  PCOMA{:
+			 RESULT = t;
+			 if(parser.tabla.buscar(id)!= null)
+			 	System.err.println(id + " redeclarada.");
+			 else
+			 {
+			 	System.out.println("Mensaje "+id + "-->"+e);
+			 	RESULT="\n\t"+t+" "+id+" ="+e+";";
+			 	parser.tabla.insertar(id, t,e);
+			 }
+			 	
+			:}
+		  | ID:id IGUAL exprtipos:t PCOMA{:
+			System.out.println("Mensaje "+id + "-->"+t);
+			DatoSimbolo ds=parser.tabla.buscar(id);
+			 if(ds!= null){
+			 	System.err.println(id + " redeclarada.");
+			 RESULT="\n\t"+id+"="+t+";";
+			}
+			 else{
+			 	System.out.println("Error al Asignar valor a: "+id);
+			}
+
+			
+			:}
+		   
+			
+//*****************************************************************************
+			|puertos:p TOGGLE:t puertost:u PCOMA
 			{:
 				//   miCodigo=p+t+u+";\n"+miCodigo;
 				RESULT="\n\t"+p+t+u+";\n";
 				//System.out.println("cadena de toggles:"+RESULT);
 			:}
-			
+//*****************************************************************************				
        		| puertos:p IGUAL NUMERO:n PCOMA
 
 			{:
@@ -360,8 +397,8 @@ instruccion::= puertos:p TOGGLE:t puertost:u PCOMA
 				//System.out.println("cadena de toggles:"+RESULT);
 			:}
 
-
-		 	| NMETODO:i LPAREN RPAREN PCOMA
+//*****************************************************************************	
+		 	| ID:i LPAREN RPAREN PCOMA
 			{:  
 				Metodos s;
 				if ((s = tablaMetodos.search(i)) == null)
@@ -373,13 +410,13 @@ instruccion::= puertos:p TOGGLE:t puertost:u PCOMA
 					RESULT="\t"+i+"();\n";
 				}	
 			:}
-
+//*****************************************************************************	
 			| CHALE:c LPAREN NUMERO:n RPAREN PCOMA
 			{:
 				//retardos= retardos+c+"("+n+");\n";
 	   			RESULT=c+"("+n+");\n";
 			:}
-			
+//*****************************************************************************		
 			|puertos:p IGUAL puertost:u MAS NUMERO:n PCOMA
 			{:
 				RESULT=p+u+"+"+n+";\n";
@@ -552,10 +589,49 @@ signo::= MAYOR {:       RESULT=" > ";  :}
 	    | MENORIGUAL {: RESULT=" <= "; :} 
 	    | MAYORIGUAL {: RESULT=" >= "; :} 
 	    | IGUAL2 {:     RESULT=" == "; :} 
+	    | DIFERENTE {:  RESULT=" != "; :} 
 	    | OR {:         RESULT=" || "; :} 
 	    | AND {:        RESULT=" && "; :}
 	    ;
+//*******************TIPOS DE DATOS EN MAPIC**********************************************
+tipo ::= INTEGER {:
+ 		 	RESULT="int";
+ 		:}
+		 | REAL {: 
+		 	RESULT="float";
+		 	:}
+		 | CHAR {: 
+		 	RESULT="char";
+		 	:}
+		 | BOOLEAN {:
+		  RESULT="bool";
+		   :}
+		  ;
+exprtipos ::= ID:id {:
+			 DatoSimbolo s;
+			 if ((s = parser.tabla.buscar(id)) != null) {
+				cadena_tipo=s.getTipo();
+				RESULT =s.getValor() ;
+			}else{
+				System.out.println("Varible -->"+id+" no declarada");
+			} 
 
+		  :}
+		 | NUMERO:n {: 
+		 	RESULT=""+n;
+		  :}
+		 | NUMREAL:n {: 
+		 	RESULT=""+n;
+		 :}
+		 | CARACTER:b {: 
+		 	 RESULT=""+b;
+		:}
+		 | CTELOGICA:b{: 
+		 	RESULT=""+b;
+		 :}
+		;
+
+//*****************************************************************************	
 puertos::= PA:pa {: RESULT=pa+"="; :}
 	    |PB:pb {: RESULT=pb+"="; :}
 	    |PC:pc {: RESULT=pc+"=";:}
