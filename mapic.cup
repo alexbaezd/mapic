@@ -158,7 +158,7 @@ terminal CARACTER,NUMREAL,CTELOGICA;
 terminal RCORCH,LCORCH,COMA;
 /* Terminales */
 terminal CHALE, MAIN, SETUP, FUSES, ENTRADA, SALIDA, RETARDO, CICLO;
-terminal PA, PB, PC, PD, PE, TA, TB, TC, TD, TE, ANSEL, ANSELH;
+terminal PA, PB, PC, PD, PE, TA, TB, TC, TD, TE, ANSEL, ANSELH,BINARIO;
 terminal TA0, TA1, TA2, TA3, TA4, TA5, TA6, TA7;
 terminal TB0, TB1, TB2, TB3, TB4, TB5, TB6, TB7;
 terminal TC0, TC1, TC2, TC3, TC4, TC5, TC6, TC7;
@@ -623,7 +623,12 @@ item_condicion::=
 		|puertost:p {:
 				RESULT=p;
 		:}
+		|BINARIO CADENA:n
+		{:
+			RESULT="0b"+n;
+		:}
 		;
+
 ///////////////////////////////////////////////////////////////////
 
 
@@ -632,6 +637,10 @@ condicion ::= item_condicion:e1 signo:sig  item_condicion:e2 {:
 			:}
 			|item_condicion:e1 signo:sig item_condicion:e2 condicion_extra:c {:
 			 RESULT = generarCondicion(e1 ,sig, e2,c);
+			:}
+			| ID: v
+			{:
+				RESULT= v;
 			:}
 			;
 
@@ -698,6 +707,17 @@ exprtipos ::= ID:id {:
 		;
 
 //*****************************************************************************	
+/*puertosG ::=PA:pa {: RESULT=pa+"="; :}
+	    |PB:pb {: RESULT=pb+"="; :}
+	    |PC:pc {: RESULT=pc+"=";:}
+	    |PD:pd {: RESULT=pd+"="; :}
+	    |PE:pe {:RESULT=pe+"=";:}
+	    |TA:ta  {: RESULT=ta+"="; :}
+	    |TB:tb  {:RESULT=tb+"="; :}
+	    |TC:tc  {: RESULT=tc+"="; :}
+	    |TD:td  {: RESULT=td+"="; :}
+	    |TE:te  {: RESULT=te+"=";  :}
+	    ;*/
 puertos::= PA:pa {: RESULT=pa+"="; :}
 	    |PB:pb {: RESULT=pb+"="; :}
 	    |PC:pc {: RESULT=pc+"=";:}
