@@ -24,13 +24,22 @@
 	}
 %}
 
+	
+
 	commentBegin="/*"
 	commentEnd="*/"
 	lineComment={commentBegin}~{commentEnd}
 
 
 	VARIABLE=[A-Za-z_][A-Za-z_0-9]*
+<<<<<<< HEAD
 	CADENA=[0-1] {8}
+=======
+	
+	
+	
+
+>>>>>>> origin/master
 
 %%
 
@@ -70,6 +79,9 @@
 "TC" 		{ return symbol(sym.TC,new String("\tTRISC"));}
 "TD" 		{ return symbol(sym.TD,new String("\tTRISD"));}
 "TE" 		{ return symbol(sym.TE,new String("\tTRISE"));}
+"ANSEL"		{ return symbol(sym.ANSEL,new String("\tANSEL"));}
+"ANSELH"	{ return symbol(sym.ANSELH,new String("\tANSELH"));}
+"INTCON"	{ return symbol(sym.INTCON,new String("\tINTCON"));}
 //
 "TA0" 		{ return symbol(sym.TA,new String("\tTRISAbits.TRISA0"));}
 "TA1" 		{ return symbol(sym.TA,new String("\tTRISAbits.TRISA1"));}
@@ -153,6 +165,31 @@
 "PE2" 		{ return symbol(sym.PE2,new String("\tPORTEbits.RE2"));}
 "PE3" 		{ return symbol(sym.PE3,new String("\tPORTEbits.RE3"));}
 
+"ANSEL0"	{return symbol(sym.ANSEL0, new String("\tANSELbits.ANS0"));}
+"ANSEL1"	{return symbol(sym.ANSEL1, new String("\tANSELbits.ANS1"));}
+"ANSEL2"	{return symbol(sym.ANSEL2, new String("\tANSELbits.ANS2"));}
+"ANSEL3"	{return symbol(sym.ANSEL3, new String("\tANSELbits.ANS3"));}
+"ANSEL4"	{return symbol(sym.ANSEL4, new String("\tANSELbits.ANS4"));}
+"ANSEL5"	{return symbol(sym.ANSEL5, new String("\tANSELbits.ANS5"));}
+"ANSEL6"	{return symbol(sym.ANSEL6, new String("\tANSELbits.ANS6"));}
+"ANSEL7"	{return symbol(sym.ANSEL7, new String("\tANSELbits.ANS7"));}
+
+"ANSELH0"	{return symbol(sym.ANSELH0, new String("\tANSELbits.ANS8"));}
+"ANSELH1"	{return symbol(sym.ANSELH1, new String("\tANSELbits.ANS9"));}
+"ANSELH2"	{return symbol(sym.ANSELH2, new String("\tANSELbits.ANS10"));}
+"ANSELH3"	{return symbol(sym.ANSELH3, new String("\tANSELbits.ANS11"));}
+"ANSELH4"	{return symbol(sym.ANSELH4, new String("\tANSELbits.ANS12"));}
+"ANSELH5"	{return symbol(sym.ANSELH5, new String("\tANSELbits.ANS13"));}
+
+"INTCONGIE"		{return symbol(sym.INTCONGIE, new String("\tINTCONbits.GIE"));}
+"INTCONPEIE"	{return symbol(sym.INTCONPEIE, new String("\tINTCONbits.PEIE"));}
+"INTCONT0IE"	{return symbol(sym.INTCONT0IE, new String("\tINTCONbits.T0IE"));}
+"INTCONINTE"	{return symbol(sym.INTCONINTE, new String("\tINTCONbits.INTE"));}
+"INTCONRBIE"	{return symbol(sym.INTCONRBIE, new String("\tINTCONbits.RBIE"));}
+"INTCONT0IF"	{return symbol(sym.INTCONT0IF, new String("\tINTCONbits.T0IF"));}
+"INTCONINTF"	{return symbol(sym.INTCONINTF, new String("\tINTCONbits.INTF"));}
+"INTCONRBIF"	{return symbol(sym.INTCONRBIF, new String("\tINTCONbits.RBIF"));}
+
 "ENTRADA" 		{ return symbol(sym.ENTRADA);}
 "SALIDA" 		{ return symbol(sym.SALIDA);}
 
@@ -173,7 +210,6 @@
 "while"     { return symbol(sym.WHILE ,nuevaEtq());}
 "Do"		{return  symbol(sym.DO);}
 "return"		{return  symbol(sym.RETURN);}
-"^"         { return symbol(sym.CIRCUN); }
 "["         { return symbol(sym.LCORCH); }
 "]"         { return symbol(sym.RCORCH); }
 ":"         { return symbol(sym.DOSPUNTOS); }
@@ -195,22 +231,26 @@
 "AND"		{ return symbol(sym.AND);}
 "OR"		{ return symbol(sym.OR); }
 "=" 		{ return symbol(sym.IGUAL); }
+"!=" 		{ return symbol(sym.DIFERENTE); }
 "==" 		{ return symbol(sym.IGUAL2); }
-"TRUE" | "FALSE" { return symbol(sym.CTELOGICA); }
-"INTEGER"        { return symbol(sym.INTEGER); }
-"Real" 			 { return symbol(sym.REAL); }
+"TRUE" | "FALSE" { return symbol(sym.CTELOGICA,new String(yytext())); }
+"Int"        { return symbol(sym.INTEGER); }
+"Float" 			 { return symbol(sym.REAL); }
 "Char"		     { return symbol(sym.CHAR); }
 "Boolean"		 { return symbol(sym.BOOLEAN); }
+<<<<<<< HEAD
 "Pointer"		 { return symbol(sym.POINTER); }
 "To" 			 { return symbol(sym.TO); }
 "Array"			 { return symbol(sym.ARRAY); }
 "0b"			 { return symbol(sym.BINARIO); }
 {VARIABLE}  { return symbol(sym.NMETODO, new String(yytext())); }
 {CADENA}  { return symbol(sym.CADENA, new String(yytext())); }
+=======
+{VARIABLE}  { return symbol(sym.ID, new String(yytext())); }
+>>>>>>> origin/master
 [:digit:]+  { return symbol(sym.NUMERO, new Integer(yytext())); }
-[:digit:]+\.[:digit:]+ { return symbol(sym.NUMREAL); }
-\'.\'  { return symbol(sym.CARACTER);}
-[:jletter:][:jletterdigit:]* { return symbol(sym.ID, yytext()); }
+[:digit:]+\.[:digit:]+ { return symbol(sym.NUMREAL,new Float(yytext())); }
+\'.\' 		{ return new Symbol(sym.CARACTER , new String(yytext())); }
 {lineComment}  {;}
 [ \t\r\n]+  {;}
 . 		{  System.out.println("Error léxico en línea "+lineaActual+":-"+yytext()+"-"); }

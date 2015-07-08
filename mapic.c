@@ -21,6 +21,7 @@
 
 
 
+<<<<<<< HEAD
 	void setup(){
 	OSCCON=0x60;
 	ANSEL=0;
@@ -28,6 +29,134 @@
 	PORTA=0;
 	TRISAbits.TRISA0=0;
 	PORTDbits.RD0=0;
+=======
+
+
+	void retardo(unsigned int i){for(;i>0;i--);}
+
+
+	void  MiMetodo()
+	{
+
+	int cantidad;
+	float altura =9.872222;
+	float altura2 =10.872222;
+	int xxx =10;
+		PORTA=!	PORTA;
+
+	cantidad=9;
+	}
+
+
+	void  setValor( int x)
+	{
+
+		PORTA=!	PORTA;
+
+		PORTDbits.RD0=0;
+		retardo(20000);
+
+		PORTDbits.RD0=0;
+
+		PORTDbits.RD0=1;
+		retardo(20000);
+
+		PORTDbits.RD1=0;
+
+		PORTDbits.RD0=2;
+		retardo(20000);
+
+		PORTDbits.RD2=0;
+
+		PORTDbits.RD0=3;
+		retardo(20000);
+
+		PORTDbits.RD3=0;
+
+	}
+
+
+	void  suma( int x , int y , float j)
+	{
+
+		PORTA=!	PORTA;
+
+		PORTDbits.RD0=0;
+		retardo(20000);
+
+		PORTDbits.RD0=0;
+
+		PORTDbits.RD0=1;
+		retardo(20000);
+
+		PORTDbits.RD1=0;
+
+		PORTDbits.RD0=2;
+		retardo(20000);
+
+		PORTDbits.RD2=0;
+
+		PORTDbits.RD0=3;
+		retardo(20000);
+
+		PORTDbits.RD3=0;
+
+	}
+
+
+	void  a1( int x , int y , float j , char letra , bool flag)
+	{
+
+		PORTA=!	PORTA;
+
+		PORTDbits.RD0=0;
+		retardo(20000);
+
+		PORTDbits.RD0=0;
+
+		PORTDbits.RD0=1;
+		retardo(20000);
+
+		PORTDbits.RD1=0;
+
+		PORTDbits.RD0=2;
+		retardo(20000);
+
+		PORTDbits.RD2=0;
+
+		PORTDbits.RD0=3;
+		retardo(20000);
+
+		PORTDbits.RD3=0;
+
+		PORTDbits.RD0=0;
+		retardo(20000);
+
+		PORTDbits.RD0=0;
+
+		PORTDbits.RD0=1;
+		retardo(20000);
+
+		PORTDbits.RD1=0;
+
+		PORTDbits.RD0=2;
+		retardo(20000);
+
+		PORTDbits.RD2=0;
+
+		PORTDbits.RD0=3;
+		retardo(20000);
+
+		PORTDbits.RD3=0;
+
+	}
+
+	void setup(){
+	OSCCON=0x60;
+	ANSEL=0;
+	PORTA=1;
+	TRISAbits.TRISA0=1;
+>>>>>>> origin/master
 
 }
 
@@ -35,6 +164,7 @@
 	 	while(1){
 
 
+<<<<<<< HEAD
 		if(	PORTA == 0b00101010  || 	PORTB  == 0b00001000  && 	PORTC  > 0b00000000)
 		{	
 		PORTDbits.RD0=1;
@@ -44,6 +174,8 @@
 	
 		PORTDbits.RD0=0;
 		}
+=======
+		PORTA=!	PORTA;
 		}
 
 	}
@@ -51,6 +183,50 @@
 	void main(void){
 		setup();
 		loop();
+
+	int yyy =10;
+	bool bandera =false;
+		if(bandera == 1)
+		{	
+		PORTB=!	PORTB;
+		}
+
+		if(8 < 9)
+		{	
+	float x =10.33;
+		PORTC=!	PORTC;
+
+		if(5 > 6)
+		{	
+		PORTA=!	PORTA;
+
+		PORTB=!	PORTB;
+
+	char ca ='a';		}
+		}
+
+		if(3 < 4)
+		{	
+		PORTB=!	PORTB;
+
+	yyy=0;		}
+		else
+		{
+	
+		if(5 > 7)
+		{	
+		PORTA=!	PORTB;
+
+		PORTC=!	PORTC;
+>>>>>>> origin/master
+		}
+		else
+		{
+			retardo(10);
+
+		PORTD=!	PORTD;
+null		}
+		}
 
 		 return; 
 	 }
