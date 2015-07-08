@@ -159,7 +159,7 @@ terminal CARACTER,NUMREAL,CTELOGICA;
 terminal RCORCH,LCORCH,COMA;
 /* Terminales */
 terminal CHALE, MAIN, SETUP, FUSES, ENTRADA, SALIDA, RETARDO, CICLO;
-terminal PA, PB, PC, PD, PE, TA, TB, TC, TD, TE;
+terminal PA, PB, PC, PD, PE, TA, TB, TC, TD, TE, ANSEL, ANSELH;
 terminal TA0, TA1, TA2, TA3, TA4, TA5, TA6, TA7;
 terminal TB0, TB1, TB2, TB3, TB4, TB5, TB6, TB7;
 terminal TC0, TC1, TC2, TC3, TC4, TC5, TC6, TC7;
@@ -170,6 +170,9 @@ terminal PB0, PB1, PB2, PB3, PB4, PB5, PB6, PB7;
 terminal PC0, PC1, PC2, PC3, PC4, PC5, PC6, PC7;
 terminal PD0, PD1, PD2, PD3, PD4, PD5, PD6, PD7;
 terminal PE0, PE1, PE2, PE3;
+terminal ANSEL0, ANSEL1, ANSEL2, ANSEL3, ANSEL4, ANSEL5, ANSEL6, ANSEL7;
+terminal ANSELH0, ANSELH1, ANSELH2, ANSELH3, ANSELH4, ANSELH5;
+terminal INTCON, INTCONGIE, INTCONPEIE, INTCONT0IE, INTCONINTE, INTCONRBIE, INTCONT0IF, INTCONINTF, INTCONRBIF;
 terminal VOID;
 terminal THEN,NO,FIN,DO;
 terminal SWITCH,OF,OTHERWISE;
@@ -212,11 +215,9 @@ precedence left ID,NMETODO;
               		 // System.out.println("Clase Generada\n\n"+miCodigo+"\n\n");
                 File miClase;
 	        	try{
-	        		
 	            	miClase = new File("mapic.c");
 	            	if(miClase.exists())
 	            		miClase.delete();
-
 	            	if(miClase.createNewFile()){
 	                	//System.out.println("Se ha creado el archivo");
 	            	}
@@ -225,7 +226,6 @@ precedence left ID,NMETODO;
 	            	escribir.close();
 	        	}catch(IOException e){
 	        		System.out.println("ERROR NO SE PUEDE ");
-	            	
 	        	}
              
 :};
@@ -245,9 +245,8 @@ precedence left ID,NMETODO;
 setup::=SETUP:setup   LLLAVE confpuertos RLLAVE
 		{:
 			//System.out.println("codigo intermedio==>"+setup+"   "+fsetup);
-	        miCodigo=setup+"{\n\tOSCCON=0x60;\n\tANSEL=0;\n"+miCodigo+"\n}";
+	        miCodigo=setup+"{\n\tOSCCON=0x60;"+miCodigo+"\n}";
 		:}
-		
 		|SETUP:setup  LLLAVE  confpuertos  instrucciones RLLAVE
 		{:
 	        //System.out.println("codigo intermedio==>"+setup+"   "+fsetup);
@@ -682,6 +681,10 @@ puertos::= PA:pa {: RESULT=pa+"="; :}
 	    |TC:tc  {: RESULT=tc+"="; :}
 	    |TD:td  {: RESULT=td+"="; :}
 	    |TE:te  {: RESULT=te+"=";  :}
+	    |ANSEL:ansel {:RESULT = ansel + " = ";:}
+	    |ANSELH:anselh {:RESULT = anselh + " = ";:}
+	    |INTCON:intcon {:RESULT = intcon + " = ";:}
+	    //
 	    |TA0:ta0 {:	RESULT=ta0+"="; :}
 	    |TA1:ta1 {:	RESULT=ta1+"="; :}
 		|TA2:ta2 {:	RESULT=ta2+"="; :}
@@ -690,7 +693,7 @@ puertos::= PA:pa {: RESULT=pa+"="; :}
 		|TA5:ta5 {:	RESULT=ta5+"="; :}
 		|TA6:ta6 {:	RESULT=ta6+"="; :}
 		|TA7:ta7 {:	RESULT=ta7+"="; :}
-		
+		//
 		|TB0:tb0 {:	RESULT=tb0+"="; :}
 		|TB1:tb1 {:	RESULT=tb1+"="; :}
 		|TB2:tb2 {:	RESULT=tb2+"="; :}
@@ -699,7 +702,7 @@ puertos::= PA:pa {: RESULT=pa+"="; :}
 		|TB5:tb5 {:	RESULT=tb5+"="; :}
 		|TB6:tb6 {:	RESULT=tb6+"="; :}
 		|TB7:tb7 {:	RESULT=tb7+"="; :}
-		
+		//
 		|TC0:tc0 {:	RESULT=tc0+"="; :}
 		|TC1:tc1 {:	RESULT=tc1+"="; :}
 		|TC2:tc2 {:	RESULT=tc2+"="; :}
@@ -708,7 +711,7 @@ puertos::= PA:pa {: RESULT=pa+"="; :}
 		|TC5:tc5 {:	RESULT=tc5+"="; :}
 		|TC6:tc6 {:	RESULT=tc6+"="; :}
 		|TC7:tc7 {:	RESULT=tc7+"="; :}
-		
+		//
 		|TD0:td0 {:	RESULT=td0+"="; :}
 		|TD1:td1 {:	RESULT=td1+"="; :}
 		|TD2:td2 {:	RESULT=td2+"="; :}
@@ -717,12 +720,12 @@ puertos::= PA:pa {: RESULT=pa+"="; :}
 		|TD5:td5 {:	RESULT=td5+"="; :}
 		|TD6:td6 {:	RESULT=td6+"="; :}
 		|TD7:td7 {:	RESULT=td7+"="; :}
-		
+		//
 		|TE0:te0 {:	RESULT=te0+"="; :}
 		|TE1:te1 {:	RESULT=te1+"="; :}
 		|TE2:te2 {:	RESULT=te2+"="; :}
 		|TE3:te3 {:	RESULT=te3+"="; :}
-		
+		//
 	    |PA0:pa0 {:	RESULT=pa0+"="; :}
 	    |PA1:pa1 {:	RESULT=pa1+"="; :}
 	    |PA2:pa2 {:	RESULT=pa2+"="; :}
@@ -759,6 +762,31 @@ puertos::= PA:pa {: RESULT=pa+"="; :}
 	    |PE1:pe1 {:	RESULT=pe1+"=";     :}
 	    |PE2:pe2 {:	RESULT=pe2+"=";     :}
 		|PE3:pe3 {:	RESULT=pe3+"=";     :}
+		//
+		|ANSEL0:ansel0{:RESULT=ansel0 + " = ";:}
+		|ANSEL1:ansel1{:RESULT=ansel1 + " = ";:}
+		|ANSEL2:ansel2{:RESULT=ansel2 + " = ";:}
+		|ANSEL3:ansel3{:RESULT=ansel3 + " = ";:}
+		|ANSEL4:ansel4{:RESULT=ansel4 + " = ";:}
+		|ANSEL5:ansel5{:RESULT=ansel5 + " = ";:}
+		|ANSEL6:ansel6{:RESULT=ansel6 + " = ";:}
+		|ANSEL7:ansel7{:RESULT=ansel7 + " = ";:}
+		//
+		|ANSELH0:anselh0{:RESULT=anselh0 + " = ";:}
+		|ANSELH1:anselh1{:RESULT=anselh1 + " = ";:}
+		|ANSELH2:anselh2{:RESULT=anselh2 + " = ";:}
+		|ANSELH3:anselh3{:RESULT=anselh3 + " = ";:}
+		|ANSELH4:anselh4{:RESULT=anselh4 + " = ";:}
+		|ANSELH5:anselh5{:RESULT=anselh5 + " = ";:}
+		//
+		|INTCONGIE:intgie{:RESULT=intgie + " = ";:}
+		|INTCONPEIE:intpeie{:RESULT=intpeie + " = ";:}
+		|INTCONT0IE:intt0ie{:RESULT=intt0ie + " = ";:}
+		|INTCONINTE:intinte{:RESULT=intinte + " = ";:}
+		|INTCONRBIE:intrbie{:RESULT=intrbie + " = ";:}
+		|INTCONT0IF:intt0if{:RESULT=intt0if + " = ";:}
+		|INTCONINTF:intintf{:RESULT=intintf + " = ";:}
+		|INTCONRBIF:intrbif{:RESULT=intrbif + " = ";:} 
 	    ;			
 					
 					

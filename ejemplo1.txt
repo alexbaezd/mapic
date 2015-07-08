@@ -40,7 +40,7 @@ void a1(x:int, y:int , j:float  , letra:char, flag:Boolean){
 
 Setup {
 	PA=ENTRADA;
-
+	TA0=ENTRADA;
 }
 
 
