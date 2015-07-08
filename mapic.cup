@@ -157,7 +157,7 @@ terminal ARRAY;
 terminal CARACTER,NUMREAL,CTELOGICA;
 terminal RCORCH,LCORCH,CIRCUN,COMA;
 /* Terminales */
-terminal CHALE, MAIN, SETUP, FUSES, ENTRADA, SALIDA, RETARDO, CICLO;
+terminal CHALE, MAIN, SETUP, FUSES, ENTRADA, SALIDA, RETARDO, CICLO, BINARIO ;
 terminal PA, PB, PC, PD, PE, TA, TB, TC, TD, TE;
 terminal TA0, TA1, TA2, TA3, TA4, TA5, TA6, TA7;
 terminal TB0, TB1, TB2, TB3, TB4, TB5, TB6, TB7;
@@ -180,6 +180,7 @@ terminal String NMETODO;
 terminal String SI;
 terminal String CASO;
 terminal String WHILE;
+terminal String CADENA;
 /* No terminales */
 non terminal programa;
 non terminal metodos;
@@ -233,7 +234,7 @@ precedence left ID,NMETODO;
              
 :};
 ///////////////////////////////////////////////////////////////////////////////////////////////////
- metodos::=  setup ciclo
+ metodos::=  setup ciclo 
 	        |setup RETARDO:retardo LPAREN RPAREN PCOMA ciclo   {: miCodigo=retardo+miCodigo;  :}
 	        |  metodo setup ciclo
 				{: 
@@ -520,6 +521,10 @@ item_condicion::=
 		:}
 		|puertost:p {:
 				RESULT=p;
+		:}
+		|BINARIO CADENA:n
+		{:
+			RESULT="0b"+n;
 		:}
 		;
 ///////////////////////////////////////////////////////////////////

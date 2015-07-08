@@ -30,7 +30,7 @@
 
 
 	VARIABLE=[A-Za-z_][A-Za-z_0-9]*
-
+	CADENA=[0-1] {8}
 
 %%
 
@@ -204,7 +204,9 @@
 "Pointer"		 { return symbol(sym.POINTER); }
 "To" 			 { return symbol(sym.TO); }
 "Array"			 { return symbol(sym.ARRAY); }
+"0b"			 { return symbol(sym.BINARIO); }
 {VARIABLE}  { return symbol(sym.NMETODO, new String(yytext())); }
+{CADENA}  { return symbol(sym.CADENA, new String(yytext())); }
 [:digit:]+  { return symbol(sym.NUMERO, new Integer(yytext())); }
 [:digit:]+\.[:digit:]+ { return symbol(sym.NUMREAL); }
 \'.\'  { return symbol(sym.CARACTER);}

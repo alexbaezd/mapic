@@ -1,0 +1,18 @@
+fuses
+
+setup{
+	ta=entrada;
+	pa=salida;
+	ta0=salida;
+	pd0=salida;
+}
+
+ciclo{
+	si(pa==0b00101010 OR pb==0b00001000 AND pc>0b00000000)then
+	pd0=1;
+	no
+	pd0=0;
+	fin
+}
+
+main{}
