@@ -188,9 +188,18 @@ break;
 		{		izqder();
 		}
 
-		if(2 > 3  < 4)
+	int bbb =8;
+		if(	PORTA == 0b01010101)
 		{		izqder();
 		}
+
+		if(	PORTA == 0x53)
+		{		izqder();
+		}
+bbb<<2;
+kkk>>3;
+kkk=bbb+4+7+6+4+4+4+4+4+4+4+4+4+4+4;
+a=b+b+g+a+s+fsf-kkk+jjj;
 		}
 
 	}

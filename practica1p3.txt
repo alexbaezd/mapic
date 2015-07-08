@@ -93,13 +93,24 @@ ciclo
 		izqder();
 	fin
 
+	var bbb:Int = 8;
 
-	si(2 > 3 < 4) then
+	si(pa==0b01010101) then
 		izqder();
 	fin
 
-	
+	si(pa==0x53) then
+		izqder();
+	fin
 
+   
+   bbb << 2;
+   
+
+   kkk >> 3;
+   kkk = bbb+4+n+7+6+4+4+4+4+4+4+4+4+4+4+4;
+	
+   a=b+b+f+g+a+s+fsf-kkk+jjj;
 
 }
 

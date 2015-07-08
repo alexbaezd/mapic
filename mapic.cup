@@ -88,6 +88,7 @@ frijol f2;
 String cadena_condiciones=" ";
 String cadena_tipo="";
 String cadena_parametros="";
+String encadenamst="";
 
 	private static Stack<String>p = new Stack<String>();
 	private static Stack<String>pila2 = new Stack<String>();
@@ -158,7 +159,7 @@ terminal CARACTER,NUMREAL,CTELOGICA;
 terminal RCORCH,LCORCH,COMA;
 /* Terminales */
 terminal CHALE, MAIN, SETUP, FUSES, ENTRADA, SALIDA, RETARDO, CICLO;
-terminal PA, PB, PC, PD, PE, TA, TB, TC, TD, TE, ANSEL, ANSELH,BINARIO;
+terminal PA, PB, PC, PD, PE, TA, TB, TC, TD, TE, ANSEL, ANSELH,BINARIO,HEXA;
 terminal TA0, TA1, TA2, TA3, TA4, TA5, TA6, TA7;
 terminal TB0, TB1, TB2, TB3, TB4, TB5, TB6, TB7;
 terminal TC0, TC1, TC2, TC3, TC4, TC5, TC6, TC7;
@@ -186,6 +187,8 @@ terminal String NMETODO;
 terminal String SI;
 terminal String CASO;
 terminal String WHILE;
+terminal String CADENA;
+terminal String HEXACADENA;
 /* No terminales */
 non terminal programa;
 non terminal metodos;
@@ -204,6 +207,8 @@ non terminal String expression,item_condicion;
 non terminal BloqueCondicion condicion;
 non terminal String signo,condicion_extra; 
 non terminal String tipo,exprtipos,parametros;
+non terminal operamesta;
+non terminal extraperamesta;
 
 // Declaraciones de preferencia
 /* Preferencias*/
@@ -566,7 +571,29 @@ instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 			{:
 				RESULT="\n\t\twhile("+c+")\n\t\t{\n\t"+auxiliar+"\t\t}";
 				auxiliar="";	
+		  :}
+//*******************************************************************************
+			| ID:v RECBITSIZQ NUMERO:n PCOMA
+			{:
+				RESULT=v+"<<"+n+";\n";
 			:}
+
+			| ID:v RECBITSDER NUMERO:n PCOMA
+			{:
+				RESULT=v+">>"+n+";\n";
+			:}
+//*********************************************************************************
+			|ID:v IGUAL expression:v2 operamesta:o expression:v3 PCOMA
+			{:
+				RESULT=v+"="+v2+o+v3+";\n";
+			:}
+			|ID:v IGUAL expression:v2 operamesta:o expression:v3 extraperamesta:eo PCOMA
+			{:
+
+				RESULT=v+"="+v2+o+v3+eo+";\n";
+				encadenamst="";
+			:}
+
 			;
 
 ////////////////////////////////////////////////////////////////////////////
@@ -603,9 +630,30 @@ instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 				RESULT=c+"case "+e2+":\n";
 				
 			:}
+
+
 	;
 
 //////////////////////////////////////////////////////////////////
+operamesta::= MAS
+			{:RESULT="+";:}
+			| MENOS
+			{:RESULT="-";:}
+			;
+////////////////////////////////////////////////////////////////
+extraperamesta::=operamesta:o expression:v
+				{:
+					RESULT=o+v;
+				:}
+				|extraperamesta operamesta:o expression:v
+				{:
+					
+					encadenamst=encadenamst+o+v;
+					RESULT=encadenamst;
+
+				:}
+				;
+/////////////////////////////////////////////////////////////////
 expression::= ID:id  {:RESULT=id;:}
 		| NUMERO:num {: RESULT= Integer.toString(num); 
 								//generarTerceto("="+num);
@@ -627,6 +675,10 @@ item_condicion::=
 		{:
 			RESULT="0b"+n;
 		:}
+		| HEXA HEXACADENA:hc
+		{:
+			RESULT="0x"+hc;
+		:}
 		;
 
 ///////////////////////////////////////////////////////////////////
@@ -638,10 +690,7 @@ condicion ::= item_condicion:e1 signo:sig  item_condicion:e2 {:
 			|item_condicion:e1 signo:sig item_condicion:e2 condicion_extra:c {:
 			 RESULT = generarCondicion(e1 ,sig, e2,c);
 			:}
-			| ID: v
-			{:
-				RESULT= v;
-			:}
+			
 			;
 
 condicion_extra::= signo:sig item_condicion:e1 {:
