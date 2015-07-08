@@ -249,6 +249,7 @@ import java_cup.runtime.*;
 ";" 		{ return symbol(sym.PCOMA); }
 "+" 		{ return symbol(sym.MAS); }
 "-" 		{ return symbol(sym.MENOS); }
+"/" 		{ return symbol(sym.DIVISION); }
 ">" 		{ return symbol(sym.MAYOR); }
 ">>" 		{ return symbol(sym.RECBITSDER); }
 "<<" 		{ return symbol(sym.RECBITSIZQ); }

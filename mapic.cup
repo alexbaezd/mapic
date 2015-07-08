@@ -179,7 +179,7 @@ terminal ADCON1_ADFM, ADCON1_VCFG1, ADCON1_VCFG0;
 terminal VOID;
 terminal THEN,NO,FIN,DO;
 terminal SWITCH,OF,OTHERWISE;
-terminal LPAREN, RPAREN,MAS, MENOS, LLLAVE, RLLAVE,DOSPUNTOS ,PCOMA,IGUAL , IGUAL2,TOGGLE;
+terminal LPAREN, RPAREN, MAS, MENOS, DIVISION, LLLAVE, RLLAVE, DOSPUNTOS, PCOMA, IGUAL, IGUAL2,TOGGLE;
 terminal MAYOR, MENOR , MAYORIGUAL , MENORIGUAL,AND,OR,DIFERENTE,TIPOVC,RECBITSDER,RECBITSIZQ,RETURN;
 terminal Integer NUMERO;
 terminal String ID;
@@ -208,7 +208,9 @@ non terminal BloqueCondicion condicion;
 non terminal String signo,condicion_extra; 
 non terminal String tipo,exprtipos,parametros;
 non terminal operamesta;
-non terminal extraperamesta;
+non terminal String extraperamesta;
+non terminal String parentesis;
+non terminal String extraparentesis;
 
 // Declaraciones de preferencia
 /* Preferencias*/
@@ -496,17 +498,42 @@ instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 				//retardos= retardos+c+"("+n+");\n";
 	   			RESULT=c+"("+n+");\n";
 			:}
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+//*******************************************************************************	
+=======
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
 			| DELAY:c LLLAVE NUMERO:n RLLAVE PCOMA
 			{:
 				//retardos= retardos+c+"("+n+");\n";
 	   			RESULT=c+"("+n+");\n";
 			:}
 //*****************************************************************************		
+>>>>>>> origin/master
 			|puertos:p IGUAL puertost:u MAS NUMERO:n PCOMA
 			{:
 				RESULT=p+u+"+"+n+";\n";
 			:}
+//********************************************************************************
+			|puertos:p IGUAL puertost:u MAS ID:v PCOMA
+			{:
+				RESULT=p+u+"+"+v+";\n";
+			:}
+//********************************************************************************
+			|ID:v MAS MAS PCOMA
+			{:
+				RESULT=v+"++;\n";
+			:}
 
+			|ID:v MENOS MENOS PCOMA
+			{:
+				RESULT=v+"--;\n";
+			:}
+//********************************************************************************
 			| RETURN PCOMA
 			{:
 				RESULT="return;\n";
@@ -614,14 +641,72 @@ instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 			{:
 				RESULT=v+"="+v2+o+v3+";\n";
 			:}
+
 			|ID:v IGUAL expression:v2 operamesta:o expression:v3 extraperamesta:eo PCOMA
 			{:
-
 				RESULT=v+"="+v2+o+v3+eo+";\n";
 				encadenamst="";
 			:}
 
+			|ID:v IGUAL parentesis:p PCOMA
+			{:
+				RESULT=v+"="+p+";\n";
+			:}
+
+			|ID:v IGUAL parentesis:p operamesta:o parentesis:p2 PCOMA
+			{:
+				RESULT=v+"="+p+o+p2+";\n";
+			:}
+
+			|ID:v IGUAL parentesis:p operamesta:o expression:e PCOMA
+			{:
+				RESULT=v+"="+p+o+e+";\n";
+			:}
 			;
+
+
+
+parentesis::= LPAREN expression:v2 RPAREN
+			{:RESULT="("+v2+")";:}
+
+			| LPAREN expression:v2 operamesta:o expression:v3 RPAREN
+			{:RESULT="("+v2+o+v3+")";:}
+
+			| LPAREN expression:v2 operamesta:o expression:v3 extraperamesta:eo RPAREN
+			{:RESULT="("+v2+o+v3+eo+")";:}
+
+			| LPAREN expression:v2 operamesta:o expression:v3 operamesta:o2 parentesis:p RPAREN
+			{:RESULT="("+v2+o+v3+o2+p+")";:}
+
+			| LPAREN parentesis:p operamesta:o parentesis:p2 RPAREN
+			{:RESULT="("+p+o+p2+")";:}
+
+			| LPAREN parentesis:p operamesta:o expression:e RPAREN
+			{:RESULT="("+p+o+e+")";:}
+
+			| LPAREN parentesis:p operamesta:o expression:p2 extraparentesis:ep RPAREN
+			{:RESULT="("+p+o+p2+ep+")";:}
+
+			| LPAREN parentesis:p operamesta:o parentesis:p2 extraparentesis:ep RPAREN
+			{:RESULT="("+p+o+p2+ep+")";:}
+			;
+
+extraparentesis::= operamesta:o parentesis:p
+				{:RESULT=o+p;:}
+
+				| parentesis:p
+				{:RESULT=p;:}
+
+				
+
+				| extraperamesta:ep parentesis:p
+				{:RESULT=ep+p;:}
+
+				| extraparentesis:ep operamesta:op parentesis:p
+				{:RESULT=ep+op+p;:}
+
+
+				;
 
 ////////////////////////////////////////////////////////////////////////////
 
@@ -657,34 +742,49 @@ instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 				RESULT=c+"case "+e2+":\n";
 				
 			:}
-
-
 	;
 
 //////////////////////////////////////////////////////////////////
 operamesta::= MAS
 			{:RESULT="+";:}
+
 			| MENOS
 			{:RESULT="-";:}
+
+			| DIVISION
+			{:RESULT="/";:}
 			;
 ////////////////////////////////////////////////////////////////
 extraperamesta::=operamesta:o expression:v
 				{:
 					RESULT=o+v;
 				:}
+
+				
 				|extraperamesta operamesta:o expression:v
 				{:
-					
 					encadenamst=encadenamst+o+v;
 					RESULT=encadenamst;
-
 				:}
 				;
 /////////////////////////////////////////////////////////////////
 expression::= ID:id  {:RESULT=id;:}
-		| NUMERO:num {: RESULT= Integer.toString(num); 
+		| NUMERO:num 
+		{: 
+			RESULT= Integer.toString(num); 
 								//generarTerceto("="+num);
-			:}
+		:}
+
+		| ID:id NUMERO:n
+		{:
+			RESULT=id+n;
+		:}
+
+		| NUMERO:n ID:id
+		{:
+			RESULT=n+id;
+		:}
+
 		
 		;
 //Para el uso del SI NO

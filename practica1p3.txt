@@ -103,14 +103,31 @@ ciclo
 		izqder();
 	fin
 
-   
+   si(223==5) then
+		izqder();
+	fin
+
    bbb << 2;
    
 
    kkk >> 3;
-   kkk = bbb+4+n+7+6+4+4+4+4+4+4+4+4+4+4+4;
-	
-   a=b+b+f+g+a+s+fsf-kkk+jjj;
+   
+   kkk=3+223+3/3f;
+
+   kkk=((3+2)+(3+3));
+
+   kkk= ((9+999)-(5));
+
+   kkk= ((x-y)/2f);
+   kkk= ((x-y)/2f)+333;
+  kkk=(PBBB)+5;
+  kkk=(5+6-B6f)+5;
+  kkk=((4+4+4-f)-(t-t-t))+5;
+  kkk=((4+4+(6-7))+(6+6))+6;
+   pd=pd+n;
+
+   i++;
+   i--;
 
    v=kkk >> 3;
    n=kkk >> 3;

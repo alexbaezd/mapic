@@ -24,6 +24,30 @@ class Yylex implements java_cup.runtime.Scanner {
    * Translates characters to character classes
    */
   private static final String ZZ_CMAP_PACKED = 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    "\11\0\1\66\1\65\2\0\1\66\22\0\1\66\1\60\5\0\1\64"+
+    "\1\45\1\46\1\2\1\53\1\51\1\54\1\63\1\1\1\26\1\5"+
+    "\1\27\1\30\1\31\1\32\1\33\1\34\2\4\1\44\1\52\1\56"+
+    "\1\57\1\55\2\0\1\13\1\20\1\21\1\22\1\11\1\17\1\35"+
+    "\1\24\1\7\2\3\1\23\1\10\1\14\1\25\1\16\1\3\1\36"+
+    "\1\12\1\6\1\15\1\40\1\41\1\61\2\3\1\42\1\0\1\43"+
+    "\1\0\1\37\1\0\1\13\1\20\1\21\1\22\1\11\1\17\1\35"+
+    "\1\24\1\7\2\3\1\23\1\10\1\14\1\25\1\16\1\3\1\36"+
+    "\1\12\1\6\1\15\1\40\1\41\1\61\2\3\1\47\1\0\1\50"+
+    "\u05e2\0\12\62\206\0\12\62\306\0\12\62\u019c\0\12\62\166\0\12\62"+
+    "\166\0\12\62\166\0\12\62\166\0\12\62\166\0\12\62\166\0\12\62"+
+    "\166\0\12\62\166\0\12\62\340\0\12\62\166\0\12\62\106\0\12\62"+
+    "\u0116\0\12\62\106\0\12\62\u0746\0\12\62\46\0\12\62\u012c\0\12\62"+
+    "\200\0\12\62\246\0\12\62\6\0\12\62\266\0\12\62\126\0\12\62"+
+    "\206\0\12\62\6\0\12\62\u89c6\0\12\62\u02a6\0\12\62\46\0\12\62"+
+    "\306\0\12\62\166\0\12\62\u0196\0\12\62\u5316\0\12\62\346\0";
+=======
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
     "\11\0\1\67\1\66\2\0\1\67\22\0\1\67\1\61\5\0\1\65"+
     "\1\46\1\47\1\2\1\54\1\52\1\55\1\64\1\1\1\27\1\5"+
     "\1\30\1\31\1\32\1\33\1\34\1\35\2\4\1\45\1\53\1\57"+
@@ -41,6 +65,13 @@ class Yylex implements java_cup.runtime.Scanner {
     "\126\0\12\63\206\0\12\63\6\0\12\63\u89c6\0\12\63\u02a6\0\12\63"+
     "\46\0\12\63\306\0\12\63\166\0\12\63\u0196\0\12\63\u5316\0\12\63"+
     "\346\0";
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
 
   /** 
    * Translates characters to character classes
@@ -56,6 +87,42 @@ class Yylex implements java_cup.runtime.Scanner {
     "\1\0\2\1\1\2\2\3\15\2\1\3\3\2\1\4"+
     "\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1\14"+
     "\1\15\1\16\1\17\1\20\1\21\1\1\1\3\1\1"+
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    "\1\22\1\0\1\23\1\0\1\23\1\2\1\24\1\25"+
+    "\1\26\1\27\1\30\6\2\1\31\5\2\1\32\1\33"+
+    "\1\34\1\35\1\36\1\37\12\2\1\40\1\2\1\41"+
+    "\1\42\1\43\1\44\4\2\1\45\1\46\1\47\1\50"+
+    "\1\51\1\52\2\0\1\53\1\3\1\2\1\54\1\55"+
+    "\1\56\1\57\1\60\1\61\1\62\1\63\1\64\1\65"+
+    "\1\66\1\67\1\70\1\71\1\72\1\73\1\74\1\75"+
+    "\1\76\1\77\1\100\1\101\1\102\1\103\1\104\1\105"+
+    "\1\106\1\107\1\110\1\111\1\112\1\113\1\114\1\115"+
+    "\1\116\1\117\3\2\1\120\6\2\1\121\1\2\1\122"+
+    "\1\123\1\124\1\125\1\126\1\127\1\130\1\131\1\132"+
+    "\1\133\1\134\1\135\1\136\1\137\1\140\1\141\1\142"+
+    "\1\143\1\144\1\145\1\146\1\147\1\150\1\151\1\152"+
+    "\1\153\1\154\1\155\1\156\1\157\1\160\1\161\1\162"+
+    "\1\163\1\164\1\165\1\166\13\2\1\167\2\2\1\170"+
+    "\1\22\1\3\1\2\1\171\1\2\1\172\1\2\1\173"+
+    "\12\2\1\174\1\175\4\2\1\176\1\2\1\3\4\2"+
+    "\1\177\2\2\1\200\1\2\1\201\1\202\1\2\1\203"+
+    "\4\2\1\204\1\3\1\205\1\206\1\207\1\2\1\210"+
+    "\1\211\1\212\1\213\1\214\1\215\1\216\1\217\1\220"+
+    "\1\221\1\222\6\2\1\223\1\3\5\2\1\224\1\225"+
+    "\1\226\1\227\1\230\1\231\1\232\2\2\1\233\1\234"+
+    "\1\2\1\235\1\236\16\2\1\237\5\2\1\240\1\2"+
+    "\1\241\1\242\1\243\1\244\1\245\1\246\1\247\6\2"+
+    "\1\250\2\2\1\251\1\252\1\253\1\254\1\255\4\2"+
+    "\1\256\1\257\1\260\1\261\2\2\1\262\4\2\1\263"+
+    "\1\264\1\265\1\266\1\2\1\267\1\270\1\2\1\271"+
+    "\1\2\1\272";
+=======
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
     "\1\22\1\0\1\23\1\0\1\23\1\2\1\24\6\2"+
     "\1\25\1\2\1\26\1\27\1\30\2\2\1\31\1\32"+
     "\4\2\1\33\1\34\1\35\1\36\1\37\1\40\12\2"+
@@ -84,6 +151,13 @@ class Yylex implements java_cup.runtime.Scanner {
     "\1\254\1\255\1\256\1\257\4\2\1\260\1\261\1\262"+
     "\1\263\2\2\1\264\4\2\1\265\1\266\1\267\1\270"+
     "\1\2\1\271\1\272\1\2\1\273\1\2\1\274";
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
 
   private static int [] zzUnpackAction() {
     int [] result = new int[365];
@@ -111,6 +185,59 @@ class Yylex implements java_cup.runtime.Scanner {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    "\0\0\0\67\0\156\0\245\0\334\0\u0113\0\u014a\0\u0181"+
+    "\0\u01b8\0\u01ef\0\u0226\0\u025d\0\u0294\0\u02cb\0\u0302\0\u0339"+
+    "\0\u0370\0\u03a7\0\u03de\0\u0415\0\u044c\0\u0483\0\u04ba\0\67"+
+    "\0\67\0\67\0\67\0\67\0\67\0\67\0\67\0\67"+
+    "\0\67\0\67\0\u04f1\0\u0528\0\u055f\0\u0596\0\u05cd\0\u0604"+
+    "\0\u063b\0\u0672\0\u05cd\0\u06a9\0\u06e0\0\u0717\0\u074e\0\u0785"+
+    "\0\u07bc\0\u07f3\0\u082a\0\u0861\0\u0898\0\u08cf\0\u0906\0\u093d"+
+    "\0\u0974\0\245\0\u09ab\0\u09e2\0\u0a19\0\u0a50\0\u0a87\0\245"+
+    "\0\u0abe\0\u0af5\0\u0b2c\0\u0b63\0\u0b9a\0\u0bd1\0\u0c08\0\u0c3f"+
+    "\0\u0c76\0\u0cad\0\u0ce4\0\u0d1b\0\u0d52\0\u0d89\0\u0dc0\0\245"+
+    "\0\u0df7\0\245\0\245\0\67\0\67\0\u0e2e\0\u0e65\0\u0e9c"+
+    "\0\u0ed3\0\67\0\67\0\67\0\67\0\67\0\67\0\u0f0a"+
+    "\0\u0f41\0\u06a9\0\u0f78\0\u0faf\0\245\0\245\0\245\0\245"+
+    "\0\245\0\245\0\245\0\245\0\245\0\245\0\245\0\245"+
+    "\0\245\0\245\0\245\0\245\0\245\0\245\0\245\0\245"+
+    "\0\245\0\245\0\245\0\245\0\245\0\245\0\245\0\245"+
+    "\0\245\0\245\0\245\0\245\0\245\0\245\0\245\0\245"+
+    "\0\u0fe6\0\u101d\0\u1054\0\u108b\0\u10c2\0\u10f9\0\u1130\0\u1167"+
+    "\0\u119e\0\u11d5\0\245\0\u120c\0\245\0\245\0\245\0\245"+
+    "\0\245\0\245\0\245\0\245\0\245\0\245\0\245\0\245"+
+    "\0\245\0\245\0\245\0\245\0\245\0\245\0\245\0\245"+
+    "\0\245\0\245\0\245\0\245\0\245\0\245\0\245\0\245"+
+    "\0\245\0\245\0\245\0\245\0\245\0\245\0\245\0\245"+
+    "\0\245\0\u1243\0\u127a\0\u12b1\0\u12e8\0\u131f\0\u1356\0\u138d"+
+    "\0\u13c4\0\u13fb\0\u1432\0\u1469\0\245\0\u14a0\0\u14d7\0\67"+
+    "\0\67\0\u150e\0\u1545\0\245\0\u157c\0\245\0\u15b3\0\245"+
+    "\0\u15ea\0\u1621\0\u1658\0\u168f\0\u16c6\0\u16fd\0\u1734\0\u176b"+
+    "\0\u17a2\0\u17d9\0\245\0\245\0\u1810\0\u1847\0\u187e\0\u18b5"+
+    "\0\245\0\u18ec\0\u1923\0\u195a\0\u1991\0\u19c8\0\u19ff\0\245"+
+    "\0\u1a36\0\u1a6d\0\u1aa4\0\u1adb\0\245\0\245\0\u1b12\0\245"+
+    "\0\u1b49\0\u1b80\0\u1bb7\0\u1bee\0\245\0\u1c25\0\245\0\245"+
+    "\0\u1c5c\0\u1c93\0\245\0\245\0\245\0\u1cca\0\245\0\245"+
+    "\0\245\0\245\0\245\0\245\0\245\0\u1d01\0\u1d38\0\u1d6f"+
+    "\0\u1da6\0\u1ddd\0\u1e14\0\245\0\u1e4b\0\u1e82\0\u1eb9\0\u1ef0"+
+    "\0\u1f27\0\u1f5e\0\245\0\245\0\245\0\245\0\245\0\245"+
+    "\0\245\0\u1f95\0\u1fcc\0\245\0\245\0\u2003\0\245\0\u05cd"+
+    "\0\u203a\0\u2071\0\u20a8\0\u20df\0\u2116\0\u214d\0\u2184\0\u21bb"+
+    "\0\u21f2\0\u2229\0\u2260\0\u2297\0\u22ce\0\u2305\0\245\0\u233c"+
+    "\0\u2373\0\u23aa\0\u23e1\0\u2418\0\245\0\u244f\0\245\0\245"+
+    "\0\245\0\245\0\245\0\245\0\245\0\u2486\0\u24bd\0\u24f4"+
+    "\0\u252b\0\u2562\0\u2599\0\245\0\u25d0\0\u2607\0\245\0\245"+
+    "\0\245\0\245\0\245\0\u263e\0\u2675\0\u26ac\0\u26e3\0\245"+
+    "\0\245\0\245\0\245\0\u271a\0\u2751\0\u2788\0\u27bf\0\u27f6"+
+    "\0\u282d\0\u2864\0\245\0\245\0\245\0\245\0\u289b\0\245"+
+    "\0\245\0\u28d2\0\245\0\u2909\0\245";
+=======
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
     "\0\0\0\70\0\160\0\250\0\340\0\u0118\0\u0150\0\u0188"+
     "\0\u01c0\0\u01f8\0\u0230\0\u0268\0\u02a0\0\u02d8\0\u0310\0\u0348"+
     "\0\u0380\0\u03b8\0\u03f0\0\u0428\0\u0460\0\u0498\0\u04d0\0\70"+
@@ -157,6 +284,13 @@ class Yylex implements java_cup.runtime.Scanner {
     "\0\250\0\250\0\250\0\u2920\0\u2958\0\u2990\0\u29c8\0\u2a00"+
     "\0\u2a38\0\u2a70\0\250\0\250\0\250\0\250\0\u2aa8\0\250"+
     "\0\250\0\u2ae0\0\250\0\u2b18\0\250";
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
 
   private static int [] zzUnpackRowMap() {
     int [] result = new int[365];
@@ -183,6 +317,183 @@ class Yylex implements java_cup.runtime.Scanner {
 
   private static final String ZZ_TRANS_PACKED_0 =
     "\1\2\1\3\1\2\1\4\1\5\1\6\1\7\1\10"+
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    "\1\11\1\12\1\13\1\14\1\15\1\4\1\16\1\17"+
+    "\1\20\1\21\1\22\2\4\1\23\1\24\6\5\1\4"+
+    "\1\25\1\4\1\26\1\27\1\30\1\31\1\32\1\33"+
+    "\1\34\1\35\1\36\1\37\1\40\1\41\1\42\1\43"+
+    "\1\44\1\45\1\46\1\4\1\47\1\2\1\50\2\51"+
+    "\71\0\1\52\67\0\37\4\17\0\1\4\11\0\2\53"+
+    "\20\0\7\53\25\0\1\47\1\54\7\0\1\53\1\55"+
+    "\20\0\1\55\6\53\25\0\1\47\1\54\6\0\4\4"+
+    "\1\56\1\4\1\57\1\4\1\60\4\4\1\61\1\62"+
+    "\1\63\1\4\1\64\1\65\10\4\1\66\3\4\17\0"+
+    "\1\4\10\0\11\4\1\67\25\4\17\0\1\4\10\0"+
+    "\10\4\1\70\26\4\17\0\1\4\10\0\11\4\1\71"+
+    "\25\4\17\0\1\4\10\0\4\4\1\72\1\4\1\73"+
+    "\1\4\1\74\25\4\1\75\17\0\1\4\10\0\11\4"+
+    "\1\76\5\4\1\77\17\4\17\0\1\4\10\0\22\4"+
+    "\1\100\14\4\17\0\1\4\10\0\6\4\1\101\1\4"+
+    "\1\102\4\4\1\103\1\104\1\105\17\4\17\0\1\4"+
+    "\10\0\4\4\1\106\3\4\1\107\1\4\1\110\5\4"+
+    "\1\111\16\4\17\0\1\4\10\0\22\4\1\112\14\4"+
+    "\17\0\1\4\10\0\4\4\1\113\3\4\1\114\10\4"+
+    "\1\115\1\116\14\4\17\0\1\4\10\0\6\4\1\117"+
+    "\13\4\1\120\14\4\17\0\1\4\10\0\13\4\1\121"+
+    "\1\122\16\4\1\123\3\4\17\0\1\4\11\0\1\53"+
+    "\1\55\12\0\1\124\5\0\1\55\6\53\24\0\1\125"+
+    "\1\47\1\54\6\0\6\4\1\126\30\4\17\0\1\4"+
+    "\10\0\10\4\1\127\11\4\1\130\14\4\17\0\1\4"+
+    "\10\0\21\4\1\131\15\4\17\0\1\4\62\0\1\132"+
+    "\1\0\1\133\65\0\1\134\1\135\66\0\1\136\66\0"+
+    "\1\137\13\0\2\47\20\0\7\47\25\0\1\47\1\54"+
+    "\3\0\65\140\1\0\1\140\65\0\2\51\2\52\1\141"+
+    "\64\52\4\0\2\142\20\0\7\142\25\0\1\142\10\0"+
+    "\1\47\1\143\20\0\1\143\6\47\25\0\1\47\1\54"+
+    "\6\0\5\4\1\144\31\4\17\0\1\4\10\0\2\4"+
+    "\1\145\20\4\1\146\1\147\1\150\11\4\17\0\1\4"+
+    "\10\0\2\4\1\151\20\4\1\152\1\153\1\154\1\155"+
+    "\1\156\1\157\1\160\5\4\17\0\1\4\10\0\2\4"+
+    "\1\161\20\4\1\162\1\163\1\164\1\165\1\166\1\167"+
+    "\1\170\5\4\17\0\1\4\10\0\2\4\1\171\20\4"+
+    "\1\172\1\173\1\174\1\175\1\176\1\177\1\200\5\4"+
+    "\17\0\1\4\10\0\2\4\1\201\20\4\1\202\1\203"+
+    "\1\204\1\205\1\206\1\207\1\210\5\4\17\0\1\4"+
+    "\10\0\6\4\1\211\30\4\17\0\1\4\10\0\32\4"+
+    "\1\212\4\4\17\0\1\4\10\0\12\4\1\213\24\4"+
+    "\17\0\1\4\10\0\3\4\1\214\33\4\17\0\1\4"+
+    "\10\0\4\4\1\215\32\4\17\0\1\4\10\0\3\4"+
+    "\1\216\33\4\17\0\1\4\10\0\3\4\1\217\33\4"+
+    "\17\0\1\4\10\0\20\4\1\220\16\4\17\0\1\4"+
+    "\10\0\4\4\1\221\32\4\17\0\1\4\10\0\7\4"+
+    "\1\222\7\4\1\223\17\4\17\0\1\4\10\0\16\4"+
+    "\1\224\20\4\17\0\1\4\10\0\2\4\1\225\20\4"+
+    "\1\226\1\227\1\230\11\4\17\0\1\4\10\0\2\4"+
+    "\1\231\20\4\1\232\1\233\1\234\1\235\1\236\1\237"+
+    "\1\240\5\4\17\0\1\4\10\0\2\4\1\241\20\4"+
+    "\1\242\1\243\1\244\1\245\1\246\1\247\1\250\5\4"+
+    "\17\0\1\4\10\0\2\4\1\251\20\4\1\252\1\253"+
+    "\1\254\1\255\1\256\1\257\1\260\5\4\17\0\1\4"+
+    "\10\0\2\4\1\261\20\4\1\262\1\263\1\264\1\265"+
+    "\1\266\1\267\1\270\5\4\17\0\1\4\10\0\11\4"+
+    "\1\271\25\4\17\0\1\4\10\0\20\4\1\272\16\4"+
+    "\17\0\1\4\10\0\7\4\1\273\27\4\17\0\1\4"+
+    "\10\0\22\4\1\274\14\4\17\0\1\4\10\0\22\4"+
+    "\1\275\14\4\17\0\1\4\10\0\16\4\1\276\20\4"+
+    "\17\0\1\4\10\0\7\4\1\277\27\4\17\0\1\4"+
+    "\10\0\10\4\1\300\26\4\17\0\1\4\10\0\11\4"+
+    "\1\301\25\4\17\0\1\4\10\0\14\4\1\302\22\4"+
+    "\17\0\1\4\10\0\3\4\1\303\33\4\17\0\1\4"+
+    "\10\0\3\4\1\304\33\4\17\0\1\4\10\0\33\4"+
+    "\1\305\3\4\17\0\1\4\10\0\4\4\1\306\32\4"+
+    "\17\0\1\4\10\0\4\4\1\307\32\4\17\0\1\4"+
+    "\71\0\1\310\2\0\1\52\1\311\1\141\64\52\4\0"+
+    "\1\47\1\312\20\0\1\312\6\47\25\0\1\47\1\54"+
+    "\6\0\6\4\1\313\30\4\17\0\1\4\10\0\11\4"+
+    "\1\314\25\4\17\0\1\4\10\0\32\4\1\315\4\4"+
+    "\17\0\1\4\10\0\6\4\1\316\30\4\17\0\1\4"+
+    "\10\0\16\4\1\317\20\4\17\0\1\4\10\0\11\4"+
+    "\1\320\25\4\17\0\1\4\10\0\33\4\1\321\3\4"+
+    "\17\0\1\4\10\0\12\4\1\322\24\4\17\0\1\4"+
+    "\10\0\4\4\1\323\32\4\17\0\1\4\10\0\3\4"+
+    "\1\324\33\4\17\0\1\4\10\0\6\4\1\325\30\4"+
+    "\17\0\1\4\10\0\22\4\1\326\14\4\17\0\1\4"+
+    "\10\0\7\4\1\213\27\4\17\0\1\4\10\0\6\4"+
+    "\1\327\30\4\17\0\1\4\10\0\10\4\1\330\26\4"+
+    "\17\0\1\4\10\0\20\4\1\331\16\4\17\0\1\4"+
+    "\10\0\20\4\1\332\16\4\17\0\1\4\10\0\22\4"+
+    "\1\333\14\4\17\0\1\4\10\0\33\4\1\334\3\4"+
+    "\17\0\1\4\10\0\7\4\1\305\27\4\17\0\1\4"+
+    "\10\0\10\4\1\335\26\4\17\0\1\4\10\0\4\4"+
+    "\1\336\32\4\17\0\1\4\10\0\10\4\1\337\1\4"+
+    "\1\340\24\4\17\0\1\4\10\0\17\4\1\341\17\4"+
+    "\17\0\1\4\10\0\20\4\1\342\16\4\17\0\1\4"+
+    "\11\0\1\47\1\343\20\0\1\343\6\47\25\0\1\47"+
+    "\1\54\6\0\5\4\1\344\31\4\17\0\1\4\10\0"+
+    "\20\4\1\345\16\4\17\0\1\4\10\0\22\4\1\346"+
+    "\14\4\17\0\1\4\10\0\10\4\1\347\26\4\17\0"+
+    "\1\4\10\0\13\4\1\350\23\4\17\0\1\4\10\0"+
+    "\17\4\1\351\17\4\17\0\1\4\10\0\16\4\1\352"+
+    "\20\4\17\0\1\4\10\0\20\4\1\353\16\4\17\0"+
+    "\1\4\10\0\11\4\1\354\25\4\17\0\1\4\10\0"+
+    "\7\4\1\355\27\4\17\0\1\4\10\0\3\4\1\356"+
+    "\33\4\17\0\1\4\10\0\6\4\1\357\30\4\17\0"+
+    "\1\4\10\0\22\4\1\360\14\4\17\0\1\4\10\0"+
+    "\12\4\1\361\24\4\17\0\1\4\10\0\22\4\1\362"+
+    "\14\4\17\0\1\4\10\0\33\4\1\363\3\4\17\0"+
+    "\1\4\10\0\33\4\1\364\3\4\17\0\1\4\10\0"+
+    "\6\4\1\365\30\4\17\0\1\4\11\0\1\47\1\366"+
+    "\20\0\1\366\6\47\25\0\1\47\1\54\6\0\7\4"+
+    "\1\367\27\4\17\0\1\4\10\0\6\4\1\370\30\4"+
+    "\17\0\1\4\10\0\11\4\1\371\25\4\17\0\1\4"+
+    "\10\0\17\4\1\372\17\4\17\0\1\4\10\0\10\4"+
+    "\1\373\26\4\17\0\1\4\10\0\21\4\1\374\15\4"+
+    "\17\0\1\4\10\0\2\4\1\375\16\4\1\376\1\4"+
+    "\1\377\1\u0100\1\u0101\1\u0102\1\u0103\1\u0104\1\u0105\5\4"+
+    "\17\0\1\4\10\0\2\4\1\u0106\20\4\1\u0107\13\4"+
+    "\17\0\1\4\10\0\10\4\1\u0108\26\4\17\0\1\4"+
+    "\10\0\20\4\1\u0109\16\4\17\0\1\4\10\0\11\4"+
+    "\1\u010a\25\4\17\0\1\4\10\0\17\4\1\u010b\17\4"+
+    "\17\0\1\4\10\0\11\4\1\u010c\25\4\17\0\1\4"+
+    "\11\0\1\47\1\u010d\20\0\1\u010d\6\47\25\0\1\47"+
+    "\1\54\6\0\3\4\1\u010e\1\u010f\6\4\1\u0110\16\4"+
+    "\1\u0111\1\u0112\3\4\17\0\1\4\10\0\10\4\1\u0113"+
+    "\26\4\17\0\1\4\10\0\2\4\1\u0114\20\4\1\u0115"+
+    "\1\u0116\1\u0117\1\u0118\1\u0119\7\4\17\0\1\4\10\0"+
+    "\34\4\1\u011a\2\4\17\0\1\4\10\0\34\4\1\u011b"+
+    "\2\4\17\0\1\4\10\0\11\4\1\u011c\25\4\17\0"+
+    "\1\4\10\0\3\4\1\u011d\33\4\17\0\1\4\10\0"+
+    "\33\4\1\u011e\3\4\17\0\1\4\10\0\22\4\1\u011f"+
+    "\14\4\17\0\1\4\11\0\1\47\1\u0120\20\0\1\u0120"+
+    "\6\47\25\0\1\47\1\54\6\0\23\4\1\u0121\13\4"+
+    "\17\0\1\4\10\0\11\4\1\u0122\25\4\17\0\1\4"+
+    "\10\0\6\4\1\u0123\30\4\17\0\1\4\10\0\4\4"+
+    "\1\u0124\32\4\17\0\1\4\10\0\15\4\1\u0125\21\4"+
+    "\17\0\1\4\10\0\10\4\1\u0126\24\4\1\u0127\1\4"+
+    "\17\0\1\4\10\0\10\4\1\u0128\5\4\1\u0129\13\4"+
+    "\1\u012a\4\4\17\0\1\4\10\0\6\4\1\u012b\30\4"+
+    "\17\0\1\4\10\0\4\4\1\u012c\32\4\17\0\1\4"+
+    "\10\0\3\4\1\u012d\33\4\17\0\1\4\10\0\4\4"+
+    "\1\u012e\32\4\17\0\1\4\10\0\6\4\1\u012f\30\4"+
+    "\17\0\1\4\10\0\4\4\1\u0130\32\4\17\0\1\4"+
+    "\10\0\17\4\1\u0131\17\4\17\0\1\4\10\0\16\4"+
+    "\1\u0132\20\4\17\0\1\4\10\0\17\4\1\u0133\17\4"+
+    "\17\0\1\4\10\0\21\4\1\u0134\15\4\17\0\1\4"+
+    "\10\0\22\4\1\u0135\14\4\17\0\1\4\10\0\32\4"+
+    "\1\u0136\4\4\17\0\1\4\10\0\6\4\1\u0137\5\4"+
+    "\1\u0138\22\4\17\0\1\4\10\0\6\4\1\u0139\5\4"+
+    "\1\u013a\22\4\17\0\1\4\10\0\6\4\1\u013b\30\4"+
+    "\17\0\1\4\10\0\6\4\1\u013c\5\4\1\u013d\22\4"+
+    "\17\0\1\4\10\0\14\4\1\u013e\22\4\17\0\1\4"+
+    "\10\0\14\4\1\u013f\22\4\17\0\1\4\10\0\16\4"+
+    "\1\u0140\3\4\1\u0141\14\4\17\0\1\4\10\0\7\4"+
+    "\1\u0142\27\4\17\0\1\4\10\0\34\4\1\u0143\2\4"+
+    "\17\0\1\4\10\0\5\4\1\u0144\31\4\17\0\1\4"+
+    "\10\0\32\4\1\u0145\4\4\17\0\1\4\10\0\7\4"+
+    "\1\u0146\27\4\17\0\1\4\10\0\11\4\1\u0147\25\4"+
+    "\17\0\1\4\10\0\2\4\1\u0148\20\4\1\u0149\1\u014a"+
+    "\1\u014b\11\4\17\0\1\4\10\0\3\4\1\u014c\1\u014d"+
+    "\6\4\1\u014e\17\4\1\u014f\3\4\17\0\1\4\10\0"+
+    "\2\4\1\u0150\20\4\1\u0151\13\4\17\0\1\4\10\0"+
+    "\2\4\1\u0152\20\4\1\u0153\13\4\17\0\1\4\10\0"+
+    "\23\4\1\u0154\13\4\17\0\1\4\10\0\11\4\1\u0155"+
+    "\25\4\17\0\1\4\10\0\7\4\1\u0156\27\4\17\0"+
+    "\1\4\10\0\15\4\1\u0157\21\4\17\0\1\4\10\0"+
+    "\7\4\1\u0158\6\4\1\u0159\20\4\17\0\1\4\10\0"+
+    "\3\4\1\u015a\33\4\17\0\1\4\10\0\2\4\1\u015b"+
+    "\5\4\1\u015c\12\4\1\u015d\1\u015e\12\4\17\0\1\4"+
+    "\10\0\13\4\1\u015f\23\4\17\0\1\4\10\0\6\4"+
+    "\1\u0160\30\4\17\0\1\4\10\0\7\4\1\u0161\27\4"+
+    "\17\0\1\4\10\0\6\4\1\u0162\30\4\17\0\1\4"+
+    "\10\0\12\4\1\u0163\24\4\17\0\1\4\10\0\17\4"+
+    "\1\u0164\17\4\17\0\1\4\10\0\32\4\1\u0165\4\4"+
+=======
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
     "\1\4\1\11\1\4\1\12\1\13\1\14\1\15\1\16"+
     "\1\4\1\17\1\20\1\21\1\22\1\4\1\23\1\24"+
     "\6\5\1\4\1\25\1\4\1\26\1\27\1\30\1\31"+
@@ -357,6 +668,13 @@ class Yylex implements java_cup.runtime.Scanner {
     "\17\0\1\4\10\0\4\4\1\u016a\33\4\17\0\1\4"+
     "\10\0\15\4\1\u016b\22\4\17\0\1\4\10\0\3\4"+
     "\1\u016c\34\4\17\0\1\4\10\0\33\4\1\u016d\4\4"+
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
     "\17\0\1\4\5\0";
 
   private static int [] zzUnpackTrans() {
@@ -399,7 +717,19 @@ class Yylex implements java_cup.runtime.Scanner {
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
     "\1\0\1\11\25\1\13\11\7\1\1\0\1\1\1\0"+
+<<<<<<< Updated upstream
     "\50\1\2\11\4\1\6\11\2\0\150\1\2\11\241\1";
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    "\47\1\2\11\4\1\6\11\2\0\146\1\2\11\234\1";
+=======
+    "\50\1\2\11\4\1\6\11\2\0\150\1\2\11\241\1";
+>>>>>>> origin/master
+=======
+    "\50\1\2\11\4\1\6\11\2\0\150\1\2\11\241\1";
+>>>>>>> origin/master
+>>>>>>> Stashed changes
 
   private static int [] zzUnpackAttribute() {
     int [] result = new int[365];
@@ -849,6 +1179,7 @@ class Yylex implements java_cup.runtime.Scanner {
         case 38: 
           { return symbol(sym.MAYORIGUAL);
           }
+<<<<<<< Updated upstream
         case 190: break;
         case 33: 
           { return symbol(sym.OF);
@@ -861,12 +1192,65 @@ class Yylex implements java_cup.runtime.Scanner {
         case 94: 
           { return symbol(sym.PA1,new String("\tPORTAbits.RA1"));
           }
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 188: break;
+        case 33: 
+          { return symbol(sym.OF);
+          }
+        case 189: break;
+        case 2: 
+          { return symbol(sym.ID, new String(yytext()));
+          }
+        case 190: break;
+        case 86: 
+=======
+        case 190: break;
+        case 33: 
+          { return symbol(sym.OF);
+          }
+        case 191: break;
+        case 2: 
+          { return symbol(sym.ID, new String(yytext()));
+          }
+        case 192: break;
+        case 94: 
+>>>>>>> origin/master
+          { return symbol(sym.PA1,new String("\tPORTAbits.RA1"));
+          }
+=======
+        case 190: break;
+        case 33: 
+          { return symbol(sym.OF);
+          }
+        case 191: break;
+        case 2: 
+          { return symbol(sym.ID, new String(yytext()));
+          }
+        case 192: break;
+        case 94: 
+          { return symbol(sym.PA1,new String("\tPORTAbits.RA1"));
+          }
+>>>>>>> origin/master
+>>>>>>> Stashed changes
         case 193: break;
         case 89: 
           { return symbol(sym.PD7,new String("\tPORTDbits.RD7"));
           }
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 192: break;
+        case 29: 
+=======
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
         case 194: break;
         case 31: 
+>>>>>>> origin/master
           { return symbol(sym.PB,new String("\tPORTB"));
           }
         case 195: break;
@@ -881,16 +1265,46 @@ class Yylex implements java_cup.runtime.Scanner {
         case 55: 
           { return symbol(sym.TE,new String("\tTRISEbits.TRISE2"));
           }
+<<<<<<< Updated upstream
         case 198: break;
         case 83: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 196: break;
+        case 111: 
+=======
+        case 198: break;
+        case 83: 
+>>>>>>> origin/master
+=======
+        case 198: break;
+        case 83: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.PD0,new String("\tPORTDbits.RD0"));
           }
         case 199: break;
         case 76: 
           { return symbol(sym.TC,new String("\tTRISCbits.TRISC3"));
           }
+<<<<<<< Updated upstream
         case 200: break;
         case 21: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 198: break;
+        case 25: 
+=======
+        case 200: break;
+        case 21: 
+>>>>>>> origin/master
+=======
+        case 200: break;
+        case 21: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.SI,nuevaEtq());
           }
         case 201: break;
@@ -905,8 +1319,23 @@ class Yylex implements java_cup.runtime.Scanner {
         case 42: 
           { return symbol(sym.DIFERENTE);
           }
+<<<<<<< Updated upstream
         case 204: break;
         case 182: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 202: break;
+        case 180: 
+=======
+        case 204: break;
+        case 182: 
+>>>>>>> origin/master
+=======
+        case 204: break;
+        case 182: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.OPTIONREG_PSA, new String("\tOPTION_REGbits.PSA"));
           }
         case 205: break;
@@ -961,12 +1390,39 @@ class Yylex implements java_cup.runtime.Scanner {
         case 118: 
           { return symbol(sym.FIN);
           }
+<<<<<<< Updated upstream
         case 218: break;
         case 30: 
           { return symbol(sym.PA,new String("\tPORTA"));
           }
         case 219: break;
         case 179: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 215: break;
+        case 28: 
+          { return symbol(sym.PA,new String("\tPORTA"));
+          }
+        case 216: break;
+        case 177: 
+=======
+        case 218: break;
+        case 30: 
+          { return symbol(sym.PA,new String("\tPORTA"));
+          }
+        case 219: break;
+        case 179: 
+>>>>>>> origin/master
+=======
+        case 218: break;
+        case 30: 
+          { return symbol(sym.PA,new String("\tPORTA"));
+          }
+        case 219: break;
+        case 179: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.ADCON0_ADCS0, new String("\tADCON0bits.ADCS0"));
           }
         case 220: break;
@@ -977,8 +1433,23 @@ class Yylex implements java_cup.runtime.Scanner {
         case 61: 
           { return symbol(sym.TA,new String("\tTRISAbits.TRISA4"));
           }
+<<<<<<< Updated upstream
         case 222: break;
         case 23: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 219: break;
+        case 20: 
+=======
+        case 222: break;
+        case 23: 
+>>>>>>> origin/master
+=======
+        case 222: break;
+        case 23: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.TE,new String("\tTRISE"));
           }
         case 223: break;
@@ -1001,8 +1472,23 @@ class Yylex implements java_cup.runtime.Scanner {
         case 186: 
           { return symbol(sym.OPTIONREG_T0CS, new String("\tOPTION_REGbits.T0CS"));
           }
+<<<<<<< Updated upstream
         case 228: break;
         case 82: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 225: break;
+        case 110: 
+=======
+        case 228: break;
+        case 82: 
+>>>>>>> origin/master
+=======
+        case 228: break;
+        case 82: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.PD1,new String("\tPORTDbits.RD1"));
           }
         case 229: break;
@@ -1017,6 +1503,7 @@ class Yylex implements java_cup.runtime.Scanner {
         case 79: 
           { return symbol(sym.TC,new String("\tTRISCbits.TRISC6"));
           }
+<<<<<<< Updated upstream
         case 232: break;
         case 176: 
           { return symbol(sym.ADCON1_VCFG1, new String("\tADCON1bits.VCFG1"));
@@ -1041,32 +1528,141 @@ class Yylex implements java_cup.runtime.Scanner {
         case 155: 
           { return symbol(sym.ANSELH3, new String("\tANSELbits.ANS11"));
           }
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 229: break;
+        case 174: 
+          { return symbol(sym.ADCON1_VCFG1, new String("\tADCON1bits.VCFG1"));
+          }
+        case 230: break;
+        case 169: 
+          { return symbol(sym.ADCON0_ADON, new String("\tADCON0bits.ADON"));
+          }
+        case 231: break;
+        case 26: 
+=======
+        case 232: break;
+        case 176: 
+          { return symbol(sym.ADCON1_VCFG1, new String("\tADCON1bits.VCFG1"));
+          }
+        case 233: break;
+        case 171: 
+          { return symbol(sym.ADCON0_ADON, new String("\tADCON0bits.ADON"));
+          }
+        case 234: break;
+        case 27: 
+>>>>>>> origin/master
+=======
+        case 232: break;
+        case 176: 
+          { return symbol(sym.ADCON1_VCFG1, new String("\tADCON1bits.VCFG1"));
+          }
+        case 233: break;
+        case 171: 
+          { return symbol(sym.ADCON0_ADON, new String("\tADCON0bits.ADON"));
+          }
+        case 234: break;
+        case 27: 
+>>>>>>> origin/master
+          { return symbol(sym.NO);
+          }
+        case 235: break;
+        case 47: 
+          { return symbol(sym.TD,new String("\tTRISDbits.TRISD2"));
+          }
+        case 236: break;
+        case 71: 
+          { return symbol(sym.TA,new String("\tTRISBbits.TRISB6"));
+          }
+        case 237: break;
+        case 155: 
+          { return symbol(sym.ANSELH3, new String("\tANSELbits.ANS11"));
+          }
+>>>>>>> Stashed changes
         case 238: break;
         case 107: 
           { return symbol(sym.PB5,new String("\tPORTBbits.RB5"));
           }
+<<<<<<< Updated upstream
         case 239: break;
         case 22: 
           { return symbol(sym.TD,new String("\tTRISD"));
           }
         case 240: break;
         case 173: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 236: break;
+        case 24: 
+          { return symbol(sym.TD,new String("\tTRISD"));
+          }
+        case 237: break;
+        case 171: 
+=======
+        case 239: break;
+        case 22: 
+          { return symbol(sym.TD,new String("\tTRISD"));
+          }
+        case 240: break;
+        case 173: 
+>>>>>>> origin/master
+=======
+        case 239: break;
+        case 22: 
+          { return symbol(sym.TD,new String("\tTRISD"));
+          }
+        case 240: break;
+        case 173: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.ADCON0_CHS0, new String("\tADCON0bits.CHS0"));
           }
         case 241: break;
         case 7: 
           { return symbol(sym.LPAREN);
           }
+<<<<<<< Updated upstream
         case 242: break;
         case 58: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 239: break;
+        case 49: 
+=======
+        case 242: break;
+        case 58: 
+>>>>>>> origin/master
+=======
+        case 242: break;
+        case 58: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.TA,new String("\tTRISAbits.TRISA0"));
           }
         case 243: break;
         case 117: 
           { return symbol(sym.PC7,new String("\tPORTCbits.RC7"));
           }
+<<<<<<< Updated upstream
         case 244: break;
         case 111: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 241: break;
+        case 103: 
+=======
+        case 244: break;
+        case 111: 
+>>>>>>> origin/master
+=======
+        case 244: break;
+        case 111: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.PC0,new String("\tPORTCbits.RC0"));
           }
         case 245: break;
@@ -1109,8 +1705,23 @@ class Yylex implements java_cup.runtime.Scanner {
         case 161: 
           { return symbol(sym.ADCON0_GO, new String("\tADCON0bits.GO"));
           }
+<<<<<<< Updated upstream
         case 255: break;
         case 53: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 252: break;
+        case 44: 
+=======
+        case 255: break;
+        case 53: 
+>>>>>>> origin/master
+=======
+        case 255: break;
+        case 53: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.TE,new String("\tTRISEbits.TRISE1"));
           }
         case 256: break;
@@ -1125,14 +1736,50 @@ class Yylex implements java_cup.runtime.Scanner {
         case 128: 
           { return symbol(sym.ANSEL,new String("\tANSEL"));
           }
+<<<<<<< Updated upstream
         case 259: break;
         case 134: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 256: break;
+        case 138: 
+=======
+        case 259: break;
+        case 134: 
+>>>>>>> origin/master
+=======
+        case 259: break;
+        case 134: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.ANSEL1, new String("\tANSELbits.ANS1"));
           }
         case 260: break;
         case 129: 
           { return symbol(sym.SETUP,new String("\tvoid setup()"));
           }
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 258: break;
+        case 23: 
+          { return symbol(sym.TC,new String("\tTRISC"));
+          }
+        case 259: break;
+        case 139: 
+          { return symbol(sym.ANSELH,new String("\tANSELH"));
+          }
+        case 260: break;
+        case 58: 
+          { return symbol(sym.TA,new String("\tTRISBbits.TRISB2"));
+          }
+=======
+>>>>>>> origin/master
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
         case 261: break;
         case 26: 
           { return symbol(sym.TC,new String("\tTRISC"));
@@ -1162,8 +1809,23 @@ class Yylex implements java_cup.runtime.Scanner {
           { return symbol(sym.OPTIONREG_INTEDG, new String("\tOPTION_REGbits.INTEDG"));
           }
         case 268: break;
+<<<<<<< Updated upstream
         case 108: 
           { return symbol(sym.PB6,new String("\tPORTBbits.RB6"));
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 102: 
+          { return symbol(sym.PC1,new String("\tPORTCbits.RC1"));
+=======
+        case 108: 
+          { return symbol(sym.PB6,new String("\tPORTBbits.RB6"));
+>>>>>>> origin/master
+=======
+        case 108: 
+          { return symbol(sym.PB6,new String("\tPORTBbits.RB6"));
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           }
         case 269: break;
         case 131: 
@@ -1199,12 +1861,39 @@ class Yylex implements java_cup.runtime.Scanner {
           { return symbol(sym.PC1,new String("\tPORTCbits.RC1"));
           }
         case 273: break;
+<<<<<<< Updated upstream
         case 98: 
           { return symbol(sym.PA4,new String("\tPORTAbits.RA4"));
           }
         case 274: break;
         case 121: 
           { return symbol(sym.MAIN,new String("\n\n\tvoid main(void)"));
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 22: 
+          { return symbol(sym.TB,new String("\tTRISB"));
+          }
+        case 274: break;
+        case 181: 
+          { return symbol(sym.OPTIONREG_PS0, new String("\tOPTION_REGbits.PS0"));
+=======
+        case 98: 
+          { return symbol(sym.PA4,new String("\tPORTAbits.RA4"));
+          }
+        case 274: break;
+        case 121: 
+          { return symbol(sym.MAIN,new String("\n\n\tvoid main(void)"));
+>>>>>>> origin/master
+=======
+        case 98: 
+          { return symbol(sym.PA4,new String("\tPORTAbits.RA4"));
+          }
+        case 274: break;
+        case 121: 
+          { return symbol(sym.MAIN,new String("\n\n\tvoid main(void)"));
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           }
         case 275: break;
         case 85: 
@@ -1219,8 +1908,23 @@ class Yylex implements java_cup.runtime.Scanner {
           { return symbol(sym.OPTIONREG_PS0, new String("\tOPTION_REGbits.PS0"));
           }
         case 278: break;
+<<<<<<< Updated upstream
         case 78: 
           { return symbol(sym.TC,new String("\tTRISCbits.TRISC5"));
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 72: 
+          { return symbol(sym.TD,new String("\tTRISDbits.TRISD1"));
+=======
+        case 78: 
+          { return symbol(sym.TC,new String("\tTRISCbits.TRISC5"));
+>>>>>>> origin/master
+=======
+        case 78: 
+          { return symbol(sym.TC,new String("\tTRISCbits.TRISC5"));
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           }
         case 279: break;
         case 138: 
@@ -1250,24 +1954,69 @@ class Yylex implements java_cup.runtime.Scanner {
         case 6: 
           { return symbol(sym.DOSPUNTOS);
           }
+<<<<<<< Updated upstream
         case 286: break;
         case 152: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 283: break;
+        case 149: 
+=======
+        case 286: break;
+        case 152: 
+>>>>>>> origin/master
+=======
+        case 286: break;
+        case 152: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.ANSELH1, new String("\tANSELbits.ANS9"));
           }
         case 287: break;
         case 143: 
           { return symbol(sym.SALIDA);
           }
+<<<<<<< Updated upstream
         case 288: break;
         case 103: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 285: break;
+        case 95: 
+=======
+        case 288: break;
+        case 103: 
+>>>>>>> origin/master
+=======
+        case 288: break;
+        case 103: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.PB0,new String("\tPORTBbits.RB0"));
           }
         case 289: break;
         case 146: 
           { return symbol(sym.TOGGLE,new String("!"));
           }
+<<<<<<< Updated upstream
         case 290: break;
         case 178: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 287: break;
+        case 176: 
+=======
+        case 290: break;
+        case 178: 
+>>>>>>> origin/master
+=======
+        case 290: break;
+        case 178: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.ADCON0_ADCS1, new String("\tADCON0bits.ADCS1"));
           }
         case 291: break;
@@ -1278,12 +2027,29 @@ class Yylex implements java_cup.runtime.Scanner {
         case 112: 
           { return symbol(sym.PC2,new String("\tPORTCbits.RC2"));
           }
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 290: break;
+        case 21: 
+=======
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
         case 293: break;
         case 122: 
           { return symbol(sym.TIMER0, new String("\tTMR0"));
           }
         case 294: break;
         case 24: 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.TA,new String("\tTRISA"));
           }
         case 295: break;
@@ -1306,8 +2072,23 @@ class Yylex implements java_cup.runtime.Scanner {
         case 12: 
           { return symbol(sym.PCOMA);
           }
+<<<<<<< Updated upstream
         case 300: break;
         case 54: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 296: break;
+        case 45: 
+=======
+        case 300: break;
+        case 54: 
+>>>>>>> origin/master
+=======
+        case 300: break;
+        case 54: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.TE,new String("\tTRISEbits.TRISE0"));
           }
         case 301: break;
@@ -1322,26 +2103,69 @@ class Yylex implements java_cup.runtime.Scanner {
         case 130: 
           { return symbol(sym.REAL);
           }
+<<<<<<< Updated upstream
         case 304: break;
         case 36: 
           { return symbol(sym.HEXA);
           }
         case 305: break;
         case 73: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 300: break;
+        case 36: 
+          { return symbol(sym.HEXA);
+          }
+        case 301: break;
+        case 64: 
+=======
+        case 304: break;
+        case 36: 
+          { return symbol(sym.HEXA);
+          }
+        case 305: break;
+        case 73: 
+>>>>>>> origin/master
+=======
+        case 304: break;
+        case 36: 
+          { return symbol(sym.HEXA);
+          }
+        case 305: break;
+        case 73: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.TC,new String("\tTRISCbits.TRISC1"));
           }
         case 306: break;
         case 37: 
           { return symbol(sym.RECBITSDER);
           }
+<<<<<<< Updated upstream
         case 307: break;
         case 65: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 303: break;
+        case 56: 
+=======
+        case 307: break;
+        case 65: 
+>>>>>>> origin/master
+=======
+        case 307: break;
+        case 65: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.TA,new String("\tTRISBbits.TRISB1"));
           }
         case 308: break;
         case 49: 
           { return symbol(sym.TD,new String("\tTRISDbits.TRISD4"));
           }
+<<<<<<< Updated upstream
         case 309: break;
         case 102: 
           { return symbol(sym.PB1,new String("\tPORTBbits.RB1"));
@@ -1356,14 +2180,71 @@ class Yylex implements java_cup.runtime.Scanner {
           }
         case 312: break;
         case 91: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 305: break;
+        case 94: 
+          { return symbol(sym.PB1,new String("\tPORTBbits.RB1"));
+          }
+        case 306: break;
+        case 175: 
+          { return symbol(sym.ADCON1_VCFG0, new String("\tADCON1bits.VCFG0"));
+          }
+        case 307: break;
+        case 83: 
+=======
+        case 309: break;
+        case 102: 
+          { return symbol(sym.PB1,new String("\tPORTBbits.RB1"));
+          }
+        case 310: break;
+        case 149: 
+          { return symbol(sym.DELAY,new String("\t\t__delay_ms"));
+          }
+        case 311: break;
+        case 177: 
+          { return symbol(sym.ADCON1_VCFG0, new String("\tADCON1bits.VCFG0"));
+          }
+        case 312: break;
+        case 91: 
+>>>>>>> origin/master
+=======
+        case 309: break;
+        case 102: 
+          { return symbol(sym.PB1,new String("\tPORTBbits.RB1"));
+          }
+        case 310: break;
+        case 149: 
+          { return symbol(sym.DELAY,new String("\t\t__delay_ms"));
+          }
+        case 311: break;
+        case 177: 
+          { return symbol(sym.ADCON1_VCFG0, new String("\tADCON1bits.VCFG0"));
+          }
+        case 312: break;
+        case 91: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.PE0,new String("\tPORTEbits.RE0"));
           }
         case 313: break;
         case 59: 
           { return symbol(sym.TA,new String("\tTRISAbits.TRISA2"));
           }
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 309: break;
+        case 27: 
+=======
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
         case 314: break;
         case 29: 
+>>>>>>> origin/master
           { return symbol(sym.PE,new String("\tPORTE"));
           }
         case 315: break;
@@ -1378,7 +2259,19 @@ class Yylex implements java_cup.runtime.Scanner {
         case 44: 
           { return symbol(sym.AND);
           }
+<<<<<<< Updated upstream
         case 318: break;
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 313: break;
+=======
+        case 318: break;
+>>>>>>> origin/master
+=======
+        case 318: break;
+>>>>>>> origin/master
+>>>>>>> Stashed changes
         case 35: 
           { return symbol(sym.BINARIO);
           }
@@ -1406,8 +2299,23 @@ class Yylex implements java_cup.runtime.Scanner {
         case 56: 
           { return symbol(sym.TE,new String("\tTRISEbits.TRISE3"));
           }
+<<<<<<< Updated upstream
         case 325: break;
         case 136: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 320: break;
+        case 140: 
+=======
+        case 325: break;
+        case 136: 
+>>>>>>> origin/master
+=======
+        case 325: break;
+        case 136: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.ANSEL0, new String("\tANSELbits.ANS0"));
           }
         case 326: break;
@@ -1418,12 +2326,43 @@ class Yylex implements java_cup.runtime.Scanner {
         case 4: 
           { return symbol(sym.LCORCH);
           }
+<<<<<<< Updated upstream
         case 328: break;
         case 46: 
           { return symbol(sym.TD,new String("\tTRISDbits.TRISD0"));
           }
         case 329: break;
         case 20: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 323: break;
+        case 1: 
+          { System.out.println("Error léxico en línea "+lineaActual+":-"+yytext()+"-");
+          }
+        case 324: break;
+        case 73: 
+          { return symbol(sym.TD,new String("\tTRISDbits.TRISD0"));
+          }
+        case 325: break;
+        case 32: 
+=======
+        case 328: break;
+        case 46: 
+          { return symbol(sym.TD,new String("\tTRISDbits.TRISD0"));
+          }
+        case 329: break;
+        case 20: 
+>>>>>>> origin/master
+=======
+        case 328: break;
+        case 46: 
+          { return symbol(sym.TD,new String("\tTRISDbits.TRISD0"));
+          }
+        case 329: break;
+        case 20: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return  symbol(sym.DO);
           }
         case 330: break;
@@ -1434,8 +2373,23 @@ class Yylex implements java_cup.runtime.Scanner {
         case 14: 
           { return symbol(sym.MENOS);
           }
+<<<<<<< Updated upstream
         case 332: break;
         case 181: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 328: break;
+        case 179: 
+=======
+        case 332: break;
+        case 181: 
+>>>>>>> origin/master
+=======
+        case 332: break;
+        case 181: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.OPTIONREG_PS1, new String("\tOPTION_REGbits.PS1"));
           }
         case 333: break;
@@ -1450,8 +2404,23 @@ class Yylex implements java_cup.runtime.Scanner {
         case 158: 
           { return symbol(sym.BOOLEAN);
           }
+<<<<<<< Updated upstream
         case 336: break;
         case 28: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 332: break;
+        case 31: 
+=======
+        case 336: break;
+        case 28: 
+>>>>>>> origin/master
+=======
+        case 336: break;
+        case 28: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.PD,new String("\tPORTD"));
           }
         case 337: break;
@@ -1478,12 +2447,39 @@ class Yylex implements java_cup.runtime.Scanner {
         case 18: 
           { ;
           }
+<<<<<<< Updated upstream
         case 343: break;
         case 90: 
           { return symbol(sym.PE1,new String("\tPORTEbits.RE1"));
           }
         case 344: break;
         case 175: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 339: break;
+        case 82: 
+          { return symbol(sym.PE1,new String("\tPORTEbits.RE1"));
+          }
+        case 340: break;
+        case 173: 
+=======
+        case 343: break;
+        case 90: 
+          { return symbol(sym.PE1,new String("\tPORTEbits.RE1"));
+          }
+        case 344: break;
+        case 175: 
+>>>>>>> origin/master
+=======
+        case 343: break;
+        case 90: 
+          { return symbol(sym.PE1,new String("\tPORTEbits.RE1"));
+          }
+        case 344: break;
+        case 175: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.ADCON0_CHS3, new String("\tADCON0bits.CHS3"));
           }
         case 345: break;
@@ -1502,7 +2498,19 @@ class Yylex implements java_cup.runtime.Scanner {
         case 101: 
           { return symbol(sym.PA7,new String("\tPORTAbits.RA7"));
           }
+<<<<<<< Updated upstream
         case 349: break;
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 345: break;
+=======
+        case 349: break;
+>>>>>>> origin/master
+=======
+        case 349: break;
+>>>>>>> origin/master
+>>>>>>> Stashed changes
         case 3: 
           { return symbol(sym.NUMERO, new Integer(yytext()));
           }
@@ -1510,12 +2518,39 @@ class Yylex implements java_cup.runtime.Scanner {
         case 13: 
           { return symbol(sym.MAS);
           }
+<<<<<<< Updated upstream
         case 351: break;
         case 95: 
           { return symbol(sym.PA0,new String("\tPORTAbits.RA0"));
           }
         case 352: break;
         case 170: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 347: break;
+        case 87: 
+          { return symbol(sym.PA0,new String("\tPORTAbits.RA0"));
+          }
+        case 348: break;
+        case 168: 
+=======
+        case 351: break;
+        case 95: 
+          { return symbol(sym.PA0,new String("\tPORTAbits.RA0"));
+          }
+        case 352: break;
+        case 170: 
+>>>>>>> origin/master
+=======
+        case 351: break;
+        case 95: 
+          { return symbol(sym.PA0,new String("\tPORTAbits.RA0"));
+          }
+        case 352: break;
+        case 170: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.ADCON1_ADFM, new String("\tADCON1bits.ADFM"));
           }
         case 353: break;
@@ -1526,15 +2561,42 @@ class Yylex implements java_cup.runtime.Scanner {
         case 142: 
           { return symbol(sym.ANSEL7, new String("\tANSELbits.ANS7"));
           }
+<<<<<<< Updated upstream
         case 355: break;
         case 74: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 351: break;
+        case 65: 
+=======
+        case 355: break;
+        case 74: 
+>>>>>>> origin/master
+=======
+        case 355: break;
+        case 74: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.TC,new String("\tTRISCbits.TRISC0"));
           }
         case 356: break;
         case 17: 
           { return symbol(sym.IGUAL);
           }
+<<<<<<< Updated upstream
         case 357: break;
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 353: break;
+=======
+        case 357: break;
+>>>>>>> origin/master
+=======
+        case 357: break;
+>>>>>>> origin/master
+>>>>>>> Stashed changes
         case 34: 
           { return symbol(sym.OR);
           }
@@ -1546,12 +2608,23 @@ class Yylex implements java_cup.runtime.Scanner {
         case 137: 
           { return symbol(sym.ANSEL2, new String("\tANSELbits.ANS2"));
           }
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 356: break;
+        case 30: 
+=======
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
         case 360: break;
         case 147: 
           { return symbol(sym.INTCON,new String("\tINTCON"));
           }
         case 361: break;
         case 32: 
+>>>>>>> origin/master
           { return symbol(sym.PC,new String("\tPORTC"));
           }
         case 362: break;
@@ -1562,8 +2635,23 @@ class Yylex implements java_cup.runtime.Scanner {
         case 133: 
           { return symbol(sym.WHILE ,nuevaEtq());
           }
+<<<<<<< Updated upstream
         case 364: break;
         case 66: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 360: break;
+        case 57: 
+=======
+        case 364: break;
+        case 66: 
+>>>>>>> origin/master
+=======
+        case 364: break;
+        case 66: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.TA,new String("\tTRISBbits.TRISB0"));
           }
         case 365: break;
@@ -1574,8 +2662,23 @@ class Yylex implements java_cup.runtime.Scanner {
         case 168: 
           { return symbol(sym.INTCONRBIE, new String("\tINTCONbits.RBIE"));
           }
+<<<<<<< Updated upstream
         case 367: break;
         case 153: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 363: break;
+        case 150: 
+=======
+        case 367: break;
+        case 153: 
+>>>>>>> origin/master
+=======
+        case 367: break;
+        case 153: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.ANSELH0, new String("\tANSELbits.ANS8"));
           }
         case 368: break;
@@ -1598,12 +2701,39 @@ class Yylex implements java_cup.runtime.Scanner {
         case 92: 
           { return symbol(sym.PE2,new String("\tPORTEbits.RE2"));
           }
+<<<<<<< Updated upstream
         case 373: break;
         case 57: 
           { return symbol(sym.TA,new String("\tTRISAbits.TRISA1"));
           }
         case 374: break;
         case 174: 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        case 369: break;
+        case 48: 
+          { return symbol(sym.TA,new String("\tTRISAbits.TRISA1"));
+          }
+        case 370: break;
+        case 172: 
+=======
+        case 373: break;
+        case 57: 
+          { return symbol(sym.TA,new String("\tTRISAbits.TRISA1"));
+          }
+        case 374: break;
+        case 174: 
+>>>>>>> origin/master
+=======
+        case 373: break;
+        case 57: 
+          { return symbol(sym.TA,new String("\tTRISAbits.TRISA1"));
+          }
+        case 374: break;
+        case 174: 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
           { return symbol(sym.ADCON0_CHS2, new String("\tADCON0bits.CHS2"));
           }
         case 375: break;
