@@ -8,7 +8,7 @@
   <!-- CSS  -->
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link rel="stylesheet" href="css/monaki.css">
+    <link rel="stylesheet" href="css/prism.css">
  
 </head>
 <body><div class="navbar-fixed">
@@ -62,13 +62,21 @@
                 <strong>Como se muestra a continuacion.</strong>
             </h5>
          <div class="col s12 m8 offset-m2 l6 offset-l3">
-            <pre>
-                <code data-language="HTML">
+            <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
+                   
                     void miMetodo(){
-                        //"Instrucciones"
+                        /*
+                            Instrucciones
+                        */
                     }
-                </code>
-            </pre> 
+
+
+                    void suma(x:int , y:int){
+                        /*
+                            Instrucciones
+                        */
+                    }
+                </code></pre> 
         </div>
         
         <div class="row center">
@@ -88,13 +96,13 @@
             <strong>Como se muestra a continuación.</strong>
         </h5>
         <div class="col s12 m8 offset-m2 l6 offset-l3">
-            <pre>
-                <code data-language="Java">
-                    Integer miVar1 = 23;
-                    Real miVarReal = 3.1416;
-                    Char = 'd';
-                </code>
-            </pre> 
+             <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
+                    
+                    miVar1:int = 23;
+                    miVarReal:float = 3.1416;
+                    c:char = 'd';
+                    flag:Boolean = true;
+                    </code></pre> 
         </div>
         
         <div class="row center">
@@ -120,15 +128,14 @@
             <strong>A continuación se muestra un ejemplo de la decisión.</strong>
         </h5>
         <div class="col s12 m8 offset-m2 l6 offset-l3">
-            <pre>
-                <code data-language="Java">
+            <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
+                   
                     Si (24 > 10) Then
                             //Instruccion
                         No
                             //Instrucciones
-                    FinSi
-                </code>
-            </pre> 
+                    Fin
+                    </code></pre> 
         </div>
         <h5 class="header col s12 light">
             <strong>Creación de un bloque de control Swich</strong>
@@ -151,8 +158,8 @@
             <br>
         </h5>
         <div class="col s12 m8 offset-m2 l6 offset-l3">
-            <pre>
-                <code data-language="HTML">
+             <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
+                    
                     switch (2323) Of
                      Caso 1: TimeMS(232323);
                      Caso 2: MuchosSINO();
@@ -162,8 +169,7 @@
                           TimeMS(2220);
                         Fin Si
                     Fin switch
-                </code>
-            </pre> 
+                    </code></pre> 
         </div>
     </div>
 </div>
@@ -214,7 +220,7 @@
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/materialize.js"></script>
     <script src="js/init.js"></script>
-    <script src="js/rainbow-custom.min.js"></script>
+    <script src="js/prism.js"></script>
 
   </body>
 </html>
