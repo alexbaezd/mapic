@@ -11,29 +11,52 @@
     <link rel="stylesheet" href="css/prism.css">
  
 </head>
-<body><div class="navbar-fixed">
- <ul id="dropdown1" class="dropdown-content">
-  <li><a href="start.html">Inicia</a></li>
-  <li><a href="ejemplos.html">Ejemplos</a></li>
-  <li class="divider"></li>
-  <li><a href="referencia.html">Referencias</a></li>
-  <li><a href="faq.html">FAQ</a></li>
-</ul>
-  <nav class="white" role="navigation">
-    <div class="nav-wrapper container">
-      <a href="index.html" class="brand-logo">
-      <img src="img/logo1.png"></a>
-      
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li>
-        <a href="index.html"> <i class="mdi-action-home"></i></a></li>
-       
-        <li><a href="jasmo.html">Jasmo - Studio</a></li>
-         <li><a href="sintaxis.html">Sintaxis</a></li>
-          <li><a class="dropdown-button" href="ejemplos.html" data-activates="dropdown1">Aprende<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
-      </ul>
-    </div>
-  </nav>
+<body>
+
+<div class="navbar-fixed">
+   <ul id="dropdown1" class="dropdown-content">
+        <li><a href="start.html">Inicia</a></li>
+        <li><a href="ejemplos.html">Ejemplos</a></li>
+        <li class="divider"></li>
+        <li><a href="referencia.html">Referencias</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+    </ul>
+    
+    <nav  id="nav-mobile" class="white"  role="navigation">
+      <div class="container">
+          <div class="nav-wrapper">
+            <a href="index.html" class="brand-logo">
+              <img src="img/logo1.png">
+            </a>
+            <ul >
+              <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu blue-text"></i></a>
+            <ul class="right hide-on-med-and-down">
+                 <li>
+              <a href="index.html"> <i class="mdi-action-home"></i></a></li>
+             
+              <li><a href="jasmo.html">Jasmo - Studio</a></li>
+               <li><a href="sintaxis.html">Sintaxis</a></li>
+                <li><a class="dropdown-button" href="ejemplos.html" data-activates="dropdown1">Aprende<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+            </ul>
+
+           
+            <ul class="side-nav" id="mobile-demo">
+               <li>
+              <a href="index.html"> <i class="mdi-action-home"> Mapic</i></a></li>
+             
+                <li><a href="jasmo.html">Jasmo - Studio</a></li>
+                <li><a href="sintaxis.html">Sintaxis</a></li>
+                <li class="divider"></li>
+                <li><a href="start.html">Inicia</a></li>
+                <li><a href="ejemplos.html">Ejemplos</a></li>
+                <li class="divider"></li>
+                <li><a href="referencia.html">Referencias</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+           </ul>
+         
+          </div>
+        </div>
+    </nav>
 </div>
  
  
@@ -64,18 +87,18 @@
          <div class="col s12 m8 offset-m2 l6 offset-l3">
             <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
                    
-                    void miMetodo(){
-                        /*
-                            Instrucciones
-                        */
-                    }
+       void miMetodo(){
+          /*
+              Instrucciones
+          */
+       }
 
 
-                    void suma(x:int , y:int){
-                        /*
-                            Instrucciones
-                        */
-                    }
+       void suma(x:int , y:int){
+           /*
+               Instrucciones
+           */
+      }
                 </code></pre> 
         </div>
         
@@ -98,10 +121,10 @@
         <div class="col s12 m8 offset-m2 l6 offset-l3">
              <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
                     
-                    miVar1:int = 23;
-                    miVarReal:float = 3.1416;
-                    c:char = 'd';
-                    flag:Boolean = true;
+        miVar1:int = 23;
+        miVarReal:float = 3.1416;
+        c:char = 'd';
+        flag:Boolean = true;
                     </code></pre> 
         </div>
         
@@ -130,11 +153,11 @@
         <div class="col s12 m8 offset-m2 l6 offset-l3">
             <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
                    
-                    Si (24 > 10) Then
-                            //Instruccion
-                        No
-                            //Instrucciones
-                    Fin
+        Si (24 > 10) Then
+                //Instruccion
+            No
+                //Instrucciones
+        Fin
                     </code></pre> 
         </div>
         <h5 class="header col s12 light">
@@ -160,15 +183,15 @@
         <div class="col s12 m8 offset-m2 l6 offset-l3">
              <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
                     
-                    switch (2323) Of
-                     Caso 1: TimeMS(232323);
-                     Caso 2: MuchosSINO();
-                     Caso 3: MetodoPuertos();
-                     Caso 4: PB0 Toggle PB1 ;
-                     default Si (10 > 7) Then
-                          TimeMS(2220);
-                        Fin Si
-                    Fin switch
+        switch (2323) Of
+         Caso 1: TimeMS(232323);
+         Caso 2: MuchosSINO();
+         Caso 3: MetodoPuertos();
+         Caso 4: PB0 Toggle PB1 ;
+         default Si (10 > 7) Then
+              TimeMS(2220);
+            Fin 
+        Fin switch
                     </code></pre> 
         </div>
     </div>
