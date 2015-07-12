@@ -9,7 +9,7 @@
    
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link rel="stylesheet" href="css/monaki.css">
+  <link rel="stylesheet" href="css/prism.css">
    
 </head>
 <body>
@@ -78,9 +78,8 @@
    <div class="container">
         <div class="section">
             <div class="col s12 m8 offset-m2 l6 offset-l3">
-                <pre><code data-language="java">
+                <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
                  Fuses
-
                     Setup {
 
                     }
@@ -91,28 +90,26 @@
 
                     Main {
 
-                    }
- </code></pre> 
+                    }</code></pre> 
             </div>
             <div class="col s12 m8 offset-m2 l6 offset-l3">
-         <h4>¿Que debe de ir y en que parte?</h4>
+         <h4>¿Qué debe de ir y en que parte?</h4>
         <h5>Setup</h5>
         <p>En el SETUP se colocan la lista de puertos a utilizar, y como configurar esos puertos</p>
         <h4>Ejemplo</h4>
-        		<pre><code data-language="html">
+        		 <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
 	Setup {
-           TA=ENTRADA;
-           TD=SALIDA;
-	   PA=ENTRADA;
-	}
-			 </code></pre> 
+      TA=ENTRADA;
+      TD=SALIDA;
+	  PA=ENTRADA;
+	} </code></pre> 
         	<p>En este caso se estan configurando los Pueros TA(TRISA) como entrada, el TD(TRISD) como salida, y PA(PORTA) como entrada.</p>
            <br>
            
            <h5>Ciclo</h5>
     	<p>Aquí se pueden escribir instrucciones , dentro de un ciclo, cabe mencionar que aqui la palabra reservada CICLO , es un loop infinito.</p>
          <h4>Ejemplo</h4>
-        <pre><code data-language="haskell">
+         <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
     Ciclo {
         PA TOGGLE PA;
         CHALE(40000);
@@ -126,7 +123,7 @@
           
           
           <h5>Main</h5>
-          <pre><code data-language="haskell">
+           <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
     Main {
         PA TOGGLE PA;
         IZQUIERDA();
@@ -184,7 +181,7 @@
   <script src="js/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
-  <script src="js/rainbow-custom.min.js"></script>
+  <script src="js/prism.js"></script>
 
   </body>
 </html>
