@@ -8,7 +8,7 @@ $(document).ready(function()
     $('.slider').slider({height: 450});
     $('.collapsible').collapsible({accordion : false });
     $('.materialboxed').materialbox();
-
+     $('.modal-trigger').leanModal();
   
 });
 
