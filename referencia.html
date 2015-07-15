@@ -71,9 +71,9 @@
   <div class="container">
     <div class="section">
         <div class="row center">
-            <h3 class="header col s12 light">Estructura de un metodo</h3>
+            <h3 class="header col s12 light">Estructura de método</h3>
         </div>
-            <h5 class="header col s12 light">
+            <p class="header col s12 light">
                 1.- Debe contener la palabra reservada <strong>void</strong>
                 <br>
                 2.- Seguido de void debera llevar el <strong>nombre del método</strong>
@@ -83,32 +83,34 @@
                 4.- Por ultimo llevara las llaves <strong>"{  }"</strong>
                 <br>
                 <strong>Como se muestra a continuacion.</strong>
-            </h5>
+            </p>
          <div class="col s12 m8 offset-m2 l6 offset-l3">
             <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
                    
-       void miMetodo(){
-          /*
-              Instrucciones
-          */
-       }
+   void miMetodo(){
+       /*
+           Instrucciones
+       */
+    }
 
-
-       void suma(x:int , y:int){
-           /*
-               Instrucciones
-           */
-      }
+    /*
+      Método con paso de parametros.
+    */
+    void suma(x:int , y:int){
+        /*
+            Instrucciones
+        */
+   }
                 </code></pre> 
         </div>
         
         <div class="row center">
             <h3 class="header col s12 light">Declaracion de variables.</h3>
         </div>
-        <h5 class="header col s12 light">
-            1.- Declaramos el tipo de variable que utilizaremos como: <strong>Real, Char, Integer </strong>
+        <p class="header col s12 light">
+            1.- El nombre de nuestra <strong>variable seguido de dos puntos</strong>
             <br>
-            2.- El nombre de nuestra <strong>variable</strong>
+            2.- Declaramos el tipo de variable que utilizaremos como: <strong>Int, Char, Float, Boolean </strong>
             <br>
             3.- Un signo de igual <strong>"="</strong>
             <br>
@@ -117,21 +119,34 @@
             5.- Por ultimo un punto y coma <strong>";"</strong>
             <br>
             <strong>Como se muestra a continuación.</strong>
-        </h5>
+        </p>
         <div class="col s12 m8 offset-m2 l6 offset-l3">
              <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
                     
-        miVar1:int = 23;
-        miVarReal:float = 3.1416;
-        c:char = 'd';
-        flag:Boolean = true;
+     /*
+      EJEMPLO DE DECLARACION DE VARIABLE EN MAPIC
+      variable de tipo entero
+     */
+     miVar1:int = 23;
+     /*
+      variable de tipo flotante
+     */
+     miVarReal:float = 3.1416;
+     /*
+      variable de tipo carácter
+     */
+     c:char = 'd';
+     /*
+      variable de tipo boolean
+     */
+     flag:Boolean = true;
                     </code></pre> 
         </div>
         
         <div class="row center">
             <h3 class="header col s12 light">Creación de sentencias de control</h3>
         </div>
-        <h5 class="header col s12 light">
+        <p class="header col s12 light">
             <strong>Primero la creación de una decisión simple, su estructura debe ser la siguiente.</strong>
             <br>
             1.- iniciando la decisión con la palabra reservada <strong>" Si "</strong>
@@ -149,7 +164,7 @@
             7.- Por ultimo agregamos la palabra resrvada <strong>FinSi</strong>
             <br>
             <strong>A continuación se muestra un ejemplo de la decisión.</strong>
-        </h5>
+        </p>
         <div class="col s12 m8 offset-m2 l6 offset-l3">
             <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
                    
@@ -160,7 +175,7 @@
         Fin
                     </code></pre> 
         </div>
-        <h5 class="header col s12 light">
+        <p class="header col s12 light">
             <strong>Creación de un bloque de control Swich</strong>
             <br>
             1.- Inicia con la palabra reservada <strong>swich</strong>
@@ -179,16 +194,16 @@
             <br>
             8.- Escribimos la palabra reservada <strong>FinSwich</strong> la cual marca el fin del bloque switch
             <br>
-        </h5>
+        </p>
         <div class="col s12 m8 offset-m2 l6 offset-l3">
              <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
                     
-        switch (2323) Of
+        switch (X) Of
          Caso 1: TimeMS(232323);
-         Caso 2: MuchosSINO();
-         Caso 3: MetodoPuertos();
+         Caso 2: metodo1();
+         Caso 3: metodoTimer();
          Caso 4: PB0 Toggle PB1 ;
-         default Si (10 > 7) Then
+         default Si (cantidad > 7) Then
               TimeMS(2220);
             Fin 
         Fin switch
