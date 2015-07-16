@@ -1,5 +1,7 @@
 $(document).ready(function()
 { 
+
+
     $('.button-collapse').sideNav();
     $('.dropdown-button').dropdown({'hover': false});
     $('select').not('.disabled').material_select();
@@ -9,6 +11,7 @@ $(document).ready(function()
     $('.collapsible').collapsible({accordion : false });
     $('.materialboxed').materialbox();
     $('.modal-trigger').leanModal();
+    $('.scrollspy').scrollSpy();
   
 });
 

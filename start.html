@@ -10,7 +10,7 @@
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link rel="stylesheet" href="css/prism.css">
-   
+  
 </head>
 <body>
 <div class="navbar-fixed">
@@ -60,47 +60,37 @@
 </div>
 
 
-  <div class="parallax-container valign-wrapper" id="index-banner">
+  <div class="teal valign-wrapper" id="index-banner">
     <div class="container">
       <br><br>
-      <h1 class="header center blue-text">Tus Primeros Paso con Mapic</h1>
+      <h1 class="header center white-text">Tus Primeros Pasos con Mapic</h1>
       <div class="row center">
         <h5 class="header col s12 light">Empezando con la estructura de un programa.</h5>
       </div>
-      <br><br>
    </div>
-  <div class="parallax"><img src="img/background1.jpg" alt="Unsplashed background img 2"></div>
   </div>
-  
-  <div class="container">
-    <div class="section">
 
-      <!--   Icon Section   -->
+<div class="container">
+      
       <div class="row">
-      <div class="col s12 m8 offset-m2 l6 offset-l3">
-        <div class="card-panel grey lighten-5 z-depth-1">
-          <div class="row valign-wrapper">
-            <div class="col s2">
-              <img src="img/logo1.png" alt="" class="circle responsive-img"> 
+
+      <div class="col s12 m9 l10">
+      <div id="introduction" class="section scrollspy">
+             <div class="card-panel grey lighten-5 z-depth-1">
+                <div class="row valign-wrapper">
+                  <div class="col s2">
+                    <img src="img/logo1.png" alt="" class="circle responsive-img"> 
+                  </div>
+                  <div class="col s10">
+                   <h5>Programa Básico </h5>
+                    <span class="black-text">
+                      A continuación se muestra la estructura básica de un programa
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="col s10">
-             <h5>Programa Básico </h5>
-              <span class="black-text">
-                A continuación se muestra la estructura básica de un programa
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-     </div>
- </div>
- </div>
-   
-<!--Ejemplo1 -->
-   <div class="container">
-        <div class="section">
-            <div class="col s12 m8 offset-m2 l6 offset-l3">
-                <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
+        <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
        Fuses
         Setup {
           
@@ -113,52 +103,80 @@
         Main {
 
         }</code></pre> 
-            </div>
-            <div class="col s12 m8 offset-m2 l6 offset-l3">
-         <h4>¿Qué debe de ir y en que parte?</h4>
-        <h5>Setup</h5>
-        <p>En el SETUP se colocan la lista de puertos a utilizar, y como configurar esos puertos</p>
-        <h4>Ejemplo</h4>
-        		 <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
-	Setup {
-      TA=ENTRADA;
-      TD=SALIDA;
-	  PA=ENTRADA;
-	} </code></pre> 
-        	<p>En este caso se estan configurando los Pueros TA(TRISA) como entrada, el TD(TRISD) como salida, y PA(PORTA) como entrada.</p>
-           <br>
-           
-           <h5>Ciclo</h5>
-    	<p>Aquí se pueden escribir instrucciones , dentro de un ciclo, cabe mencionar que aqui la palabra reservada CICLO , es un loop infinito.</p>
+
+      <div id="setup" class="section scrollspy">
+           <h4>¿Qué debe de ir y en que parte?</h4>
+          <h5>Setup</h5>
+          <p>En el SETUP se colocan la lista de puertos a utilizar, y como configurar esos puertos</p>
+          <h4>Ejemplo</h4>
+               <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
+    Setup {
+        TA=ENTRADA;
+        TD=SALIDA;
+      PA=ENTRADA;
+    } </code></pre> 
+            <p>En este caso se estan configurando los Pueros TA(TRISA) como entrada, el TD(TRISD) como salida, y PA(PORTA) como entrada.</p>
+             
+      </div>
+
+     
+      <div id="ciclo" class="section scrollspy">
+        <h5>Ciclo</h5>
+      <p>Aquí se pueden escribir instrucciones , dentro de un ciclo, cabe mencionar que aqui la palabra reservada CICLO , es un loop infinito.</p>
          <h4>Ejemplo</h4>
          <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
     Ciclo {
         PA TOGGLE PA;
-        CHALE(40000);
-        PD TOGGLE PD;
+        TimeMS(40000);
+        PD Toggle PD;
         miMetodo();
     }
-			 </code></pre> 
+       </code></pre> 
        
         
           <p>Dentro del ciclo </p>
-          
-          
-          <h5>Main</h5>
+      </div>
+      <div id="main" class="section scrollspy">
+        <h5>Main</h5>
            <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
     Main {
         PA TOGGLE PA;
         IZQUIERDA();
         DERECHA();
     }
-			 </code></pre> 
+       </code></pre> 
           <p>El main , donde se ejecutara el codigo escrito, por defecto al escribir MAIN  se llama al los metodos de SETUP y CICLO</p>
-            </div>
-       </div>
+      </div>
     </div>
     
+     <div class="col hide-on-small-only m3 l2">
+            <div class="toc-wrapper pinned " style="top:0px;">
+               
 
-  <footer class="page-footer blue-grey">
+              <div class="buysellads hide-on-small-only">
+                  <div class="card-panel blue-grey darken-3" style="margin-top:80px;">
+                    <span class="white-text">Contenido
+                    </span>
+                  </div>
+              </div>
+
+              <div style="height: 1px;">
+              <ul class="section table-of-contents " >
+                  <li><a href="#introduction">Introducción</a></li>
+                  <li><a href="#setup">Setup</a></li>
+                 
+                  <li><a href="#ciclo">Ciclo</a></li>
+                  <li><a href="#main">Main</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+    
+  </div>
+</div>
+
+<!-- Footer -->
+ <footer class="page-footer blue-grey">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
@@ -204,6 +222,16 @@
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
   <script src="js/prism.js"></script>
+  <script type="text/javascript">
+       $(document).ready(function(){
+  
+    if ($('#index-banner').length) {
+      $('.toc-wrapper').pushpin({ top: $('#index-banner').height() });
+      }
+   
+  });
+     
+  </script>
 
   </body>
 </html>
