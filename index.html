@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Mapic</title>
+
+  <!-- CSS  -->
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+<style>
+    
+      
+      
+.presentacion {
+    color: #fafafa;
+    padding-top: 0px;
+    background-image: url('img/fondoMain.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+@media only screen and (max-width : 600px) {
+    .presentacion {
+        padding-top: 10px;
+    }
+}
+
+.presentacion .screenshot {
+    padding: 10px 0 0;
+    margin-bottom: -5px;
+}
+
+    </style>
+</head>
+<body>
+  
+<div class="navbar-fixed ">
+   <ul id="dropdown1" class="dropdown-content">
+        <li><a href="start.html">Inicia</a></li>
+        <li><a href="ejemplos.html">Ejemplos</a></li>
+        <li class="divider"></li>
+        <li><a href="referencia.html">Referencias</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+    </ul>
+    
+    <nav  id="nav-mobile" class="white"  role="navigation">
+      <div class="container">
+          <div class="nav-wrapper">
+            <a href="index.html" class="brand-logo">
+              <img src="img/logo1.png">
+            </a>
+            <ul >
+              <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu blue-text"></i></a>
+            <ul class="right hide-on-med-and-down">
+                 <li class="active">
+              <a  href="index.html"> <i class="mdi-action-home"></i></a></li>
+             
+              <li><a href="index.html#jasmo">Jasmo - Studio</a></li>
+               <li><a href="sintaxis.html">Sintaxis</a></li>
+                <li><a class="dropdown-button" href="ejemplos.html" data-activates="dropdown1">Aprende<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+            </ul>
+
+           
+            <ul class="side-nav" id="mobile-demo">
+               <li>
+              <a href="index.html"> <i class="mdi-action-home"> Mapic</i></a></li>
+             
+                <li><a href="index.html#jasmo">Jasmo - Studio</a></li>
+                <li><a href="sintaxis.html">Sintaxis</a></li>
+                <li class="divider"></li>
+                <li><a href="start.html">Inicia</a></li>
+                <li><a href="ejemplos.html">Ejemplos</a></li>
+                <li class="divider"></li>
+                <li><a href="referencia.html">Referencias</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+           </ul>
+         
+          </div>
+        </div>
+    </nav>
+</div>
+
+
+ <div class="presentacion"> 
+    <div class="container">
+        <div class="row center-align">
+            <div class="col m12">
+                 <h1 class="header ">Mapic & Jasmo Studio</h1>
+          <h5 class="header col s12 light light-blue-text text-lighten-4">Un moderno lenguaje y el mejor compañero para su edición.</h5>
+            </div>
+        </div>
+        <div class="row center">
+          <a href="#" id="download-button" class="btn-large waves-effect waves-light blue lighten-1">
+       A Programar!!</a>
+       </div>
+       
+            </div>
+        <div class="row screenshot">
+            <div class="col offset-m2 m8 s12 center">
+           
+            <img src="img/IDE.jpg" alt="" class="responsive-img">
+            
+          
+            </div>
+        </div>
+  </div>
+<!--
+ <div id="index-banner" class="parallax-container" style="height:500px;">
+    <div class="section no-pad-bot">
+      <div class="container">
+      <div style="height:100px;">
+         
+      </div>
+       <div class="row center">
+        
+         <div class="card  white">
+            <div class="card-content white-text">
+             
+              <h1 class="header  blue-grey-text text-lighten-1">Mapic & Jasmo Studio</h1>
+          <h5 class="header col s12 light teal-text">Un moderno lenguaje y el mejor compañero para su edición.</h5>
+            </div>
+            
+          </div>
+        
+        
+         
+        </div>
+        <div class="row center">
+          <a href="#" id="download-button" class="btn-large waves-effect waves-light blue lighten-1">
+       A Programar!!</a>
+       </div>
+      </div>
+    </div>
+    <div class="parallax">
+        <img src="img/proto3.jpg" alt="Unsplashed background img 2">
+    </div>
+  </div>
+   -->
+    
+
+ <div class="section">
+  <div class="container">
+   
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center blue-text"><i class="mdi-image-flash-on"></i></h2>
+            <h5 class="center">¿Qué es Mapic</h5>
+
+            <p class="light">Es un nuevo lenguaje de programación.
+            </p>
+            
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center blue-text"><i class="mdi-action-list"></i></h2>
+            <h5 class="center">¿Por qué usar Mapic?</h5>
+
+            <p class="light">
+                Es más facil de implementar,comprenderlo.
+                <br>Es tan facil que su sintaxis,la puedes escribir como quieras,es decir
+                 es case sensitive.
+                
+            </p>
+            
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center blue-text"><i class="mdi-av-web"></i></h2>
+            <h5 class="center">¿Para que me sirve Mapic?</h5>
+            <p class="light">
+                
+            </p>
+            </div>
+        </div>
+      </div>
+     </div>
+    </div>
+      
+<div class="section blue-grey darken-2">
+  <div class="container">
+    <!-- tarjetas -->
+      <div class="row ">
+      <h4 class="white-text">Creado con:</h4>
+        <div class="col s12 m4">
+             <div class="card ">
+            <div class="card-image">
+              <img src="img/carga.jpg">
+             
+            </div>
+            <div class="card-content">
+               <span class="card-title activator grey-text text-darken-4">JFlex</span>
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+              <a href="#">Sitio Oficial</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+           
+          <div class="card  cyan darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">Java Cup</span>
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+              <a href="http://www2.cs.tum.edu/projects/cup/" ><strong>Sitio Oficial</strong> </a>
+              
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col s12 m4">
+           
+          <div class="card  indigo lighten-1">
+            <div class="card-content white-text">
+              <span class="card-title">Java</span>
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+              <a href="#" ><strong>Sitio Oficial</strong> </a>
+              
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+
+
+
+
+
+    </div>
+  </div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row">
+        <h3>Desarrollado por</h3>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="img/2.png" alt="Unsplashed background img 2"></div>
+  </div>
+  
+  
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row" id="jasmo"> 
+       <h1 class="center">Jasmo Studio</h1>
+        <div class="col s12 m4">
+        
+          <div class="icon-block">
+            <h2 class="center blue-text"><i class="mdi-action-view-list"></i></h2>
+            <h5 class="center">Características</h5>
+
+    <div class="collection">
+        <a href="#modalSintaxis" class="collection-item blue-text waves-effect waves-light btn modal-trigger tooltipCaracteristicas" title="Clic para más información">Resaltado de Sintaxis</a>
+      
+        <a href="#modalAuto" class="collection-item blue-text waves-effect waves-light btn modal-trigger  tooltipCaracteristicas" title="Clic para más información">Autocompletado</a>
+        <a href="#modalTeclado" class="collection-item blue-text waves-effect waves-light btn modal-trigger  tooltipCaracteristicas" title="Clic para más información">Atajos de teclado</a>
+        <a href="#modalTemas" class="collection-item blue-text waves-effect waves-light btn modal-trigger  tooltipCaracteristicas" title="Clic para más información">Temas</a>
+    </div>     
+           
+    <!-- Dialogo Sintaxis -->
+  <div id="modalSintaxis" class="modal modal-fixed-footer">
+    <div class="modal-content ">
+      <h4>Resaltado de Sintaxis</h4>
+      <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime dolorem ea eos quidem fugit, culpa sint minus ratione odit consectetur iste porro officiis facere tenetur esse beatae error quasi ducimus.</span><span>Sequi doloremque blanditiis tempore commodi placeat aliquam! Fugiat temporibus non expedita provident nam iusto fugit hic est beatae quasi, eos ut corporis ipsum inventore neque enim, illo aliquam consequuntur in.</span>
+      <img class="responsive-img" src="img/resaltadoSintaxis.png">
+
+      </p>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class=" modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+    </div>
+  </div> 
+            
+
+ <!-- Dialogo autocompletado -->
+  <div id="modalAuto" class="modal modal-fixed-footer">
+    <div class="modal-content ">
+      <h4>Autocompletado en Mapic</h4>
+      <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime dolorem ea eos quidem fugit, culpa sint minus ratione odit consectetur iste porro officiis facere tenetur esse beatae error quasi ducimus.</span><span>Sequi doloremque blanditiis tempore commodi placeat aliquam! Fugiat temporibus non expedita provident nam iusto fugit hic est beatae quasi, eos ut corporis ipsum inventore neque enim, illo aliquam consequuntur in.</span>
+      <img class="responsive-img" src="img/autocompletado.png">
+
+      </p>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class=" modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+    </div>
+  </div> 
+    
+ <!-- Dialogo atajos de teclado -->
+  <div id="modalTeclado" class="modal modal-fixed-footer">
+    <div class="modal-content ">
+      <h4>Atajos de Teclado en Jasmo Studio</h4>
+      <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime dolorem ea eos quidem fugit, culpa sint minus ratione odit consectetur iste porro officiis facere tenetur esse beatae error quasi ducimus.</span><span>Sequi doloremque blanditiis tempore commodi placeat aliquam! Fugiat temporibus non expedita provident nam iusto fugit hic est beatae quasi, eos ut corporis ipsum inventore neque enim, illo aliquam consequuntur in.</span>
+      <img class="responsive-img" src="img/atajosJS.png">
+
+      </p>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class=" modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+    </div>
+  </div> 
+    
+ <!-- Dialogo temas -->
+  <div id="modalTemas" class="modal modal-fixed-footer">
+    <div class="modal-content ">
+      <h4>Temas en Jasmo Studio</h4>
+      <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime dolorem ea eos quidem fugit, culpa sint minus ratione odit consectetur iste porro officiis facere tenetur esse beatae error quasi ducimus.</span><span>Sequi doloremque blanditiis tempore commodi placeat aliquam! Fugiat temporibus non expedita provident nam iusto fugit hic est beatae quasi, eos ut corporis ipsum inventore neque enim, illo aliquam consequuntur in.</span>
+      <img class="responsive-img" src="img/temas.png">
+
+      </p>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class=" modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+    </div>
+  </div>    
+
+            
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center blue-text"><i class="mdi-action-list"></i></h2>
+            <h5 class="center">Requisitos</h5>
+
+            <p class="light"></p>
+            
+        
+            <ul class="collection with-header">
+            <li class="collection-header"><h4> Hardware</h4></li>
+      <li class="collection-item">Windows 7/8</li>
+      <li class="collection-item">Min. RAM 256MB</li>
+      <li class="collection-item">100 MB en HD</li>
+      <li class="collection-item">1.5 MGhz</li>
+    
+ </ul>
+
+            
+            
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center blue-text"><i class="mdi-av-web"></i></h2>
+            <h5 class="center">El IDE es muy facil</h5>
+            <div class="card ">
+              <div class="card-image">
+                <img src="img/carga.jpg">
+              </div>
+              <div class="card-content" >
+                <p >Es un IDE creado para el lenguaje Mapic, que permite desarrollar de una manera facil, codigo para programar el microcontrolador PIC16F887.</p>
+              </div>
+              
+              <div class="card-action">
+                <a href="#tutorial">Tutorial</a>
+                <a href="#">Descarga</a>
+              </div>
+            </div>
+            </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+     <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="img/backgroundx.jpg" alt="Unsplashed background img 2"></div>
+  </div>
+  
+  
+
+  <div class="container">
+    <div class="section">
+
+      <div class="row">
+        <div class="col s12 center">
+          <h3><i class="mdi-hardware-memory blue-text"></i></h3>
+          <h4>El modelo del PIC</h4>
+          <p class="flow-text left-align light ">El PIC16F887 es un producto conocido de la compañía Microchip. Dispone de todos los componentes disponibles en la mayoría de los microcontroladores modernos. Por su bajo precio, un rango amplio de aplicaciones, alta calidad y disponibilidad, es una solución perfecta aplicarlo para controlar diferentes procesos en la industria, en dispositivos de control de máquinas, para medir variables de procesos etc.
+            <a href="">Documentación Oficial del PIC16F887</a></p>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- desplegando información del IDE -->
+<div class="container" id="tutorial">
+    <div class="section">
+
+      <div class="row">
+        <div class="col s12 center">
+          <h3><i class="mdi-hardware-memory blue-text"></i></h3>
+          <h4>Empezando con Jasmo-Studio</h4>
+          <h6>Sus Primeros Pasos</h6>
+          <img id="image-test" class="responsive-img materialboxed" data-caption="Espacio de Trabajo en Jasmo-Studio" src="img/espacio1.jpg" >
+          <p class="flow-text left-align light ">
+              En esta ventana , se configura el Espacio de Trabajo, Seleccionando una carpeta.
+Y puede seleccionar el CheckBox para que por default esa carpeta sea su espacio de trabajo.
+           </p>
+            <img id="image-test2" class="responsive-img materialboxed" data-caption="Espacio de Trabajo en Jasmo-Studio" src="img/espacio2.jpg" >
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+  
+  
+<div class="blue-grey darken-3">
+  <div id="index-banner" class="container ">
+    <div class="section no-pad-bot">
+      <div class="container ">
+        <br><br>
+        <div class="header center"> 
+        <img src="img/JASMO128.png" class="tooltip" title="Un IDE ideal para el Lenguaje Mapic">
+        </div>
+       
+        <h1 class="header center blue-text text-lighten-5">Jasmo Studio</h1>
+        <div class="row center">
+          <a href="#" id="download-button" class="btn-large waves-effect waves-light blue lighten-1">
+       Descargar</a>
+        </div>
+        <br><br>
+
+      </div>
+    </div>
+    <!--<div class="parallax"><img src="img/background.png" alt="Unsplashed background img 2"></div>-->
+  </div>
+</div>
+ 
+ 
+ 
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h4 class="header col s12 light">Interfaz Principal</h4>
+          <img id="image-test3"  class="responsive-img materialboxed" data-caption="Interfaz de Usuario de Jasmo-Studio" src="img/IDE.jpg" alt="Espacio de Trabajo" >
+         
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="img/verde1.jpg" alt="Unsplashed background img 3"></div>
+    
+  </div>
+  
+  
+  
+<div class="container">
+    <div class="section">
+
+      <div class="row center">
+        <div class="col s12 m8 offset-m2 l6 offset-l3">
+         
+          <h4>Jasmo-Studio</h4>
+          
+  <div class="slider" >
+    <ul class="slides">
+      <li>
+        <img src="img/ui5.jpg"> 
+        <div class="caption center-align">
+          <h3>Resaltado de sintaxis</h3>
+          <h5 class="light grey-text text-lighten-3">Facil de comprender.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="img/ui3.jpg"> 
+        <div class="caption left-align">
+          <h3 class="black-text">Temas</h3>
+          <h5 class="light black-text text-lighten-3">Para tu trabajo.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="img/ui4.jpg"> 
+        <div class="caption right-align">
+          <h3>Jasmo-Studio</h3>
+          <h5 class="light grey-text text-lighten-3">Es muy facil.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="img/ui2.jpg"> 
+        <div class="caption center-align">
+          <h3>Esto es Jasmo-Studio!</h3>
+          <h5 class="light grey-text text-lighten-3">El mejor IDE jamas creado.</h5>
+        </div>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <div class="container">
+    <div class="section">
+
+      <div class="row">
+        <div class="col s12 center">
+          <h3><i class="mdi-hardware-memory blue-text"></i></h3>
+          <h4>Barra de Menú de Jasmo-Studio</h4>
+          <h6>Sus Primeros Pasos</h6>
+          <img class="responsive-img materialboxed" src="img/ideToolbar.png" alt="Espacio de Trabajo">
+         
+     
+          
+    <ul class="collapsible left-align light" data-collapsible="accordion">
+      <li>
+        <div class="collapsible-header active">Barra de Titulo</div>
+        <div class="collapsible-body"><p>
+       
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod illum ipsum optio dignissimos omnis vel ex. Temporibus voluptas tenetur laboriosam perferendis explicabo velit animi incidunt, illum iusto, neque est odit..</p>
+       
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons"></i>Barra de Menus</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione optio molestias, voluptatem sint minima, quae maxime obcaecati fuga sunt at cupiditate quasi animi illum doloremque earum iusto quidem, vero tempora!.</p></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons"></i>Barra de Herramientas</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos nesciunt possimus harum inventore minus consectetur iure eum quisquam accusamus maiores, similique asperiores modi temporibus, repudiandae saepe itaque maxime rem nulla..</p></div>
+      </li>
+    </ul>
+        
+
+
+           
+        </div>
+  </div>
+
+    </div>
+  </div>    
+    
+    
+    
+
+
+
+
+
+
+
+  <div class="container">
+    <div class="section">
+
+      <div class="row">
+        <div class="col s12 center">
+          <h3 ><i class="mdi-content-send blue-text"></i></h3>
+          <h4>Objetivos</h4>
+          <p class="left-align light">Facilitar 
+          la programación a los alumnos de la materia de Sistemas Programables del Instituto Tecnologico de Orizaba</p>
+        </div>
+   </div>
+
+    </div>
+  </div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h5 class="header col s12 light">Un moderno lenguaje que se inspira de ChaleSens</h5>
+    <div class="col s12 m6">
+       <div class="icon-block">
+       <ul class="collection with-header black-text left">
+          <li class="collection-header"><h4>Requerimientos de Software</h4></li>
+          <li class="collection-item">Proteus 8,Simulador de Circuitos</li>
+          <li class="collection-item">XC8 ,el compilador de Microchip</li>
+          <li class="collection-item">Java 8</li>
+         
+        </ul>
+
+      </div>
+    </div>
+     <div class="col s12 m6">
+       <table>
+        <thead>
+          <tr>
+              <th data-field="id">Dispositivo</th>
+              
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Un PIC16F887</td>
+            
+          </tr>
+          <tr>
+            <td>Un Protoboard</td>
+            
+          </tr>
+          <tr>
+            <td>Un Programador</td>
+            
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+     
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="img/verde1.jpg" alt="Unsplashed background img 3"></div>
+  </div>
+
+  <footer class="page-footer blue-grey">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+         <img src="img/logo2.png" alt="BCube">
+          <h5 class="white-text">BCube Inc</h5>
+          <p class="grey-text text-lighten-4">
+              ©Derechos Reservados
+              S.A. de C.V.<br>
+              Alejandro , Carlos, Moises.
+          </p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Contenido</h5>
+          <ul>
+            <li><a class="white-text" href="index.html">Home</a></li>
+            <li><a class="white-text" href="jasmo.html">Jasmo-Studio</a></li>
+            <li><a class="white-text" href="sintaxis.html">Sintaxis</a></li>
+            
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Aprende</h5>
+          <ul>
+            <li><a class="white-text" href="start.html">Inicio</a></li>
+            <li><a class="white-text" href="ejemplos.html">Ejemplos</a></li>
+            <li><a class="white-text" href="referencia.html">Referencias</a></li>
+            <li><a class="white-text" href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+     
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="js/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+ <script type="text/javascript">
+
+ </script>
+  </body>
+</html>
