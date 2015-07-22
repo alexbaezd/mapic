@@ -12,6 +12,7 @@ $(document).ready(function()
     $('.materialboxed').materialbox();
     $('.modal-trigger').leanModal();
     $('.scrollspy').scrollSpy();
+    $('.tooltipped').tooltip({delay: 50});
   
 });
 
