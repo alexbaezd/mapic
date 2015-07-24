@@ -394,32 +394,43 @@ instruccion::=
 			 }
 			:}
 			|TIPOVC ID:id DOSPUNTOS tipo:t IGUAL exprtipos:e  PCOMA{:
-			 RESULT = t;
-			 if(parser.tabla.buscar(id)!= null)
-			 	System.err.println(id + " redeclarada.");
-			 else
-			 {
-			 	System.out.println("Mensaje "+id + "-->"+e);
-			 	RESULT="\n\t"+t+" "+id+" ="+e+";";
-			 	parser.tabla.insertar(id, t,e);
-			 }
-
-			 switch(t){
-		            case "int": 
-		                if(Num.numerico(e)){
-		                    System.out.println("Es un Numero es compatible= "+e);
-		                }else{
-		                    System.out.println("Es una cadena no es compatible= "+e);
-		                }
-		                break;
-		            case "float":
-		                break;
-		            case "char":
-		                break;
-		            case "bool":
-		                break;
-		        }
-			 	
+			 //RESULT = t;
+				if(parser.tabla.buscar(id)!= null){
+					System.err.println(id + " redeclarada.");
+				}else{
+				 	System.out.println("Mensaje "+id + "-->"+e);
+				 	switch(t){
+			            case "int":
+			                if(Num.valInt(e)){
+			                    RESULT="\n\t"+t+" "+id+" ="+e+";";
+			                    parser.tabla.insertar(id, t,e);
+			                }else{
+			                	String msj="Es una cadena no es compatible";
+			                    RESULT= msj;
+			                }
+			                break;
+			            case "float":
+			            	if(Num.valFloat(e)){
+			                    RESULT="\n\t"+t+" "+id+" ="+e+";";
+			                    parser.tabla.insertar(id, t,e);
+			            	}else{
+			            		String msj="Es una cadena no es compatible";
+			                    RESULT= msj;
+			            	}
+			                break;
+			            case "char":
+			            	if(Num.valInt(e) || Num.valFloat(e)){
+				                String msj="Es un numero no es compatible";
+			                    RESULT= msj;
+				            }else{
+				                RESULT="\n\t"+t+" "+id+" ="+e+";";
+			                    parser.tabla.insertar(id, t,e);
+				            }
+			                break;
+			            case "bool":
+			                break;
+		        	}
+				}			 	
 			:}
 		  | ID:id IGUAL exprtipos:t PCOMA{:
 			System.out.println("Mensaje "+id + "-->"+t);
