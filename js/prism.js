@@ -81,19 +81,19 @@ var _ = self.Prism = {
 		insertBefore: function (inside, before, insert, root) {
 			root = root || _.languages;
 			var grammar = root[inside];
-			
+
 			if (arguments.length == 2) {
 				insert = arguments[1];
-				
+
 				for (var newToken in insert) {
 					if (insert.hasOwnProperty(newToken)) {
 						grammar[newToken] = insert[newToken];
 					}
 				}
-				
+
 				return grammar;
 			}
-			
+
 			var ret = {};
 
 			for (var token in grammar) {
@@ -113,7 +113,7 @@ var _ = self.Prism = {
 					ret[token] = grammar[token];
 				}
 			}
-			
+
 			// Update references in other language definitions
 			_.languages.DFS(_.languages, function(key, value) {
 				if (value === root[inside] && key != inside) {
@@ -502,7 +502,7 @@ if (Prism.languages.markup) {
 			alias: 'language-css'
 		}
 	});
-	
+
 	Prism.languages.insertBefore('inside', 'attr-value', {
 		'style-attr': {
 			pattern: /\s*style=("|').*?\1/i,
@@ -552,7 +552,7 @@ Prism.languages.clike = {
 Lenguaje MAPIC
 */
 Prism.languages.mapic = Prism.languages.extend('clike', {
-	'keyword': /\b(Fuses|Setup|Ciclo|void|switch|Si|si|default|Then|No|no|TimeMS|Boolean|do|Fin|fin|TOGGLE|Toggle|Retardo|Caso|SALIDA|ENTRADA|int|float|var|char|Main|while)\b/,
+	'keyword': /\b(Fuses|Setup|Ciclo|void|switch|Si|si|default|Then|No|no|TimeMS|Boolean|do|Fin|fin|TOGGLE|Toggle|Retardo|Caso|SALIDA|ENTRADA|int|float|var|char|Main|while|entrada|salida)\b/,
 	'number': /\b0b[01]+\b|\b0x[\da-f]*\.?[\da-fp\-]+\b|\b\d*\.?\d+[e]?[\d]*[df]\b|\b\d*\.?\d+\b/i,
 	'operator': {
 		pattern: /(^|[^\.])(?:\+=|\+\+?|-=|--?|!=?|<{1,2}=?|>{1,3}=?|==?|&=|&&?|\|=|\|\|?|\?|\*=?|\/=?|%=?|\^=?|:|~)/m,

@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
   <meta name="description" content="Mapic es un lenguaje de programación del PIC16F887 y Jasmo Studio su editor ">
-  <title>Mapic</title> 
+  <title>Mapic</title>
   <link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-152x152.png">
   <meta name="msapplication-TileColor" content="#FFFFFF">
   <meta name="msapplication-TileImage" content="img/favicon/mstile-144x144.png">
@@ -14,7 +14,7 @@
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link rel="stylesheet" href="css/prism.css">
- 
+
 </head>
 <body>
 
@@ -26,7 +26,6 @@
         <li><a href="referencia.html">Referencias</a></li>
         <li><a href="faq.html">FAQ</a></li>
     </ul>
-    
     <nav  id="nav-mobile" class="white"  role="navigation">
       <div class="container">
           <div class="nav-wrapper">
@@ -38,17 +37,17 @@
             <ul class="right hide-on-med-and-down">
                  <li class="active">
               <a  href="index.html"> <i class="mdi-action-home"></i></a></li>
-             
+
               <li><a href="index.html#jasmo">Jasmo - Studio</a></li>
                <li><a href="sintaxis.html">Sintaxis</a></li>
                 <li><a class="dropdown-button" href="ejemplos.html" data-activates="dropdown1">Aprende<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
             </ul>
 
-           
+
             <ul class="side-nav" id="mobile-demo">
                <li>
               <a href="index.html"> <i class="mdi-action-home"> Mapic</i></a></li>
-             
+
                 <li><a href="index.html#jasmo">Jasmo - Studio</a></li>
                 <li><a href="sintaxis.html">Sintaxis</a></li>
                 <li class="divider"></li>
@@ -58,45 +57,41 @@
                 <li><a href="referencia.html">Referencias</a></li>
                 <li><a href="faq.html">FAQ</a></li>
            </ul>
-         
+
           </div>
         </div>
     </nav>
 </div>
 
 
-  <div class="light-blue darken-1 valign-wrapper" id="index-banner">
+  <div class="cyan darken-2 valign-wrapper" id="index-banner">
     <div class="container">
       <br><br>
       <h1 class="header center white-text">Referencías</h1>
       <div class="row center">
-        <h5 class="header col s12 light">Conociendo Mapic.</h5>
+        <h5 class="header col s12 light  cyan-text text-lighten-4">Conociendo a Mapic.</h5>
       </div>
    </div>
   </div>
 
 <div class="container">
-      
+
       <div class="row">
 
       <div class="col s12 m9 l10">
       <div id="metodos" class="section scrollspy">
             <h3 >Estructura de método</h3>
-            <p >
-                1.- Debe contener la palabra reservada <strong>void</strong>
-                <br>
-                2.- Seguido de void debera llevar el <strong>nombre del método</strong>
-                <br>
-                3.- Después del nombre del método llevara los paréntesis  <strong>"(  )"</strong>
-                <br>
-                4.- Por ultimo llevara las llaves <strong>"{  }"</strong>
-                <br>
-                <strong>Como se muestra a continuacion.</strong>
-            </p>
+            <ol class="collection">
+                <li class="collection-item">Debe contener la palabra reservada <strong>void</strong></li>
+                <li class="collection-item">Seguido de void debera llevar el <strong>nombre del método</strong></li>
+                <li class="collection-item">Después del nombre del método llevara los paréntesis  <strong>"(  )"</strong></li>
+                <li class="collection-item">Por ultimo llevara las llaves <strong>"{  }"</strong></li>
+          </ol>
+          <strong>Como se muestra a continuación.</strong>
             <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
-                   
+
    void miMetodo(){
-       /*
+       /
            Instrucciones
        */
     }
@@ -109,27 +104,25 @@
             Instrucciones
         */
    }
-                </code></pre> 
+                </code></pre>
+        <p>Otra forma es pasando argumentos , al método, como se muestra en la parte de arriba.</p>
+
       </div>
-    
+
 
       <div id="variables" class="section scrollspy">
-        <h3 >Declaracion de variables.</h3>
-        <p>
-            1.- El nombre de nuestra <strong>variable seguido de dos puntos</strong>
-            <br>
-            2.- Declaramos el tipo de variable que utilizaremos como: <strong>Int, Char, Float, Boolean </strong>
-            <br>
-            3.- Un signo de igual <strong>"="</strong>
-            <br>
-            4.- El <strong>valor</strong> que le asignaremos a nuestra variable.
-            <br>
-            5.- Por ultimo un punto y coma <strong>";"</strong>
-            <br>
-            <strong>Como se muestra a continuación.</strong>
-        </p>
+        <h3 >Declaración de variables.</h3>
+        <ol class="collection">
+            <li class="collection-item">El nombre de nuestra <strong>variable seguido de dos puntos</strong></li>
+            <li class="collection-item">Declaramos el tipo de variable que utilizaremos como: <strong>Int, Char, Float, Boolean </strong></li>
+            <li class="collection-item">Un signo de igual <strong>"="</strong></li>
+            <li class="collection-item">El <strong>valor</strong> que le asignaremos a nuestra variable.</li>
+            <li class="collection-item">Por ultimo un punto y coma <strong>";"</strong></li>
+
+        </ol>
+        <strong>Como se muestra a continuación.</strong>
         <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
-                    
+
      /*
       EJEMPLO DE DECLARACION DE VARIABLE EN MAPIC
       variable de tipo entero
@@ -147,62 +140,48 @@
       variable de tipo boolean
      */
      flag:Boolean = true;
-                    </code></pre> 
+                    </code></pre>
       </div>
 
-     
+
       <div id="control" class="section scrollspy">
         <h3>Creación de sentencias de control</h3>
-        <p>
-            <strong>Primero la creación de una decisión simple, su estructura debe ser la siguiente.</strong>
-            <br>
-            1.- iniciando la decisión con la palabra reservada <strong>" Si "</strong>
-            <br>
-            2.- Seguido de un <strong>"(" </strong>paréntesis que abre  y un paréntesis que cierra <strong>")"</strong>
-            <br>
-            3.- Dentro de los paréntesis una <strong>condición o condiciones</strong> las cuales serán evaluadas
-            <br>
-            4.- Al termino de los  paréntesis agregamos la palabra reservada <strong>"Then"</strong>
-            <br>
-            5.- Despues de la palabra Then Agregamos nuestra <strong>intruccion o nuestras instrucciones</strong> 
-            <br>
-            6.- Al término de de nuestra instrucciones agregamos la palabra reservada <strong>" NO "</strong> si el bloque de decisión lo requiere. 
-            <br>
-            7.- Por ultimo agregamos la palabra resrvada <strong>FinSi</strong>
-            <br>
+        <strong>Primero la creación de una sentencia tipo <span class="blue-text">if-else </span>, su estructura debe ser la siguiente.</strong>
+        <ol class="collection class="collection-item"">
+            <li class="collection-item">Iniciando la decisión con la palabra reservada <strong>" Si "</strong></li>
+            <li class="collection-item"> Seguido de un <strong>"(" </strong>paréntesis que abre  y un paréntesis que cierra <strong>")"</strong></li>
+            <li class="collection-item"> Dentro de los paréntesis una <strong>condición o condiciones</strong> las cuales serán evaluadas</li>
+            <li class="collection-item"> Al termino de los  paréntesis agregamos la palabra reservada <strong>"Then"</strong></li>
+            <li class="collection-item"> Despues de la palabra Then Agregamos nuestra <strong>intrucción o nuestras instrucciones</strong></li>
+            <li class="collection-item"> Al término de de nuestra instrucciones agregamos la palabra reservada <strong>" NO "</strong> si el bloque de decisión lo requiere.</li>
+            <li class="collection-item"> Por ultimo agregamos la palabra reservada <strong>Fin</strong></li>
+
             <strong>A continuación se muestra un ejemplo de la decisión.</strong>
-        </p>
-        <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
-                   
+        </ol>
+        <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class="language-mapic">
+
         Si (24 > 10) Then
                 //Instruccion
             No
                 //Instrucciones
         Fin
-                    </code></pre> 
+                    </code></pre>
 
-         <p >
-            <strong>Creación de un bloque de control Swich</strong>
-            <br>
-            1.- Inicia con la palabra reservada <strong>swich</strong>
-            <br>
-            2.- Agregamos un paréntesis que abre <strong>" ( "</strong> con su debida <strong>Condición</strong> a evaluar y después de la condición un paréntesis que cierra<strong> " ) "</strong>
-            <br>
-            3.- Después del paréntesis que cierra agregamos la palabra reservada <strong>of</strong> que marca el inicio de los casos a evaluar.
-            <br>
-            4.- Seguido de la palabra reservada of agregamos la palabra reservada <strong>Caso</strong> seguido del número  de caso evaluado.
-            <br>
-            5.- al termino del número  de caso evaluado agregamos <strong>" : "</strong> que indican la instruccion que el caso ejecutara
-            <br>
-            6.- Al término de la instrucción que se ejecutara ponemos un <strong>" ; "</strong>
-            <br>
-            7.- Después de poner el número de instrucciones por el usuario la instrucción <strong>default</strong> será utilizada por el usuario si este lo requiere. Y esta instrucción  muestra el comportamiento similar a un Caso.
-            <br>
-            8.- Escribimos la palabra reservada <strong>FinSwich</strong> la cual marca el fin del bloque switch
-            <br>
-        </p>
+        <strong>Creación de un bloque de control Switch</strong>
+         <ol class="collection">
+
+              <li class="collection-item"> Inicia con la palabra reservada <strong>swich</strong>.</li>
+              <li class="collection-item"> Agregamos un paréntesis que abre <strong>" ( "</strong> con su debida <strong>Condición</strong> a evaluar y después de la condición un paréntesis que cierra<strong> " ) "</strong>.</li>
+              <li class="collection-item"> Después del paréntesis que cierra agregamos la palabra reservada <strong>of</strong> que marca el inicio de los casos a evaluar.</li>
+              <li class="collection-item"> Seguido de la palabra reservada of agregamos la palabra reservada <strong>Caso</strong> seguido del número  de caso evaluado.</li>
+              <li class="collection-item"> al termino del número  de caso evaluado agregamos <strong>" : "</strong> que indican la instruccion que el caso ejecutara.</li>
+              <li class="collection-item"> Al término de la instrucción que se ejecutara ponemos un <strong>" ; "</strong>.</li>
+              <li class="collection-item"> Después de poner el número de instrucciones por el usuario la instrucción <strong>default</strong> será utilizada por el usuario si este lo requiere. Y esta instrucción  muestra el comportamiento similar a un Caso.</li>
+              <li class="collection-item"> Escribimos la palabra reservada <strong>FinSwich</strong> la cual marca el fin del bloque switch.</li>
+
+        </ol>
         <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
-                    
+
         switch (X) Of
          Caso 1: TimeMS(232323);
          Caso 2: metodo1();
@@ -210,22 +189,45 @@
          Caso 4: PB0 Toggle PB1 ;
          default Si (cantidad > 7) Then
               TimeMS(2220);
-            Fin 
+            Fin
         Fin switch
-                    </code></pre> 
+                    </code></pre>
       </div>
 
       <div id="ciclo" class="section scrollspy">
         <h3>Ciclo While</h3>
-        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, corporis iure sunt sint. Dignissimos nihil, eaque dolores sapiente aliquam consectetur, esse in dolorem cupiditate ullam, quisquam natus officiis ipsa repellat.</div>
-        <div>Non architecto maiores omnis deserunt, dignissimos laudantium ullam repellat cumque at odio odit amet consectetur dolor nostrum animi? Laborum quibusdam mollitia quasi delectus quisquam iusto maiores facilis quae eaque aperiam.</div>
-        <div>Ratione aut nemo perferendis amet unde tempora hic nulla eligendi, error, vero, natus fuga, dignissimos modi inventore rem? Explicabo cumque hic laboriosam in ullam obcaecati facilis, dolor. Recusandae, esse, atque.</div>
+          <ol class="collection">
+            <li class="collection-item">Con la palabra reservada <span class="blue-text">while( condicion )</span></li>
+            <li class="collection-item">Seguido del código a repetir y al final un <span class="blue-text">Fin</span></li>
+          </ol>
+          <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
+
+          while (condicion)
+              /*
+                Instrucciones
+              */
+          fin
+                      </code></pre>
+      </div>
+      <div id="puerto" class="section scrollspy">
+        <h3>Configurando los puertos en Mapic</h3>
+          <p>Los puertos se pueden configurar de dos formas como entrada o salida.</p>
+          <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
+
+          pa = entrada;
+
+          pb0 = salida;
+
+          PC = ENTRADA;
+
+          TE1 = SALIDA;
+                      </code></pre>
       </div>
     </div>
-    
+
      <div class="col hide-on-small-only m3 l2">
             <div class="toc-wrapper pinned " style="top:0px;">
-               
+
 
               <div class="buysellads hide-on-small-only">
                   <div class="card-panel red lighten-1" style="margin-top:80px;">
@@ -240,18 +242,18 @@
                   <li><a href="#variables">Variables</a></li>
                   <li><a href="#control">Sentencias de Control</a></li>
                   <li><a href="#ciclo">Ciclo</a></li>
-                  <li><a href="#">Puertos</a></li>
+                  <li><a href="#puerto">Puertos</a></li>
                 </ul>
               </div>
             </div>
           </div>
-    
+
   </div>
 </div>
 
 <!-- Footer -->
- 
-   
+
+
 
   <footer class="page-footer blue-grey">
     <div class="container">
@@ -273,7 +275,7 @@
             <li><a class="white-text" href="index.html">Home</a></li>
             <li><a class="white-text" href="jasmo.html">Jasmo-Studio</a></li>
             <li><a class="white-text" href="sintaxis.html">Sintaxis</a></li>
-            
+
           </ul>
         </div>
         <div class="col l3 s12">
@@ -289,25 +291,25 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-     
+
       </div>
     </div>
   </footer>
 
-  <!--  Scripts-->    
+  <!--  Scripts-->
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/materialize.js"></script>
     <script src="js/init.js"></script>
     <script src="js/prism.js"></script>
     <script type="text/javascript">
        $(document).ready(function(){
-  
+
     if ($('#index-banner').length) {
       $('.toc-wrapper').pushpin({ top: $('#index-banner').height() });
       }
-   
+
   });
-     
+
   </script>
 
   </body>
