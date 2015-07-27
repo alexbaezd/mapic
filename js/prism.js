@@ -552,7 +552,7 @@ Prism.languages.clike = {
 Lenguaje MAPIC
 */
 Prism.languages.mapic = Prism.languages.extend('clike', {
-	'keyword': /\b(Fuses|Setup|Ciclo|void|switch|Si|si|default|Then|No|no|TimeMS|Boolean|do|Fin|fin|TOGGLE|Toggle|Retardo|Caso|SALIDA|ENTRADA|int|float|var|char|Main|while|entrada|salida)\b/,
+	'keyword': /\b(Fuses|Setup|Ciclo|void|switch|Si|si|default|Then|No|no|TimeMS|TIMEMS|Boolean|do|Fin|fin|TOGGLE|Toggle|Retardo|Caso|SALIDA|ENTRADA|int|float|var|char|Main|while|entrada|salida)\b/,
 	'number': /\b0b[01]+\b|\b0x[\da-f]*\.?[\da-fp\-]+\b|\b\d*\.?\d+[e]?[\d]*[df]\b|\b\d*\.?\d+\b/i,
 	'operator': {
 		pattern: /(^|[^\.])(?:\+=|\+\+?|-=|--?|!=?|<{1,2}=?|>{1,3}=?|==?|&=|&&?|\|=|\|\|?|\?|\*=?|\/=?|%=?|\^=?|:|~)/m,

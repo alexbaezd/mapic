@@ -204,6 +204,73 @@
        </div>
 </div>
 
+<div class="light-blue darken-1 valign-wrapper" id="index-banner">
+  <div class="container">
+    <br><br>
+    <h1 class="header center white-text">Más Ejemplos </h1>
+    <div class="row center">
+      <h5 class="header col s12 light  cyan-text text-lighten-4">Practicando con Mapic a partir del Programa Básico</h5>
+    </div>
+ </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <h4>Ejercicio 1</h4>
+     <p>
+       Programa que encienda leds conectados al puertoD de 1 en 1 al llegar al final deberán volver a iniciar,
+      esto de forma infinita,el tiempo aproximado entre cada led deberá ser 50 ms.
+     </p>
+     <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
+      Fuses
+
+      Setup{
+         TD=SALIDA;
+         PD=salida;
+      }
+
+      RETARDO();
+
+      Ciclo {
+      /* Esto es un comentario */
+         PD0=0;TimeMS(20000);PD0=0;
+         PD0=1;TIMEMS(20000);PD1=0;
+         PD0=2;TIMEMS(20000);PD2=0;
+         PD0=3;TIMEMS(20000);PD3=0;
+         PD0=4;TimeMS(20000);PD4=0;
+         PD0=5;TIMEMS(20000);PD5=0;
+         PD0=6;TimeMS(20000);PD6=0;
+         PD0=7;TIMEMS(20000);PD7=0;
+         pd7 Toggle pd7;
+         TIMEMS(50000);
+       }
+
+       Main{}
+</code></pre>
+
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <h4>Ejercicio 2</h4>
+     <p>
+       Programa que encienda los leds uno a uno de izquierda a derecha y cuando llegue a derecha
+        lo haga de forma inversa así en forma infinita puedes utilizar el puerto D como se indica
+        en el diagrama, la duración deberá ser de 50 ms aproximadamente entre led y led.
+     </p>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <h4>Ejercicio 3</h4>
+     <p>
+       Programa que lea los push button conectados al puerto A, si lee el puerto RA0
+       avanzaran los leds de izquerda a derecha, si lee el puerto RA1 avanzaran los leds
+      de derecha a izquierda, y si lee el puerto RA2 harán lo que se hizo en el programa anterior.
+     </p>
+  </div>
+</div>
+
 <!-- footer ---------------------------------------- -->
   <footer class="page-footer blue-grey">
     <div class="container">
