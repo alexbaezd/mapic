@@ -209,6 +209,10 @@
 "ADCON0_GO"			{return symbol(sym.ADCON0_GO, new String("\tADCON0bits.GO"));}
 "ADCON0_ADON"		{return symbol(sym.ADCON0_ADON, new String("\tADCON0bits.ADON"));}
 
+"ADCON1_ADFM"		{return symbol(sym.ADCON1_ADFM, new String("\tADCON1bits.ADFM"));}
+"ADCON1_VCFG1"		{return symbol(sym.ADCON1_VCFG1, new String("\tADCON1bits.VCFG1"));}
+"ADCON1_VCFG0"		{return symbol(sym.ADCON1_VCFG0, new String("\tADCON1bits.VCFG0"));}
+
 "ENTRADA" 		{ return symbol(sym.ENTRADA);}
 "SALIDA" 		{ return symbol(sym.SALIDA);}
 
