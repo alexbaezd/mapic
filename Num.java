@@ -1,6 +1,6 @@
 public class Num {
     
-    public static boolean numerico(String variable){
+    public static boolean valInt(String variable){
         try{
             Integer.parseInt(variable);
             return true;

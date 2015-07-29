@@ -200,6 +200,15 @@
 "OPTIONREG_PS0"		{return symbol(sym.OPTIONREG_PS0, new String("\tOPTION_REGbits.PS0"));}
 "OPTIONREG_RBPU"	{return symbol(sym.OPTIONREG_RBPU, new String("\tOPTION_REGbits.nRBPU"));}
 
+"ADCON0_ADCS1"		{return symbol(sym.ADCON0_ADCS1, new String("\tADCON0bits.ADCS1"));}
+"ADCON0_ADCS0"		{return symbol(sym.ADCON0_ADCS0, new String("\tADCON0bits.ADCS0"));}		
+"ADCON0_CHS3"		{return symbol(sym.ADCON0_CHS3, new String("\tADCON0bits.CHS3"));}
+"ADCON0_CHS2"		{return symbol(sym.ADCON0_CHS2, new String("\tADCON0bits.CHS2"));}
+"ADCON0_CHS1"		{return symbol(sym.ADCON0_CHS1, new String("\tADCON0bits.CHS1"));}
+"ADCON0_CHS0"		{return symbol(sym.ADCON0_CHS0, new String("\tADCON0bits.CHS0"));}
+"ADCON0_GO"			{return symbol(sym.ADCON0_GO, new String("\tADCON0bits.GO"));}
+"ADCON0_ADON"		{return symbol(sym.ADCON0_ADON, new String("\tADCON0bits.ADON"));}
+
 "ENTRADA" 		{ return symbol(sym.ENTRADA);}
 "SALIDA" 		{ return symbol(sym.SALIDA);}
 
