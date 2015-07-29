@@ -173,6 +173,7 @@ terminal PD0, PD1, PD2, PD3, PD4, PD5, PD6, PD7;
 terminal PE0, PE1, PE2, PE3;
 terminal ANSEL0, ANSEL1, ANSEL2, ANSEL3, ANSEL4, ANSEL5, ANSEL6, ANSEL7;
 terminal ANSELH0, ANSELH1, ANSELH2, ANSELH3, ANSELH4, ANSELH5;
+terminal OPTION_REG, OPTIONREG_INTEDG, OPTIONREG_PS, OPTIONREG_T0CS, OPTIONREG_T0SE, OPTIONREG_PSA, OPTIONREG_PS2, OPTIONREG_PS1, OPTIONREG_PS0, OPTIONREG_RBPU;
 terminal INTCON, INTCONGIE, INTCONPEIE, INTCONT0IE, INTCONINTE, INTCONRBIE, INTCONT0IF, INTCONINTF, INTCONRBIF;
 terminal VOID;
 terminal THEN,NO,FIN,DO;
@@ -819,7 +820,17 @@ puertos::= PA:pa {: RESULT=pa+"="; :}
 		|INTCONRBIE:intrbie{:RESULT=intrbie + " = ";:}
 		|INTCONT0IF:intt0if{:RESULT=intt0if + " = ";:}
 		|INTCONINTF:intintf{:RESULT=intintf + " = ";:}
-		|INTCONRBIF:intrbif{:RESULT=intrbif + " = ";:} 
+		|INTCONRBIF:intrbif{:RESULT=intrbif + " = ";:}
+        //
+        |OPTIONREG_INTEDG:opintedg{:RESULT = opintedg + " = ";:}
+		|OPTIONREG_PS:opps{:RESULT = opps + " = ";:}
+		|OPTIONREG_T0CS:opt0cs{:RESULT = opt0cs + " = ";:}
+		|OPTIONREG_T0SE:opt0se{:RESULT = opt0se + " = ";:}
+		|OPTIONREG_PSA:oppsa{:RESULT = oppsa + " = ";:}
+		|OPTIONREG_PS2:opps2{:RESULT = opps2 + " = ";:}
+		|OPTIONREG_PS1:opps1{:RESULT = opps1 + " = ";:}
+		|OPTIONREG_PS0:opps0{:RESULT = opps0 + " = ";:}
+		|OPTIONREG_RBPU:oprbpu{:RESULT = oprbpu + " = ";:}
 	    ;			
 					
 					

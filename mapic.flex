@@ -190,6 +190,16 @@
 "INTCONINTF"	{return symbol(sym.INTCONINTF, new String("\tINTCONbits.INTF"));}
 "INTCONRBIF"	{return symbol(sym.INTCONRBIF, new String("\tINTCONbits.RBIF"));}
 
+"OPTIONREG_INTEDG"	{return symbol(sym.OPTIONREG_INTEDG, new String("\tOPTION_REGbits.INTEDG"));}
+"OPTIONREG_PS"		{return symbol(sym.OPTIONREG_PS, new String("\tOPTION_REGbits.PS"));}
+"OPTIONREG_T0CS"	{return symbol(sym.OPTIONREG_T0CS, new String("\tOPTION_REGbits.T0CS"));}
+"OPTIONREG_T0SE"	{return symbol(sym.OPTIONREG_T0SE, new String("\tOPTION_REGbits.T0SE"));}
+"OPTIONREG_PSA"		{return symbol(sym.OPTIONREG_PSA, new String("\tOPTION_REGbits.PSA"));}
+"OPTIONREG_PS2"		{return symbol(sym.OPTIONREG_PS2, new String("\tOPTION_REGbits.PS2"));}
+"OPTIONREG_PS1"		{return symbol(sym.OPTIONREG_PS1, new String("\tOPTION_REGbits.PS1"));}
+"OPTIONREG_PS0"		{return symbol(sym.OPTIONREG_PS0, new String("\tOPTION_REGbits.PS0"));}
+"OPTIONREG_RBPU"	{return symbol(sym.OPTIONREG_RBPU, new String("\tOPTION_REGbits.nRBPU"));}
+
 "ENTRADA" 		{ return symbol(sym.ENTRADA);}
 "SALIDA" 		{ return symbol(sym.SALIDA);}
 
