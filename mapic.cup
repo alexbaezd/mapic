@@ -9,7 +9,6 @@ import java.util.Stack;
 /***************************************************************************/
 parser code {:
 	static TablaDatos tabla = new TablaDatos();
-	
 	static int estado;
 	StringBuffer m = new StringBuffer("");
     static StringBuffer []vec=new StringBuffer[10];
@@ -158,7 +157,6 @@ terminal INTEGER,REAL,CHAR,BOOLEAN;
 terminal CARACTER,NUMREAL,CTELOGICA;
 terminal RCORCH,LCORCH,COMA;
 /* Terminales */
-
 terminal CHALE, MAIN, SETUP, FUSES, ENTRADA, SALIDA, RETARDO, CICLO;
 terminal PA, PB, PC, PD, PE, TA, TB, TC, TD, TE, ANSEL, ANSELH;
 terminal TA0, TA1, TA2, TA3, TA4, TA5, TA6, TA7;
@@ -174,9 +172,9 @@ terminal PE0, PE1, PE2, PE3;
 terminal ANSEL0, ANSEL1, ANSEL2, ANSEL3, ANSEL4, ANSEL5, ANSEL6, ANSEL7;
 terminal ANSELH0, ANSELH1, ANSELH2, ANSELH3, ANSELH4, ANSELH5;
 terminal OPTION_REG, OPTIONREG_INTEDG, OPTIONREG_PS, OPTIONREG_T0CS, OPTIONREG_T0SE, OPTIONREG_PSA, OPTIONREG_PS2, OPTIONREG_PS1, OPTIONREG_PS0, OPTIONREG_RBPU;
+terminal INTCON, INTCONGIE, INTCONPEIE, INTCONT0IE, INTCONINTE, INTCONRBIE, INTCONT0IF, INTCONINTF, INTCONRBIF;
 terminal ADCON0_ADCS1, ADCON0_ADCS0, ADCON0_CHS3, ADCON0_CHS2, ADCON0_CHS1, ADCON0_CHS0, ADCON0_GO, ADCON0_ADON;
 terminal ADCON1_ADFM, ADCON1_VCFG1, ADCON1_VCFG0;
-terminal INTCON, INTCONGIE, INTCONPEIE, INTCONT0IE, INTCONINTE, INTCONRBIE, INTCONT0IF, INTCONINTF, INTCONRBIF;
 terminal VOID;
 terminal THEN,NO,FIN,DO;
 terminal SWITCH,OF,OTHERWISE;
@@ -188,7 +186,6 @@ terminal String NMETODO;
 terminal String SI;
 terminal String CASO;
 terminal String WHILE;
-terminal String CADENA;
 /* No terminales */
 non terminal programa;
 non terminal metodos;
@@ -235,7 +232,7 @@ precedence left ID,NMETODO;
              
 :};
 ///////////////////////////////////////////////////////////////////////////////////////////////////
- metodos::=  setup ciclo 
+ metodos::=  setup ciclo
 	        |setup RETARDO:retardo LPAREN RPAREN PCOMA ciclo   {: miCodigo=retardo+miCodigo;  :}
 	        |  metodo setup ciclo
 				{: 
@@ -385,21 +382,18 @@ instrucciones::=instruccion:in
 			:};
 
 ///////////////////////////INSTRUCCIONES DISPONIBLES EN MAPIC//////////////////////////////////////////////////////////////////					  
-instruccion::= 
-			TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
-			 
-			 DatoSimbolo ds=parser.tabla.buscar(id);
-			 if(ds!= null)
-			 	System.err.println(id + " redeclarada.");
-			 else{
-			 	System.out.println("Mensaje "+id + "-->"+t);
-			 	RESULT="\n\t"+t+" "+id+";";
-				parser.tabla.insertar(id, t,"");
-
-			 }
+instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
+				DatoSimbolo ds=parser.tabla.buscar(id);
+				if(ds!= null)
+					System.err.println(id + " redeclarada.");
+				else{
+				 	System.out.println("Mensaje "+id + "-->"+t);
+				 	RESULT="\n\t"+t+" "+id+";";
+					parser.tabla.insertar(id, t,"");
+				}
 			:}
 			|TIPOVC ID:id DOSPUNTOS tipo:t IGUAL exprtipos:e  PCOMA{:
-			 //RESULT = t;
+				//RESULT = t;
 				if(parser.tabla.buscar(id)!= null){
 					System.err.println(id + " redeclarada.");
 				}else{
@@ -410,7 +404,7 @@ instruccion::=
 			                    RESULT="\n\t"+t+" "+id+" ="+e+";";
 			                    parser.tabla.insertar(id, t,e);
 			                }else{
-			                	String msj="Es una cadena no es compatible";
+			                	String msj="//La variable: "+id+" es una cadena y no es compatible\n";
 			                    RESULT= msj;
 			                }
 			                break;
@@ -419,13 +413,13 @@ instruccion::=
 			                    RESULT="\n\t"+t+" "+id+" ="+e+";";
 			                    parser.tabla.insertar(id, t,e);
 			            	}else{
-			            		String msj="Es una cadena no es compatible";
+			            		String msj="//La variable: "+id+" es una cadena y no es compatible\n";
 			                    RESULT= msj;
 			            	}
 			                break;
 			            case "char":
 			            	if(Num.valInt(e) || Num.valFloat(e)){
-				                String msj="Es un numero no es compatible";
+				                String msj="//La variable: "+id+" es un numero y no es compatible\n";
 			                    RESULT= msj;
 				            }else{
 				                RESULT="\n\t"+t+" "+id+" ="+e+";";
@@ -435,7 +429,7 @@ instruccion::=
 			            case "bool":
 			                break;
 		        	}
-				}			 	
+				}
 			:}
 		  | ID:id IGUAL exprtipos:t PCOMA{:
 			System.out.println("Mensaje "+id + "-->"+t);
@@ -629,10 +623,6 @@ item_condicion::=
 		|puertost:p {:
 				RESULT=p;
 		:}
-		|BINARIO CADENA:n
-		{:
-			RESULT="0b"+n;
-		:}
 		;
 ///////////////////////////////////////////////////////////////////
 
@@ -683,6 +673,7 @@ tipo ::= INTEGER {:
 		   :}
 		  ;
 exprtipos ::= ID:id {:
+			System.out.println("Esto es un identificador= "+id);
 			 DatoSimbolo s;
 			 if ((s = parser.tabla.buscar(id)) != null) {
 				cadena_tipo=s.getTipo();
@@ -692,16 +683,16 @@ exprtipos ::= ID:id {:
 			} 
 
 		  :}
-		 | NUMERO:n {: 
+		 | NUMERO:n {:
 		 	RESULT=""+n;
 		  :}
-		 | NUMREAL:n {: 
+		 | NUMREAL:n {:
 		 	RESULT=""+n;
 		 :}
-		 | CARACTER:b {: 
-		 	 RESULT=""+b;
+		 | CARACTER:b {:
+		 	RESULT=""+b;
 		:}
-		 | CTELOGICA:b{: 
+		 | CTELOGICA:b{:
 		 	RESULT=""+b;
 		 :}
 		;
@@ -822,9 +813,9 @@ puertos::= PA:pa {: RESULT=pa+"="; :}
 		|INTCONRBIE:intrbie{:RESULT=intrbie + " = ";:}
 		|INTCONT0IF:intt0if{:RESULT=intt0if + " = ";:}
 		|INTCONINTF:intintf{:RESULT=intintf + " = ";:}
-		|INTCONRBIF:intrbif{:RESULT=intrbif + " = ";:}
-        //
-        |OPTIONREG_INTEDG:opintedg{:RESULT = opintedg + " = ";:}
+		|INTCONRBIF:intrbif{:RESULT=intrbif + " = ";:} 
+		//
+		|OPTIONREG_INTEDG:opintedg{:RESULT = opintedg + " = ";:}
 		|OPTIONREG_PS:opps{:RESULT = opps + " = ";:}
 		|OPTIONREG_T0CS:opt0cs{:RESULT = opt0cs + " = ";:}
 		|OPTIONREG_T0SE:opt0se{:RESULT = opt0se + " = ";:}
@@ -833,8 +824,8 @@ puertos::= PA:pa {: RESULT=pa+"="; :}
 		|OPTIONREG_PS1:opps1{:RESULT = opps1 + " = ";:}
 		|OPTIONREG_PS0:opps0{:RESULT = opps0 + " = ";:}
 		|OPTIONREG_RBPU:oprbpu{:RESULT = oprbpu + " = ";:}
-
-        |ADCON0_ADCS1:adcs1{:RESULT = adcs1 + " = ";:}
+		//
+		|ADCON0_ADCS1:adcs1{:RESULT = adcs1 + " = ";:}
 		|ADCON0_ADCS0:adcs0{:RESULT = adcs0 + " = ";:}
 		|ADCON0_CHS3:adcs3{:RESULT = adcs3 + " = ";:}
 		|ADCON0_CHS2:adcs2{:RESULT = adcs2 + " = ";:}
@@ -842,8 +833,8 @@ puertos::= PA:pa {: RESULT=pa+"="; :}
 		|ADCON0_CHS0:adcs0{:RESULT = adcs0 + " = ";:}
 		|ADCON0_GO:adcgo{:RESULT = adcgo + " = ";:}
 		|ADCON0_ADON:adcadon{:RESULT = adcadon+ " = ";:}
-
-        |ADCON1_ADFM:adc1fm {:RESULT = adc1fm + "=";:}	
+		//
+		|ADCON1_ADFM:adc1fm {:RESULT = adc1fm + "=";:}	
 		|ADCON1_VCFG1:adcg1 {:RESULT = adcg1 + "=";:}
 		|ADCON1_VCFG0:adcg0 {:RESULT = adcg0 + "=";:}
 	    ;			

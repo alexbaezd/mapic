@@ -32,13 +32,9 @@
 
 
 	VARIABLE=[A-Za-z_][A-Za-z_0-9]*
-
-	CADENA=[0-1] {8}
-
 	
 	
 	
-
 
 
 %%
@@ -261,8 +257,6 @@
 "Float" 			 { return symbol(sym.REAL); }
 "Char"		     { return symbol(sym.CHAR); }
 "Boolean"		 { return symbol(sym.BOOLEAN); }
-"0b"			 { return symbol(sym.BINARIO); }
-{CADENA}  { return symbol(sym.CADENA, new String(yytext())); }
 {VARIABLE}  { return symbol(sym.ID, new String(yytext())); }
 [:digit:]+  { return symbol(sym.NUMERO, new Integer(yytext())); }
 [:digit:]+\.[:digit:]+ { return symbol(sym.NUMREAL,new Float(yytext())); }
