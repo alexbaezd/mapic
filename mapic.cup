@@ -591,6 +591,14 @@ instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 			{:
 				RESULT=v+">>"+n+";\n";
 			:}
+			|ID:var IGUAL ID:v RECBITSIZQ NUMERO:n PCOMA
+				{:
+					RESULT = var +"="+v+">>"+n+";\n";
+				:}
+			|ID:var IGUAL ID:v RECBITSDER NUMERO:n PCOMA
+				{:
+					RESULT = var +"="+v+"<<"+n+";\n";
+				:}
 //*********************************************************************************
 			|ID:v IGUAL expression:v2 operamesta:o expression:v3 PCOMA
 			{:

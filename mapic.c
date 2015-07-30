@@ -200,6 +200,7 @@ bbb<<2;
 kkk>>3;
 kkk=bbb+4+7+6+4+4+4+4+4+4+4+4+4+4+4;
 a=b+b+g+a+s+fsf-kkk+jjj;
+v=kkk<<3;
 		}
 
 	}

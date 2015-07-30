@@ -112,6 +112,8 @@ ciclo
 	
    a=b+b+f+g+a+s+fsf-kkk+jjj;
 
+   v=kkk >> 3;
+   n=kkk >> 3;
 }
 
 main

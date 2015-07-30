@@ -216,7 +216,7 @@ import java_cup.runtime.*;
 "ADCON1_VCFG1"		{return symbol(sym.ADCON1_VCFG1, new String("\tADCON1bits.VCFG1"));}
 "ADCON1_VCFG0"		{return symbol(sym.ADCON1_VCFG0, new String("\tADCON1bits.VCFG0"));}
 
-"TMR0"			{return symbol(sym.TIMER0, new String("\tTMR0"));}
+"TMR0"			{return symbol(sym.TMR0, new String("\tTMR0"));}
 
 "ENTRADA" 		{ return symbol(sym.ENTRADA);}
 "SALIDA" 		{ return symbol(sym.SALIDA);}
