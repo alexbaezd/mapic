@@ -33,7 +33,8 @@
 	int b =122;
 	float altura =4.456789;
 	char u ='u';
-	bool per =true;
+//La variable: per es un valor no compatible 12344 se requiere TRUE o FALSE
+
 		PORTA=!	PORTA;
 
 	}

@@ -436,7 +436,7 @@ instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 			            		RESULT="\n\t"+t+" "+id+" ="+e+";";
 			            		parser.tabla.insertar(id,t,e);
 			            	}else{
-			            		String msj="//La variable: "+id+" es un valor no compatible "+e+" se requiere TRUE o FALSE\n";
+			            		String msj="\n//La variable: "+id+" es un valor no compatible "+e+" se requiere TRUE o FALSE\n";
 			                    RESULT= msj;
 			            	}
 			                break;
