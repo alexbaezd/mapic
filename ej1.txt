@@ -5,7 +5,7 @@ Void MiMetodo(){
  	var b:InT = 122;
  	var altura:FLoaT = 4.4567890;
  	var u:ChAR = 'u';
- 	var per:BOOLEAN = true;
+ 	var per:BOOLEAN = TrUE;
   	PA Toggle PA;
 }
 
