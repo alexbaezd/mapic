@@ -158,7 +158,7 @@ terminal INTEGER,REAL,CHAR,BOOLEAN;
 terminal CARACTER,NUMREAL,CTELOGICA;
 terminal RCORCH,LCORCH,COMA;
 /* Terminales */
-terminal CHALE, MAIN, SETUP, FUSES, ENTRADA, SALIDA, RETARDO, CICLO;
+terminal CHALE, DELAY, TMR0, MAIN, SETUP, FUSES, ENTRADA, SALIDA, RETARDO, CICLO;
 terminal PA, PB, PC, PD, PE, TA, TB, TC, TD, TE, ANSEL, ANSELH,BINARIO,HEXA;
 terminal TA0, TA1, TA2, TA3, TA4, TA5, TA6, TA7;
 terminal TB0, TB1, TB2, TB3, TB4, TB5, TB6, TB7;
@@ -486,6 +486,11 @@ instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 				//retardos= retardos+c+"("+n+");\n";
 	   			RESULT=c+"("+n+");\n";
 			:}
+			| DELAY:c LLLAVE NUMERO:n RLLAVE PCOMA
+			{:
+				//retardos= retardos+c+"("+n+");\n";
+	   			RESULT=c+"("+n+");\n";
+			:}
 //*****************************************************************************		
 			|puertos:p IGUAL puertost:u MAS NUMERO:n PCOMA
 			{:
@@ -495,6 +500,10 @@ instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 			| RETURN PCOMA
 			{:
 				RESULT="return;\n";
+			:}
+			|TMR0:tm IGUAL HEXA HEXACADENA:hc
+			{:
+				RESULT = tm+"= 0x"+hc;
 			:}
 //********************************************************************************
 			

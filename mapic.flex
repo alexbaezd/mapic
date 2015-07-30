@@ -48,6 +48,7 @@ import java_cup.runtime.*;
 
 
 /* Reglas léxicas*/
+"DelayMS" 			{ return symbol(sym.DELAY,new String("\t\t__delay_ms"));}
 "TimeMS" 			{ return symbol(sym.CHALE,new String("\t\tretardo"));}
 "Main" 		        { return symbol(sym.MAIN,new String("\n\n\tvoid main(void)"));}
 "Setup" 		{ return symbol(sym.SETUP,new String("\tvoid setup()"));}
@@ -214,6 +215,8 @@ import java_cup.runtime.*;
 "ADCON1_ADFM"		{return symbol(sym.ADCON1_ADFM, new String("\tADCON1bits.ADFM"));}
 "ADCON1_VCFG1"		{return symbol(sym.ADCON1_VCFG1, new String("\tADCON1bits.VCFG1"));}
 "ADCON1_VCFG0"		{return symbol(sym.ADCON1_VCFG0, new String("\tADCON1bits.VCFG0"));}
+
+"TMR0"			{return symbol(sym.TIMER0, new String("\tTMR0"));}
 
 "ENTRADA" 		{ return symbol(sym.ENTRADA);}
 "SALIDA" 		{ return symbol(sym.SALIDA);}
