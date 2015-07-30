@@ -433,7 +433,7 @@ instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 			                break;
 			            case "bool":
 			            	if(e.equalsIgnoreCase("TRUE") || e.equalsIgnoreCase("FALSE")){
-			            		RESULT="\n\t"+t+" "+id+" ="+e+";";
+			            		RESULT="\n\t"+t+" "+id+" ="+e.toLowerCase()+";";
 			            		parser.tabla.insertar(id,t,e);
 			            	}else{
 			            		String msj="\n//La variable: "+id+" es un valor no compatible "+e+" se requiere TRUE o FALSE\n";
