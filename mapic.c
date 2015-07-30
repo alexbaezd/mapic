@@ -26,118 +26,21 @@
 	void retardo(unsigned int i){for(;i>0;i--);}
 
 
-	void  izqder()
+	void  MiMetodo()
 	{
 
-		while(1)
-		{
-	
-		PORTDbits.RD0=0;
-		retardo(20000);
-
-		PORTDbits.RD0=0;
-
-		PORTDbits.RD0=1;
-		retardo(20000);
-
-		PORTDbits.RD1=0;
-
-		PORTDbits.RD0=2;
-		retardo(20000);
-
-		PORTDbits.RD2=0;
-
-		PORTDbits.RD0=3;
-		retardo(20000);
-
-		PORTDbits.RD3=0;
-
-		PORTDbits.RD0=4;
-		retardo(20000);
-
-		PORTDbits.RD4=0;
-
-		PORTDbits.RD0=5;
-		retardo(20000);
-
-		PORTDbits.RD5=0;
-
-		PORTDbits.RD0=6;
-		retardo(20000);
-
-		PORTDbits.RD6=0;
-
-		PORTDbits.RD0=7;
-		retardo(20000);
-
-		PORTDbits.RD7=0;
-return;
-		}
-	}
-
-
-	void  derizq()
-	{
-
-		while(1)
-		{
-	
-		PORTDbits.RD0=7;
-		retardo(20000);
-
-		PORTDbits.RD7=0;
-
-		PORTDbits.RD0=6;
-		retardo(20000);
-
-		PORTDbits.RD6=0;
-
-		PORTDbits.RD0=5;
-		retardo(20000);
-
-		PORTDbits.RD5=0;
-
-		PORTDbits.RD0=4;
-		retardo(20000);
-
-		PORTDbits.RD4=0;
-
-		PORTDbits.RD0=3;
-		retardo(20000);
-
-		PORTDbits.RD3=0;
-
-		PORTDbits.RD0=2;
-		retardo(20000);
-
-		PORTDbits.RD2=0;
-
-		PORTDbits.RD0=1;
-		retardo(20000);
-
-		PORTDbits.RD1=0;
-
-		PORTDbits.RD0=0;
-		retardo(20000);
-
-		PORTDbits.RD0=0;
-return;
-		}
-	}
-
-
-	void  ambos()
-	{
-	izqder();
-	derizq();
+	char a ='e';
+	int b =122;
+	float altura =4.456789;
+	char u ='u';
+	bool per =true;
+		PORTA=!	PORTA;
 
 	}
 
 	void setup(){
-	OSCCON=0x60;	TRISA=1;
-	PORTA=0;
-	TRISD=0;
-	PORTD=0;
+	OSCCON=0x60;	PORTA=1;
+	TRISAbits.TRISA0=1;
 
 }
 
@@ -145,62 +48,7 @@ return;
 	 	while(1){
 
 
-		switch(	PORTAbits.RA0)
-{
-			case 1:
-		PORTDbits.RD0=!	PORTDbits.RD0;
-break;
-case 2:
-		PORTDbits.RD0=!	PORTDbits.RD0;
-break;
-
-}
-
-		if(	PORTAbits.RA1)
-		{		derizq();
-		}
-
-		if(	PORTAbits.RA2)
-		{		ambos();
-		}
-
-		if(	PORTA || 	PORTB)
-		{		izqder();
-		}
-
-		if(	PORTA > 	PORTB  < 	PORTC)
-		{		izqder();
-		}
-
-		if(	PORTA > 	PORTB  < 	PORTC  == 	PORTA)
-		{		izqder();
-		}
-
-		if(	PORTA > 	PORTB  && 	PORTC  <= 	PORTD)
-		{		izqder();
-		}
-
-		if(	PORTA > 	PORTB  && 	PORTC  <= 	PORTD  || 	PORTA)
-		{		izqder();
-		}
-
-		if(	PORTA > 	PORTB  < 	PORTC  <= 	PORTD  >= 	PORTA  == 	PORTC  || 	PORTD  && 	PORTA)
-		{		izqder();
-		}
-
-	int bbb =8;
-		if(	PORTA == 0b01010101)
-		{		izqder();
-		}
-
-		if(	PORTA == 0x53)
-		{		izqder();
-		}
-bbb<<2;
-kkk>>3;
-kkk=bbb+4+7+6+4+4+4+4+4+4+4+4+4+4+4;
-a=b+b+g+a+s+fsf-kkk+jjj;
-v=kkk<<3;
+		PORTA=!	PORTA;
 		}
 
 	}

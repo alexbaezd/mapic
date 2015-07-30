@@ -1,0 +1,24 @@
+Fuses
+
+Void MiMetodo(){
+ 	var a:ChAR = 'e';
+ 	var b:InT = 122;
+ 	var altura:FLoaT = 4.4567890;
+ 	var u:ChAR = 'u';
+ 	var per:BOOLEAN = true;
+  	PA Toggle PA;
+}
+
+Setup {
+	PA=ENTRADA;
+	TA0=ENTRADA;
+}
+
+Retardo();
+
+Ciclo
+{	
+	PA Toggle PA;
+}
+
+Main {	}

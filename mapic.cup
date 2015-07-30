@@ -409,7 +409,7 @@ instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 			                    RESULT="\n\t"+t+" "+id+" ="+e+";";
 			                    parser.tabla.insertar(id, t,e);
 			                }else{
-			                	String msj="//La variable: "+id+" es una cadena y no es compatible\n";
+			                	String msj="//La variable: "+id+" es una cadena "+e+" y no es compatible con un tipo de dato INT\n";
 			                    RESULT= msj;
 			                }
 			                break;
@@ -418,13 +418,13 @@ instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 			                    RESULT="\n\t"+t+" "+id+" ="+e+";";
 			                    parser.tabla.insertar(id, t,e);
 			            	}else{
-			            		String msj="//La variable: "+id+" es una cadena y no es compatible\n";
+			            		String msj="//La variable: "+id+" es una cadena "+e+" y no es compatible con un tipo de dato FLOAT\n";
 			                    RESULT= msj;
 			            	}
 			                break;
 			            case "char":
 			            	if(Num.valInt(e) || Num.valFloat(e)){
-				                String msj="//La variable: "+id+" es un numero y no es compatible\n";
+				                String msj="//La variable: "+id+" es un numero "+e+" y no es compatible con un CARACTER\n";
 			                    RESULT= msj;
 				            }else{
 				                RESULT="\n\t"+t+" "+id+" ="+e+";";
@@ -432,7 +432,17 @@ instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 				            }
 			                break;
 			            case "bool":
+			            	if(e.equalsIgnoreCase("TRUE") || e.equalsIgnoreCase("FALSE")){
+			            		RESULT="\n\t"+t+" "+id+" ="+e+";";
+			            		parser.tabla.insertar(id,t,e);
+			            	}else{
+			            		String msj="//La variable: "+id+" es un valor no compatible "+e+" se requiere TRUE o FALSE\n";
+			                    RESULT= msj;
+			            	}
 			                break;
+			            default :
+			            	String msj="//Tipo de dato desconocido: "+t+"\n";
+			                    RESULT= msj;
 		        	}
 				}
 			:}
