@@ -18,7 +18,7 @@ void izqder()
 void derizq()
 {
 	while(1) do
-	
+
 		PD0=7;TIMEMS(20000);PD7=0;
 		PD0=6;TIMEMS(20000);PD6=0;
 		PD0=5;TIMEMS(20000);PD5=0;
@@ -57,7 +57,7 @@ ciclo
 
 
 
-	
+
 	si(pa1) then
 		derizq();
 	fin
@@ -66,11 +66,11 @@ ciclo
 		ambos();
 	fin
 
-	si(pa or pb) then
+	si(pa == 0b01010101) then
 		izqder();
 	fin
 
-	
+
 	si(pa > pb < pc) then
 		izqder();
 	fin
@@ -79,16 +79,16 @@ ciclo
 		izqder();
 	fin
 
-    
+
 	si(pa > pb AND pc <= pd) then
 		izqder();
 	fin
-	
+
 
 	si(pa > pb AND pc <= pd OR pa) then
 		izqder();
 	fin
-	
+
 	si(pa > pb < pc <= pd >= pa == pc OR pd AND pa) then
 		izqder();
 	fin
@@ -103,15 +103,15 @@ ciclo
 		izqder();
 	fin
 
-   si(223==5) then
+   si(223==0x53FFAA34BB) then
 		izqder();
 	fin
 
    bbb << 2;
-   
+
 
    kkk >> 3;
-   
+
    kkk=3+223+3/3f;
 
    kkk=((3+2)+(3+3));
@@ -120,10 +120,10 @@ ciclo
 
    kkk= ((x-y)/2f);
    kkk= ((x-y)/2f)+333;
-  kkk=(PBBB)+5;
-  kkk=(5+6-B6f)+5;
-  kkk=((4+4+4-f)-(t-t-t))+5;
-  kkk=((4+4+(6-7))+(6+6))+6;
+	  kkk=(PBBB)+5;
+	  kkk=(5+6-B6f)+5;
+	  kkk=((4+4+4-f)-(t-t-t))+5;
+	  kkk=((4+4+(6-7))+(6+6))+6;
    pd=pd+n;
 
    i++;

@@ -26,20 +26,118 @@
 	void retardo(unsigned int i){for(;i>0;i--);}
 
 
-	void  MiMetodo()
+	void  izqder()
 	{
 
-	char a ='e';
-	int b =122;
-	float altura =4.456789;
-	char u ='u';
-		PORTA=!	PORTA;
+		while(1)
+		{
+	
+		PORTDbits.RD0=0;
+		retardo(20000);
+
+		PORTDbits.RD0=0;
+
+		PORTDbits.RD0=1;
+		retardo(20000);
+
+		PORTDbits.RD1=0;
+
+		PORTDbits.RD0=2;
+		retardo(20000);
+
+		PORTDbits.RD2=0;
+
+		PORTDbits.RD0=3;
+		retardo(20000);
+
+		PORTDbits.RD3=0;
+
+		PORTDbits.RD0=4;
+		retardo(20000);
+
+		PORTDbits.RD4=0;
+
+		PORTDbits.RD0=5;
+		retardo(20000);
+
+		PORTDbits.RD5=0;
+
+		PORTDbits.RD0=6;
+		retardo(20000);
+
+		PORTDbits.RD6=0;
+
+		PORTDbits.RD0=7;
+		retardo(20000);
+
+		PORTDbits.RD7=0;
+return;
+		}
+	}
+
+
+	void  derizq()
+	{
+
+		while(1)
+		{
+	
+		PORTDbits.RD0=7;
+		retardo(20000);
+
+		PORTDbits.RD7=0;
+
+		PORTDbits.RD0=6;
+		retardo(20000);
+
+		PORTDbits.RD6=0;
+
+		PORTDbits.RD0=5;
+		retardo(20000);
+
+		PORTDbits.RD5=0;
+
+		PORTDbits.RD0=4;
+		retardo(20000);
+
+		PORTDbits.RD4=0;
+
+		PORTDbits.RD0=3;
+		retardo(20000);
+
+		PORTDbits.RD3=0;
+
+		PORTDbits.RD0=2;
+		retardo(20000);
+
+		PORTDbits.RD2=0;
+
+		PORTDbits.RD0=1;
+		retardo(20000);
+
+		PORTDbits.RD1=0;
+
+		PORTDbits.RD0=0;
+		retardo(20000);
+
+		PORTDbits.RD0=0;
+return;
+		}
+	}
+
+
+	void  ambos()
+	{
+	izqder();
+	derizq();
 
 	}
 
 	void setup(){
-	OSCCON=0x60;	PORTA=1;
-	TRISAbits.TRISA0=1;
+	OSCCON=0x60;	TRISA=1;
+	PORTA=0;
+	TRISD=0;
+	PORTD=0;
 
 }
 
@@ -47,7 +145,77 @@
 	 	while(1){
 
 
-		PORTA=!	PORTA;
+		switch(	PORTAbits.RA0)
+{
+			case 1:
+		PORTDbits.RD0=!	PORTDbits.RD0;
+break;
+case 2:
+		PORTDbits.RD0=!	PORTDbits.RD0;
+break;
+
+}
+
+		if(	PORTAbits.RA1)
+		{		derizq();
+		}
+
+		if(	PORTAbits.RA2)
+		{		ambos();
+		}
+
+		if(	PORTA == 0b01010101)
+		{		izqder();
+		}
+
+		if(	PORTA > 	PORTB  < 	PORTC)
+		{		izqder();
+		}
+
+		if(	PORTA > 	PORTB  < 	PORTC  == 	PORTA)
+		{		izqder();
+		}
+
+		if(	PORTA > 	PORTB  && 	PORTC  <= 	PORTD)
+		{		izqder();
+		}
+
+		if(	PORTA > 	PORTB  && 	PORTC  <= 	PORTD  || 	PORTA)
+		{		izqder();
+		}
+
+		if(	PORTA > 	PORTB  < 	PORTC  <= 	PORTD  >= 	PORTA  == 	PORTC  || 	PORTD  && 	PORTA)
+		{		izqder();
+		}
+
+	int bbb =8;
+		if(	PORTA == 0b01010101)
+		{		izqder();
+		}
+
+		if(	PORTA == 0x53)
+		{		izqder();
+		}
+
+		if(223 == 0x53FFAA34BB)
+		{		izqder();
+		}
+bbb<<2;
+kkk>>3;
+kkk=3+223/3f;
+kkk=((3+2)+(3+3));
+kkk=((9+999)-(5));
+kkk=((x-y)/2f);
+kkk=((x-y)/2f)+333;
+kkk=(PBBB)+5;
+kkk=(5+6-B6f)+5;
+kkk=((4+4-f)-(t-t-t))+5;
+kkk=((4+4+(6-7))+(6+6))+6;
+	PORTD=	PORTD+n;
+i++;
+i--;
+v=kkk<<3;
+n=kkk<<3;
 		}
 
 	}

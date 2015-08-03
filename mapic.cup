@@ -84,7 +84,6 @@ String auxsw="";
 String p2="";
 String p1="";
 String aux3="";
-frijol f2;
 String cadena_condiciones=" ";
 String cadena_tipo="";
 String cadena_parametros="";
@@ -159,7 +158,7 @@ terminal CARACTER,NUMREAL,CTELOGICA;
 terminal RCORCH,LCORCH,COMA;
 /* Terminales */
 terminal CHALE, DELAY, TMR0, MAIN, SETUP, FUSES, ENTRADA, SALIDA, RETARDO, CICLO;
-terminal PA, PB, PC, PD, PE, TA, TB, TC, TD, TE, ANSEL, ANSELH,BINARIO,HEXA;
+terminal PA, PB, PC, PD, PE, TA, TB, TC, TD, TE, ANSEL, ANSELH;
 terminal TA0, TA1, TA2, TA3, TA4, TA5, TA6, TA7;
 terminal TB0, TB1, TB2, TB3, TB4, TB5, TB6, TB7;
 terminal TC0, TC1, TC2, TC3, TC4, TC5, TC6, TC7;
@@ -187,7 +186,7 @@ terminal String NMETODO;
 terminal String SI;
 terminal String CASO;
 terminal String WHILE;
-terminal String CADENA;
+terminal String BINARIOCADENA;
 terminal String HEXACADENA;
 /* No terminales */
 non terminal programa;
@@ -532,9 +531,9 @@ instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 			{:
 				RESULT="return;\n";
 			:}
-			|TMR0:tm IGUAL HEXA HEXACADENA:hc
+			|TMR0:tm IGUAL  HEXACADENA:hc
 			{:
-				RESULT = tm+"= 0x"+hc;
+				RESULT = tm+"= "+hc;
 			:}
 //********************************************************************************
 
@@ -555,14 +554,13 @@ instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 
 			| SI:etqFinIf  LPAREN condicion:c  RPAREN THEN instrucciones
 				{:
-					//frijol f=new frijol("",auxiliar);
+
 					p.push(auxiliar);
 					auxiliar="";
 				:}
 			NO instrucciones FIN
 				{:
-					/*f2=p.pop();
-					p1=f2.getInstruccion();*/
+
 					p1=p.pop().toString();
 					auxno=auxiliar;
 					RESULT="\n\t\tif("+c.condicion+")\n\t\t{\t"+p1+"\t\t}"+"\n\t\telse\n\t\t{\n\t"+auxno+"\t\t}\n";
@@ -571,14 +569,13 @@ instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 
 				| SI:etqFinIf  LPAREN puertost:p  RPAREN THEN instrucciones
 				{:
-					//frijol f=new frijol("",auxiliar);
+
 					pila2.push(auxiliar);
 					auxiliar="";
 				:}
 			NO instrucciones FIN
 				{:
-					//f2=pila2.pop();
-					//p1=f2.getInstruccion();
+
 					p1=pila2.pop().toString();
 					auxno=auxiliar;
 					RESULT="\n\t\tif("+p+")\n\t\t{\t"+p1+"\t\t}"+"\n\t\telse\n\t\t{\n\t"+auxno+"\t\t}\n";
@@ -792,13 +789,13 @@ item_condicion::=
 		|puertost:p {:
 				RESULT=p;
 		:}
-		|BINARIO CADENA:n
+		| BINARIOCADENA:n
 		{:
-			RESULT="0b"+n;
+			RESULT=""+n;
 		:}
-		| HEXA HEXACADENA:hc
+		| HEXACADENA:hc
 		{:
-			RESULT="0x"+hc;
+			RESULT=""+hc;
 		:}
 		;
 

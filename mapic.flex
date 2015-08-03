@@ -31,16 +31,10 @@ import java_cup.runtime.*;
 	commentBegin="/*"
 	commentEnd="*/"
 	lineComment={commentBegin}~{commentEnd}
-	//numeros=([1-9])
-	//Digit = ("0" | {numeros})
 
 	VARIABLE=[A-Za-z_][A-Za-z_0-9]*
-
-	CADENA=[0-1] {8}
-
-	//HEXACADENA=({Digit}|[A-Fa-f])
-
-	HEXACADENA = [0-9]{2}
+	BINARIOCADENA="0b" [0-1] {8}
+	HEXACADENA = "0x"[A-Fa-f_0-9]*
 
 
 %%
@@ -267,9 +261,7 @@ import java_cup.runtime.*;
 "Float" 			 { return symbol(sym.REAL); }
 "Char"		     { return symbol(sym.CHAR); }
 "Boolean"		 { return symbol(sym.BOOLEAN); }
-"0b"			 { return symbol(sym.BINARIO); }
-"0x"			 { return symbol(sym.HEXA); }
-{CADENA}  { return symbol(sym.CADENA, new String(yytext())); }
+{BINARIOCADENA}  { return symbol(sym.BINARIOCADENA, new String(yytext())); }
 {HEXACADENA}  { return symbol(sym.HEXACADENA, new String(yytext())); }
 {VARIABLE}  { return symbol(sym.ID, new String(yytext())); }
 [:digit:]+  { return symbol(sym.NUMERO, new Integer(yytext())); }
