@@ -3,24 +3,8 @@ fuses
  var i:int;
  var c:int;
 
-  void setupTimer0(){
-    /*
-    OPTIONREG_T0CS=salida;
-    OPTIONREG_PSA = salida;
-
-    INTCONGIE=entrada;
-    INTCONT0IE = entrada;
-    */
-    OPTIONREG_PS =7;
-    /*
-    TMR0=0x00;
-
-    */
-
-
-  }
- void interrupt miISR(){
-    INTCONGIE=salida;
+void interrupt miISR(){
+    INTCONGIE=0;
 
     si(INTCONGIE) then
       PD0=1;
@@ -51,13 +35,28 @@ fuses
       P2=1;
       TimeMS(30);
       PD2=0;
-      INTCONT0IE = SALIDA;
-  	fin
+      INTCONT0IE = 0;
+    fin
 
-    INTCONGIE=entrada;
+    INTCONGIE=1;
 
  }
 
+
+  void setupTimer0(){
+    
+    OPTIONREG_T0CS=0;
+    OPTIONREG_PSA = 0;
+
+    INTCONGIE=1;
+    INTCONT0IE = 1;
+    
+    OPTIONREG_PS =7;
+    
+    TMR0=0x00;
+}
+
+ 
 
 setup{
 
@@ -68,6 +67,8 @@ setup{
 
 }
 
-ciclo{ }
+ciclo{ 
+    tD=1;
+}
 
 main{}

@@ -25,9 +25,9 @@ setup{
   INTCONGIE=ENTRADA;
   INTCONINTE = ENTRADA;
   INTCONRBIE = ENTRADA;
-  /*
-    INTEDG=salida;
-  */
+  
+    OPTIONREG_INTEDG=salida;
+  
   TB=0b00000001;
   PB=0b10000000;
   i=9;

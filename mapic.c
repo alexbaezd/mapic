@@ -23,108 +23,96 @@
 
 
 	int i;
+	int c;
 	void    interrupt  miISR()
 	{
-i--;
 
-		INTCONbits.INTF = 0;
+		INTCONbits.GIE = 0;
 
+		if(	INTCONbits.GIE)
+		{	
+		PORTDbits.RD0=1;
+		retardo(60);
+
+		PORTDbits.RD0=0;
+		retardo(1);
+
+		PORTDbits.RD0=1;
+		retardo(1);
+
+		PORTDbits.RD0=0;
+		retardo(1);
+
+		PORTDbits.RD0=1;
+		retardo(1);
+
+		PORTDbits.RD0=0;
+		retardo(1);
+
+		PORTDbits.RD0=0;
+		retardo(1);
+
+		PORTDbits.RD0=1;
+		retardo(1);
+
+		PORTDbits.RD0=0;
+		retardo(1);
+
+		PORTDbits.RD0=1;
+		retardo(1);
+
+		PORTDbits.RD0=0;
+		retardo(1);
+
+		PORTDbits.RD1=1;
+		retardo(8);
+
+		PORTDbits.RD1=0;
+null		retardo(30);
+
+		PORTDbits.RD2=0;
+
+		INTCONbits.T0IE = 0;
+		}
+
+		INTCONbits.GIE = 1;
+
+	}
+
+
+	void  setupTimer0()
+	{
+
+		OPTION_REGbits.T0CS = 0;
+
+		OPTION_REGbits.PSA = 0;
+
+		INTCONbits.GIE = 1;
+
+		INTCONbits.T0IE = 1;
+
+		OPTION_REGbits.PS = 7;
+	TMR0= 0x00
 	}
 
 	void setup(){
 	OSCCON=0x60;
 	ANSEL=0;
-	ANSEL = 0;
-	ANSELH = 0;
-	TRISA=1;
-	PORTA=0;
 	TRISD=0;
 	PORTD=0;
-	INTCON = 0;
-	INTCONbits.GIE = 1;
-	INTCONbits.INTE = 1;
-	INTCONbits.RBIE = 1;
+	setupTimer0();
 
-		TRISB=0b00000001;
-
-		PORTB=0b10000000;
-
-	i=9;
+	i=0;
 }
 
 	void loop(){
 	 	while(1){
 
 
-	
-	int c;
-		if(	PORTAbits.RA0 == 1)
-		{			__delay_ms(330);
+		TRISD=1;
+	setupTimer0();
 
-	c=1;		}
-
-		switch(c)
-{
-			case 1:i++;
-
-	c=0;break;
-
-}
-
-		switch(	PORTA)
-{
-			case 9:
-		PORTD=0b01100111;
-break;
-case 8:
-		PORTD=0b01111111;
-break;
-case 7:
-		PORTD=0b00000111;
-break;
-case 6:
-		PORTD=0b01111101;
-break;
-case 5:
-		PORTD=0b01101101;
-break;
-case 4:
-		PORTD=0b01100110;
-break;
-case 3:
-		PORTD=0b01001111;
-break;
-case 2:
-		PORTD=0b01011011;
-break;
-case 1:
-		PORTD=0b00000110;
-break;
-case 0:
-		PORTD=0b00111111;
-break;
-
-}
-
-		if(i == 0  || i  < 0)
-		{	
-	i=0;
-		PORTBbits.RB7=0;
-
-		PORTBbits.RB5=1;
-		}
-		else
-		{
-	
-		if(i > 9)
-		{	
-	i=9;
-		PORTBbits.RB7=1;
-
-		PORTBbits.RB5=0;
-		}
-		}
-		}
+	i=0;		}
 
 	}
 

@@ -522,7 +522,7 @@ instruccion::= declvar:d {:
 			{:
 				RESULT="return;\n";
 			:}
-			|TMR0:tm IGUAL  HEXACADENA:hc
+			|TMR0:tm IGUAL  HEXACADENA:hc PCOMA
 			{:
 				RESULT = tm+"= "+hc;
 			:}
@@ -1129,4 +1129,12 @@ puertost::= PA:pa {: RESULT=pa+""; :}
 	    |PE1:pe1 {:	RESULT=pe1+"";     :}
 	    |PE2:pe2 {:	RESULT=pe2+"";     :}
 	    |PE3:pe3 {:	RESULT=pe3+"";     :}
+	    |INTCONGIE:intgie{:RESULT=intgie +    "";:}
+		|INTCONPEIE:intpeie{:RESULT=intpeie + "";:}
+		|INTCONT0IE:intt0ie{:RESULT=intt0ie + "";:}
+		|INTCONINTE:intinte{:RESULT=intinte + "";:}
+		|INTCONRBIE:intrbie{:RESULT=intrbie + "";:}
+		|INTCONT0IF:intt0if{:RESULT=intt0if + "";:}
+		|INTCONINTF:intintf{:RESULT=intintf + "";:}
+		|INTCONRBIF:intrbif{:RESULT=intrbif + "";:}
 	    ;
