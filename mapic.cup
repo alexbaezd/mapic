@@ -402,20 +402,20 @@ parametros::= ID:id DOSPUNTOS tipo:t {:
 //////////////////////////////////////////////////////////////////////////////////////////
 instrucciones::=instruccion:in
 			{:
-				System.out.println("valor de in en intruccion:"+in);
+				//System.out.println("valor de in en intruccion:"+in);
 				auxiliar=in + auxiliar;
                 //aux=in;
 				//RESULT=in;
-				System.out.println("cadena de una istruccion en aux: "+auxiliar);
+				//System.out.println("cadena de una istruccion en aux: "+auxiliar);
 			:}
 
 			|instruccion:in instrucciones
 			{:
-				System.out.println("valor de in en instrucciones:"+in);
+			//	System.out.println("valor de in en instrucciones:"+in);
 				auxiliar=in+auxiliar;
 				//RESULT=in;
                 //aux=in;
-				System.out.println("cadena de varias instrucciones en aux:"+auxiliar);
+			//	System.out.println("cadena de varias instrucciones en aux:"+auxiliar);
 			:};
 
 ///////////////////////////INSTRUCCIONES DISPONIBLES EN MAPIC//////////////////////////////////////////////////////////////////
@@ -459,6 +459,14 @@ instruccion::= declvar:d {:
 			 RESULT="\n\t"+p+n+";\n";
 			 //System.out.println("cadena de toggles:"+RESULT);
 		 :}
+
+		 | puertos:p IGUAL ID:n PCOMA
+
+		{:
+			//   miCodigo=p+t+u+";\n"+miCodigo;
+			RESULT="\n\t"+p+n+";\n";
+			//System.out.println("cadena de toggles:"+RESULT);
+		:}
 
 //********************Invocar a un metodo*********************************************************
 		 	| ID:i LPAREN RPAREN PCOMA
@@ -936,6 +944,12 @@ exprtipos ::= ID:id {:
 		 | CTELOGICA:b{:
 		 	RESULT=""+b;
 		 :}
+		 |HEXACADENA:hc {:
+			 RESULT=""+hc;
+			:}
+			| BINARIOCADENA:bi {:
+				RESULT=""+bi;
+			:}
 		;
 
 //*****************************************************************************

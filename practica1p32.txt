@@ -1,0 +1,82 @@
+fuses
+
+var push:int;
+
+void  derizq()
+{
+	var n:char;
+	n=0x80;
+	while(1) do
+		  PD = n;
+			TimeMS(5000);
+			Si(n==0x01) Then
+				return ;
+			No
+				n=n<<1;
+			Fin
+	fin while
+}
+
+void izqder()
+{
+	var n2:char;
+	n=0x01;
+	while(1) do
+			PD = n2;
+			TimeMS(5000);
+			Si(n2==0x80) Then
+				return ;
+			No
+				n=n>>1;
+			Fin
+	fin while
+}
+
+void ambos()
+{
+	izqder();
+	derizq();
+	return ;
+}
+void verifica(){
+
+			SWITCH(push) of
+				caso 1: derizq();
+				caso 2: izqder();
+				caso 3: ambos();
+			Fin switch
+      return;
+}
+setup
+{
+  
+	ta=entrada;
+	pa=salida;
+	td=salida;
+	pd=salida;
+	push=0;
+}
+
+retardo();
+
+ciclo
+{
+
+	while(1) do
+		Si(PA0 == 1) Then
+			push=1;
+		No
+			Si(PA1 == 1) Then
+					push=2;
+				No
+					 Si(PA2 == 1) Then
+					 	push=3;
+					 Fin
+			Fin
+		 Fin
+	fin while
+}
+
+main
+{
+}

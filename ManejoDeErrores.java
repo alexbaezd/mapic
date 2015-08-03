@@ -1,16 +1,16 @@
 import java_cup.runtime.*;
 public class ManejoDeErrores{
-    
+
     public String Errores(int tipo){
         String men=" ";
         switch (tipo){
             case 0:
-                men = "E=0 Error chale quien sabe porr que  ";
+                men = "E=0 Error";
                 break;
            /*
 
      comente los case solo falta agrefar el texto  , genere el -dump_states y me dio 189 estados , checalo crealo de nuevo y checa bien
-    
+
 
           case 0:men = "E=0        ";break;
           case 1:men = "E=1        ";break;
@@ -201,11 +201,11 @@ public class ManejoDeErrores{
           case 186:men = "E=186        ";break;
           case 187:men = "E=187        ";break;
           case 188:men = "E=188        ";break;
-          case 189:men = "E=189        ";break;   	
-				
-		       */		
-				
-            default: men ="ERROR DESCONOCIDO";
+          case 189:men = "E=189        ";break;
+
+		       */
+
+            default: men ="Algo anda mal , ha ocurrido un error";
         }
         return men;
     }
@@ -217,34 +217,38 @@ public class ManejoDeErrores{
 
                 case 0:msn = "  EOF ";break;
                 case 1:msn = "  error  ";break;
-                case 2:msn = "  CHALE  ";break;
-                case 3:msn = "  MAIN  ";break;
-                case 4:msn = "  FMAIN  ";break;
-                case 5:msn = "  SETUP  ";break;
-                case 6:msn = "  FSETUP  ";break;
-                case 7:msn = "  FUSES  ";break;
-                case 8:msn = " ENTRADA  ";break;
-                case 9:msn = "  SALIDA ";break;
+                case 2:msn = "  Int  ";break;
+                case 3:msn = "  REAL/Float  ";break;
+                case 4:msn = "  Char  ";break;
+                case 5:msn = "  BOOLEAN  ";break;
+                case 6:msn = "  CARACTER  ";break;
+                case 7:msn = "  Número  ";break;
+                case 8:msn = " TRUE|FALSE  ";break;
+                case 9:msn = "  RCORCH ";break;
 
 
-                case 10:msn = "  RETARDO  ";break;
-                case 11:msn = " CICLO ";break;
-                case 12:msn = "  FCICLO ";break;
-                case 13:msn = "  PA ";break;
-                case 14:msn = " PB  ";break;
-                case 15:msn = "  PC  ";break;
-                case 16:msn = "  PD ";break;
-                case 17:msn = "  PE ";break;
-                case 18:msn = "  TA ";break;
-                case 19:msn = " TB  ";break;
+                case 10:msn = "  LCORCH  ";break;
+                case 11:msn = " COMA ";break;
+                case 12:msn = "  CHALE ";break;
+                case 13:msn = "  DELAY ";break;
+                case 14:msn = " TMR0  ";break;
+                case 15:msn = "  Main  ";break;
+                case 16:msn = "  SETUP ";break;
+                case 17:msn = "  FUSES ";break;
+                case 18:msn = "  ENTRADA ";break;
+                case 19:msn = " SALIDA  ";break;
 
 
-                case 20:msn = " TC  ";break;
-                case 21:msn = "  TD ";break;
-                case 22:msn = " TE  ";break;
-                case 23:msn = " TA0  ";break;
-                case 24:msn = "  TA1 ";break;
-                case 25:msn = " TA2  ";break;
+                case 20:msn = " RETARDO  ";break;
+                case 21:msn = " CICLO ";break;
+                case 22:msn = " PA  ";break;
+                case 23:msn = " PB  ";break;
+                case 24:msn = " PC ";break;
+                case 25:msn = " PD  ";break;
+                /*
+                  fin
+                */
+
                 case 26:msn = "TA3   ";break;
                 case 27:msn = "  TA4 ";break;
                 case 28:msn = "TA5   ";break;
@@ -348,16 +352,17 @@ public class ManejoDeErrores{
                 case 108:msn = " NUMERO  ";break;
                 case 109:msn = "  ID ";break;
 
-                default: msn= "ERROR TOKEN DESCONOCIDO"; break;
-              
 
-              		
+                default: msn= "ERROR TOKEN DESCONOCIDO"; break;
+
+
+
             }
-            
+
             return msn;
     }
 
-  
 
-    
+
+
 }

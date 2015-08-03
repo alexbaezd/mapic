@@ -22,93 +22,119 @@
 
 
 
-	int i;
-	int c;
-	void    interrupt  miISR()
+	int push;
+
+	void retardo(unsigned int i){for(;i>0;i--);}
+
+
+	void  derizq()
 	{
 
-		INTCONbits.GIE = 0;
 
-		if(	INTCONbits.GIE)
-		{	
-		PORTDbits.RD0=1;
-		retardo(60);
+	char n;
+	n=0x80;
+		while(1)
+		{
 
-		PORTDbits.RD0=0;
-		retardo(1);
+		PORTD=n;
+		retardo(5000);
 
-		PORTDbits.RD0=1;
-		retardo(1);
-
-		PORTDbits.RD0=0;
-		retardo(1);
-
-		PORTDbits.RD0=1;
-		retardo(1);
-
-		PORTDbits.RD0=0;
-		retardo(1);
-
-		PORTDbits.RD0=0;
-		retardo(1);
-
-		PORTDbits.RD0=1;
-		retardo(1);
-
-		PORTDbits.RD0=0;
-		retardo(1);
-
-		PORTDbits.RD0=1;
-		retardo(1);
-
-		PORTDbits.RD0=0;
-		retardo(1);
-
-		PORTDbits.RD1=1;
-		retardo(8);
-
-		PORTDbits.RD1=0;
-null		retardo(30);
-
-		PORTDbits.RD2=0;
-
-		INTCONbits.T0IE = 0;
+		if(n == 0x01)
+		{	return;
 		}
+		else
+		{
+	n=n>>1;
+		}
+		}
+	}
 
-		INTCONbits.GIE = 1;
+
+	void  izqder()
+	{
+
+
+	char n2;
+	n=0x01;
+		while(1)
+		{
+
+		PORTD=n2;
+		retardo(5000);
+
+		if(n2 == 0x80)
+		{	return;
+		}
+		else
+		{
+	n=n<<1;
+		}
+		}
+	}
+
+
+	void  ambos()
+	{
+	izqder();
+	derizq();
+return;
 
 	}
 
 
-	void  setupTimer0()
+	void  verifica()
 	{
 
-		OPTION_REGbits.T0CS = 0;
+		switch(push)
+{
+			case 1:	derizq();
+break;
+case 2:	izqder();
+break;
+case 3:	ambos();
+break;
 
-		OPTION_REGbits.PSA = 0;
+}
+return;
 
-		INTCONbits.GIE = 1;
-
-		INTCONbits.T0IE = 1;
-
-		OPTION_REGbits.PS = 7;
-	TMR0= 0x00
 	}
 
 	void setup(){
 	OSCCON=0x60;
 	ANSEL=0;
+	TRISA=1;
+	PORTA=0;
 	TRISD=0;
 	PORTD=0;
-	setupTimer0();
 
-	i=0;
+	push=0;
 }
 
 	void loop(){
-	 	 
 
- 		
+
+
+		while(1)
+		{
+
+		if(	PORTAbits.RA0 == 1)
+		{
+	push=1;		}
+		else
+		{
+
+		if(	PORTAbits.RA1 == 1)
+		{
+	push=2;		}
+		else
+		{
+
+		if(	PORTAbits.RA2 == 1)
+		{
+	push=3;		}
+		}
+		}
+		}
 
 	}
 
@@ -116,5 +142,5 @@ null		retardo(30);
 		setup();
 		loop();
 
-		 return; 
+		 return;
 	 }

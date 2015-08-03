@@ -7,6 +7,7 @@ setup
 RETARDO();
 CICLO
 {
+<<<<<<< Updated upstream
 	while(1) do
 		/*
 			Esto es un comentario
@@ -26,5 +27,26 @@ CICLO
 		pd7 toggle pd7;
 		TIMEMS(50000);
 	fin while
+=======
+
+	/*
+		Esto es un comentario
+	PD0=0;TIMEMS(20000);PD0=0;
+	PD0=1;TIMEMS(20000);PD1=0;
+	PD0=2;TIMEMS(20000);PD2=0;
+	PD0=3;TIMEMS(20000);PD3=0;
+	*/
+	
+	PD0=0;TIMEMS(20000);PD0=0;
+	PD0=1;TIMEMS(20000);PD1=0;
+	PD0=2;TIMEMS(20000);PD2=0;
+	PD0=3;TIMEMS(20000);PD3=0;
+	PD0=4;TIMEMS(20000);PD4=0;
+	PD0=5;TIMEMS(20000);PD5=0;
+	PD0=6;TIMEMS(20000);PD6=0;
+	PD0=7;TIMEMS(20000);PD7=0;
+	pd7 toggle pd7;
+	TIMEMS(50000);
+>>>>>>> Stashed changes
 }
 MAIN{}
