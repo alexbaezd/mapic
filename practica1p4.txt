@@ -1,18 +1,25 @@
 fuses
 
 setup{
+  ansel = salida;
 	ta=entrada;
 	pa=salida;
-	ta0=salida;
+	TD0=salida;
 	pd0=salida;
 }
 
 ciclo{
-	si(pa==0b00101010 OR pb==0b00001000 AND pc>0b00000000)then
-	pd0=1;
-	no
-	pd0=0;
-	fin
+	Si(PA == 0b00000010
+	  OR PA == 0b00000100
+	  OR PA == 0b00000110
+	  OR PA == 0b00001000
+	  OR PA == 0b00001010
+	  OR PA == 0b00001100
+	  OR PA == 0b00001110) then
+			pd0=1;
+	No
+		pd0=0;
+	Fin
 }
 
 main{}

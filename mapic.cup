@@ -470,15 +470,22 @@ instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 				//System.out.println("cadena de toggles:"+RESULT);
 			:}
 //*****************************************************************************
-       		| puertos:p IGUAL NUMERO:n PCOMA
+       | puertos:p IGUAL NUMERO:n PCOMA
 
 			{:
 				//   miCodigo=p+t+u+";\n"+miCodigo;
 				RESULT="\n\t"+p+n+";\n";
 				//System.out.println("cadena de toggles:"+RESULT);
 			:}
+			| puertos:p IGUAL BINARIOCADENA:n PCOMA
 
-//*****************************************************************************
+		 {:
+			 //   miCodigo=p+t+u+";\n"+miCodigo;
+			 RESULT="\n\t"+p+n+";\n";
+			 //System.out.println("cadena de toggles:"+RESULT);
+		 :}
+
+//********************Invocar a un metodo*********************************************************
 		 	| ID:i LPAREN RPAREN PCOMA
 			{:
 				Metodos s;
@@ -491,6 +498,19 @@ instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 					RESULT="\t"+i+"();\n";
 				}
 			:}
+			| ID:i LPAREN expression:ex RPAREN PCOMA
+			{:
+				Metodos s;
+				if ((s = tablaMetodos.search(i)) == null)
+				{System.out.println(i+ " es una METODO no definido");}
+				else
+				{
+					// System.out.println(i+" instrucciones del metodo => "+s.getValor());
+					//System.out.println("codigo intermedio==> "+i+"();");
+					RESULT="\t"+i+"("+ex+");\n";
+				}
+			:}
+
 //*****************************************************************************
 			| CHALE:c LPAREN NUMERO:n RPAREN PCOMA
 			{:

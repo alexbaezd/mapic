@@ -1,0 +1,27 @@
+fuses
+
+setup{
+  ansel = salida;
+	ta=entrada;
+	pa=salida;
+	TD=salida;
+	pd=salida;
+}
+
+ciclo{
+
+switch(PA) of
+  caso 0: PD=0b00000000;
+  caso 1: PD=0b00000001;
+  caso 2: PD=0b00000011;
+  caso 3: PD=0b00000111;
+  caso 4: PD=0b00001111;
+  caso 5: PD=0b00011111;
+  caso 6: PD=0b00111111;
+  caso 7: PD=0b01111111;
+  caso 8: PD=0b11111111;
+Fin switch
+
+}
+
+main{}

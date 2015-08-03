@@ -161,7 +161,6 @@ import java_cup.runtime.*;
 "PE1" 		{ return symbol(sym.PE1,new String("\tPORTEbits.RE1"));}
 "PE2" 		{ return symbol(sym.PE2,new String("\tPORTEbits.RE2"));}
 "PE3" 		{ return symbol(sym.PE3,new String("\tPORTEbits.RE3"));}
-
 "ANSEL0"	{return symbol(sym.ANSEL0, new String("\tANSELbits.ANS0"));}
 "ANSEL1"	{return symbol(sym.ANSEL1, new String("\tANSELbits.ANS1"));}
 "ANSEL2"	{return symbol(sym.ANSEL2, new String("\tANSELbits.ANS2"));}

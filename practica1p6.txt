@@ -1,0 +1,16 @@
+fuses
+
+setup{
+  ansel = salida;
+	TD=salida;
+	pd=salida;
+}
+
+ciclo{
+
+    PD = PD + 2;
+    TimeMS(60000);
+
+}
+
+main{}

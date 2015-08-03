@@ -1,0 +1,37 @@
+fuses
+
+ void suma(n : Int){
+   PD = PD + n;
+   TimeMS(60000);
+ }
+
+setup{
+  ansel = salida;
+  ta=entrada;
+  pa=salida;
+	TD=salida;
+	pd=salida;
+}
+
+ciclo{
+
+    SWITCH(PA) of
+    caso 1:
+        suma(1);
+    caso 2:
+        suma(2);
+    caso 3:
+        suma(3);
+    caso 4:
+        suma(4);
+    caso 5:
+        suma(5);
+    caso 6:
+        suma(6);
+    caso 7:
+        suma(7);
+    FIN switch
+
+}
+
+main{}

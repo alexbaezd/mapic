@@ -27,7 +27,7 @@ void derizq()
 		PD0=2;TIMEMS(20000);PD2=0;
 		PD0=1;TIMEMS(20000);PD1=0;
 		PD0=0;TIMEMS(20000);PD0=0;
-
+		
 		return;
 	fin while
 }
@@ -40,6 +40,7 @@ void ambos()
 
 setup
 {
+  ANSEL = SALIDA;
 	ta=entrada;
 	pa=salida;
 	td=salida;
@@ -50,87 +51,26 @@ retardo();
 
 ciclo
 {
-	switch(pa0) of
-		caso 1: pd0 toggle pd0;
-		caso 2: pd0 toggle pd0;
+	var c:Int = 0;
+
+	si(PA0 == 1) then
+		 c=1;
+	fin
+
+	Si(PA1 == 1) Then
+		 c=2;
+	Fin
+
+	SI(PA2 == 1) THEN
+		 c=3;
+	FIN
+
+	switch(c) of
+		caso 1: izqder();
+		caso 2: derizq();
+		caso 3: ambos();
 	Fin switch
 
-
-
-
-	si(pa1) then
-		derizq();
-	fin
-
-	si(pa2) then
-		ambos();
-	fin
-
-	si(pa == 0b01010101) then
-		izqder();
-	fin
-
-
-	si(pa > pb < pc) then
-		izqder();
-	fin
-
-	si(pa > pb < pc == pa) then
-		izqder();
-	fin
-
-
-	si(pa > pb AND pc <= pd) then
-		izqder();
-	fin
-
-
-	si(pa > pb AND pc <= pd OR pa) then
-		izqder();
-	fin
-
-	si(pa > pb < pc <= pd >= pa == pc OR pd AND pa) then
-		izqder();
-	fin
-
-	var bbb:Int = 8;
-
-	si(pa==0b01010101) then
-		izqder();
-	fin
-
-	si(pa==0x53) then
-		izqder();
-	fin
-
-   si(223==0x53FFAA34BB) then
-		izqder();
-	fin
-
-   bbb << 2;
-
-
-   kkk >> 3;
-
-   kkk=3+223+3/3f;
-
-   kkk=((3+2)+(3+3));
-
-   kkk= ((9+999)-(5));
-
-   kkk= ((x-y)/2f);
-   kkk= ((x-y)/2f)+333;
-	  kkk=(PBBB)+5;
-	  kkk=(5+6-B6f)+5;
-	  kkk=((4+4+4-f)-(t-t-t))+5;
-	  kkk=((4+4+(6-7))+(6+6))+6;
-   pd=pd+n;
-
-   i++;
-   i--;
-
-   v=kkk >> 3;
-   n=kkk >> 3;
 }
 
 main
