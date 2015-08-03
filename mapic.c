@@ -33,8 +33,6 @@
 	int b =122;
 	float altura =4.456789;
 	char u ='u';
-//La variable: per es un valor no compatible 12344 se requiere TRUE o FALSE
-
 		PORTA=!	PORTA;
 
 	}
@@ -49,87 +47,7 @@
 	 	while(1){
 
 
-<<<<<<< Updated upstream
 		PORTA=!	PORTA;
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-		switch(	PORTAbits.RA0)
-{
-			case 1:
-		PORTDbits.RD0=!	PORTDbits.RD0;
-break;
-case 2:
-		PORTDbits.RD0=!	PORTDbits.RD0;
-break;
-
-}
-
-		if(	PORTAbits.RA1)
-		{		derizq();
-		}
-
-		if(	PORTAbits.RA2)
-		{		ambos();
-		}
-
-		if(	PORTA || 	PORTB)
-		{		izqder();
-		}
-
-		if(	PORTA > 	PORTB  < 	PORTC)
-		{		izqder();
-		}
-
-		if(	PORTA > 	PORTB  < 	PORTC  == 	PORTA)
-		{		izqder();
-		}
-
-		if(	PORTA > 	PORTB  && 	PORTC  <= 	PORTD)
-		{		izqder();
-		}
-
-		if(	PORTA > 	PORTB  && 	PORTC  <= 	PORTD  || 	PORTA)
-		{		izqder();
-		}
-
-		if(	PORTA > 	PORTB  < 	PORTC  <= 	PORTD  >= 	PORTA  == 	PORTC  || 	PORTD  && 	PORTA)
-		{		izqder();
-		}
-
-	int bbb =8;
-		if(	PORTA == 0b01010101)
-		{		izqder();
-		}
-
-		if(	PORTA == 0x53)
-		{		izqder();
-		}
-
-		if(223 == 5)
-		{		izqder();
-		}
-bbb<<2;
-kkk>>3;
-kkk=3+223/3f;
-kkk=((3+2)+(3+3));
-kkk=((9+999)-(5));
-kkk=((x-y)/2f);
-kkk=((x-y)/2f)+333;
-kkk=(PBBB)+5;
-kkk=(5+6-B6f)+5;
-kkk=((4+4-f)-(t-t-t))+5;
-kkk=((4+4+(6-7))+(6+6))+6;
-	PORTD=	PORTD+n;
-i++;
-i--;
-=======
-		PORTA=!	PORTA;
->>>>>>> origin/master
-=======
-		PORTA=!	PORTA;
->>>>>>> origin/master
->>>>>>> Stashed changes
 		}
 
 	}

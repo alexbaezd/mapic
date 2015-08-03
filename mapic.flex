@@ -6,14 +6,14 @@ import java_cup.runtime.*;
 %line
 %column
 %ignorecase
-%{	
+%{
 
 	int lineaActual=1;
 	private static int actualEtq=0;
-	
+
 	public int linea(){ return yyline+1; }
 	public int columna(){ return yycolumn+1; }
-	
+
 	private static String nuevaEtq(){
 		return "etqL"+(++actualEtq);
 	}
@@ -26,7 +26,7 @@ import java_cup.runtime.*;
 	}
 %}
 
-	
+
 
 	commentBegin="/*"
 	commentEnd="*/"
@@ -35,11 +35,11 @@ import java_cup.runtime.*;
 	//Digit = ("0" | {numeros})
 
 	VARIABLE=[A-Za-z_][A-Za-z_0-9]*
-	
+
 	CADENA=[0-1] {8}
 
 	//HEXACADENA=({Digit}|[A-Fa-f])
-	
+
 	HEXACADENA = [0-9]{2}
 
 
@@ -53,18 +53,18 @@ import java_cup.runtime.*;
 "Main" 		        { return symbol(sym.MAIN,new String("\n\n\tvoid main(void)"));}
 "Setup" 		{ return symbol(sym.SETUP,new String("\tvoid setup()"));}
 "Fuses" 		{ return symbol(sym.FUSES,new String("#include <xc.h>\n"
-								                + "// CONFIG1\n" 
-								                +"#pragma config FOSC = INTRC_NOCLKOUT// Oscillator Selection bits (INTOSC oscillator: CLKOUT function on RA6/OSC2/CLKOUT pin, I/O function on RA7/OSC1/CLKIN)\n" 
+								                + "// CONFIG1\n"
+								                +"#pragma config FOSC = INTRC_NOCLKOUT// Oscillator Selection bits (INTOSC oscillator: CLKOUT function on RA6/OSC2/CLKOUT pin, I/O function on RA7/OSC1/CLKIN)\n"
 								                +"#pragma config WDTE = OFF       // Watchdog Timer Enable bit (WDT disabled and can be enabled by SWDTEN bit of the WDTCON register)\n"
 								                +"#pragma config PWRTE = OFF      // Power-up Timer Enable bit (PWRT disabled)\n"
-								                +"#pragma config MCLRE = OFF      // RE3/MCLR pin function select bit (RE3/MCLR pin function is digital input, MCLR internally tied to VDD)\n" 
+								                +"#pragma config MCLRE = OFF      // RE3/MCLR pin function select bit (RE3/MCLR pin function is digital input, MCLR internally tied to VDD)\n"
 								                +"#pragma config CP = OFF         // Code Protection bit (Program memory code protection is disabled)\n"
 								                +"#pragma config CPD = OFF        // Data Code Protection bit (Data memory code protection is disabled)\n"
-								                +"#pragma config BOREN = OFF      // Brown Out Reset Selection bits (BOR disabled)\n" 
+								                +"#pragma config BOREN = OFF      // Brown Out Reset Selection bits (BOR disabled)\n"
 								                +"#pragma config IESO = OFF       // Internal External Switchover bit (Internal/External Switchover mode is disabled)\n"
-								                +"#pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enabled bit (Fail-Safe Clock Monitor is disabled)\n" 
-								                +"#pragma config LVP = OFF        // Low Voltage Programming Enable bit (RB3 pin has digital I/O, HV on MCLR must be used for programming)\n" 
-								                +"\n" +"\n" +"\n" 
+								                +"#pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enabled bit (Fail-Safe Clock Monitor is disabled)\n"
+								                +"#pragma config LVP = OFF        // Low Voltage Programming Enable bit (RB3 pin has digital I/O, HV on MCLR must be used for programming)\n"
+								                +"\n" +"\n" +"\n"
 								                +"// CONFIG2\n"
 								                +"\n"
 								                +"#pragma config BOR4V = BOR40V   // Brown-out Reset Selection bit (Brown-out Reset set to 4.0V)\n"
@@ -204,7 +204,7 @@ import java_cup.runtime.*;
 "OPTIONREG_RBPU"	{return symbol(sym.OPTIONREG_RBPU, new String("\tOPTION_REGbits.nRBPU"));}
 
 "ADCON0_ADCS1"		{return symbol(sym.ADCON0_ADCS1, new String("\tADCON0bits.ADCS1"));}
-"ADCON0_ADCS0"		{return symbol(sym.ADCON0_ADCS0, new String("\tADCON0bits.ADCS0"));}		
+"ADCON0_ADCS0"		{return symbol(sym.ADCON0_ADCS0, new String("\tADCON0bits.ADCS0"));}
 "ADCON0_CHS3"		{return symbol(sym.ADCON0_CHS3, new String("\tADCON0bits.CHS3"));}
 "ADCON0_CHS2"		{return symbol(sym.ADCON0_CHS2, new String("\tADCON0bits.CHS2"));}
 "ADCON0_CHS1"		{return symbol(sym.ADCON0_CHS1, new String("\tADCON0bits.CHS1"));}

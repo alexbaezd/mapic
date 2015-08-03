@@ -1,5 +1,5 @@
 import java_cup.runtime.*;
-import java.io.*;				
+import java.io.*;
 import java.util.*;
 import java.io.File;
 import java.io.FileWriter;
@@ -13,18 +13,18 @@ parser code {:
 	StringBuffer m = new StringBuffer("");
     static StringBuffer []vec=new StringBuffer[10];
     static int i=0;
-//******************************************* 
+//*******************************************
    public void Documenta(int tipo)
    { m.append("Error de Sintaxis No."+tipo);
      ManejoDeErrores objeto=new ManejoDeErrores();
      String tip=objeto.Errores(tipo);
 	  m.append("\nMensaje --> "+tip+"\n");
       vec[i++]=m;
-     
+
    }
 //*******************************************
    public void syntax_error(Symbol cur_token)
-   { 
+   {
    	estado=((Symbol)stack.peek()).parse_state;
    	  ManejoDeErrores obj = new ManejoDeErrores();
       String m=obj.analizaToken(cur_token);
@@ -33,18 +33,18 @@ parser code {:
 
    }
 //******************************************
-   public void report_error(String message, Object info) 
+   public void report_error(String message, Object info)
    { if (info instanceof java_cup.runtime.Symbol)
      { java_cup.runtime.Symbol s = ((java_cup.runtime.Symbol) info);
        if (s.left >= 0)
-       { m.append("Linea "+ (s.left +1));   
-         if (s.right >= 0)                    
+       { m.append("Linea "+ (s.left +1));
+         if (s.right >= 0)
           m.append(", Columna "+(s.right)+"\n");
        }
      }
    }
 /**************METODO MAIN ********/
-public static void main(String[] arg)		
+public static void main(String[] arg)
  	{
 	  /* Crea un objeto parser */
 	  parser parserObj = new parser();
@@ -55,7 +55,7 @@ public static void main(String[] arg)
 		parserObj.parse();
 		tabla.imprimir();
 	  }
-catch(Exception x){ 
+catch(Exception x){
 	  parserObj.Documenta(estado);
   	  for(int j=0;j<i;j++)
 		System.out.println(vec[j]);
@@ -104,8 +104,8 @@ String encadenamst="";
 	private static String nuevaEtq() {
 		return "etqY"+(++actualEtq);
 	}
-	
-	
+
+
 
 	private String generarTerceto(String terceto) {
 		String tmp = nuevaTmp();
@@ -139,7 +139,7 @@ String encadenamst="";
 	}
 	private BloqueCondicion generarCondicion( String Rvalor1, String condicion, String Rvalor2,String extra){
 		BloqueCondicion etqs = new BloqueCondicion();
-		
+
 		etqs.condicion = Rvalor1+condicion+Rvalor2+extra;
 		auxiliar="";
 		return etqs;
@@ -150,7 +150,7 @@ String encadenamst="";
 :};
 //**************************************************************************
 
-	// Símbolo (terminal y no terminal) 
+	// Símbolo (terminal y no terminal)
 
 /* Símbolos (tokens devueltos por el escáner). */
 /* Terminales Datos Complejos */
@@ -205,7 +205,7 @@ non terminal String io;
 non terminal String  instruccion;
 non terminal String expression,item_condicion;
 non terminal BloqueCondicion condicion;
-non terminal String signo,condicion_extra; 
+non terminal String signo,condicion_extra;
 non terminal String tipo,exprtipos,parametros;
 non terminal operamesta;
 non terminal String extraperamesta;
@@ -236,21 +236,21 @@ precedence left ID,NMETODO;
 	        	}catch(IOException e){
 	        		System.out.println("ERROR NO SE PUEDE ");
 	        	}
-             
+
 :};
 ///////////////////////////////////////////////////////////////////////////////////////////////////
  metodos::=  setup ciclo
 	        |setup RETARDO:retardo LPAREN RPAREN PCOMA ciclo   {: miCodigo=retardo+miCodigo;  :}
 	        |  metodo setup ciclo
-				{: 
-					miCodigo=losMetodos+miCodigo;  
+				{:
+					miCodigo=losMetodos+miCodigo;
 				:}
 	        |  metodo setup RETARDO:retardo LPAREN RPAREN PCOMA ciclo
-				{: 
-					miCodigo=retardo+losMetodos+miCodigo;  
+				{:
+					miCodigo=retardo+losMetodos+miCodigo;
 				:}
 			;
-///////////////////////////////////////////////////////////////////////////////////////////////////////			
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 setup::=SETUP:setup   LLLAVE confpuertos RLLAVE
 		{:
 			//System.out.println("codigo intermedio==>"+setup+"   "+fsetup);
@@ -266,20 +266,20 @@ confpuertos::=puertos:p IGUAL io:i PCOMA
 			{:
 				miCodigo=miCodigo+p+i;
 			:}
-			
+
 			|confpuertos puertos:p IGUAL io:i PCOMA
 	        {:
 				miCodigo=miCodigo+p+i;
 	        :};
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-io::=ENTRADA  
-	{: 
-		RESULT="1;\n";  
+io::=ENTRADA
+	{:
+		RESULT="1;\n";
 	:}
-	
-    |SALIDA:salida  
-	{: 
-		RESULT="0;\n"; 
+
+    |SALIDA:salida
+	{:
+		RESULT="0;\n";
 	:}
 	;
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -309,15 +309,15 @@ metodo::=VOID:v ID:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
 			if ((s = tablaMetodos.search(i)) == null)
 				s = tablaMetodos.insert(i,auxiliar);
 			else
-			{ 
+			{
 				s.setvalue(auxiliar);
-			}			
+			}
 			codigo=v+i+"()\n\t{\n"+auxiliar+"\n\t}\n\n";
 			losMetodos=losMetodos+codigo;
 		    auxiliar="";
 			//System.out.println("codigo intermedio==> int "+codigo);
 		:}
-		
+
 		|metodo VOID:v ID:m LPAREN  RPAREN LLLAVE instrucciones  RLLAVE
 		{:
 			Metodos s;
@@ -337,16 +337,16 @@ metodo::=VOID:v ID:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
 			if ((s = tablaMetodos.search(i)) == null)
 				s = tablaMetodos.insert(i,auxiliar);
 			else
-			{ 
+			{
 				s.setvalue(auxiliar);
-			}			
+			}
 			codigo=v+i+"("+cadena_parametros+")\n\t{\n"+auxiliar+"\n\t}\n\n";
 			losMetodos=losMetodos+codigo;
 		    auxiliar="";
 		    cadena_parametros="";
 			//System.out.println("codigo intermedio==> int "+codigo);
 		:}
-		
+
 		|metodo VOID:v ID:m LPAREN parametros:p RPAREN LLLAVE instrucciones  RLLAVE
 		{:
 			Metodos s;
@@ -378,8 +378,8 @@ instrucciones::=instruccion:in
 				//RESULT=in;
 				System.out.println("cadena de una istruccion en aux: "+auxiliar);
 			:}
-			
-			|instruccion:in instrucciones 
+
+			|instruccion:in instrucciones
 			{:
 				System.out.println("valor de in en instrucciones:"+in);
 				auxiliar=in+auxiliar;
@@ -388,7 +388,7 @@ instrucciones::=instruccion:in
 				System.out.println("cadena de varias instrucciones en aux:"+auxiliar);
 			:};
 
-///////////////////////////INSTRUCCIONES DISPONIBLES EN MAPIC//////////////////////////////////////////////////////////////////					  
+///////////////////////////INSTRUCCIONES DISPONIBLES EN MAPIC//////////////////////////////////////////////////////////////////
 instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 				DatoSimbolo ds=parser.tabla.buscar(id);
 				if(ds!= null)
@@ -459,10 +459,10 @@ instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 			 	System.out.println("Error al Asignar valor a: "+id);
 			}
 
-			
+
 			:}
-		   
-			
+
+
 //*****************************************************************************
 			|puertos:p TOGGLE:t puertost:u PCOMA
 			{:
@@ -470,7 +470,7 @@ instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 				RESULT="\n\t"+p+t+u+";\n";
 				//System.out.println("cadena de toggles:"+RESULT);
 			:}
-//*****************************************************************************				
+//*****************************************************************************
        		| puertos:p IGUAL NUMERO:n PCOMA
 
 			{:
@@ -479,41 +479,35 @@ instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 				//System.out.println("cadena de toggles:"+RESULT);
 			:}
 
-//*****************************************************************************	
+//*****************************************************************************
 		 	| ID:i LPAREN RPAREN PCOMA
-			{:  
+			{:
 				Metodos s;
 				if ((s = tablaMetodos.search(i)) == null)
-				{System.out.println(i+ " es una METODO no definido");}			
+				{System.out.println(i+ " es una METODO no definido");}
 				else
 				{
 					// System.out.println(i+" instrucciones del metodo => "+s.getValor());
 					//System.out.println("codigo intermedio==> "+i+"();");
 					RESULT="\t"+i+"();\n";
-				}	
+				}
 			:}
-//*****************************************************************************	
+//*****************************************************************************
 			| CHALE:c LPAREN NUMERO:n RPAREN PCOMA
 			{:
 				//retardos= retardos+c+"("+n+");\n";
 	   			RESULT=c+"("+n+");\n";
 			:}
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-//*******************************************************************************	
-=======
-=======
->>>>>>> origin/master
->>>>>>> Stashed changes
+
+//*******************************************************************************
+
 			| DELAY:c LLLAVE NUMERO:n RLLAVE PCOMA
 			{:
 				//retardos= retardos+c+"("+n+");\n";
 	   			RESULT=c+"("+n+");\n";
 			:}
-//*****************************************************************************		
->>>>>>> origin/master
+//*****************************************************************************
+
 			|puertos:p IGUAL puertost:u MAS NUMERO:n PCOMA
 			{:
 				RESULT=p+u+"+"+n+";\n";
@@ -543,15 +537,15 @@ instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 				RESULT = tm+"= 0x"+hc;
 			:}
 //********************************************************************************
-			
+
 			| SI:etqFinIf  LPAREN condicion:c  RPAREN THEN instrucciones:i FIN
-			{:	
+			{:
 				aux="\n\t\tif("+c.condicion+")\n\t\t{\t"+auxiliar+"\t\t}\n";
 				auxiliar="";
 				RESULT=aux;
 			:}
 			| SI:etqFinIf  LPAREN puertost:p  RPAREN THEN instrucciones:i FIN
-			{:	
+			{:
 				aux="\n\t\tif("+p+")\n\t\t{\t"+auxiliar+"\t\t}\n";
 				auxiliar="";
 				RESULT=aux;
@@ -592,31 +586,31 @@ instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 				:}
 
 
-				
-//********************************************************************************				
-			
-			| SWITCH LPAREN expression:e RPAREN OF cases:c FIN SWITCH 
+
+//********************************************************************************
+
+			| SWITCH LPAREN expression:e RPAREN OF cases:c FIN SWITCH
 			{:
 				RESULT="\n\t\tswitch("+e+")\n{\n\t\t\t"+c+"\n}\n";
 				auxiliar="";
 			:}
-			
-			| SWITCH LPAREN puertost:p RPAREN OF cases:c FIN SWITCH 
+
+			| SWITCH LPAREN puertost:p RPAREN OF cases:c FIN SWITCH
 			{:
 				RESULT="\n\t\tswitch("+p+")\n{\n\t\t\t"+c+"\n}\n";
 				auxiliar="";
 			:}
-//*****************************************************************************	
+//*****************************************************************************
 
-			| WHILE:etqInicioWhile LPAREN  condicion:c  RPAREN DO instrucciones FIN WHILE 
+			| WHILE:etqInicioWhile LPAREN  condicion:c  RPAREN DO instrucciones FIN WHILE
 			{:
 				RESULT="\n\t\twhile("+c.condicion+")\n\t\t{\n\t"+auxiliar+"\t\t}";
-				auxiliar="";	
+				auxiliar="";
 			:}
-			| WHILE:etqInicioWhile LPAREN  expression:c  RPAREN DO instrucciones FIN WHILE 
+			| WHILE:etqInicioWhile LPAREN  expression:c  RPAREN DO instrucciones FIN WHILE
 			{:
 				RESULT="\n\t\twhile("+c+")\n\t\t{\n\t"+auxiliar+"\t\t}";
-				auxiliar="";	
+				auxiliar="";
 		  :}
 //*******************************************************************************
 			| ID:v RECBITSIZQ NUMERO:n PCOMA
@@ -697,7 +691,7 @@ extraparentesis::= operamesta:o parentesis:p
 				| parentesis:p
 				{:RESULT=p;:}
 
-				
+
 
 				| extraperamesta:ep parentesis:p
 				{:RESULT=ep+p;:}
@@ -734,13 +728,13 @@ extraparentesis::= operamesta:o parentesis:p
 			|CASO expression:e2 DOSPUNTOS
 			{:
 				RESULT="case "+e2+":\n";
-				
+
 			:}
 
 			|cases:c CASO expression:e2 DOSPUNTOS
 			{:
 				RESULT=c+"case "+e2+":\n";
-				
+
 			:}
 	;
 
@@ -760,7 +754,7 @@ extraperamesta::=operamesta:o expression:v
 					RESULT=o+v;
 				:}
 
-				
+
 				|extraperamesta operamesta:o expression:v
 				{:
 					encadenamst=encadenamst+o+v;
@@ -769,9 +763,9 @@ extraperamesta::=operamesta:o expression:v
 				;
 /////////////////////////////////////////////////////////////////
 expression::= ID:id  {:RESULT=id;:}
-		| NUMERO:num 
-		{: 
-			RESULT= Integer.toString(num); 
+		| NUMERO:num
+		{:
+			RESULT= Integer.toString(num);
 								//generarTerceto("="+num);
 		:}
 
@@ -785,15 +779,15 @@ expression::= ID:id  {:RESULT=id;:}
 			RESULT=n+id;
 		:}
 
-		
+
 		;
 //Para el uso del SI NO
-item_condicion::= 
+item_condicion::=
 		ID:id  {:
 			RESULT=id;
 		:}
-		| NUMERO:num {: 
-			RESULT= Integer.toString(num); 
+		| NUMERO:num {:
+			RESULT= Integer.toString(num);
 		:}
 		|puertost:p {:
 				RESULT=p;
@@ -817,7 +811,7 @@ condicion ::= item_condicion:e1 signo:sig  item_condicion:e2 {:
 			|item_condicion:e1 signo:sig item_condicion:e2 condicion_extra:c {:
 			 RESULT = generarCondicion(e1 ,sig, e2,c);
 			:}
-			
+
 			;
 
 condicion_extra::= signo:sig item_condicion:e1 {:
@@ -835,22 +829,22 @@ condicion_extra::= signo:sig item_condicion:e1 {:
 
 
 signo::= MAYOR {:       RESULT=" > ";  :}
-	    | MENOR {:      RESULT=" < ";  :} 
-	    | MENORIGUAL {: RESULT=" <= "; :} 
-	    | MAYORIGUAL {: RESULT=" >= "; :} 
-	    | IGUAL2 {:     RESULT=" == "; :} 
-	    | DIFERENTE {:  RESULT=" != "; :} 
-	    | OR {:         RESULT=" || "; :} 
+	    | MENOR {:      RESULT=" < ";  :}
+	    | MENORIGUAL {: RESULT=" <= "; :}
+	    | MAYORIGUAL {: RESULT=" >= "; :}
+	    | IGUAL2 {:     RESULT=" == "; :}
+	    | DIFERENTE {:  RESULT=" != "; :}
+	    | OR {:         RESULT=" || "; :}
 	    | AND {:        RESULT=" && "; :}
 	    ;
 //*******************TIPOS DE DATOS EN MAPIC**********************************************
 tipo ::= INTEGER {:
  		 	RESULT="int";
  		:}
-		 | REAL {: 
+		 | REAL {:
 		 	RESULT="float";
 		 	:}
-		 | CHAR {: 
+		 | CHAR {:
 		 	RESULT="char";
 		 	:}
 		 | BOOLEAN {:
@@ -865,7 +859,7 @@ exprtipos ::= ID:id {:
 				RESULT =s.getValor() ;
 			}else{
 				System.out.println("Varible -->"+id+" no declarada");
-			} 
+			}
 
 		  :}
 		 | NUMERO:n {:
@@ -882,7 +876,7 @@ exprtipos ::= ID:id {:
 		 :}
 		;
 
-//*****************************************************************************	
+//*****************************************************************************
 /*puertosG ::=PA:pa {: RESULT=pa+"="; :}
 	    |PB:pb {: RESULT=pb+"="; :}
 	    |PC:pc {: RESULT=pc+"=";:}
@@ -1009,7 +1003,7 @@ puertos::= PA:pa {: RESULT=pa+"="; :}
 		|INTCONRBIE:intrbie{:RESULT=intrbie + " = ";:}
 		|INTCONT0IF:intt0if{:RESULT=intt0if + " = ";:}
 		|INTCONINTF:intintf{:RESULT=intintf + " = ";:}
-		|INTCONRBIF:intrbif{:RESULT=intrbif + " = ";:} 
+		|INTCONRBIF:intrbif{:RESULT=intrbif + " = ";:}
 		//
 		|OPTIONREG_INTEDG:opintedg{:RESULT = opintedg + " = ";:}
 		|OPTIONREG_PS:opps{:RESULT = opps + " = ";:}
@@ -1030,12 +1024,12 @@ puertos::= PA:pa {: RESULT=pa+"="; :}
 		|ADCON0_GO:adcgo{:RESULT = adcgo + " = ";:}
 		|ADCON0_ADON:adcadon{:RESULT = adcadon+ " = ";:}
 		//
-		|ADCON1_ADFM:adc1fm {:RESULT = adc1fm + "=";:}	
+		|ADCON1_ADFM:adc1fm {:RESULT = adc1fm + "=";:}
 		|ADCON1_VCFG1:adcg1 {:RESULT = adcg1 + "=";:}
 		|ADCON1_VCFG0:adcg0 {:RESULT = adcg0 + "=";:}
-	    ;			
-					
-					
+	    ;
+
+
 puertost::= PA:pa {: RESULT=pa+""; :}
 	    |PB:pb {: RESULT=pb+""; :}
 	    |PC:pc {: RESULT=pc+"";:}
@@ -1077,5 +1071,4 @@ puertost::= PA:pa {: RESULT=pa+""; :}
 	    |PE1:pe1 {:	RESULT=pe1+"";     :}
 	    |PE2:pe2 {:	RESULT=pe2+"";     :}
 	    |PE3:pe3 {:	RESULT=pe3+"";     :}
-	    ;			
-			
+	    ;
