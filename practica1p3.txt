@@ -52,25 +52,25 @@ retardo();
 ciclo
 {
 	var c:Int = 0;
+	while(1) do
+		si(PA0 == 1) then
+			 c=1;
+		fin
 
-	si(PA0 == 1) then
-		 c=1;
-	fin
+		Si(PA1 == 1) Then
+			 c=2;
+		Fin
 
-	Si(PA1 == 1) Then
-		 c=2;
-	Fin
+		SI(PA2 == 1) THEN
+			 c=3;
+		FIN
 
-	SI(PA2 == 1) THEN
-		 c=3;
-	FIN
-
-	switch(c) of
-		caso 1: izqder();
-		caso 2: derizq();
-		caso 3: ambos();
-	Fin switch
-
+		switch(c) of
+			caso 1: izqder();
+			caso 2: derizq();
+			caso 3: ambos();
+		Fin switch
+	fin while
 }
 
 main

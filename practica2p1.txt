@@ -35,42 +35,43 @@ setup{
 
 ciclo{
     var c:int;
+    while(1) do
+      si(PA0 == 1) then
+        DelayMS { 330 };
+        c=1;
+    	fin
 
-    si(PA0 == 1) then
-      DelayMS { 330 };
-      c=1;
-  	fin
-
-    switch(c) of
-  		caso 1: i++;c=0;
-    Fin switch
+      switch(c) of
+    		caso 1: i++;c=0;
+      Fin switch
 
 
 
-    SWITCH(PA) of
-        caso 9: PD=0b01100111;
-        caso 8: PD=0b01111111;
-        caso 7: PD=0b00000111;
-        caso 6: PD=0b01111101;
-        caso 5: PD=0b01101101;
-        caso 4: PD=0b01100110;
-        caso 3: PD=0b01001111;
-        caso 2: PD=0b01011011;
-        caso 1: PD=0b00000110;
-        caso 0: PD=0b00111111;
-    FIN switch
+      SWITCH(PA) of
+          caso 9: PD=0b01100111;
+          caso 8: PD=0b01111111;
+          caso 7: PD=0b00000111;
+          caso 6: PD=0b01111101;
+          caso 5: PD=0b01101101;
+          caso 4: PD=0b01100110;
+          caso 3: PD=0b01001111;
+          caso 2: PD=0b01011011;
+          caso 1: PD=0b00000110;
+          caso 0: PD=0b00111111;
+      FIN switch
 
-    Si(i == 0 OR i < 0) then
-      i=0;
-      PB7=0;
-      PB5=1;
-    No
-        Si(i>9) Then
-          i=9;
-          PB7=1;
-          PB5=0;
-        Fin
-     Fin
+      Si(i == 0 OR i < 0) then
+        i=0;
+        PB7=0;
+        PB5=1;
+      No
+          Si(i>9) Then
+            i=9;
+            PB7=1;
+            PB5=0;
+          Fin
+       Fin
+  fin while
 
 
 

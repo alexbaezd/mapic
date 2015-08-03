@@ -7,10 +7,10 @@ setup{
 }
 
 ciclo{
-
-    PD = PD + 2;
-    TimeMS(60000);
-
+	while(1) do
+	    PD = PD + 2;
+	    TimeMS(60000);
+	fin while
 }
 
 main{}

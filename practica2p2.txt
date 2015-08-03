@@ -68,7 +68,7 @@ setup{
 }
 
 ciclo{ 
-    tD=1;
+    
 }
 
 main{}

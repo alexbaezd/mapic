@@ -297,8 +297,12 @@ io::=ENTRADA
 //////////////////////////////////////////////////////////////////////////////////////////////
 ciclo::= CICLO:ciclo   LLLAVE  instrucciones   RLLAVE
 		{:
-			miCodigo=miCodigo+ciclo+"{\n\t \twhile(1){\n\n"+ auxiliar +"\t\t}\n\n\t}";
+			miCodigo=miCodigo+ciclo+"{\n\t \t \n\n"+ auxiliar +"\t\t\n\n\t}";
 			auxiliar="";
+        :}
+        |CICLO:ciclo LLLAVE  RLLAVE
+        {:
+        	miCodigo=miCodigo+ciclo+"{\n\t \t \n\n \t\t\n\n\t}";
         :}
 		;
 /////////////////////////////////////////////////////////////////////////////////////////////////

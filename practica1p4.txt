@@ -9,17 +9,19 @@ setup{
 }
 
 ciclo{
-	Si(PA == 0b00000010
-	  OR PA == 0b00000100
-	  OR PA == 0b00000110
-	  OR PA == 0b00001000
-	  OR PA == 0b00001010
-	  OR PA == 0b00001100
-	  OR PA == 0b00001110) then
-			pd0=1;
-	No
-		pd0=0;
-	Fin
+	while(1) do
+		Si(PA == 0b00000010
+		  OR PA == 0b00000100
+		  OR PA == 0b00000110
+		  OR PA == 0b00001000
+		  OR PA == 0b00001010
+		  OR PA == 0b00001100
+		  OR PA == 0b00001110) then
+				pd0=1;
+		No
+			pd0=0;
+		Fin
+	fin while
 }
 
 main{}

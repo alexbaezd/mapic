@@ -106,13 +106,9 @@ null		retardo(30);
 }
 
 	void loop(){
-	 	while(1){
+	 	 
 
-
-		TRISD=1;
-	setupTimer0();
-
-	i=0;		}
+ 		
 
 	}
 
