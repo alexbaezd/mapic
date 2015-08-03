@@ -88,6 +88,7 @@ String cadena_condiciones=" ";
 String cadena_tipo="";
 String cadena_parametros="";
 String encadenamst="";
+String cadena_decvar="";
 
 	private static Stack<String>p = new Stack<String>();
 	private static Stack<String>pila2 = new Stack<String>();
@@ -175,7 +176,7 @@ terminal OPTION_REG, OPTIONREG_INTEDG, OPTIONREG_PS, OPTIONREG_T0CS, OPTIONREG_T
 terminal INTCON, INTCONGIE, INTCONPEIE, INTCONT0IE, INTCONINTE, INTCONRBIE, INTCONT0IF, INTCONINTF, INTCONRBIF;
 terminal ADCON0_ADCS1, ADCON0_ADCS0, ADCON0_CHS3, ADCON0_CHS2, ADCON0_CHS1, ADCON0_CHS0, ADCON0_GO, ADCON0_ADON;
 terminal ADCON1_ADFM, ADCON1_VCFG1, ADCON1_VCFG0;
-terminal VOID;
+terminal VOID,INTERRUPT;
 terminal THEN,NO,FIN,DO;
 terminal SWITCH,OF,OTHERWISE;
 terminal LPAREN, RPAREN, MAS, MENOS, DIVISION, LLLAVE, RLLAVE, DOSPUNTOS, PCOMA, IGUAL, IGUAL2,TOGGLE;
@@ -202,6 +203,7 @@ non terminal String puertos;
 non terminal String puertost;
 non terminal String io;
 non terminal String  instruccion;
+non terminal String  declvar,muchasdeclvar;
 non terminal String expression,item_condicion;
 non terminal BloqueCondicion condicion;
 non terminal String signo,condicion_extra;
@@ -233,7 +235,7 @@ precedence left ID,NMETODO;
 	            	escribir.write(miCodigo);
 	            	escribir.close();
 	        	}catch(IOException e){
-	        		System.out.println("ERROR NO SE PUEDE ");
+	        		System.out.println("ERROR NO SE PUEDE CREAR EL ARCHIVO ");
 	        	}
 
 :};
@@ -248,6 +250,17 @@ precedence left ID,NMETODO;
 				{:
 					miCodigo=retardo+losMetodos+miCodigo;
 				:}
+			/************************************************************************************/
+				|muchasdeclvar:dv setup RETARDO:retardo LPAREN RPAREN PCOMA ciclo   {: miCodigo=dv+retardo+miCodigo;  :}
+				|muchasdeclvar:dv metodo setup ciclo
+			{:
+				miCodigo=dv+losMetodos+miCodigo;
+			:}
+				|muchasdeclvar:dv metodo setup RETARDO:retardo LPAREN RPAREN PCOMA ciclo
+			{:
+				miCodigo=dv+retardo+losMetodos+miCodigo;
+			:}
+			| muchasdeclvar:dv setup ciclo
 			;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 setup::=SETUP:setup   LLLAVE confpuertos RLLAVE
@@ -302,7 +315,7 @@ main::= MAIN:main  LLLAVE instrucciones  RLLAVE
 		;
 ////////////////////////////////DECLARACION DE METODOS////////////////////////////////////////////
 //*************************SIN PARAMETROS*********************************************
-metodo::=VOID:v ID:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
+metodo::=VOID:v INTERRUPT:it ID:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
 		{:
 			Metodos s;
 			if ((s = tablaMetodos.search(i)) == null)
@@ -311,11 +324,25 @@ metodo::=VOID:v ID:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
 			{
 				s.setvalue(auxiliar);
 			}
-			codigo=v+i+"()\n\t{\n"+auxiliar+"\n\t}\n\n";
+			codigo=v+""+it+i+"()\n\t{\n"+auxiliar+"\n\t}\n\n";
 			losMetodos=losMetodos+codigo;
 		    auxiliar="";
 			//System.out.println("codigo intermedio==> int "+codigo);
 		:}
+		|VOID:v ID:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
+				{:
+					Metodos s;
+					if ((s = tablaMetodos.search(i)) == null)
+						s = tablaMetodos.insert(i,auxiliar);
+					else
+					{
+						s.setvalue(auxiliar);
+					}
+					codigo=v+i+"()\n\t{\n"+auxiliar+"\n\t}\n\n";
+					losMetodos=losMetodos+codigo;
+				    auxiliar="";
+					//System.out.println("codigo intermedio==> int "+codigo);
+				:}
 
 		|metodo VOID:v ID:m LPAREN  RPAREN LLLAVE instrucciones  RLLAVE
 		{:
@@ -388,66 +415,10 @@ instrucciones::=instruccion:in
 			:};
 
 ///////////////////////////INSTRUCCIONES DISPONIBLES EN MAPIC//////////////////////////////////////////////////////////////////
-instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
-				DatoSimbolo ds=parser.tabla.buscar(id);
-				if(ds!= null)
-					System.err.println(id + " redeclarada.");
-				else{
-				 	System.out.println("Mensaje "+id + "-->"+t);
-				 	RESULT="\n\t"+t+" "+id+";";
-					parser.tabla.insertar(id, t,"");
-				}
+instruccion::= declvar:d {:
+				 RESULT="\n\t"+d;
 			:}
-			|TIPOVC ID:id DOSPUNTOS tipo:t IGUAL exprtipos:e  PCOMA{:
-				//RESULT = t;
-				if(parser.tabla.buscar(id)!= null){
-					System.err.println(id + " redeclarada.");
-				}else{
-				 	System.out.println("Mensaje "+id + "-->"+e);
-				 	switch(t){
-			            case "int":
-			                if(Num.valInt(e)){
-			                    RESULT="\n\t"+t+" "+id+" ="+e+";";
-			                    parser.tabla.insertar(id, t,e);
-			                }else{
-			                	String msj="//La variable: "+id+" es una cadena "+e+" y no es compatible con un tipo de dato INT\n";
-			                    RESULT= msj;
-			                }
-			                break;
-			            case "float":
-			            	if(Num.valFloat(e)){
-			                    RESULT="\n\t"+t+" "+id+" ="+e+";";
-			                    parser.tabla.insertar(id, t,e);
-			            	}else{
-			            		String msj="//La variable: "+id+" es una cadena "+e+" y no es compatible con un tipo de dato FLOAT\n";
-			                    RESULT= msj;
-			            	}
-			                break;
-			            case "char":
-			            	if(Num.valInt(e) || Num.valFloat(e)){
-				                String msj="//La variable: "+id+" es un numero "+e+" y no es compatible con un CARACTER\n";
-			                    RESULT= msj;
-				            }else{
-				                RESULT="\n\t"+t+" "+id+" ="+e+";";
-			                    parser.tabla.insertar(id, t,e);
-				            }
-			                break;
-			            case "bool":
-			            	if(e.equalsIgnoreCase("TRUE") || e.equalsIgnoreCase("FALSE")){
-			            		RESULT="\n\t"+t+" "+id+" ="+e.toLowerCase()+";";
-			            		parser.tabla.insertar(id,t,e);
-			            	}else{
-			            		String msj="\n//La variable: "+id+" es un valor no compatible "+e+" se requiere TRUE o FALSE\n";
-			                    RESULT= msj;
-			            	}
-			                break;
-			            default :
-			            	String msj="//Tipo de dato desconocido: "+t+"\n";
-			                    RESULT= msj;
-		        	}
-				}
-			:}
-		  | ID:id IGUAL exprtipos:t PCOMA{:
+		   |ID:id IGUAL exprtipos:t PCOMA{:
 			System.out.println("Mensaje "+id + "-->"+t);
 			DatoSimbolo ds=parser.tabla.buscar(id);
 			 if(ds!= null){
@@ -675,6 +646,76 @@ instruccion::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 			:}
 			;
 
+muchasdeclvar ::= declvar:dv{:
+			cadena_decvar=dv;
+					RESULT=cadena_decvar;
+			:}
+			|declvar:dv muchasdeclvar {:
+					cadena_decvar=dv+cadena_decvar;
+					RESULT=cadena_decvar;
+			:}
+			;
+
+declvar::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
+				DatoSimbolo ds=parser.tabla.buscar(id);
+				if(ds!= null)
+					System.err.println(id + " redeclarada.");
+				else{
+				 	System.out.println("Mensaje "+id + "-->"+t);
+				 	RESULT="\n\t"+t+" "+id+";";
+					parser.tabla.insertar(id, t,"");
+				}
+			:}
+			|TIPOVC ID:id DOSPUNTOS tipo:t IGUAL exprtipos:e  PCOMA{:
+				//RESULT = t;
+				if(parser.tabla.buscar(id)!= null){
+					System.err.println(id + " redeclarada.");
+				}else{
+				 	System.out.println("Mensaje "+id + "-->"+e);
+				 	switch(t){
+			            case "int":
+			                if(Num.valInt(e)){
+			                    RESULT="\n\t"+t+" "+id+" ="+e+";";
+			                    parser.tabla.insertar(id, t,e);
+			                }else{
+			                	String msj="//La variable: "+id+" es una cadena "+e+" y no es compatible con un tipo de dato INT\n";
+			                    RESULT= msj;
+			                }
+			                break;
+			            case "float":
+			            	if(Num.valFloat(e)){
+			                    RESULT="\n\t"+t+" "+id+" ="+e+";";
+			                    parser.tabla.insertar(id, t,e);
+			            	}else{
+			            		String msj="//La variable: "+id+" es una cadena "+e+" y no es compatible con un tipo de dato FLOAT\n";
+			                    RESULT= msj;
+			            	}
+			                break;
+			            case "char":
+			            	if(Num.valInt(e) || Num.valFloat(e)){
+				                String msj="//La variable: "+id+" es un numero "+e+" y no es compatible con un CARACTER\n";
+			                    RESULT= msj;
+				            }else{
+				                RESULT="\n\t"+t+" "+id+" ="+e+";";
+			                    parser.tabla.insertar(id, t,e);
+				            }
+			                break;
+			            case "bool":
+			            	if(e.equalsIgnoreCase("TRUE") || e.equalsIgnoreCase("FALSE")){
+			            		RESULT="\n\t"+t+" "+id+" ="+e.toLowerCase()+";";
+			            		parser.tabla.insertar(id,t,e);
+			            	}else{
+			            		String msj="\n//La variable: "+id+" es un valor no compatible "+e+" se requiere TRUE o FALSE\n";
+			                    RESULT= msj;
+			            	}
+			                break;
+			            default :
+			            	String msj="//Tipo de dato desconocido: "+t+"\n";
+			                    RESULT= msj;
+		        	}
+				}
+			:}
+			;
 
 
 parentesis::= LPAREN expression:v2 RPAREN
@@ -834,13 +875,13 @@ condicion ::= item_condicion:e1 signo:sig  item_condicion:e2 {:
 condicion_extra::= signo:sig item_condicion:e1 {:
 					cadena_condiciones=" "+sig+e1;
 					RESULT=cadena_condiciones;
-					System.out.println("resto de las condicion-->"+cadena_condiciones);
+					//System.out.println("resto de las condicion-->"+cadena_condiciones);
 				:}
 
 				| signo:sig item_condicion:e1 condicion_extra {:
 					cadena_condiciones =" "+sig+e1 +cadena_condiciones;
 					RESULT =cadena_condiciones;
-					System.out.println("resto de las condicion-->"+cadena_condiciones);
+					//System.out.println("resto de las condicion-->"+cadena_condiciones);
 				:}
 				;
 

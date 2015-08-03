@@ -1,0 +1,73 @@
+fuses
+
+ var i:int;
+ var c:int;
+
+  void setupTimer0(){
+    /*
+    OPTIONREG_T0CS=salida;
+    OPTIONREG_PSA = salida;
+
+    INTCONGIE=entrada;
+    INTCONT0IE = entrada;
+    */
+    OPTIONREG_PS =7;
+    /*
+    TMR0=0x00;
+
+    */
+
+
+  }
+ void interrupt miISR(){
+    INTCONGIE=salida;
+
+    si(INTCONGIE) then
+      PD0=1;
+      TimeMS(60);
+      PD0=0;
+      TimeMS(1);
+      PD0=1;
+      TimeMS(1);
+      PD0=0;
+      TimeMS(1);
+      PD0=1;
+      TimeMS(1);
+      PD0=0;
+      TimeMS(1);
+      PD0=0;
+      TimeMS(1);
+      PD0=1;
+      TimeMS(1);
+      PD0=0;
+      TimeMS(1);
+      PD0=1;
+      TimeMS(1);
+      PD0=0;
+      TimeMS(1);
+      PD1=1;
+      TimeMS(8);
+      PD1=0;
+      P2=1;
+      TimeMS(30);
+      PD2=0;
+      INTCONT0IE = SALIDA;
+  	fin
+
+    INTCONGIE=entrada;
+
+ }
+
+
+setup{
+
+    TD = SALIDA;
+    PD = SALIDA;
+    setupTimer0();
+    i=0;
+
+}
+
+ciclo{ }
+
+main{}

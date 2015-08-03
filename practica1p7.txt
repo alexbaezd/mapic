@@ -31,7 +31,7 @@ ciclo{
     caso 7:
         suma(7);
     FIN switch
-
+    
 }
 
 main{}

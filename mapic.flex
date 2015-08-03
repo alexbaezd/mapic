@@ -219,6 +219,7 @@ import java_cup.runtime.*;
 "Ciclo" 		{ return symbol(sym.CICLO,new String("\n\n\tvoid loop()"));}
 
 "Void" 		{ return symbol(sym.VOID,new String("\n\tvoid  "));}
+"interrupt" 		{ return symbol(sym.INTERRUPT,new String(" interrupt  "));}
 "Toggle" 	{ return symbol(sym.TOGGLE,new String("!"));}
 "Si"		{ return symbol(sym.SI,nuevaEtq()); }
 "Then"		{ return symbol(sym.THEN);}
