@@ -4,14 +4,7 @@ public class ManejoDeErrores{
     public String Errores(int tipo){
         String men=" ";
         switch (tipo){
-            case 0:
-                men = "E=0 Error";
-                break;
-           /*
-
-     comente los case solo falta agrefar el texto  , genere el -dump_states y me dio 189 estados , checalo crealo de nuevo y checa bien
-
-
+          case 0:men = "E=0 Error";break;
           case 0:men = "E=0        ";break;
           case 1:men = "E=1        ";break;
           case 2:men = "E=2        ";break;
@@ -202,10 +195,21 @@ public class ManejoDeErrores{
           case 187:men = "E=187        ";break;
           case 188:men = "E=188        ";break;
           case 189:men = "E=189        ";break;
+          case 190:men = "E=190        ";break;
+          case 191:men = "E=191        ";break;
+          case 192:men = "E=192        ";break;
+          case 193:men = "E=193        ";break;
+          case 194:men = "E=194        ";break;
+          case 195:men = "E=195        ";break;
+          case 196:men = "E=196        ";break;
+          case 197:men = "E=197        ";break;
+          case 198:men = "E=198        ";break;
+          case 199:men = "E=199        ";break;
+          case 200:men = "E=200        ";break;
 
-		       */
 
-            default: men ="Algo anda mal , ha ocurrido un error";
+
+         default: men ="Algo anda mal , ha ocurrido un error";
         }
         return men;
     }
@@ -216,143 +220,6 @@ public class ManejoDeErrores{
             switch(analiza){
 
                 case 0:msn = "  EOF ";break;
-                case 1:msn = "  error  ";break;
-                case 2:msn = "  Int  ";break;
-                case 3:msn = "  REAL/Float  ";break;
-                case 4:msn = "  Char  ";break;
-                case 5:msn = "  BOOLEAN  ";break;
-                case 6:msn = "  CARACTER  ";break;
-                case 7:msn = "  Número  ";break;
-                case 8:msn = " TRUE|FALSE  ";break;
-                case 9:msn = "  RCORCH ";break;
-
-
-                case 10:msn = "  LCORCH  ";break;
-                case 11:msn = " COMA ";break;
-                case 12:msn = "  CHALE ";break;
-                case 13:msn = "  DELAY ";break;
-                case 14:msn = " TMR0  ";break;
-                case 15:msn = "  Main  ";break;
-                case 16:msn = "  SETUP ";break;
-                case 17:msn = "  FUSES ";break;
-                case 18:msn = "  ENTRADA ";break;
-                case 19:msn = " SALIDA  ";break;
-
-
-                case 20:msn = " RETARDO  ";break;
-                case 21:msn = " CICLO ";break;
-                case 22:msn = " PA  ";break;
-                case 23:msn = " PB  ";break;
-                case 24:msn = " PC ";break;
-                case 25:msn = " PD  ";break;
-                /*
-                  fin
-                */
-
-                case 26:msn = "TA3   ";break;
-                case 27:msn = "  TA4 ";break;
-                case 28:msn = "TA5   ";break;
-                case 29:msn = " TA6  ";break;
-
-
-                case 30:msn = " TA7  ";break;
-                case 31:msn = " TB0  ";break;
-                case 32:msn = " TB1  ";break;
-                case 33:msn = " TB2  ";break;
-                case 34:msn = " TB3 ";break;
-                case 35:msn = " TB4  ";break;
-                case 36:msn = " TB5  ";break;
-                case 37:msn = " TB6  ";break;
-                case 38:msn = " TB7  ";break;
-                case 39:msn = " TC0  ";break;
-
-
-                case 40:msn = " TC1  ";break;
-                case 41:msn = "TC2   ";break;
-                case 42:msn = " TC3  ";break;
-                case 43:msn = "  TC4 ";break;
-                case 44:msn = "  TC5 ";break;
-                case 45:msn = "TC6   ";break;
-                case 46:msn = " TC7  ";break;
-                case 47:msn = " TD0  ";break;
-                case 48:msn = "  TD1 ";break;
-                case 49:msn = " TD2  ";break;
-
-
-                case 50:msn = " TD3  ";break;
-                case 51:msn = " TD4  ";break;
-                case 52:msn = " TD5  ";break;
-                case 53:msn = "  TD6 ";break;
-                case 54:msn = " TD7  ";break;
-                case 55:msn = " TE0  ";break;
-                case 56:msn = " TE1  ";break;
-                case 57:msn = "  TE2 ";break;
-                case 58:msn = " TE3  ";break;
-                case 59:msn = "  PA0 ";break;
-
-
-
-                case 60:msn = "  PA1 ";break;
-                case 61:msn = " PA2  ";break;
-                case 62:msn = " PA3  ";break;
-                case 63:msn = " PA4  ";break;
-                case 64:msn = " PA5  ";break;
-                case 65:msn = " PA6  ";break;
-                case 66:msn = "  PA7 ";break;
-                case 67:msn = "  PB0 ";break;
-                case 68:msn = " PB1  ";break;
-                case 69:msn = " PB2  ";break;
-
-
-                case 70:msn = " PB3  ";break;
-                case 71:msn = "  PB4 ";break;
-                case 72:msn = "  PB5 ";break;
-                case 73:msn = "  PB6 ";break;
-                case 74:msn = "  PB7 ";break;
-                case 75:msn = " PC0  ";break;
-                case 76:msn = "PC1   ";break;
-                case 77:msn = "  PC2 ";break;
-                case 78:msn = " PC3  ";break;
-                case 79:msn = " PC4  ";break;
-
-
-                case 80:msn = "  PC5 ";break;
-                case 81:msn = "PC6   ";break;
-                case 82:msn = " PC7  ";break;
-                case 83:msn = " PD0  ";break;
-                case 84:msn = "  PD1 ";break;
-                case 85:msn = " PD2  ";break;
-                case 86:msn = " PD3  ";break;
-                case 87:msn = " PD4  ";break;
-                case 88:msn = "  PD5 ";break;
-                case 89:msn = " PD6  ";break;
-
-
-
-                case 90:msn = " PD7  ";break;
-                case 91:msn = "  PE0 ";break;
-                case 92:msn = " PE1  ";break;
-                case 93:msn = "  PE2 ";break;
-                case 94:msn = " PE3  ";break;
-                case 95:msn = " VOID  ";break;
-                case 96:msn = " LPAREN  ";break;
-                case 97:msn = " RPAREN  ";break;
-                case 98:msn = " MAYOR  ";break;
-                case 99:msn = " MENOR  ";break;
-
-
-                case 100:msn = " MAS  ";break;
-                case 101:msn = " MENOS  ";break;
-                case 102:msn = " LLLAVE  ";break;
-                case 103:msn = " RLLAVE  ";break;
-                case 104:msn = "PCOMA   ";break;
-                case 105:msn = " IGUAL  ";break;
-                case 106:msn = " 106  ";break;
-                case 107:msn = "  TOGGLE ";break;
-                case 108:msn = " NUMERO  ";break;
-                case 109:msn = "  ID ";break;
-
-
                 default: msn= "ERROR TOKEN DESCONOCIDO"; break;
 
 

@@ -1,5 +1,7 @@
 fuses
 
+  define_FREQ {  4000000 }
+
  var i:int;
 
 

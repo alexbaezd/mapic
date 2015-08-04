@@ -46,6 +46,7 @@ import java_cup.runtime.*;
 "TimeMS" 			{ return symbol(sym.CHALE,new String("\t\tretardo"));}
 "Main" 		        { return symbol(sym.MAIN,new String("\n\n\tvoid main(void)"));}
 "Setup" 		{ return symbol(sym.SETUP,new String("\tvoid setup()"));}
+"define_FREQ" 			{ return symbol(sym.FREQ,new String("#define _XTAL_FREQ"));}
 "Fuses" 		{ return symbol(sym.FUSES,new String("#include <xc.h>\n"
 								                + "// CONFIG1\n"
 								                +"#pragma config FOSC = INTRC_NOCLKOUT// Oscillator Selection bits (INTOSC oscillator: CLKOUT function on RA6/OSC2/CLKOUT pin, I/O function on RA7/OSC1/CLKIN)\n"
@@ -232,8 +233,6 @@ import java_cup.runtime.*;
 "while"     { return symbol(sym.WHILE ,nuevaEtq());}
 "Do"		{return  symbol(sym.DO);}
 "return"		{return  symbol(sym.RETURN);}
-"["         { return symbol(sym.LCORCH); }
-"]"         { return symbol(sym.RCORCH); }
 ":"         { return symbol(sym.DOSPUNTOS); }
 "(" 		{ return symbol(sym.LPAREN); }
 ")" 		{ return symbol(sym.RPAREN); }

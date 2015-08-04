@@ -1,5 +1,7 @@
 fuses
 
+ define_FREQ {  4000000 }
+
  var i:int;
  var c:int;
 
@@ -67,13 +69,7 @@ setup{
 
 }
 
-<<<<<<< Updated upstream
-ciclo{ 
-    
-=======
 ciclo{
-    tD=1;
->>>>>>> Stashed changes
 }
 
 main{}

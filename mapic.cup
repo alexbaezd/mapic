@@ -156,7 +156,7 @@ String cadena_decvar="";
 /* Terminales Datos Complejos */
 terminal INTEGER,REAL,CHAR,BOOLEAN;
 terminal CARACTER,NUMREAL,CTELOGICA;
-terminal RCORCH,LCORCH,COMA;
+terminal COMA;
 /* Terminales */
 terminal CHALE, DELAY, TMR0, MAIN, SETUP, FUSES, ENTRADA, SALIDA, RETARDO, CICLO;
 terminal PA, PB, PC, PD, PE, TA, TB, TC, TD, TE, ANSEL, ANSELH;
@@ -188,7 +188,7 @@ terminal String SI;
 terminal String CASO;
 terminal String WHILE;
 terminal String BINARIOCADENA;
-terminal String HEXACADENA;
+terminal String HEXACADENA , FREQ;
 /* No terminales */
 non terminal programa;
 non terminal metodos;
@@ -211,7 +211,7 @@ non terminal String tipo,exprtipos,parametros;
 non terminal operamesta;
 non terminal String extraperamesta;
 non terminal String parentesis;
-non terminal String extraparentesis;
+non terminal String extraparentesis, frecuencia;
 
 // Declaraciones de preferencia
 /* Preferencias*/
@@ -219,9 +219,9 @@ precedence left MAS, MENOS , MAYOR , MENOR,TOGGLE, IGUAL , IGUAL2;
 precedence left ID,NMETODO;
 // La gramática en BNF
 //**************************************************************************
- programa::= FUSES:fuses metodos main
+ programa::= FUSES:fuses frecuencia:f metodos main
  				{:
- 					miCodigo=fuses+miCodigo;
+ 					miCodigo=fuses+f+miCodigo;
               		 // System.out.println("Clase Generada\n\n"+miCodigo+"\n\n");
                 File miClase;
 	        	try{
@@ -261,7 +261,17 @@ precedence left ID,NMETODO;
 				miCodigo=dv+retardo+losMetodos+miCodigo;
 			:}
 			| muchasdeclvar:dv setup ciclo
+
 			;
+frecuencia::= /* empty */
+						{:
+							RESULT=" ";
+						:}
+					| FREQ:f LLLAVE NUMERO:n RLLAVE
+						{:
+							RESULT=f+" "+n+"\n";
+						:}
+					;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 setup::=SETUP:setup   LLLAVE confpuertos RLLAVE
 		{:

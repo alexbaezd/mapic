@@ -21,9 +21,10 @@
 
 
 
+#define _XTAL_FREQ 4000000
 
 	int i;
-	void    interrupt  miISR()
+	void   interrupt  miISR()
 	{
 i--;
 
