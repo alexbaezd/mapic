@@ -22,119 +22,113 @@
 
 
 
-	int push;
-
-	void retardo(unsigned int i){for(;i>0;i--);}
-
-
-	void  derizq()
+	int i;
+	void    interrupt  miISR()
 	{
+i--;
 
-
-	char n;
-	n=0x80;
-		while(1)
-		{
-
-		PORTD=n;
-		retardo(5000);
-
-		if(n == 0x01)
-		{	return;
-		}
-		else
-		{
-	n=n>>1;
-		}
-		}
-	}
-
-
-	void  izqder()
-	{
-
-
-	char n2;
-	n=0x01;
-		while(1)
-		{
-
-		PORTD=n2;
-		retardo(5000);
-
-		if(n2 == 0x80)
-		{	return;
-		}
-		else
-		{
-	n=n<<1;
-		}
-		}
-	}
-
-
-	void  ambos()
-	{
-	izqder();
-	derizq();
-return;
-
-	}
-
-
-	void  verifica()
-	{
-
-		switch(push)
-{
-			case 1:	derizq();
-break;
-case 2:	izqder();
-break;
-case 3:	ambos();
-break;
-
-}
-return;
+		INTCONbits.INTF = 0;
 
 	}
 
 	void setup(){
 	OSCCON=0x60;
 	ANSEL=0;
+	ANSEL = 0;
+	ANSELH = 0;
 	TRISA=1;
 	PORTA=0;
 	TRISD=0;
 	PORTD=0;
+	INTCON = 0;
+	INTCONbits.GIE = 1;
+	INTCONbits.INTE = 1;
+	INTCONbits.RBIE = 1;
+	OPTION_REGbits.INTEDG = 0;
 
-	push=0;
+		TRISB=0b00000001;
+
+		PORTB=0b10000000;
+
+	i=9;
 }
 
 	void loop(){
+	 	 
 
 
-
+	
+	int c;
 		while(1)
 		{
-
+	
 		if(	PORTAbits.RA0 == 1)
-		{
-	push=1;		}
+		{			__delay_ms(330);
+
+	c=1;		}
+
+		switch(c)
+{
+			case 1:i++;
+
+	c=0;break;
+
+}
+
+		switch(	PORTA)
+{
+			case 9:
+		PORTD=0b01100111;
+break;
+case 8:
+		PORTD=0b01111111;
+break;
+case 7:
+		PORTD=0b00000111;
+break;
+case 6:
+		PORTD=0b01111101;
+break;
+case 5:
+		PORTD=0b01101101;
+break;
+case 4:
+		PORTD=0b01100110;
+break;
+case 3:
+		PORTD=0b01001111;
+break;
+case 2:
+		PORTD=0b01011011;
+break;
+case 1:
+		PORTD=0b00000110;
+break;
+case 0:
+		PORTD=0b00111111;
+break;
+
+}
+
+		if(i == 0  || i  < 0)
+		{	
+	i=0;
+		PORTBbits.RB7=0;
+
+		PORTBbits.RB5=1;
+		}
 		else
 		{
+	
+		if(i > 9)
+		{	
+	i=9;
+		PORTBbits.RB7=1;
 
-		if(	PORTAbits.RA1 == 1)
-		{
-	push=2;		}
-		else
-		{
-
-		if(	PORTAbits.RA2 == 1)
-		{
-	push=3;		}
+		PORTBbits.RB5=0;
 		}
 		}
-		}
+		}		
 
 	}
 
@@ -142,5 +136,5 @@ return;
 		setup();
 		loop();
 
-		 return;
+		 return; 
 	 }

@@ -18,7 +18,7 @@ parser code {:
    { m.append("Error de Sintaxis No."+tipo);
      ManejoDeErrores objeto=new ManejoDeErrores();
      String tip=objeto.Errores(tipo);
-	  m.append("\nMensaje --> "+tip+"\n");
+	  m.append("\n"+tip+"\n");
       vec[i++]=m;
 
    }
@@ -109,7 +109,7 @@ String cadena_decvar="";
 
 	private String generarTerceto(String terceto) {
 		String tmp = nuevaTmp();
-		System.out.println("Terceto: "+tmp + terceto);
+		//System.out.println("Terceto: "+tmp + terceto);
 		return tmp;
 	}
 
@@ -122,9 +122,9 @@ String cadena_decvar="";
 		/*
 		*System.out.println("\t if" + Rvalor1 + condicion + Rvalor2 + "");
 		*/
-	System.out.println("\tif "+ Rvalor1 + condicion + Rvalor2 +" goto etq Vd "+ etqs.etqVerdad);
+	//System.out.println("\tif "+ Rvalor1 + condicion + Rvalor2 +" goto etq Vd "+ etqs.etqVerdad);
 	//RESULT=Rvalor1 + condicion + Rvalor2;
-    System.out.println("\tgoto etq Falso: "+ etqs.etqFalso);
+  //  System.out.println("\tgoto etq Falso: "+ etqs.etqFalso);
 		return etqs;
 	}
 
@@ -423,10 +423,10 @@ instruccion::= declvar:d {:
 				 RESULT="\n\t"+d;
 			:}
 		   |ID:id IGUAL exprtipos:t PCOMA{:
-			System.out.println("Mensaje "+id + "-->"+t);
+			//System.out.println("Mensaje "+id + "-->"+t);
 			DatoSimbolo ds=parser.tabla.buscar(id);
 			 if(ds!= null){
-			 	System.err.println(id + " redeclarada.");
+			 	//System.err.println(id + " redeclarada.");
 			 RESULT="\n\t"+id+"="+t+";";
 			}
 			 else{
@@ -673,7 +673,7 @@ declvar::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 				if(ds!= null)
 					System.err.println(id + " redeclarada.");
 				else{
-				 	System.out.println("Mensaje "+id + "-->"+t);
+				 //	System.out.println("Mensaje "+id + "-->"+t);
 				 	RESULT="\n\t"+t+" "+id+";";
 					parser.tabla.insertar(id, t,"");
 				}
@@ -681,9 +681,9 @@ declvar::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 			|TIPOVC ID:id DOSPUNTOS tipo:t IGUAL exprtipos:e  PCOMA{:
 				//RESULT = t;
 				if(parser.tabla.buscar(id)!= null){
-					System.err.println(id + " redeclarada.");
+					//System.err.println(id + " redeclarada.");
 				}else{
-				 	System.out.println("Mensaje "+id + "-->"+e);
+				 	//System.out.println("Mensaje "+id + "-->"+e);
 				 	switch(t){
 			            case "int":
 			                if(Num.valInt(e)){

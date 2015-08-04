@@ -4,8 +4,8 @@ public class DatoSimbolo{
 	private String nombre;
 	private String valor;
 	private String tipo;
+ 
 
-	 
 	 public DatoSimbolo(String nombre, String tipo,String valor){
 		 this.setNombre(nombre);
 		 this.setTipo(tipo);
@@ -14,7 +14,7 @@ public class DatoSimbolo{
 
 	 public static String tipoToString(String st){
 		 String retorno = "";
-		
+
 			 switch(st) {
 				 case "int": { retorno += "int"; break; }
 				 case "float": { retorno += "float"; break; }
@@ -23,7 +23,7 @@ public class DatoSimbolo{
 				 case "short": { retorno += "short"; break; }
 				 case "long": { retorno += "long"; break; }
 				 case "double": { retorno += "double"; break; }
-				
+
 				default:
 					 { retorno += "indefinido."; break; }
 			 };
