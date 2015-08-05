@@ -455,76 +455,297 @@ public class ManejoDeErrores{
           case 447:men = "E=447        ";break;
           case 448:men = "E=448        ";break;
           case 449:men = "E=449        ";break;
-          case 450:men = "E=450       ";break;
-          case 451:men = "E=451       ";break;
-          case 452:men = "E=452       ";break;
-          case 453:men = "E=453       ";break;
-          case 454:men = "E=454       ";break;
-          case 455:men = "E=455       ";break;
-          case 456:men = "E=456       ";break;
-          case 457:men = "E=457       ";break;
-          case 458:men = "E=458       ";break;
-          case 459:men = "E=459       ";break;
-          case 460:men = "E=460        ";break;
-          case 461:men = "E=461        ";break;
-          case 462:men = "E=462        ";break;
-          case 463:men = "E=463        ";break;
-          case 464:men = "E=464        ";break;
-          case 465:men = "E=465        ";break;
-          case 466:men = "E=466        ";break;
-          case 467:men = "E=467        ";break;
-          case 468:men = "E=468        ";break;
-          case 469:men = "E=469        ";break;
-          case 470:men = "E=470        ";break;
-          case 471:men = "E=471       ";break;
-          case 472:men = "E=472       ";break;
-          case 473:men = "E=473       ";break;
-          case 474:men = "E=474       ";break;
-          case 475:men = "E=475       ";break;
-          case 476:men = "E=476       ";break;
-          case 477:men = "E=477       ";break;
-          case 478:men = "E=478       ";break;
-          case 479:men = "E=479       ";break;
-          case 480:men = "E=480       ";break;
-          case 481:men = "E=481       ";break;
-          case 482:men = "E=482       ";break;
-          case 483:men = "E=483       ";break;
+          case 450:men = "E=450  Error en el ciclo";break;
+          case 451:men = "E=451  Falta un ( ";break;
+          case 452:men = "E=452  Falta un )     ";break;
+          case 453:men = "E=453  Error al configurar el ciclo";break;
+          case 454:men = "E=454  Error al configurar el ciclo";break;
+          case 455:men = "E=455  Error al declarar variables globales";break;
+          case 456:men = "E=456  Error al configurar el ciclo | setup ";break;
+          case 457:men = "E=457  Falta RETARDO";break;
+          case 458:men = "E=458  Error al configurar el ciclo";break;
+          case 459:men = "E=459  Falta un (";break;
+          case 460:men = "E=460  Falta un )";break;
+          case 461:men = "E=461  Error al configurar el ciclo|Falta ;";break;
+          case 462:men = "E=462  Error al configurar el ciclo";break;
+          case 463:men = "E=463  Falta un identificador (Nombre) para variable";break;
+          case 464:men = "E=464  Error al declarar variable(s)";break;
+          case 465:men = "E=465  Falta especificar el tipo de dato";break;
+          case 466:men = "E=466  Error al asignar valor a variable";break;
+          case 467:men = "E=467  Falta un ; en la declaracion de la varible";break;
+          case 468:men = "E=468  NaN | Falta un Número";break;
+          case 469:men = "E=469  Falta el identificador";break;
+          case 470:men = "E=470  Error al asignar valor a varible";break;
+          case 471:men = "E=471  Falta ;";break;
+          case 472:men = "E=472  Error al definir el main";break;
+          case 473:men = "E=473  Falta el método main";break;
+          case 474:men = "E=474  Error en algún puerto";break;
+          case 475:men = "E=475  Falta }";break;
+          case 476:men = "E=476  Faltan las instrucciones en el método MAIN|Errores en las instrucciones del MAIN";break;
+          case 477:men = "E=477  Falta {";break;
+          case 478:men = "E=478  Falta el RETARDO";break;
+          case 479:men = "E=479  Falta el CICLO";break;
+          case 480:men = "E=480  Falta un (";break;
+          case 481:men = "E=481  Falta un )";break;
+          case 482:men = "E=482  Error al configurar el ciclo";break;
+          case 483:men = "E=483  Falta el ciclo";break;
           case 484:men = "E=484 Error al declara un puerto       ";break;
-          case 485:men = "E=485       ";break;
-          case 486:men = "E=486       ";break;
-          case 487:men = "E=487       ";break;
-          case 488:men = "E=488       ";break;
-          case 489:men = "E=489       ";break;
-          case 490:men = "E=490       ";break;
-          case 491:men = "E=491       ";break;
-          case 492:men = "E=492       ";break;
-          case 493:men = "E=493       ";break;
-          case 494:men = "E=494       ";break;
-          case 495:men = "E=495       ";break;
-          case 496:men = "E=496       ";break;
-          case 497:men = "E=497       ";break;
-          case 498:men = "E=498       ";break;
-          case 499:men = "E=499       ";break;
-          case 500:men = "E=500       ";break;
+          case 485:men = "E=485 Error al declara un puerto      ";break;
+          case 486:men = "E=486 Falta el puerto a configurar";break;
+          case 487:men = "E=487 Error al asignar ENTRADA|SALIDA";break;
+          case 488:men = "E=488 Error en SALIDA";break;
+          case 489:men = "E=489 Error al asignar ENTRADA|SALIDA";break;
+          case 490:men = "E=490 Error en ENTRADA";break;
+          case 491:men = "E=491 Falta ;";break;
+          case 492:men = "E=492 Falta }";break;
+          case 493:men = "E=493 Error al configurar puertos|Falta un puerto para asignar un valor";break;
+          case 494:men = "E=494 Error en las instrucciones del SETUP";break;
+          case 495:men = "E=495 Falta }";break;
+          case 496:men = "E=496 Error al declara un puerto";break;
+          case 497:men = "E=497 Error al asignar ENTRADA|SALIDA";break;
+          case 498:men = "E=498 Falta ;";break;
+          case 499:men = "E=499 Falta {";break;
+          case 500:men = "E=500 Falta Número";break;
           default: men ="Algo anda mal , ha ocurrido un error";
         }
         return men;
     }
 
     public String analizaToken(Symbol curToken){
-            int analiza = curToken.sym;
-            String msn=" ";
-            switch(analiza){
+              int analiza = curToken.sym;
+              String msn=" ";
+              switch(analiza){
 
-                case 0:msn = "  EOF ";break;
-                default: msn= "ERROR TOKEN DESCONOCIDO"; break;
+                  case 0:msn = "  EOF ";break;
+                  case 1:msn = "  error  ";break;
+                  case 2:msn = "INT";break;
+                  case 3:msn = "FLOAT";break;
+                  case 4:msn = "CHAR";break;
+                  case 5:msn = "BOOLEAN  ";break;
+                  case 6:msn = "CHAR";break;
+                  case 7:msn = "FLOAT";break;
+                  case 8:msn = "TRUE/FALSE";break;
+                  case 9:msn = "COMA ";break;
+
+
+                  case 10:msn = "TIMEMS";break;
+                  case 11:msn = "DELAY";break;
+                  case 12:msn = "TMR0";break;
+                  case 13:msn = "MAIN";break;
+                  case 14:msn = "SETUP";break;
+                  case 15:msn = "FUSES";break;
+                  case 16:msn = "ENTRADA";break;
+                  case 17:msn = "SALIDA";break;
+                  case 18:msn = "RETARDO";break;
+                  case 19:msn = "CICLO";break;
+
+
+                  case 20:msn = "PA";break;
+                  case 21:msn = "PB";break;
+                  case 22:msn = "PC";break;
+                  case 23:msn = "PD";break;
+                  case 24:msn = "PE";break;
+                  case 25:msn = "TA";break;
+                  case 26:msn = "TB";break;
+                  case 27:msn = "TC";break;
+                  case 28:msn = "TD";break;
+                  case 29:msn = "TE";break;
+
+
+                  case 30:msn = "ANSEL";break;
+                  case 31:msn = "ANSELH";break;
+                  case 32:msn = "TA0";break;
+                  case 33:msn = "TA1";break;
+                  case 34:msn = "TA2";break;
+                  case 35:msn = "TA3";break;
+                  case 36:msn = "TA4";break;
+                  case 37:msn = "TA5";break;
+                  case 38:msn = "TA6";break;
+                  case 39:msn = "TA7";break;
+
+
+                  case 40:msn = "TB0";break;
+                  case 41:msn = "TB1";break;
+                  case 42:msn = "TB2";break;
+                  case 43:msn = "TB3";break;
+                  case 44:msn = "TB4";break;
+                  case 45:msn = "TB5";break;
+                  case 46:msn = "TB6";break;
+                  case 47:msn = "TB7";break;
+                  case 48:msn = "TC0";break;
+                  case 49:msn = "TC1";break;
+
+
+                  case 50:msn = "TC2";break;
+                  case 51:msn = "TC3";break;
+                  case 52:msn = "TC4";break;
+                  case 53:msn = "TC5";break;
+                  case 54:msn = "TC6";break;
+                  case 55:msn = "TC7";break;
+                  case 56:msn = "TD0";break;
+                  case 57:msn = "TD1";break;
+                  case 58:msn = "TD2";break;
+                  case 59:msn = "TD3";break;
 
 
 
-            }
+                  case 60:msn = "TD4";break;
+                  case 61:msn = "TD5";break;
+                  case 62:msn = "TD6";break;
+                  case 63:msn = "TD7";break;
+                  case 64:msn = "TE0";break;
+                  case 65:msn = "TE1";break;
+                  case 66:msn = "TE2";break;
+                  case 67:msn = "TE3";break;
+                  case 68:msn = "PA0";break;
+                  case 69:msn = "PA1";break;
 
-            return msn;
-    }
+
+                  case 70:msn = "PA2";break;
+                  case 71:msn = "PA3";break;
+                  case 72:msn = "PA4";break;
+                  case 73:msn = "PA5";break;
+                  case 74:msn = "PA6";break;
+                  case 75:msn = "PA7";break;
+                  case 76:msn = "PB0";break;
+                  case 77:msn = "PB1";break;
+                  case 78:msn = "PB2";break;
+                  case 79:msn = "PB3";break;
+
+
+                  case 80:msn = "PB4";break;
+                  case 81:msn = "PB5";break;
+                  case 82:msn = "PB6";break;
+                  case 83:msn = "PB7";break;
+                  case 84:msn = "PC0";break;
+                  case 85:msn = "PC1";break;
+                  case 86:msn = "PC2";break;
+                  case 87:msn = "PC3";break;
+                  case 88:msn = "PC4";break;
+                  case 89:msn = "PC5";break;
+
+
+
+                  case 90:msn = "PC7";break;
+                  case 91:msn = "PC7";break;
+                  case 92:msn = "PD0";break;
+                  case 93:msn = "PD1";break;
+                  case 94:msn = "PD2";break;
+                  case 95:msn = "PD3";break;
+                  case 96:msn = "PD4";break;
+                  case 97:msn = "PD5";break;
+                  case 98:msn = "PD6";break;
+                  case 99:msn = "PD7";break;
+
+
+                  case 100:msn = "PE0";break;
+                  case 101:msn = "PE1";break;
+                  case 102:msn = "PE2";break;
+                  case 103:msn = "PE3";break;
+                  case 104:msn = "ANSEL0";break;
+                  case 105:msn = "ANSEL1";break;
+                  case 106:msn = "ANSEL2";break;
+                  case 107:msn = "ANSEL3";break;
+                  case 108:msn = "ANSEL4";break;
+                  case 109:msn = "ANSEL5";break;
+
+                  case 110:msn = "ANSEL6";break;
+                  case 111:msn = "ANSEL7";break;
+                  case 112:msn = "ANSELH0";break;
+                  case 113:msn = "ANSELH1";break;
+                  case 114:msn = "ANSELH2";break;
+                  case 115:msn = "ANSELH3";break;
+                  case 116:msn = "ANSELH4";break;
+                  case 117:msn = "ANSELH5";break;
+                  case 118:msn = "OPTION_REG";break;
+                  case 119:msn = "OPTIONREG_INTEDG";break;
+
+                  case 120:msn = "OPTIONREG_PS";break;
+                  case 121:msn = "OPTIONREG_T0CS";break;
+                  case 122:msn = "OPTIONREG_T0SE";break;
+                  case 123:msn = "OPTIONREG_PSA";break;
+                  case 124:msn = "OPTIONREG_PS2";break;
+                  case 125:msn = "OPTIONREG_PS1";break;
+                  case 126:msn = "OPTIONREG_PS0";break;
+                  case 127:msn = "OPTIONREG_RBPU";break;
+                  case 128:msn = "INTCON";break;
+                  case 129:msn = "INTCONGIE";break;
+
+                  case 130:msn = "INTCONPEIE";break;
+                  case 131:msn = "INTCONT0IE";break;
+                  case 132:msn = "INTCONINTE";break;
+                  case 133:msn = "INTCONRBIE";break;
+                  case 134:msn = "INTCONT0IF";break;
+                  case 135:msn = "INTCONINTF";break;
+                  case 136:msn = "INTCONRBIF";break;
+                  case 137:msn = "ADCON0_ADCS1";break;
+                  case 138:msn = "ADCON0_ADCS0";break;
+                  case 139:msn = "ADCON0_CHS3";break;
+
+
+                  case 140:msn = "ADCON0_CHS2";break;
+                  case 141:msn = "ADCON0_CHS1";break;
+                  case 142:msn = "ADCON0_CHS0";break;
+                  case 143:msn = "ADCON0_GO";break;
+                  case 144:msn = "ADCON0_ADON";break;
+                  case 145:msn = "ADCON1_ADFM";break;
+                  case 146:msn = "ADCON1_VCFG1";break;
+                  case 147:msn = "ADCON1_VCFG0";break;
+                  case 148:msn = "VOID ";break;
+                  case 149:msn = "INTERRUPT";break;
+
+                  case 150:msn = "THEN";break;
+                  case 151:msn = "NO";break;
+                  case 152:msn = "FIN";break;
+                  case 153:msn = "DO";break;
+                  case 154:msn = "SWITCH";break;
+                  case 155:msn = "OF";break;
+                  case 156:msn = "default";break;
+                  case 157:msn = "LPAREN/(";break;
+                  case 158:msn = "RPAREN/)";break;
+                  case 159:msn = "MAS";break;
+
+                  case 160:msn = "MENOS";break;
+                  case 161:msn = "DIVISION";break;
+                  case 162:msn = "LLLAVE";break;
+                  case 163:msn = "RLLAVE";break;
+                  case 164:msn = "DOSPUNTOS";break;
+                  case 165:msn = "PCOMA";break;
+                  case 166:msn = "IGUAL";break;
+                  case 167:msn = "==";break;
+                  case 168:msn = "TOGGLE";break;
+                  case 169:msn = "MAYOR";break;
+
+
+                  case 170:msn = "MENOR";break;
+                  case 171:msn = "MAYORIGUAL";break;
+                  case 172:msn = "MENORIGUAL";break;
+                  case 173:msn = "AND";break;
+                  case 174:msn = "OR";break;
+                  case 175:msn = "!=";break;
+                  case 176:msn = "TIPOVC/VAR";break;
+                  case 177:msn = "RECBITSDER/>>";break;
+                  case 178:msn = "RECBITSIZQ/<<";break;
+                  case 179:msn = "RETURN";break;
+
+                  case 180:msn = "NUMERO";break;
+                  case 181:msn = "ID";break;
+                  case 182:msn = "NMETODO";break;
+                  case 183:msn = "SI";break;
+                  case 184:msn = "CASO";break;
+                  case 185:msn = "WHILE";break;
+                  case 186:msn = "BINARIO";break;
+                  case 187:msn = "HEXACADENA";break;
+                  case 188:msn = "FREQ";break;
+
+                  default: msn= "TOKEN DESCONOCIDO"; break;
+
+
+
+              }
+
+              return msn;
+      }
 
 
 
