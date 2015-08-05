@@ -4,7 +4,7 @@ public class ManejoDeErrores{
     public String Errores(int tipo){
         String men=" ";
         switch (tipo){
-          case 0:men = "E=0 Error";break;
+          
           case 0:men = "E=0        ";break;
           case 1:men = "E=1        ";break;
           case 2:men = "E=2        ";break;

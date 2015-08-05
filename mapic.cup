@@ -471,11 +471,17 @@ instruccion::= declvar:d {:
 		 :}
 
 		 | puertos:p IGUAL ID:n PCOMA
-
-		{:
-			//   miCodigo=p+t+u+";\n"+miCodigo;
+		 {:
+			DatoSimbolo ds=parser.tabla.buscar(n);
+	 		if (ds == null)
+	 		{
+	 			System.out.println(n+ " es una variable no definida");
+	 		}
+	 		else
+	 		{
 			RESULT="\n\t"+p+n+";\n";
-			//System.out.println("cadena de toggles:"+RESULT);
+		 }
+
 		:}
 
 //********************Invocar a un metodo*********************************************************
@@ -527,17 +533,38 @@ instruccion::= declvar:d {:
 //********************************************************************************
 			|puertos:p IGUAL puertost:u MAS ID:v PCOMA
 			{:
+				DatoSimbolo ds=parser.tabla.buscar(v);
+				if (ds == null)
+				{
+					System.out.println(v+ " es una variable no definida");
+				}
+				else
+				{
 				RESULT=p+u+"+"+v+";\n";
+			 }
 			:}
 //********************************************************************************
 			|ID:v MAS MAS PCOMA
 			{:
-				RESULT=v+"++;\n";
+					DatoSimbolo ds=parser.tabla.buscar(v);
+					if (ds == null)
+					{System.out.println(v+ " es una variable no definida");}
+					else
+					{
+						RESULT=v+"++;\n";
+					}
 			:}
 
 			|ID:v MENOS MENOS PCOMA
 			{:
-				RESULT=v+"--;\n";
+				DatoSimbolo ds=parser.tabla.buscar(v);
+				if (ds == null)
+				{System.out.println(v+ " es una variable no definida");}
+				else
+				{
+					RESULT=v+"--;\n";
+				}
+
 			:}
 //********************************************************************************
 			| RETURN PCOMA
@@ -625,46 +652,119 @@ instruccion::= declvar:d {:
 //*******************************************************************************
 			| ID:v RECBITSIZQ NUMERO:n PCOMA
 			{:
-				RESULT=v+"<<"+n+";\n";
-			:}
-
-			| ID:v RECBITSDER NUMERO:n PCOMA
+      	DatoSimbolo ds=parser.tabla.buscar(v);
+				if (ds == null)
+				{System.out.println(v+ " es una variable no definida");}
+				else
+				{
+					RESULT=v+"<<"+n+";\n";
+				}
+    	:}
+    	| ID:v RECBITSDER NUMERO:n PCOMA
 			{:
-				RESULT=v+">>"+n+";\n";
+				DatoSimbolo ds=parser.tabla.buscar(v);
+				if (ds == null)
+				{System.out.println(v+ " es una variable no definida");}
+				else
+				{
+						RESULT=v+">>"+n+";\n";
+				}
 			:}
 			|ID:var IGUAL ID:v RECBITSIZQ NUMERO:n PCOMA
 				{:
-					RESULT = var +"="+v+">>"+n+";\n";
+					DatoSimbolo ds=parser.tabla.buscar(var);
+					DatoSimbolo ds2=parser.tabla.buscar(v);
+					if (ds == null)
+					{System.out.println(var+ " es una variable no definida");}
+					else
+						if(ds2 == null){
+								System.out.println(v+ " es una variable no definida");
+						}
+					else
+					{
+						RESULT = var +"="+v+">>"+n+";\n";
+					}
 				:}
 			|ID:var IGUAL ID:v RECBITSDER NUMERO:n PCOMA
 				{:
+					DatoSimbolo ds=parser.tabla.buscar(var);
+					DatoSimbolo ds2=parser.tabla.buscar(v);
+					if (ds == null)
+					{System.out.println(var+ " es una variable no definida");}
+					else
+						if(ds2 == null){
+								System.out.println(v+ " es una variable no definida");
+						}
+					else
+					{
 					RESULT = var +"="+v+"<<"+n+";\n";
+				  }
 				:}
 //*********************************************************************************
 			|ID:v IGUAL expression:v2 operamesta:o expression:v3 PCOMA
 			{:
+				DatoSimbolo ds=parser.tabla.buscar(v);
+				if (ds == null)
+				{
+					System.out.println(v+ " es una variable no definida");
+			  }
+				else
+				{
 				RESULT=v+"="+v2+o+v3+";\n";
+			  }
 			:}
 
 			|ID:v IGUAL expression:v2 operamesta:o expression:v3 extraperamesta:eo PCOMA
 			{:
+				DatoSimbolo ds=parser.tabla.buscar(v);
+				if (ds == null)
+				{
+					System.out.println(v+ " es una variable no definida");
+			  }
+				else
+				{
 				RESULT=v+"="+v2+o+v3+eo+";\n";
 				encadenamst="";
+			 }
 			:}
 
 			|ID:v IGUAL parentesis:p PCOMA
 			{:
-				RESULT=v+"="+p+";\n";
+				DatoSimbolo ds=parser.tabla.buscar(v);
+				if (ds == null)
+				{
+					System.out.println(v+ " es una variable no definida");
+			  }
+				else
+				{
+					RESULT=v+"="+p+";\n";
+				}
 			:}
 
 			|ID:v IGUAL parentesis:p operamesta:o parentesis:p2 PCOMA
 			{:
-				RESULT=v+"="+p+o+p2+";\n";
+				DatoSimbolo ds=parser.tabla.buscar(v);
+				if (ds == null)
+				{
+					System.out.println(v+ " es una variable no definida");
+			  }
+				else
+				{
+					RESULT=v+"="+p+o+p2+";\n";
+				}
 			:}
 
 			|ID:v IGUAL parentesis:p operamesta:o expression:e PCOMA
 			{:
-				RESULT=v+"="+p+o+e+";\n";
+				DatoSimbolo ds=parser.tabla.buscar(v);
+				if (ds == null)
+				{
+					System.out.println(v+ " es una variable no definida");
+			  }
+				else
+				{
+					RESULT=v+"="+p+o+e+";\n";
+				}
 			:}
 			;
 
@@ -691,7 +791,7 @@ declvar::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 			|TIPOVC ID:id DOSPUNTOS tipo:t IGUAL exprtipos:e  PCOMA{:
 				//RESULT = t;
 				if(parser.tabla.buscar(id)!= null){
-					//System.err.println(id + " redeclarada.");
+					System.err.println(id + " redeclarada.");
 				}else{
 				 	//System.out.println("Mensaje "+id + "-->"+e);
 				 	switch(t){
@@ -842,7 +942,17 @@ extraperamesta::=operamesta:o expression:v
 				:}
 				;
 /////////////////////////////////////////////////////////////////
-expression::= ID:id  {:RESULT=id;:}
+expression::= ID:id  {:
+				DatoSimbolo ds=parser.tabla.buscar(id);
+				if (ds == null)
+				{
+					System.out.println(id+ " es una variable no definida");
+				}
+				else
+				{	RESULT=id;
+				}
+
+		:}
 		| NUMERO:num
 		{:
 			RESULT= Integer.toString(num);
@@ -851,12 +961,27 @@ expression::= ID:id  {:RESULT=id;:}
 
 		| ID:id NUMERO:n
 		{:
-			RESULT=id+n;
+			DatoSimbolo ds=parser.tabla.buscar(id);
+			if (ds == null)
+			{
+				System.out.println(id+ " es una variable no definida");
+			}
+			else
+			{	RESULT=id+n;
+			}
 		:}
 
 		| NUMERO:n ID:id
 		{:
+			DatoSimbolo ds=parser.tabla.buscar(id);
+			if (ds == null)
+			{
+				System.out.println(id+ " es una variable no definida");
+			}
+			else
+			{
 			RESULT=n+id;
+		}
 		:}
 
 
@@ -864,7 +989,14 @@ expression::= ID:id  {:RESULT=id;:}
 //Para el uso del SI NO
 item_condicion::=
 		ID:id  {:
-			RESULT=id;
+			DatoSimbolo ds=parser.tabla.buscar(id);
+			if (ds == null)
+			{
+				System.out.println(id+ " es una variable no definida");
+			}
+			else
+			{		RESULT=id;
+			}
 		:}
 		| NUMERO:num {:
 			RESULT= Integer.toString(num);
