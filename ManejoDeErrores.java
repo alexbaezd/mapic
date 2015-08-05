@@ -466,7 +466,7 @@ public class ManejoDeErrores{
           case 458:men = "E=458  Error al configurar el ciclo";break;
           case 459:men = "E=459  Falta un (";break;
           case 460:men = "E=460  Falta un )";break;
-          case 461:men = "E=461  Error al configurar el ciclo|Falta ;";break;
+          case 461:men = "E=461  Error al configurar el ciclo  |   Falta ;";break;
           case 462:men = "E=462  Error al configurar el ciclo";break;
           case 463:men = "E=463  Falta un identificador (Nombre) para variable";break;
           case 464:men = "E=464  Error al declarar variable(s)";break;
@@ -481,7 +481,7 @@ public class ManejoDeErrores{
           case 473:men = "E=473  Falta el método main";break;
           case 474:men = "E=474  Error en algún puerto";break;
           case 475:men = "E=475  Falta }";break;
-          case 476:men = "E=476  Faltan las instrucciones en el método MAIN|Errores en las instrucciones del MAIN";break;
+          case 476:men = "E=476  Faltan las instrucciones en el método MAIN | Errores en las instrucciones del MAIN";break;
           case 477:men = "E=477  Falta {";break;
           case 478:men = "E=478  Falta el RETARDO";break;
           case 479:men = "E=479  Falta el CICLO";break;
@@ -498,9 +498,9 @@ public class ManejoDeErrores{
           case 490:men = "E=490 Error en ENTRADA";break;
           case 491:men = "E=491 Falta ;";break;
           case 492:men = "E=492 Falta }";break;
-          case 493:men = "E=493 Error al configurar puertos|Falta un puerto para asignar un valor";break;
+          case 493:men = "E=493 Error al configurar puertos |  Falta un puerto para asignar un valor";break;
           case 494:men = "E=494 Error en las instrucciones del SETUP";break;
-          case 495:men = "E=495 Falta }";break;
+          case 495:men = "E=495 Falta }  |   Falta RETARDO";break;
           case 496:men = "E=496 Error al declara un puerto";break;
           case 497:men = "E=497 Error al asignar ENTRADA|SALIDA";break;
           case 498:men = "E=498 Falta ;";break;

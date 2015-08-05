@@ -13,12 +13,13 @@ Setup {
 	TA0=ENTRADA;
   b++;
   b--;
+
   b=b<<9;
   getPuertos();
   kkk= ((x-y)/2f);
 }
 
-Retardo();
+RETARDO();
 
 Ciclo
 {
