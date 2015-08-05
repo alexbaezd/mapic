@@ -109,7 +109,6 @@ String cadena_decvar="";
 
 	private String generarTerceto(String terceto) {
 		String tmp = nuevaTmp();
-		//System.out.println("Terceto: "+tmp + terceto);
 		return tmp;
 	}
 
@@ -119,12 +118,6 @@ String cadena_decvar="";
 		etqs.etqFalso = nuevaEtq();
 		etqs.condicion = Rvalor1+condicion+Rvalor2;
 		auxiliar="";
-		/*
-		*System.out.println("\t if" + Rvalor1 + condicion + Rvalor2 + "");
-		*/
-	//System.out.println("\tif "+ Rvalor1 + condicion + Rvalor2 +" goto etq Vd "+ etqs.etqVerdad);
-	//RESULT=Rvalor1 + condicion + Rvalor2;
-  //  System.out.println("\tgoto etq Falso: "+ etqs.etqFalso);
 		return etqs;
 	}
 
@@ -132,9 +125,6 @@ String cadena_decvar="";
 		BloqueCondicion etqs = new BloqueCondicion();
 		etqs.condicion = condicion+Rvalor2;
 		auxiliar="";
-		/*
-		*System.out.println("\t if" + Rvalor1 + condicion + Rvalor2 + "");
-		*/
 		return etqs;
 	}
 	private BloqueCondicion generarCondicion( String Rvalor1, String condicion, String Rvalor2,String extra){
@@ -222,14 +212,12 @@ precedence left ID,NMETODO;
  programa::= FUSES:fuses frecuencia:f metodos main
  				{:
  					miCodigo=fuses+f+miCodigo;
-              		 // System.out.println("Clase Generada\n\n"+miCodigo+"\n\n");
                 File miClase;
 	        	try{
 	            	miClase = new File("mapic.c");
 	            	if(miClase.exists())
 	            		miClase.delete();
 	            	if(miClase.createNewFile()){
-	                	//System.out.println("Se ha creado el archivo");
 	            	}
 	            	FileWriter escribir=new FileWriter(miClase,true);
 	            	escribir.write(miCodigo);
@@ -275,12 +263,10 @@ frecuencia::= /* empty */
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 setup::=SETUP:setup   LLLAVE confpuertos RLLAVE
 		{:
-			//System.out.println("codigo intermedio==>"+setup+"   "+fsetup);
 	        miCodigo=setup+"{\n\tOSCCON=0x60;"+miCodigo+"\n}";
 		:}
 		|SETUP:setup  LLLAVE  confpuertos  instrucciones RLLAVE
 		{:
-	        //System.out.println("codigo intermedio==>"+setup+"   "+fsetup);
 	        miCodigo=setup+"{\n\tOSCCON=0x60;\n\tANSEL=0;\n"+miCodigo+auxiliar+"\n}";
 		:};
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -341,7 +327,6 @@ metodo::=VOID:v INTERRUPT:it ID:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
 			codigo=v+""+it+i+"()\n\t{\n"+auxiliar+"\n\t}\n\n";
 			losMetodos=losMetodos+codigo;
 		    auxiliar="";
-			//System.out.println("codigo intermedio==> int "+codigo);
 		:}
 		|VOID:v ID:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
 				{:
@@ -355,7 +340,6 @@ metodo::=VOID:v INTERRUPT:it ID:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
 					codigo=v+i+"()\n\t{\n"+auxiliar+"\n\t}\n\n";
 					losMetodos=losMetodos+codigo;
 				    auxiliar="";
-					//System.out.println("codigo intermedio==> int "+codigo);
 				:}
 
 		|metodo VOID:v ID:m LPAREN  RPAREN LLLAVE instrucciones  RLLAVE
@@ -368,7 +352,6 @@ metodo::=VOID:v INTERRUPT:it ID:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
 			codigo=v+m+"()\n\t{\n"+auxiliar+"\n\t}\n\n";
 			losMetodos=losMetodos+codigo;
 		    auxiliar="";
-			//System.out.println("codigo intermedio==> int "+codigo);
 		 :}
 //*************************CON PARAMETROS*********************************************
 		 |VOID:v ID:i LPAREN parametros:p RPAREN LLLAVE instrucciones RLLAVE
@@ -384,7 +367,6 @@ metodo::=VOID:v INTERRUPT:it ID:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
 			losMetodos=losMetodos+codigo;
 		    auxiliar="";
 		    cadena_parametros="";
-			//System.out.println("codigo intermedio==> int "+codigo);
 		:}
 
 		|metodo VOID:v ID:m LPAREN parametros:p RPAREN LLLAVE instrucciones  RLLAVE
@@ -398,7 +380,6 @@ metodo::=VOID:v INTERRUPT:it ID:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
 			losMetodos=losMetodos+codigo;
 		    auxiliar="";
 		    cadena_parametros="";
-			//System.out.println("codigo intermedio==> int "+codigo);
 		 :}
 		 ;
 
@@ -412,20 +393,12 @@ parametros::= ID:id DOSPUNTOS tipo:t {:
 //////////////////////////////////////////////////////////////////////////////////////////
 instrucciones::=instruccion:in
 			{:
-				//System.out.println("valor de in en intruccion:"+in);
 				auxiliar=in + auxiliar;
-                //aux=in;
-				//RESULT=in;
-				//System.out.println("cadena de una istruccion en aux: "+auxiliar);
 			:}
 
 			|instruccion:in instrucciones
 			{:
-			//	System.out.println("valor de in en instrucciones:"+in);
 				auxiliar=in+auxiliar;
-				//RESULT=in;
-                //aux=in;
-			//	System.out.println("cadena de varias instrucciones en aux:"+auxiliar);
 			:};
 
 ///////////////////////////INSTRUCCIONES DISPONIBLES EN MAPIC//////////////////////////////////////////////////////////////////
@@ -433,10 +406,8 @@ instruccion::= declvar:d {:
 				 RESULT="\n\t"+d;
 			:}
 		   |ID:id IGUAL exprtipos:t PCOMA{:
-			//System.out.println("Mensaje "+id + "-->"+t);
 			DatoSimbolo ds=parser.tabla.buscar(id);
 			 if(ds!= null){
-			 	//System.err.println(id + " redeclarada.");
 			 RESULT="\n\t"+id+"="+t+";";
 			}
 			 else{
@@ -450,32 +421,32 @@ instruccion::= declvar:d {:
 //*****************************************************************************
 			|puertos:p TOGGLE:t puertost:u PCOMA
 			{:
-				//   miCodigo=p+t+u+";\n"+miCodigo;
 				RESULT="\n\t"+p+t+u+";\n";
-				//System.out.println("cadena de toggles:"+RESULT);
 			:}
 //*****************************************************************************
        | puertos:p IGUAL NUMERO:n PCOMA
 
 			{:
-				//   miCodigo=p+t+u+";\n"+miCodigo;
 				RESULT="\n\t"+p+n+";\n";
-				//System.out.println("cadena de toggles:"+RESULT);
 			:}
 			| puertos:p IGUAL BINARIOCADENA:n PCOMA
 
 		 {:
-			 //   miCodigo=p+t+u+";\n"+miCodigo;
 			 RESULT="\n\t"+p+n+";\n";
-			 //System.out.println("cadena de toggles:"+RESULT);
 		 :}
 
 		 | puertos:p IGUAL ID:n PCOMA
-
-		{:
-			//   miCodigo=p+t+u+";\n"+miCodigo;
+		 {:
+			DatoSimbolo ds=parser.tabla.buscar(n);
+	 		if (ds == null)
+	 		{
+	 			System.out.println(n+ " es una variable no definida");
+	 		}
+	 		else
+	 		{
 			RESULT="\n\t"+p+n+";\n";
-			//System.out.println("cadena de toggles:"+RESULT);
+		 }
+
 		:}
 
 //********************Invocar a un metodo*********************************************************
@@ -486,8 +457,6 @@ instruccion::= declvar:d {:
 				{System.out.println(i+ " es una METODO no definido");}
 				else
 				{
-					// System.out.println(i+" instrucciones del metodo => "+s.getValor());
-					//System.out.println("codigo intermedio==> "+i+"();");
 					RESULT="\t"+i+"();\n";
 				}
 			:}
@@ -498,8 +467,6 @@ instruccion::= declvar:d {:
 				{System.out.println(i+ " es una METODO no definido");}
 				else
 				{
-					// System.out.println(i+" instrucciones del metodo => "+s.getValor());
-					//System.out.println("codigo intermedio==> "+i+"();");
 					RESULT="\t"+i+"("+ex+");\n";
 				}
 			:}
@@ -507,7 +474,6 @@ instruccion::= declvar:d {:
 //*****************************************************************************
 			| CHALE:c LPAREN NUMERO:n RPAREN PCOMA
 			{:
-				//retardos= retardos+c+"("+n+");\n";
 	   			RESULT=c+"("+n+");\n";
 			:}
 
@@ -515,7 +481,6 @@ instruccion::= declvar:d {:
 
 			| DELAY:c LLLAVE NUMERO:n RLLAVE PCOMA
 			{:
-				//retardos= retardos+c+"("+n+");\n";
 	   			RESULT=c+"("+n+");\n";
 			:}
 //*****************************************************************************
@@ -527,17 +492,38 @@ instruccion::= declvar:d {:
 //********************************************************************************
 			|puertos:p IGUAL puertost:u MAS ID:v PCOMA
 			{:
+				DatoSimbolo ds=parser.tabla.buscar(v);
+				if (ds == null)
+				{
+					System.out.println(v+ " es una variable no definida");
+				}
+				else
+				{
 				RESULT=p+u+"+"+v+";\n";
+			 }
 			:}
 //********************************************************************************
 			|ID:v MAS MAS PCOMA
 			{:
-				RESULT=v+"++;\n";
+					DatoSimbolo ds=parser.tabla.buscar(v);
+					if (ds == null)
+					{System.out.println(v+ " es una variable no definida");}
+					else
+					{
+						RESULT=v+"++;\n";
+					}
 			:}
 
 			|ID:v MENOS MENOS PCOMA
 			{:
-				RESULT=v+"--;\n";
+				DatoSimbolo ds=parser.tabla.buscar(v);
+				if (ds == null)
+				{System.out.println(v+ " es una variable no definida");}
+				else
+				{
+					RESULT=v+"--;\n";
+				}
+
 			:}
 //********************************************************************************
 			| RETURN PCOMA
@@ -625,46 +611,119 @@ instruccion::= declvar:d {:
 //*******************************************************************************
 			| ID:v RECBITSIZQ NUMERO:n PCOMA
 			{:
-				RESULT=v+"<<"+n+";\n";
-			:}
-
-			| ID:v RECBITSDER NUMERO:n PCOMA
+      	DatoSimbolo ds=parser.tabla.buscar(v);
+				if (ds == null)
+				{System.out.println(v+ " es una variable no definida");}
+				else
+				{
+					RESULT=v+"<<"+n+";\n";
+				}
+    	:}
+    	| ID:v RECBITSDER NUMERO:n PCOMA
 			{:
-				RESULT=v+">>"+n+";\n";
+				DatoSimbolo ds=parser.tabla.buscar(v);
+				if (ds == null)
+				{System.out.println(v+ " es una variable no definida");}
+				else
+				{
+						RESULT=v+">>"+n+";\n";
+				}
 			:}
 			|ID:var IGUAL ID:v RECBITSIZQ NUMERO:n PCOMA
 				{:
-					RESULT = var +"="+v+">>"+n+";\n";
+					DatoSimbolo ds=parser.tabla.buscar(var);
+					DatoSimbolo ds2=parser.tabla.buscar(v);
+					if (ds == null)
+					{System.out.println(var+ " es una variable no definida");}
+					else
+						if(ds2 == null){
+								System.out.println(v+ " es una variable no definida");
+						}
+					else
+					{
+						RESULT = var +"="+v+">>"+n+";\n";
+					}
 				:}
 			|ID:var IGUAL ID:v RECBITSDER NUMERO:n PCOMA
 				{:
+					DatoSimbolo ds=parser.tabla.buscar(var);
+					DatoSimbolo ds2=parser.tabla.buscar(v);
+					if (ds == null)
+					{System.out.println(var+ " es una variable no definida");}
+					else
+						if(ds2 == null){
+								System.out.println(v+ " es una variable no definida");
+						}
+					else
+					{
 					RESULT = var +"="+v+"<<"+n+";\n";
+				  }
 				:}
 //*********************************************************************************
 			|ID:v IGUAL expression:v2 operamesta:o expression:v3 PCOMA
 			{:
+				DatoSimbolo ds=parser.tabla.buscar(v);
+				if (ds == null)
+				{
+					System.out.println(v+ " es una variable no definida");
+			  }
+				else
+				{
 				RESULT=v+"="+v2+o+v3+";\n";
+			  }
 			:}
 
 			|ID:v IGUAL expression:v2 operamesta:o expression:v3 extraperamesta:eo PCOMA
 			{:
+				DatoSimbolo ds=parser.tabla.buscar(v);
+				if (ds == null)
+				{
+					System.out.println(v+ " es una variable no definida");
+			  }
+				else
+				{
 				RESULT=v+"="+v2+o+v3+eo+";\n";
 				encadenamst="";
+			 }
 			:}
 
 			|ID:v IGUAL parentesis:p PCOMA
 			{:
-				RESULT=v+"="+p+";\n";
+				DatoSimbolo ds=parser.tabla.buscar(v);
+				if (ds == null)
+				{
+					System.out.println(v+ " es una variable no definida");
+			  }
+				else
+				{
+					RESULT=v+"="+p+";\n";
+				}
 			:}
 
 			|ID:v IGUAL parentesis:p operamesta:o parentesis:p2 PCOMA
 			{:
-				RESULT=v+"="+p+o+p2+";\n";
+				DatoSimbolo ds=parser.tabla.buscar(v);
+				if (ds == null)
+				{
+					System.out.println(v+ " es una variable no definida");
+			  }
+				else
+				{
+					RESULT=v+"="+p+o+p2+";\n";
+				}
 			:}
 
 			|ID:v IGUAL parentesis:p operamesta:o expression:e PCOMA
 			{:
-				RESULT=v+"="+p+o+e+";\n";
+				DatoSimbolo ds=parser.tabla.buscar(v);
+				if (ds == null)
+				{
+					System.out.println(v+ " es una variable no definida");
+			  }
+				else
+				{
+					RESULT=v+"="+p+o+e+";\n";
+				}
 			:}
 			;
 
@@ -683,7 +742,6 @@ declvar::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 				if(ds!= null)
 					System.err.println(id + " redeclarada.");
 				else{
-				 //	System.out.println("Mensaje "+id + "-->"+t);
 				 	RESULT="\n\t"+t+" "+id+";";
 					parser.tabla.insertar(id, t,"");
 				}
@@ -691,9 +749,8 @@ declvar::=TIPOVC ID:id DOSPUNTOS tipo:t  PCOMA{:
 			|TIPOVC ID:id DOSPUNTOS tipo:t IGUAL exprtipos:e  PCOMA{:
 				//RESULT = t;
 				if(parser.tabla.buscar(id)!= null){
-					//System.err.println(id + " redeclarada.");
+					System.err.println(id + " redeclarada.");
 				}else{
-				 	//System.out.println("Mensaje "+id + "-->"+e);
 				 	switch(t){
 			            case "int":
 			                if(Num.valInt(e)){
@@ -842,21 +899,45 @@ extraperamesta::=operamesta:o expression:v
 				:}
 				;
 /////////////////////////////////////////////////////////////////
-expression::= ID:id  {:RESULT=id;:}
+expression::= ID:id  {:
+				DatoSimbolo ds=parser.tabla.buscar(id);
+				if (ds == null)
+				{
+					System.out.println(id+ " es una variable no definida");
+				}
+				else
+				{	RESULT=id;
+				}
+
+		:}
 		| NUMERO:num
 		{:
 			RESULT= Integer.toString(num);
-								//generarTerceto("="+num);
 		:}
 
 		| ID:id NUMERO:n
 		{:
-			RESULT=id+n;
+			DatoSimbolo ds=parser.tabla.buscar(id);
+			if (ds == null)
+			{
+				System.out.println(id+ " es una variable no definida");
+			}
+			else
+			{	RESULT=id+n;
+			}
 		:}
 
 		| NUMERO:n ID:id
 		{:
+			DatoSimbolo ds=parser.tabla.buscar(id);
+			if (ds == null)
+			{
+				System.out.println(id+ " es una variable no definida");
+			}
+			else
+			{
 			RESULT=n+id;
+		}
 		:}
 
 
@@ -864,7 +945,14 @@ expression::= ID:id  {:RESULT=id;:}
 //Para el uso del SI NO
 item_condicion::=
 		ID:id  {:
-			RESULT=id;
+			DatoSimbolo ds=parser.tabla.buscar(id);
+			if (ds == null)
+			{
+				System.out.println(id+ " es una variable no definida");
+			}
+			else
+			{		RESULT=id;
+			}
 		:}
 		| NUMERO:num {:
 			RESULT= Integer.toString(num);
@@ -897,13 +985,11 @@ condicion ::= item_condicion:e1 signo:sig  item_condicion:e2 {:
 condicion_extra::= signo:sig item_condicion:e1 {:
 					cadena_condiciones=" "+sig+e1;
 					RESULT=cadena_condiciones;
-					//System.out.println("resto de las condicion-->"+cadena_condiciones);
 				:}
 
 				| signo:sig item_condicion:e1 condicion_extra {:
 					cadena_condiciones =" "+sig+e1 +cadena_condiciones;
 					RESULT =cadena_condiciones;
-					//System.out.println("resto de las condicion-->"+cadena_condiciones);
 				:}
 				;
 
@@ -963,17 +1049,6 @@ exprtipos ::= ID:id {:
 		;
 
 //*****************************************************************************
-/*puertosG ::=PA:pa {: RESULT=pa+"="; :}
-	    |PB:pb {: RESULT=pb+"="; :}
-	    |PC:pc {: RESULT=pc+"=";:}
-	    |PD:pd {: RESULT=pd+"="; :}
-	    |PE:pe {:RESULT=pe+"=";:}
-	    |TA:ta  {: RESULT=ta+"="; :}
-	    |TB:tb  {:RESULT=tb+"="; :}
-	    |TC:tc  {: RESULT=tc+"="; :}
-	    |TD:td  {: RESULT=td+"="; :}
-	    |TE:te  {: RESULT=te+"=";  :}
-	    ;*/
 puertos::= PA:pa {: RESULT=pa+"="; :}
 	    |PB:pb {: RESULT=pb+"="; :}
 	    |PC:pc {: RESULT=pc+"=";:}

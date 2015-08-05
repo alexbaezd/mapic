@@ -4,6 +4,7 @@ public class ManejoDeErrores{
     public String Errores(int tipo){
         String men=" ";
         switch (tipo){
+
           case 0:men = "E=0 No hay nada que analizar";break;
           case 1:men = "E=1 Algo salió mal verifica el inicio del programa";break;
           case 2:men = "E=2 Verifica el método SETUP";break;
@@ -14,8 +15,8 @@ public class ManejoDeErrores{
           case 7:men = "E=7 En el metodo MAIN falta una llave";break;
           case 8:men = "E=8 Verifica el ID";break;
           case 9:men = "E=9 Verifica que el metodo SETUP contenga la palabra reservada VOID";break;
-          case 10:men = "E=10        ";break;
-          case 11:men = "E=11        ";break;
+          case 10:men = "E=10 No definiste la variable con VAR o CONSTANTE";break;
+          case 11:men = "E=11 ";break;
           case 12:men = "E=12        ";break;
           case 13:men = "E=13        ";break;
           case 14:men = "E=14        ";break;
@@ -397,7 +398,7 @@ public class ManejoDeErrores{
           case 390:men = "E=390       ";break;
           case 391:men = "E=391       ";break;
           case 392:men = "E=392       ";break;
-          case 393:men = "E=393       ";break;
+          case 393:men = "E=393 Error en la instrucción";break;
           case 394:men = "E=394       ";break;
           case 395:men = "E=395       ";break;
           case 396:men = "E=396       ";break;
