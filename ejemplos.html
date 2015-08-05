@@ -125,6 +125,7 @@
           <strong><p>El siguiente diagrama muestra el circuito básico a utilizar</p></strong>
           <img class="responsive-img materialboxed" src="img/diagramaPRac1.jpg" alt="Diagrama de la práctica">
             <div class="col s12 m8 offset-m2 l6 offset-l3">
+            
                 <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
        Fuses
 
@@ -145,8 +146,12 @@
            }
  </code></pre>
 
-
+  <h3 class="center blue-text">Iniciamos con Jasmo Studio</h3>
+               <img src="img/editorEj1.jpg" class="responsive-img" alt="">
+               <img src="img/file.jpg" class="responsive-img" alt="">
+               <img src="img/file2.jpg" class="responsive-img" alt="">
             <h5>El Resultado Final , seria el siguinte, al traducirlo a lenguaje C</h5>
+            
 
 
                                          <pre data-src="js/prism.js" class="line-numbers language-clike"><code class=" language-clike">
@@ -258,6 +263,35 @@
         lo haga de forma inversa así en forma infinita puedes utilizar el puerto D como se indica
         en el diagrama, la duración deberá ser de 50 ms aproximadamente entre led y led.
      </p>
+     <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
+ Fuses
+
+
+Setup {
+	PD=SALIDA;
+
+}
+
+Retardo();
+
+Ciclo {
+	while(1) do
+		PD7=1;TimeMS(20000);PD7=0;
+		PD6=1;TimeMS(20000);PD6=0;
+		PD5=1;TimeMS(20000);PD5=0;
+		PD4=1;TimeMS(20000);PD4=0;
+		PD3=1;TimeMS(20000);PD3=0;
+		PD2=1;TimeMS(20000);PD2=0;
+		PD1=1;TimeMS(20000);PD1=0;
+		PD1=0;TimeMS(20000);PD0=0;
+	fin while
+}
+
+Main{
+	
+
+}
+</code></pre>
   </div>
 </div>
 <div class="container">
@@ -268,8 +302,118 @@
        avanzaran los leds de izquerda a derecha, si lee el puerto RA1 avanzaran los leds
       de derecha a izquierda, y si lee el puerto RA2 harán lo que se hizo en el programa anterior.
      </p>
+       <pre data-src="js/prism.js" class="line-numbers language-mapic"><code class=" language-mapic">
+Fuses
+
+var push:int;
+
+void  derizq()
+{
+	var n:char;
+	n=0x80;
+	while(1) do
+		  PD = n;
+			TimeMS(5000);
+			Si(n==0x01) Then
+				return ;
+			No
+				n=n<<1;
+			Fin
+	fin while
+}
+
+void izqder()
+{
+	var n2:char;
+	n=0x01;
+	while(1) do
+			PD = n2;
+			TimeMS(5000);
+			Si(n2==0x80) Then
+				return ;
+			No
+				n=n>>1;
+			Fin
+	fin while
+}
+
+void ambos()
+{
+	izqder();
+	derizq();
+	return ;
+}
+void verifica(){
+
+			SWITCH(push) of
+				caso 1: derizq();
+				caso 2: izqder();
+				caso 3: ambos();
+			Fin switch
+      return;
+}
+setup
+{
+  
+	ta=entrada;
+	pa=salida;
+	td=salida;
+	pd=salida;
+	push=0;
+}
+
+retardo();
+
+ciclo
+{
+
+	while(1) do
+		Si(PA0 == 1) Then
+			push=1;
+		No
+			Si(PA1 == 1) Then
+					push=2;
+				No
+					 Si(PA2 == 1) Then
+					 	push=3;
+					 Fin
+			Fin
+		 Fin
+	fin while
+}
+
+main
+{
+}
+
+</code></pre>
   </div>
 </div>
+<div class="container">
+  <div class="row">
+    <h4>Ejercicio 4</h4>
+
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <h4>Ejercicio 5</h4>
+
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <h4>Ejercicio 6</h4>
+
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <h4>Ejercicio 7</h4>
+
+  </div>
+</div>
+
 
 <!-- footer ---------------------------------------- -->
   <footer class="page-footer blue-grey">
