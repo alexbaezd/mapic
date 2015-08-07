@@ -14,11 +14,6 @@ fuses
 setup{
   ansel = salida;
   ANSELH = salida;
-  /*
-    ORDen de confpuertos y despues intruccion
-    TB=0b00000001;
-    PB=0b10000000;
-  */
   ta=entrada;
   pa=salida;
 	TD=salida;

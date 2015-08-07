@@ -6,6 +6,7 @@ setup{
 	pd=salida;
 }
 
+retardo();
 ciclo{
 	while(1) do
 	    PD = PD + 2;
