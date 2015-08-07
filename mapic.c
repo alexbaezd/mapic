@@ -21,97 +21,50 @@
 
 
 
-#define _XTAL_FREQ 4000000
-
-	int i;
-	int c;
-	void   interrupt  miISR()
+ 
+	void  suma( int n , int n2)
 	{
+	PORTD=	PORTD+n;
+	PORTD=	PORTD+n2;
+		retardo(60000);
 
-		INTCONbits.GIE = 0;
-
-		if(	INTCONbits.GIE)
-		{	
-		PORTDbits.RD0=1;
-		retardo(60);
-
-		PORTDbits.RD0=0;
-		retardo(1);
-
-		PORTDbits.RD0=1;
-		retardo(1);
-
-		PORTDbits.RD0=0;
-		retardo(1);
-
-		PORTDbits.RD0=1;
-		retardo(1);
-
-		PORTDbits.RD0=0;
-		retardo(1);
-
-		PORTDbits.RD0=0;
-		retardo(1);
-
-		PORTDbits.RD0=1;
-		retardo(1);
-
-		PORTDbits.RD0=0;
-		retardo(1);
-
-		PORTDbits.RD0=1;
-		retardo(1);
-
-		PORTDbits.RD0=0;
-		retardo(1);
-
-		PORTDbits.RD1=1;
-		retardo(8);
-
-		PORTDbits.RD1=0;
-
-		PORTDbits.RD2=1;
-		retardo(30);
-
-		PORTDbits.RD2=0;
-
-		INTCONbits.T0IE = 0;
-		}
-
-		INTCONbits.GIE = 1;
-
-	}
-
-
-	void  setupTimer0()
-	{
-
-		OPTION_REGbits.T0CS = 0;
-
-		OPTION_REGbits.PSA = 0;
-
-		INTCONbits.GIE = 1;
-
-		INTCONbits.T0IE = 1;
-
-		OPTION_REGbits.PS = 7;
-	TMR0= 0x00
 	}
 
 	void setup(){
-	OSCCON=0x60;
-	ANSEL=0;
+	OSCCON=0x60;	ANSEL = 0;
+	TRISA=1;
+	PORTA=0;
 	TRISD=0;
 	PORTD=0;
-	setupTimer0();
 
-	i=0;
 }
 
 	void loop(){
 	 	 
 
- 		
+
+		while(1)
+		{
+	
+		switch(	PORTA)
+{
+			case 1:	suma(1);
+break;
+case 2:	suma(2);
+break;
+case 3:	suma(3);
+break;
+case 4:	suma(4);
+break;
+case 5:	suma(5);
+break;
+case 6:	suma(6);
+break;
+case 7:	suma(7);
+break;
+
+}
+		}		
 
 	}
 

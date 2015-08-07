@@ -384,10 +384,24 @@ metodo::=VOID:v INTERRUPT:it ID:i LPAREN RPAREN LLLAVE instrucciones RLLAVE
 		 ;
 
 parametros::= ID:id DOSPUNTOS tipo:t {:
-				cadena_parametros=" "+t+" "+id;
+
+				DatoSimbolo ds=parser.tabla.buscar(id);
+				if(ds!= null)
+					System.err.println(id + " redeclarada.");
+				else{
+					cadena_parametros=" "+t+" "+id;
+					parser.tabla.insertar(id, t,"");
+				}
 			:}
 			|ID:id DOSPUNTOS tipo:t COMA parametros {:
-				cadena_parametros=" "+t+" "+id+" ,"+cadena_parametros;
+				DatoSimbolo ds=parser.tabla.buscar(id);
+				if(ds!= null)
+					System.err.println(id + " redeclarada.");
+				else{
+					cadena_parametros=" "+t+" "+id+" ,"+cadena_parametros;
+					parser.tabla.insertar(id, t,"");
+				}
+
 			:}
 			;
 //////////////////////////////////////////////////////////////////////////////////////////
