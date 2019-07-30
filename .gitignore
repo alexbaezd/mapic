@@ -51,4 +51,8 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+
+#ignore
+java_cup/
+Jflex/
 # End of https://www.gitignore.io/api/java,macos
