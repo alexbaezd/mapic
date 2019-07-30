@@ -18,3 +18,8 @@ Mapic facilita la programación del microcontrolador PIC16F887. Existe una ampli
 ### Más información en
 
 [Documentación](http://alexbaezd.github.io/mapic/index.html)
+
+
+### Requiere 
+- java_cup
+- JFlex
